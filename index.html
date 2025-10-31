@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casinao.cz – průvodce online casiny, bonusy a recenzemi</title>
+  <meta name="description" content="Casinao.cz – nezávislé recenze legálních českých online casin, nejlepší bonusy, návody a tipy pro bezpečné hraní. 18+ Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config – přidáme firemní barvy
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f7ff',
+              100: '#e6ecff',
+              200: '#c7d4ff',
+              300: '#9cb3ff',
+              400: '#6c8aff',
+              500: '#3a5fff',
+              600: '#2448e6',
+              700: '#1b39b4',
+              800: '#13297f',
+              900: '#0c1c54'
+            },
+            gold: {
+              400: '#ffd773',
+              500: '#ffc83d',
+              600: '#f5b503'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 3px rgb(255 200 61 / 0.25)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --radius: 16px; }
+    html, body { font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; }
+    .card { border-radius: var(--radius); }
+    .glass { backdrop-filter: saturate(150%) blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
+    .gold-gradient { background: linear-gradient(135deg, #ffea9b, #ffc83d, #ffb300); }
+  </style>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Casinao.cz – recenze online casin a bonusy (CZ)">
+  <meta property="og:description" content="Nejlepší česká casina, bonusy bez vkladu, promo kódy a objektivní recenze. 18+ Hraj zodpovědně.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Casinao.cz">
+  <meta property="og:site_name" content="Casinao.cz">
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='48' fill='black'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='120' fill='%23FFC83D' font-family='Arial'>C</text></svg>">
+  <!-- JSON-LD: Organization + ItemList (výpis casin) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Casinao.cz",
+    "url": "https://www.casinao.cz",
+    "logo": "https://via.placeholder.com/600x200.png?text=Casinao.cz",
+    "sameAs": ["https://www.facebook.com/", "https://x.com/"]
+  }
+  </script>
+</head>
+<body class="bg-neutral-950 text-neutral-100 selection:bg-gold-500/30">
+  <!-- Top ribbon: věkové omezení a právní upozornění -->
+  <div class="w-full bg-neutral-900 border-b border-neutral-800 text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+      <p class="text-neutral-300">18+ | Ministerstvo financí varuje: <span class="font-medium">Účastí na hazardní hře může vzniknout závislost.</span></p>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" aria-label="Přepnout motiv" class="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-sm">🌗 Motiv</button>
+        <a href="#odpovedne-hrani" class="text-neutral-300 hover:text-white underline underline-offset-4">Zodpovědné hraní</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-neutral-950/70 glass border-b border-neutral-800">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl gold-gradient grid place-items-center shadow-glow">
+          <span class="text-neutral-900 font-black text-xl">C</span>
+        </div>
+        <div>
+          <div class="text-xl font-black tracking-tight leading-5">Casinao.cz</div>
+          <div class="text-xs text-neutral-400 -mt-0.5">Recenze • Bonusy • Návody</div>
+        </div>
+      </a>
+      <nav class="ml-auto hidden md:flex items-center gap-1">
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#recenze">Recenze casin</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#bonusy">Bonusy</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#automaty">Automaty</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#navody">Návody</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#blog">Magazín</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#kontakt">Kontakt</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden px-3 py-2 rounded-lg bg-neutral-800">Menu</button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-800">
+      <nav class="max-w-7xl mx-auto px-4 py-3 grid gap-2">
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#recenze">Recenze casin</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#bonusy">Bonusy</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#automaty">Automaty</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#navody">Návody</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#blog">Magazín</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-900/40 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-black leading-tight">Nezávislé <span class="text-gold-500">recenze</span> českých online casin a <span class="text-gold-500">nejlepší bonusy</span></h1>
+          <p class="mt-4 text-neutral-300 text-lg">Testujeme licencované CZ provozovatele, porovnáváme vstupní bonusy, ověřujeme rychlost výplat a kvalitu podpory. Hraj zodpovědně. 18+</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#topCasina" class="px-5 py-3 bg-gold-500 text-neutral-900 font-bold rounded-xl hover:shadow-glow">TOP casina 2025</a>
+            <a href="#bonusy" class="px-5 py-3 bg-neutral-800 rounded-xl hover:bg-neutral-700">Bonusy bez vkladu</a>
+            <a href="#odpovedne-hrani" class="px-5 py-3 bg-neutral-800 rounded-xl hover:bg-neutral-700">Zodpovědné hraní</a>
+          </div>
+          <!-- Search -->
+          <div class="mt-6">
+            <label for="q" class="sr-only">Hledat</label>
+            <div class="flex gap-2">
+              <input id="q" type="search" placeholder="Hledat casino, hru, bonus…" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 focus:outline-none focus:ring-2 focus:ring-gold-500/40" />
+              <button id="searchBtn" class="px-5 py-3 rounded-xl bg-brand-700 hover:bg-brand-600">Hledat</button>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[16/10] w-full rounded-2xl border border-neutral-800 overflow-hidden">
+            <div class="w-full h-full grid place-items-center bg-[radial-gradient(circle_at_30%_20%,rgba(255,200,61,.15),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(58,95,255,.15),transparent_30%)]">
+              <div class="text-center p-8">
+                <div class="text-8xl">🎰</div>
+                <p class="mt-3 text-neutral-300">Ilustrační plocha pro hero vizuál / slider</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 left-4 right-4 grid md:grid-cols-3 gap-3">
+            <div class="card bg-neutral-900/90 border border-neutral-800 p-4">
+              <p class="text-sm text-neutral-400">Licencovaní CZ provozovatelé</p>
+              <p class="font-bold">100% legální přehled</p>
+            </div>
+            <div class="card bg-neutral-900/90 border border-neutral-800 p-4">
+              <p class="text-sm text-neutral-400">Rychlé výplaty</p>
+              <p class="font-bold">Ověřeno našimi testy</p>
+            </div>
+            <div class="card bg-neutral-900/90 border border-neutral-800 p-4">
+              <p class="text-sm text-neutral-400">Bonusy & promo kódy</p>
+              <p class="font-bold">Denně aktualizováno</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtry a řazení -->
+  <section id="topCasina" class="max-w-7xl mx-auto px-4 pt-16">
+    <div class="flex flex-wrap items-center gap-3 justify-between">
+      <h2 class="text-2xl md:text-3xl font-black">Doporučená casina (2025)</h2>
+      <div class="flex flex-wrap gap-2">
+        <select id="sort" class="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+          <option value="rating">Seřadit: Hodnocení</option>
+          <option value="payout">Seřadit: Výplaty</option>
+          <option value="bonus">Seřadit: Bonus</option>
+          <option value="name">Seřadit: Název</option>
+        </select>
+        <select id="filterLicense" class="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
+          <option value="all">Licence: Vše</option>
+          <option value="cz">Pouze CZ MF</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Karty casin -->
+    <div id="casinaGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Šablona karty – klonuje se skriptem -->
+    </div>
+
+    <!-- Poznámka k licencím -->
+    <p class="mt-4 text-sm text-neutral-400">Zobrazujeme pouze provozovatele s platnou českou licencí (nebo je jasně označujeme). Odkazy mohou být partnerské (sponsored / nofollow). 18+</p>
+  </section>
+
+  <!-- Bonusy -->
+  <section id="bonusy" class="max-w-7xl mx-auto px-4 pt-16">
+    <div class="flex items-end justify-between flex-wrap gap-3">
+      <h2 class="text-2xl md:text-3xl font-black">Nejlepší bonusy</h2>
+      <a href="#" class="text-sm text-neutral-300 hover:text-white underline underline-offset-4">Zobrazit všechny bonusy</a>
+    </div>
+    <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Bonus karta 1 -->
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-bold text-lg">Fortuna Vegas</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-700/40">CZ LICENCE</span>
+        </div>
+        <p class="mt-1 text-neutral-300">Bonus až 500 Kč bez vkladu + 50 free spinů</p>
+        <div class="mt-4 flex items-center gap-2">
+          <a href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Získat bonus</a>
+          <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Recenze</a>
+        </div>
+      </article>
+      <!-- Bonus karta 2 -->
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-bold text-lg">Tipsport Vegas</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-700/40">CZ LICENCE</span>
+        </div>
+        <p class="mt-1 text-neutral-300">Až 25 000 Kč vstupní bonus + free spiny</p>
+        <div class="mt-4 flex items-center gap-2">
+          <a href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Získat bonus</a>
+          <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Recenze</a>
+        </div>
+      </article>
+      <!-- Bonus karta 3 -->
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-bold text-lg">Apollo Games</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-700/40">CZ LICENCE</span>
+        </div>
+        <p class="mt-1 text-neutral-300">Free spiny denně bez protočení</p>
+        <div class="mt-4 flex items-center gap-2">
+          <a href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Získat bonus</a>
+          <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Recenze</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Automaty (demo) -->
+  <section id="automaty" class="max-w-7xl mx-auto px-4 pt-16">
+    <div class="flex items-end justify-between flex-wrap gap-3">
+      <h2 class="text-2xl md:text-3xl font-black">Populární automaty</h2>
+      <a href="#" class="text-sm text-neutral-300 hover:text-white underline underline-offset-4">Všechny hry</a>
+    </div>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- 4 placeholdery -->
+      <a href="#" class="group card border border-neutral-800 overflow-hidden bg-neutral-900">
+        <div class="aspect-[16/10] bg-neutral-800 grid place-items-center">
+          <span class="text-neutral-400">Obrázek hry</span>
+        </div>
+        <div class="p-4">
+          <div class="font-bold">Multiplayer Blackjack</div>
+          <p class="text-sm text-neutral-400">RTP 99.5% • Nízká volatilita</p>
+        </div>
+      </a>
+      <a href="#" class="group card border border-neutral-800 overflow-hidden bg-neutral-900">
+        <div class="aspect-[16/10] bg-neutral-800 grid place-items-center">
+          <span class="text-neutral-400">Obrázek hry</span>
+        </div>
+        <div class="p-4">
+          <div class="font-bold">Book of Gold</div>
+          <p class="text-sm text-neutral-400">RTP 96.2% • Střední volatilita</p>
+        </div>
+      </a>
+      <a href="#" class="group card border border-neutral-800 overflow-hidden bg-neutral-900">
+        <div class="aspect-[16/10] bg-neutral-800 grid place-items-center">
+          <span class="text-neutral-400">Obrázek hry</span>
+        </div>
+        <div class="p-4">
+          <div class="font-bold">Fire Joker</div>
+          <p class="text-sm text-neutral-400">RTP 96.0% • Střední volatilita</p>
+        </div>
+      </a>
+      <a href="#" class="group card border border-neutral-800 overflow-hidden bg-neutral-900">
+        <div class="aspect-[16/10] bg-neutral-800 grid place-items-center">
+          <span class="text-neutral-400">Obrázek hry</span>
+        </div>
+        <div class="p-4">
+          <div class="font-bold">Respin 7s</div>
+          <p class="text-sm text-neutral-400">RTP 95.8% • Vysoká volatilita</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Návody & tipy -->
+  <section id="navody" class="max-w-7xl mx-auto px-4 pt-16">
+    <h2 class="text-2xl md:text-3xl font-black">Návody & tipy</h2>
+    <div class="mt-6 grid md:grid-cols-3 gap-5">
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <h3 class="font-bold text-lg">Jak si ověřit legální CZ casino</h3>
+        <p class="mt-1 text-neutral-300">Checklist krok za krokem: licence, podmínky bonusu, limity, odpovědné hraní.</p>
+        <a href="#" class="mt-3 inline-block text-gold-500 hover:underline">Číst víc →</a>
+      </article>
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <h3 class="font-bold text-lg">Nastavení sebeomezujících opatření</h3>
+        <p class="mt-1 text-neutral-300">Limity vkladu, časové limity, sebehodnocení a postup odstávky účtu.</p>
+        <a href="#" class="mt-3 inline-block text-gold-500 hover:underline">Číst víc →</a>
+      </article>
+      <article class="card border border-neutral-800 bg-neutral-900 p-5">
+        <h3 class="font-bold text-lg">RTP a volatilita – co to znamená</h3>
+        <p class="mt-1 text-neutral-300">Jak číst parametry her a vybírat si podle strategie zábavy.</p>
+        <a href="#" class="mt-3 inline-block text-gold-500 hover:underline">Číst víc →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Blog / magazín -->
+  <section id="blog" class="max-w-7xl mx-auto px-4 pt-16 pb-10">
+    <div class="flex items-end justify-between flex-wrap gap-3">
+      <h2 class="text-2xl md:text-3xl font-black">Magazín Casinao</h2>
+      <a href="#" class="text-sm text-neutral-300 hover:text-white underline underline-offset-4">Všechny články</a>
+    </div>
+    <div class="mt-6 grid md:grid-cols-3 gap-5">
+      <article class="group card border border-neutral-800 bg-neutral-900 overflow-hidden">
+        <div class="aspect-[16/9] bg-neutral-800 grid place-items-center"><span class="text-neutral-400">Obrázek</span></div>
+        <div class="p-5">
+          <h3 class="font-bold group-hover:underline">Nové limity pro bonusy: co se změnilo v 2025</h3>
+          <p class="mt-1 text-neutral-400 text-sm">Shrnutí legislativních novinek a vlivu na hráče i provozovatele.</p>
+        </div>
+      </article>
+      <article class="group card border border-neutral-800 bg-neutral-900 overflow-hidden">
+        <div class="aspect-[16/9] bg-neutral-800 grid place-items-center"><span class="text-neutral-400">Obrázek</span></div>
+        <div class="p-5">
+          <h3 class="font-bold group-hover:underline">Jak poznat férové podmínky free spinů</h3>
+          <p class="mt-1 text-neutral-400 text-sm">Pozor na protočení, časové limity a vybrané hry.</p>
+        </div>
+      </article>
+      <article class="group card border border-neutral-800 bg-neutral-900 overflow-hidden">
+        <div class="aspect-[16/9] bg-neutral-800 grid place-items-center"><span class="text-neutral-400">Obrázek</span></div>
+        <div class="p-5">
+          <h3 class="font-bold group-hover:underline">Rychlé výplaty: test bank a metod vkladu</h3>
+          <p class="mt-1 text-neutral-400 text-sm">Jak rychle chodí peníze – karta, bankovní převod, peněženky.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Odpovědné hraní -->
+  <section id="odpovedne-hrani" class="max-w-7xl mx-auto px-4 pt-10 pb-16">
+    <div class="card border border-neutral-800 bg-neutral-900 p-5">
+      <h2 class="text-xl md:text-2xl font-black">Hraj zodpovědně</h2>
+      <p class="mt-2 text-neutral-300">Casinao.cz je informační web. Neprovozujeme hazardní hry. Vždy hrajte jen za peníze, které si můžete dovolit ztratit. Pokud pociťujete problém, obraťte se na odbornou pomoc (např. <a class="underline" href="https://www.narodnidiagnostickecentrum.cz/" target="_blank" rel="noopener">Národní linka pro závislosti</a>).</p>
+      <ul class="mt-3 text-neutral-300 list-disc list-inside">
+        <li>Nastavte si limity vkladu a času.</li>
+        <li>Neberte si půjčky na hraní.</li>
+        <li>V případě potřeby požádejte o sebevyloučení.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kontakt / patička -->
+  <footer id="kontakt" class="border-t border-neutral-800 bg-neutral-950">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg gold-gradient grid place-items-center"><span class="text-neutral-900 font-black">C</span></div>
+          <span class="font-black">Casinao.cz</span>
+        </div>
+        <p class="mt-2 text-neutral-400 text-sm">Nezávislý průvodce online casiny v ČR. Recenze, návody, bonusy. 18+</p>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Sekce</div>
+        <ul class="space-y-1 text-neutral-300">
+          <li><a class="hover:underline" href="#recenze">Recenze casin</a></li>
+          <li><a class="hover:underline" href="#bonusy">Bonusy</a></li>
+          <li><a class="hover:underline" href="#automaty">Automaty</a></li>
+          <li><a class="hover:underline" href="#navody">Návody</a></li>
+          <li><a class="hover:underline" href="#blog">Magazín</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Právní</div>
+        <ul class="space-y-1 text-neutral-300">
+          <li><a class="hover:underline" href="#">Podmínky užití</a></li>
+          <li><a class="hover:underline" href="#">Zásady ochrany osobních údajů</a></li>
+          <li><a class="hover:underline" href="#">Cookies</a></li>
+          <li class="text-xs text-neutral-400">Odkazy mohou být partnerské (sponsored/no-follow).</li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold mb-2">Kontakt</div>
+        <ul class="space-y-1 text-neutral-300">
+          <li>E-mail: <a class="hover:underline" href="mailto:info@casinao.cz">info@casinao.cz</a></li>
+          <li>IG / FB: @casinaocz</li>
+          <li>IČ: 00000000 (demo)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-neutral-800 text-center text-neutral-500 text-sm py-4">© <span id="year"></span> Casinao.cz – Všechna práva vyhrazena.</div>
+  </footer>
+
+  <!-- Cookie lišta -->
+  <div id="cookieBar" class="fixed bottom-0 inset-x-0 p-4 md:p-5 bg-neutral-900 border-t border-neutral-800 hidden">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-3 items-center justify-between">
+      <p class="text-sm text-neutral-300">Používáme cookies pro analýzu návštěvnosti a personalizaci obsahu. <a href="#" class="underline">Podrobnosti</a></p>
+      <div class="flex gap-2">
+        <button id="cookieReject" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Odmítnout</button>
+        <button id="cookieAccept" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Souhlasím</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Šablona karty casina (hidden) -->
+  <template id="casinoCardTpl">
+    <article class="card border border-neutral-800 bg-neutral-900 overflow-hidden">
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-lg">{{name}}</h3>
+            <p class="text-neutral-400 text-sm">Výplaty: <span class="font-medium">{{payout}}</span> • Bonus: <span class="font-medium">{{bonus}}</span></p>
+            <div class="mt-2 flex flex-wrap gap-2 items-center">
+              <span class="text-xs px-2 py-1 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-700/40">{{license}}</span>
+              <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">RTP {{rtp}}%</span>
+              <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">Hodnocení {{rating}}/10 ⭐</span>
+            </div>
+          </div>
+          <div class="w-16 h-16 rounded-lg bg-neutral-800 grid place-items-center text-neutral-400 text-xs">Logo</div>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Přejít do casina</a>
+          <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Přečíst recenzi</a>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    // Data demo – nahraď reálnými daty (API/JSON)
+    const casina = [
+      { name: 'Fortuna Vegas', rating: 9.3, rtp: 96.2, payout: 'rychlé', bonus: '500 Kč + 50 FS', license: 'CZ LICENCE', key: 'fortuna' },
+      { name: 'Tipsport Vegas', rating: 9.1, rtp: 96.0, payout: 'rychlé', bonus: 'až 25 000 Kč', license: 'CZ LICENCE', key: 'tipsport' },
+      { name: 'Betano', rating: 8.9, rtp: 95.9, payout: 'rychlé', bonus: '100 FS', license: 'CZ LICENCE', key: 'betano' },
+      { name: 'SynotTip', rating: 8.7, rtp: 96.1, payout: 'střední', bonus: 'Vstupní balíček', license: 'CZ LICENCE', key: 'synottip' },
+      { name: 'Chance Vegas', rating: 8.6, rtp: 96.0, payout: 'rychlé', bonus: 'Free spiny', license: 'CZ LICENCE', key: 'chance' },
+      { name: 'Apollo Games', rating: 8.5, rtp: 95.8, payout: 'střední', bonus: 'Denní free spiny', license: 'CZ LICENCE', key: 'apollo' }
+    ];
+
+    const grid = document.getElementById('casinaGrid');
+    const tpl = document.getElementById('casinoCardTpl').innerHTML;
+
+    function render(list) {
+      grid.innerHTML = '';
+      list.forEach(item => {
+        const html = tpl
+          .replace('{{name}}', item.name)
+          .replace('{{payout}}', item.payout)
+          .replace('{{bonus}}', item.bonus)
+          .replace('{{license}}', item.license)
+          .replace('{{rtp}}', item.rtp)
+          .replace('{{rating}}', item.rating);
+        grid.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    // Řazení a filtry
+    const sortSel = document.getElementById('sort');
+    const filterSel = document.getElementById('filterLicense');
+
+    function applyControls() {
+      let list = [...casina];
+      if (filterSel.value === 'cz') list = list.filter(c => c.license.includes('CZ'));
+      switch (sortSel.value) {
+        case 'rating': list.sort((a,b)=> b.rating - a.rating); break;
+        case 'payout': list.sort((a,b)=> (a.payout > b.payout ? -1 : 1)); break; // jednoduché pořadí
+        case 'bonus': list.sort((a,b)=> (a.bonus.length > b.bonus.length ? -1 : 1)); break;
+        case 'name': list.sort((a,b)=> a.name.localeCompare(b.name, 'cs')); break;
+      }
+      render(list);
+    }
+
+    sortSel.addEventListener('change', applyControls);
+    filterSel.addEventListener('change', applyControls);
+
+    // Mobile menu
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Search stub
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const term = document.getElementById('q').value.trim().toLowerCase();
+      const list = casina.filter(c => c.name.toLowerCase().includes(term));
+      render(list.length ? list : casina);
+    });
+
+    // Cookie lišta
+    const cookieBar = document.getElementById('cookieBar');
+    const cookieKey = 'casinao_cookie';
+    if (!localStorage.getItem(cookieKey)) cookieBar.classList.remove('hidden');
+    document.getElementById('cookieAccept').onclick = ()=>{ localStorage.setItem(cookieKey, '1'); cookieBar.classList.add('hidden'); };
+    document.getElementById('cookieReject').onclick = ()=>{ localStorage.setItem(cookieKey, '0'); cookieBar.classList.add('hidden'); };
+
+    // Theme toggle (dark/light)
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.body.classList.toggle('bg-white');
+    });
+
+    // Rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Init
+    applyControls();
+  </script>
+</body>
+</html>
