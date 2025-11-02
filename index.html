@@ -102,7 +102,7 @@
         </div>
       </a>
       <nav class="ml-auto hidden md:flex items-center gap-1">
-        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#recenze">Recenze casin</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#topCasina">Recenze casin</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#bonusy">Bonusy</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#automaty">Automaty</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#navody">Návody</a>
@@ -115,7 +115,7 @@
     <!-- Mobile menu -->
     <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-800">
       <nav class="max-w-7xl mx-auto px-4 py-3 grid gap-2">
-        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#recenze">Recenze casin</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#topCasina">Recenze casin</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#bonusy">Bonusy</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#automaty">Automaty</a>
         <a class="px-3 py-2 rounded-lg hover:bg-neutral-800" href="#navody">Návody</a>
@@ -176,12 +176,14 @@
   </section>
 
   <!-- Filtry a řazení -->
-  <section id="topCasina" class="max-w-7xl mx-auto px-4 pt-16">
+  <span id="recenze" class="block -mt-24 pt-24"></span>
+  <section id="topCasina" class="scroll-mt-24 max-w-7xl mx-auto px-4 pt-16">
     <div class="flex flex-wrap items-center gap-3 justify-between">
       <h2 class="text-2xl md:text-3xl font-black">Doporučená casina (2025)</h2>
       <div class="flex flex-wrap gap-2">
         <select id="sort" class="px-3 py-2 rounded-lg bg-neutral-900 border border-neutral-800">
           <option value="rating">Seřadit: Hodnocení</option>
+          <option value="user">Seřadit: Uživatelské</option>
           <option value="payout">Seřadit: Výplaty</option>
           <option value="bonus">Seřadit: Bonus</option>
           <option value="name">Seřadit: Název</option>
@@ -374,7 +376,7 @@
       <div>
         <div class="font-bold mb-2">Sekce</div>
         <ul class="space-y-1 text-neutral-300">
-          <li><a class="hover:underline" href="#recenze">Recenze casin</a></li>
+          <li><a class="hover:underline" href="#topCasina">Recenze casin</a></li>
           <li><a class="hover:underline" href="#bonusy">Bonusy</a></li>
           <li><a class="hover:underline" href="#automaty">Automaty</a></li>
           <li><a class="hover:underline" href="#navody">Návody</a></li>
@@ -415,16 +417,18 @@
 
   <!-- Šablona karty casina (hidden) -->
   <template id="casinoCardTpl">
-    <article class="card border border-neutral-800 bg-neutral-900 overflow-hidden">
+    <article class="card border border-neutral-800 bg-neutral-900 overflow-hidden focus:outline-none focus:ring-2 focus:ring-gold-500/40" data-key="{{key}}" tabindex="0" role="button" aria-label="Otevřít recenzi {{name}}">
       <div class="p-5">
         <div class="flex items-start justify-between gap-3">
           <div>
             <h3 class="font-bold text-lg">{{name}}</h3>
             <p class="text-neutral-400 text-sm">Výplaty: <span class="font-medium">{{payout}}</span> • Bonus: <span class="font-medium">{{bonus}}</span></p>
             <div class="mt-2 flex flex-wrap gap-2 items-center">
+              {{badges}}
               <span class="text-xs px-2 py-1 rounded-full bg-emerald-600/20 text-emerald-300 border border-emerald-700/40">{{license}}</span>
               <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">RTP {{rtp}}%</span>
               <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">Hodnocení {{rating}}/10 ⭐</span>
+              <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">Uživatelské {{userAvg}}</span>
             </div>
           </div>
           <div class="w-16 h-16 rounded-lg grid place-items-center text-neutral-900 text-sm font-bold" style="background:{{brand}}">{{abbr}}</div>
@@ -470,6 +474,20 @@
           <div class="text-sm text-neutral-400">Založeno na <span id="userCount">0</span> hodnocení</div>
         </div>
         <div class="mt-3 grid gap-3 items-center">
+          <label class="text-sm text-neutral-300">Tvoje hodnocení:</label>
+          <div id="starWrap" class="flex items-center gap-1 select-none" aria-label="Výběr hodnocení 1 až 10">
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+            <button type="button" class="px-1 text-2xl">☆</button>
+          </div>
+          <input id="hp_field" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true" />
           <label class="text-sm text-neutral-300" for="userRatingRange">Tvoje hodnocení: <span class="font-bold" id="userRatingValue">8/10</span></label>
           <input id="userRatingRange" type="range" min="1" max="10" value="8" class="w-full accent-gold-500" />
           <div class="flex items-center gap-2">
@@ -488,12 +506,12 @@
   <script>
     // --- Data demo – nahraď reálnými daty (API/JSON) ---
     const casina = [
-      { name: 'Fortuna Vegas', rating: 9.3, rtp: 96.2, payout: 'rychlé', bonus: '500 Kč + 50 FS', license: 'CZ LICENCE', key: 'fortuna' },
-      { name: 'Tipsport Vegas', rating: 9.1, rtp: 96.0, payout: 'rychlé', bonus: 'až 25 000 Kč', license: 'CZ LICENCE', key: 'tipsport' },
-      { name: 'Betano', rating: 8.9, rtp: 95.9, payout: 'rychlé', bonus: '100 FS', license: 'CZ LICENCE', key: 'betano' },
-      { name: 'SynotTip', rating: 8.7, rtp: 96.1, payout: 'střední', bonus: 'Vstupní balíček', license: 'CZ LICENCE', key: 'synottip' },
-      { name: 'Chance Vegas', rating: 8.6, rtp: 96.0, payout: 'rychlé', bonus: 'Free spiny', license: 'CZ LICENCE', key: 'chance' },
-      { name: 'Apollo Games', rating: 8.5, rtp: 95.8, payout: 'střední', bonus: 'Denní free spiny', license: 'CZ LICENCE', key: 'apollo' }
+      { name: 'Fortuna Vegas', rating: 9.3, rtp: 96.2, payout: 'rychlé', bonus: '500 Kč + 50 FS', license: 'CZ LICENCE', key: 'fortuna', isNew: false },
+      { name: 'Tipsport Vegas', rating: 9.1, rtp: 96.0, payout: 'rychlé', bonus: 'až 25 000 Kč', license: 'CZ LICENCE', key: 'tipsport', isNew: false },
+      { name: 'Betano', rating: 8.9, rtp: 95.9, payout: 'rychlé', bonus: '100 FS', license: 'CZ LICENCE', key: 'betano', isNew: true },
+      { name: 'SynotTip', rating: 8.7, rtp: 96.1, payout: 'střední', bonus: 'Vstupní balíček', license: 'CZ LICENCE', key: 'synottip', isNew: false },
+      { name: 'Chance Vegas', rating: 8.6, rtp: 96.0, payout: 'rychlé', bonus: 'Free spiny', license: 'CZ LICENCE', key: 'chance', isNew: false },
+      { name: 'Apollo Games', rating: 8.5, rtp: 95.8, payout: 'střední', bonus: 'Denní free spiny', license: 'CZ LICENCE', key: 'apollo', isNew: true }
     ];
 
     // vizuální brand (barvy + zkratka) pro loga placeholder
@@ -571,29 +589,42 @@
     const grid = document.getElementById('casinaGrid');
     const tpl = document.getElementById('casinoCardTpl').innerHTML;
 
+    // zvýraznění shody ve vyhledávání
+    let currentTerm = '';
+    function escReg(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    function hi(str, term){ if(!term) return str; return String(str).replace(new RegExp(escReg(term), 'ig'), (m)=>`<mark class="bg-gold-500/30">${m}</mark>`); }
+
     function render(list) {
       grid.innerHTML = '';
       list.forEach(item => {
         const br = brandMap[item.key] || { color:'#666', abbr:'CA' };
-        const html = tpl
-          .replace('{{name}}', item.name)
+        const userAvg = (getUserRating(item.key) != null) ? `${getUserRating(item.key)}/10` : '–/10';
+        const badges = [
+          (item.rating >= 9.0 ? '<span class="text-xs px-2 py-1 rounded-full bg-gold-500/20 text-gold-500 border border-yellow-600/40">Doporučujeme</span>' : ''),
+          (item.isNew ? '<span class="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-600/40">Nové</span>' : '')
+        ].filter(Boolean).join('');
+        let html = tpl
+          .replace('{{badges}}', badges)
+          .replace('{{name}}', hi(item.name, currentTerm))
           .replace('{{payout}}', item.payout)
-          .replace('{{bonus}}', item.bonus)
+          .replace('{{bonus}}', hi(item.bonus, currentTerm))
           .replace('{{license}}', item.license)
           .replace('{{rtp}}', item.rtp)
           .replace('{{rating}}', item.rating)
+          .replace('{{userAvg}}', userAvg)
           .replace('{{brand}}', br.color)
           .replace('{{abbr}}', br.abbr)
-          .replace('{{key}}', item.key);
-        grid.insertAdjacentHTML('beforeend', html);
-      });
-
-      // připojit handlery na nově vložená tlačítka
-      document.querySelectorAll('.btnRecenze').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          openReview(btn.getAttribute('data-key'));
-        });
+          .replace(/\{\{key\}\}/g, item.key);
+        const wrap = document.createElement('div');
+        wrap.innerHTML = html;
+        const card = wrap.firstElementChild;
+        // otevřít recenzi klikem kamkoliv na kartu mimo tlačítka/odkazy
+        card.addEventListener('click', (ev)=>{ if(ev.target.closest('a,button')) return; openReview(item.key); });
+        // přístupnost – klávesy Enter/Space
+        card.addEventListener('keydown', (ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openReview(item.key); } });
+        // tlačítko recenze
+        card.querySelector('.btnRecenze')?.addEventListener('click', (e)=>{ e.preventDefault(); openReview(item.key); });
+        grid.appendChild(card);
       });
     }
 
@@ -604,29 +635,59 @@
     function applyControls() {
       let list = [...casina];
       if (filterSel.value === 'cz') list = list.filter(c => c.license.includes('CZ'));
+      const payoutOrder = { 'okamžité': 3, 'rychlé': 2, 'střední': 1, 'pomalé': 0 };
       switch (sortSel.value) {
         case 'rating': list.sort((a,b)=> b.rating - a.rating); break;
-        case 'payout': list.sort((a,b)=> (a.payout > b.payout ? -1 : 1)); break; // jednoduché pořadí
-        case 'bonus': list.sort((a,b)=> (a.bonus.length > b.bonus.length ? -1 : 1)); break;
+        case 'user': {
+          const val = (k)=> (getUserRating(k) ?? -1); // -1 = bez hodnocení → na konec
+          list.sort((a,b)=> val(b.key) - val(a.key));
+          break;
+        }
+        case 'payout': list.sort((a,b)=> (payoutOrder[b.payout]||0) - (payoutOrder[a.payout]||0)); break;
+        case 'bonus': list.sort((a,b)=> (b.bonus.length) - (a.bonus.length)); break;
         case 'name': list.sort((a,b)=> a.name.localeCompare(b.name, 'cs')); break;
       }
       render(list);
     }
 
-    sortSel.addEventListener('change', applyControls);
-    filterSel.addEventListener('change', applyControls);
+    sortSel.addEventListener('change', ()=>{ writeStateToURL(); applyControls(); });
+    filterSel.addEventListener('change', ()=>{ writeStateToURL(); applyControls(); });
 
     // Mobile menu
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
-    // Search stub
-    document.getElementById('searchBtn').addEventListener('click', () => {
-      const term = document.getElementById('q').value.trim().toLowerCase();
-      const list = casina.filter(c => c.name.toLowerCase().includes(term));
+    // Rozšířené vyhledávání + zvýraznění
+    const qInput = document.getElementById('q');
+    function runSearch(){
+      currentTerm = qInput.value.trim().toLowerCase();
+      writeStateToURL();
+      if(!currentTerm){ render(casina); return; }
+      const list = casina.filter(c => {
+        const r = reviews[c.key] || {};
+        return [c.name, c.bonus, r.payments, r.support]
+          .filter(Boolean)
+          .some(v => String(v).toLowerCase().includes(currentTerm));
+      });
       render(list.length ? list : casina);
-    });
+    }
+    document.getElementById('searchBtn').addEventListener('click', runSearch);
+    qInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); runSearch(); }});
+
+    // URL state (q, sort, lic)
+    function writeStateToURL(){
+      const params = new URLSearchParams(location.search);
+      params.set('q', qInput.value.trim());
+      params.set('sort', sortSel.value);
+      params.set('lic', filterSel.value);
+      history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
+    }
+    function readStateFromURL(){
+      const p = new URLSearchParams(location.search);
+      const q = p.get('q')||''; const s=p.get('sort')||'rating'; const l=p.get('lic')||'all';
+      qInput.value = q; sortSel.value = s; filterSel.value = l;
+    }
 
     // Cookie lišta
     const cookieBar = document.getElementById('cookieBar');
@@ -649,6 +710,8 @@
     const dlg = document.getElementById('reviewModal');
     const closeBtn = document.getElementById('revClose');
     if (closeBtn) closeBtn.addEventListener('click', ()=> { try { dlg.close(); } catch(e) { dlg.open = false; } });
+    dlg?.addEventListener('cancel', (e)=>{ e.preventDefault(); try { dlg.close(); } catch(_) { dlg.open=false; } });
+    dlg?.addEventListener('click', (e)=>{ if (e.target === dlg) { try { dlg.close(); } catch(_) { dlg.open=false; } } });
 
     function openReview(key){
       const item = casina.find(c=>c.key===key);
@@ -672,13 +735,17 @@
       (rev.cons||[]).forEach(c=> cons.insertAdjacentHTML('beforeend', `<li>– ${c}</li>`));
       const cta = document.getElementById('revCTA'); cta.href = rev.url;
 
-      // ==== Uživatelské hodnocení – naplnění a logika ====
+      // ==== Uživatelské hodnocení – hvězdičky i slider ====
       const range = document.getElementById('userRatingRange');
       const out = document.getElementById('userRatingValue');
       const submit = document.getElementById('userRatingSubmit');
       const err = document.getElementById('userRatingError');
       const avgEl = document.getElementById('userAvg');
       const cntEl = document.getElementById('userCount');
+      const starWrap = document.getElementById('starWrap');
+      const stars = Array.from(starWrap.querySelectorAll('button'));
+      let selected = 8; let openedAt = Date.now();
+      function paint(n){ stars.forEach((s,i)=>{ s.textContent = (i < n) ? '★' : '☆'; }); out.textContent = `${n}/10`; }
 
       function refreshUserRatingUI(){
         const val = getUserRating(key);
@@ -689,22 +756,28 @@
           out.textContent = `${val}/10`;
           range.disabled = true; submit.disabled = true; err.classList.add('hidden');
           submit.textContent = 'Děkujeme za hodnocení';
+          paint(val);
         } else {
           avgEl.textContent = '–/10';
           cntEl.textContent = '0';
           range.disabled = false; submit.disabled = false; err.classList.add('hidden');
           const init = Number(range.value)||8; out.textContent = `${init}/10`;
           submit.textContent = 'Odeslat hodnocení';
+          paint(init);
         }
       }
 
-      range.oninput = () => { out.textContent = `${range.value}/10`; };
+      range.oninput = () => { out.textContent = `${range.value}/10`; paint(Number(range.value)||8); };
+      stars.forEach((btn,idx)=>{ btn.onclick = ()=>{ selected = idx+1; paint(selected); }; btn.onmouseenter = ()=> paint(idx+1); btn.onmouseleave = ()=> paint(selected); });
       submit.onclick = (e) => {
         e.preventDefault();
+        if (document.getElementById('hp_field').value) return; // honeypot
+        if (Date.now() - openedAt < 1200) return; // anti-bot
         if (getUserRating(key) != null) { err.classList.remove('hidden'); return; }
-        const v = Math.max(1, Math.min(10, Number(range.value)||8));
+        const v = Math.max(1, Math.min(10, Number(selected)||Number(range.value)||8));
         setUserRating(key, v);
         refreshUserRatingUI();
+        applyControls();
       };
 
       refreshUserRatingUI();
@@ -725,33 +798,62 @@
     }
 
     // --- INIT ---
+    readStateFromURL();
     applyControls();
+    if(qInput.value) runSearch();
 
-    // --- Jednoduché "testy" v konzoli (nezávislé, nemění DOM mimo čtení) ---
+    // --- Self-testy (nezávislé) ---
     (function runTests(){
       try {
         console.group('%cCasinao.cz – self-test','color:#ffc83d');
-        // 1) Po prvním vykreslení počet karet === casina.length
-        const cards = () => document.querySelectorAll('#casinaGrid article').length;
-        applyControls();
-        console.assert(cards() === casina.length, 'Počet karet neodpovídá casina.length');
+        const cardsCount = () => document.querySelectorAll('#casinaGrid article').length;
 
-        // 2) Filtr CZ nesníží počet (všichni mají CZ LICENCE)
-        const before = cards();
+        // Test 1: po initu je počet karet === casina.length
+        console.assert(cardsCount() === casina.length, 'Počet karet neodpovídá casina.length');
+
+        // Test 2: filtr CZ nemění počet (všichni jsou CZ)
+        const before = cardsCount();
         document.getElementById('filterLicense').value = 'cz';
         applyControls();
-        console.assert(cards() === before, 'Filtr CZ by neměl snížit počet karet');
+        console.assert(cardsCount() === before, 'Filtr CZ by neměl snížit počet karet');
 
-        // 3) Hledání podle názvu (tipsport) vrátí 1 kartu
-        document.getElementById('q').value = 'tipsport';
-        document.getElementById('searchBtn').click();
-        console.assert(cards() === 1, 'Search "tipsport" má vrátit 1 kartu');
+        // Test 3: vyhledávání Enterem ("tipsport") vrátí 1 kartu
+        const q = document.getElementById('q');
+        q.value = 'tipsport';
+        q.dispatchEvent(new KeyboardEvent('keydown', {key:'Enter', bubbles:true}));
+        console.assert(cardsCount() === 1, 'Search "tipsport" má vrátit 1 kartu');
 
         // Reset vyhledávání
-        document.getElementById('q').value = '';
+        q.value = '';
         document.getElementById('searchBtn').click();
 
-        console.log('%cSelf-test OK','color:#22c55e');
+        // Test 4: klik na první kartu otevře modal (vyplněný titulek)
+        const firstCard = document.querySelector('#casinaGrid article');
+        firstCard?.click();
+        const titleOk = document.getElementById('revTitle').textContent.includes('Recenze –');
+        console.assert(titleOk, 'Klik na kartu má otevřít modal s titulkem');
+        try { document.getElementById('reviewModal').close(); } catch(e) { document.getElementById('reviewModal').open = false; }
+
+        // Test 5: seřazení podle názvu -> první "Apollo Games"
+        document.getElementById('sort').value = 'name';
+        applyControls();
+        const firstName = document.querySelector('#casinaGrid article h3')?.textContent.trim();
+        console.assert(firstName === 'Apollo Games', 'Seřazení podle názvu: první má být "Apollo Games"');
+
+        // Test 6: URL state persistence
+        history.replaceState(null,'',`${location.pathname}?q=bet&sort=name&lic=cz`);
+        readStateFromURL();
+        console.assert(q.value==='bet' && sortSel.value==='name' && filterSel.value==='cz', 'URL -> UI sync selhal');
+        runSearch();
+
+        // Test 7: řazení podle uživatelského po přidání ratingu
+        setUserRating('fortuna', 10);
+        document.getElementById('sort').value = 'user';
+        applyControls();
+        const firstUser = document.querySelector('#casinaGrid article h3')?.textContent.trim();
+        console.assert(firstUser === 'Fortuna Vegas', 'Uživatelské řazení: Fortuna by měla být první');
+
+        console.log('%cSelf-testy OK','color:#22c55e');
       } catch(err){
         console.error('Self-test selhal:', err);
       } finally {
@@ -759,3 +861,5 @@
       }
     })();
   </script>
+</body>
+</html>
