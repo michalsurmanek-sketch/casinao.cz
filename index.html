@@ -48,6 +48,14 @@
     .card { border-radius: var(--radius); }
     .glass { backdrop-filter: saturate(150%) blur(10px); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
     .gold-gradient { background: linear-gradient(135deg, #ffea9b, #ffc83d, #ffb300); }
+    /* Modal (recenze) */
+    dialog.modal{width:min(960px,95vw);border:1px solid rgb(38 38 38);background:#0a0a0a;color:#fff;border-radius:16px;padding:0;}
+    dialog::backdrop{background:rgba(0,0,0,.6);backdrop-filter:blur(2px)}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgb(38 38 38)}
+    .modal-body{padding:20px}
+    .badge{font-size:12px;border:1px solid rgb(64 64 64);border-radius:999px;padding:2px 8px}
+    .kv{display:grid;grid-template-columns:180px 1fr;gap:8px;margin-top:10px}
+    .kv div{padding:6px 0;border-bottom:1px dashed rgb(64 64 64)}
   </style>
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -57,7 +65,7 @@
   <meta property="og:site_name" content="Casinao.cz">
   <!-- Favicon placeholder -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><rect width='256' height='256' rx='48' fill='black'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='120' fill='%23FFC83D' font-family='Arial'>C</text></svg>">
-  <!-- JSON-LD: Organization + ItemList (výpis casin) -->
+  <!-- JSON-LD: Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -419,18 +427,66 @@
               <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 text-neutral-300 border border-neutral-700">Hodnocení {{rating}}/10 ⭐</span>
             </div>
           </div>
-          <div class="w-16 h-16 rounded-lg bg-neutral-800 grid place-items-center text-neutral-400 text-xs">Logo</div>
+          <div class="w-16 h-16 rounded-lg grid place-items-center text-neutral-900 text-sm font-bold" style="background:{{brand}}">{{abbr}}</div>
         </div>
         <div class="mt-4 flex flex-wrap gap-2">
           <a href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Přejít do casina</a>
-          <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Přečíst recenzi</a>
+          <button data-key="{{key}}" class="btnRecenze px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Přečíst recenzi</button>
         </div>
       </div>
     </article>
   </template>
 
+  <!-- Modal recenze -->
+  <dialog id="reviewModal" class="modal">
+    <div class="modal-header">
+      <div class="flex items-center gap-2">
+        <div id="revLogo" class="w-8 h-8 rounded-md grid place-items-center text-neutral-900 font-black">C</div>
+        <strong id="revTitle">Recenze</strong>
+        <span id="revBadge" class="badge ml-2">CZ LICENCE</span>
+      </div>
+      <button id="revClose" class="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700">Zavřít</button>
+    </div>
+    <div class="modal-body">
+      <p id="revLead" class="text-neutral-300"></p>
+      <div class="kv mt-4 text-neutral-200">
+        <div class="text-neutral-400">Hodnocení</div><div id="revRating"></div>
+        <div class="text-neutral-400">RTP průměr</div><div id="revRTP"></div>
+        <div class="text-neutral-400">Výplaty</div><div id="revPayout"></div>
+        <div class="text-neutral-400">Bonus</div><div id="revBonus"></div>
+        <div class="text-neutral-400">Platební metody</div><div id="revPayments"></div>
+        <div class="text-neutral-400">Podpora</div><div id="revSupport"></div>
+      </div>
+      <div class="mt-4">
+        <h4 class="font-bold mb-2">Plusy a mínusy</h4>
+        <ul id="revPros" class="list-disc list-inside text-emerald-300"></ul>
+        <ul id="revCons" class="list-disc list-inside text-rose-300 mt-2"></ul>
+      </div>
+      <!-- Uživatelské hodnocení (jedna sekce) -->
+      <div class="mt-6 border-t border-neutral-800 pt-4">
+        <h4 class="font-bold mb-2">Hodnocení uživatelů</h4>
+        <div class="flex items-center gap-3 text-neutral-300">
+          <div class="text-2xl font-black" id="userAvg">–/10</div>
+          <div class="text-sm text-neutral-400">Založeno na <span id="userCount">0</span> hodnocení</div>
+        </div>
+        <div class="mt-3 grid gap-3 items-center">
+          <label class="text-sm text-neutral-300" for="userRatingRange">Tvoje hodnocení: <span class="font-bold" id="userRatingValue">8/10</span></label>
+          <input id="userRatingRange" type="range" min="1" max="10" value="8" class="w-full accent-gold-500" />
+          <div class="flex items-center gap-2">
+            <button id="userRatingSubmit" class="px-4 py-2 rounded-lg bg-brand-700 hover:bg-brand-600">Odeslat hodnocení</button>
+            <span id="userRatingError" class="text-sm text-rose-400 hidden">Už jsi hodnotil/a toto casino.</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 flex gap-2">
+        <a id="revCTA" href="#" rel="nofollow sponsored" class="px-4 py-2 rounded-lg bg-gold-500 text-neutral-900 font-bold hover:shadow-glow">Přejít do casina</a>
+        <a href="#" class="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700">Sdílet recenzi</a>
+      </div>
+    </div>
+  </dialog>
+
   <script>
-    // Data demo – nahraď reálnými daty (API/JSON)
+    // --- Data demo – nahraď reálnými daty (API/JSON) ---
     const casina = [
       { name: 'Fortuna Vegas', rating: 9.3, rtp: 96.2, payout: 'rychlé', bonus: '500 Kč + 50 FS', license: 'CZ LICENCE', key: 'fortuna' },
       { name: 'Tipsport Vegas', rating: 9.1, rtp: 96.0, payout: 'rychlé', bonus: 'až 25 000 Kč', license: 'CZ LICENCE', key: 'tipsport' },
@@ -440,20 +496,104 @@
       { name: 'Apollo Games', rating: 8.5, rtp: 95.8, payout: 'střední', bonus: 'Denní free spiny', license: 'CZ LICENCE', key: 'apollo' }
     ];
 
+    // vizuální brand (barvy + zkratka) pro loga placeholder
+    const brandMap = {
+      fortuna: { color: '#ffdd00', abbr: 'FO' },
+      tipsport: { color: '#1e90ff', abbr: 'TI' },
+      betano: { color: '#ff6a00', abbr: 'BE' },
+      synottip: { color: '#8a1538', abbr: 'SY' },
+      chance: { color: '#127c2f', abbr: 'CH' },
+      apollo: { color: '#e63946', abbr: 'AP' }
+    };
+
+    // obsah recenzí (demo data)
+    const reviews = {
+      fortuna: {
+        lead: 'Silná nabídka slotů, rychlé výplaty a skvělé promo akce pro nové i stálé hráče.',
+        payments: 'Karta, bankovní převod, Google Pay, Apple Pay',
+        support: 'CZ chat 8–23h, e‑mail',
+        pros: ['Rychlé ověření identity', 'Stálé free spiny', 'Přehledná aplikace'],
+        cons: ['Některé bonusy mají vyšší protočení'],
+        url: '#'
+      },
+      tipsport: {
+        lead: 'Prémiový ekosystém se sdílenou peněženkou sázky/vegas, stabilní výplaty.',
+        payments: 'Karta, převod, pobočky',
+        support: 'CZ chat 8–24h, e‑mail, pobočky',
+        pros: ['Silná komunita', 'Skvělé turnaje'],
+        cons: ['Méně exkluzivních slotů'],
+        url: '#'
+      },
+      betano: {
+        lead: 'Moderní UX, časté akce s free spiny, rychlé registrace.',
+        payments: 'Karta, převod',
+        support: 'CZ chat, e‑mail',
+        pros: ['Rychlé bonusy', 'Pěkný design'],
+        cons: ['Občas omezené metody výplat'],
+        url: '#'
+      },
+      synottip: {
+        lead: 'Český provozovatel s vlastními hrami a slušnými jackpoty.',
+        payments: 'Karta, převod',
+        support: 'CZ chat, e‑mail',
+        pros: ['Vlastní exkluzivní hry', 'Zajímavé jackpoty'],
+        cons: ['Aplikace by snesla modernizaci'],
+        url: '#'
+      },
+      chance: {
+        lead: 'Sesterská značka Tipsportu – sdílené promo a kvalitní turnaje.',
+        payments: 'Karta, převod, pobočky',
+        support: 'CZ chat, e‑mail, pobočky',
+        pros: ['Přenos výhod s Tipsportem', 'Kvalitní turnaje'],
+        cons: ['Menší výběr exkluzivních titulů'],
+        url: '#'
+      },
+      apollo: {
+        lead: 'České studio i casino v jednom – denní free spiny a hezké RTP.',
+        payments: 'Karta, převod',
+        support: 'CZ chat, e‑mail',
+        pros: ['Denní free spiny', 'Přehledné prostředí'],
+        cons: ['Menší výběr platebních metod'],
+        url: '#'
+      }
+    };
+
+    // UŽIVATELSKÁ HODNOCENÍ (localStorage)
+    const RATINGS_KEY = 'casinao_ratings_v1';
+    function getRatingsStore(){
+      try { return JSON.parse(localStorage.getItem(RATINGS_KEY)) || {}; }
+      catch { return {}; }
+    }
+    function saveRatingsStore(store){ localStorage.setItem(RATINGS_KEY, JSON.stringify(store)); }
+    function getUserRating(key){ const s = getRatingsStore(); return s[key]?.value ?? null; }
+    function setUserRating(key,val){ const s = getRatingsStore(); s[key] = { value: val, ts: Date.now() }; saveRatingsStore(s); }
+
     const grid = document.getElementById('casinaGrid');
     const tpl = document.getElementById('casinoCardTpl').innerHTML;
 
     function render(list) {
       grid.innerHTML = '';
       list.forEach(item => {
+        const br = brandMap[item.key] || { color:'#666', abbr:'CA' };
         const html = tpl
           .replace('{{name}}', item.name)
           .replace('{{payout}}', item.payout)
           .replace('{{bonus}}', item.bonus)
           .replace('{{license}}', item.license)
           .replace('{{rtp}}', item.rtp)
-          .replace('{{rating}}', item.rating);
+          .replace('{{rating}}', item.rating)
+          .replace('{{brand}}', br.color)
+          .replace('{{abbr}}', br.abbr)
+          .replace('{{key}}', item.key);
         grid.insertAdjacentHTML('beforeend', html);
+      });
+
+      // připojit handlery na nově vložená tlačítka
+      document.querySelectorAll('.btnRecenze').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          openReview(btn.getAttribute('data-key'));
+        });
       });
     }
 
@@ -498,15 +638,124 @@
     // Theme toggle (dark/light)
     const themeBtn = document.getElementById('themeToggle');
     themeBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
+      document.documentElement.classList.toggle('dark');
       document.body.classList.toggle('bg-white');
     });
 
     // Rok v patičce
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Init
+    // Otevření recenze do modalu
+    const dlg = document.getElementById('reviewModal');
+    const closeBtn = document.getElementById('revClose');
+    if (closeBtn) closeBtn.addEventListener('click', ()=> { try { dlg.close(); } catch(e) { dlg.open = false; } });
+
+    function openReview(key){
+      const item = casina.find(c=>c.key===key);
+      const rev = reviews[key];
+      if(!item || !rev) return;
+      // UI plnění
+      document.getElementById('revTitle').textContent = `Recenze – ${item.name}`;
+      const br = brandMap[key] || { color:'#666', abbr:'CA' }; const logo = document.getElementById('revLogo');
+      logo.style.background = br.color; logo.textContent = (br.abbr||'CA');
+      document.getElementById('revBadge').textContent = item.license;
+      document.getElementById('revLead').textContent = rev.lead;
+      document.getElementById('revRating').textContent = `${item.rating}/10`;
+      document.getElementById('revRTP').textContent = `${item.rtp}%`;
+      document.getElementById('revPayout').textContent = item.payout;
+      document.getElementById('revBonus').textContent = item.bonus;
+      document.getElementById('revPayments').textContent = rev.payments;
+      document.getElementById('revSupport').textContent = rev.support;
+      const pros = document.getElementById('revPros'); pros.innerHTML='';
+      (rev.pros||[]).forEach(p=> pros.insertAdjacentHTML('beforeend', `<li>+ ${p}</li>`));
+      const cons = document.getElementById('revCons'); cons.innerHTML='';
+      (rev.cons||[]).forEach(c=> cons.insertAdjacentHTML('beforeend', `<li>– ${c}</li>`));
+      const cta = document.getElementById('revCTA'); cta.href = rev.url;
+
+      // ==== Uživatelské hodnocení – naplnění a logika ====
+      const range = document.getElementById('userRatingRange');
+      const out = document.getElementById('userRatingValue');
+      const submit = document.getElementById('userRatingSubmit');
+      const err = document.getElementById('userRatingError');
+      const avgEl = document.getElementById('userAvg');
+      const cntEl = document.getElementById('userCount');
+
+      function refreshUserRatingUI(){
+        const val = getUserRating(key);
+        if (val != null) {
+          avgEl.textContent = `${val}/10`;
+          cntEl.textContent = '1';
+          range.value = val;
+          out.textContent = `${val}/10`;
+          range.disabled = true; submit.disabled = true; err.classList.add('hidden');
+          submit.textContent = 'Děkujeme za hodnocení';
+        } else {
+          avgEl.textContent = '–/10';
+          cntEl.textContent = '0';
+          range.disabled = false; submit.disabled = false; err.classList.add('hidden');
+          const init = Number(range.value)||8; out.textContent = `${init}/10`;
+          submit.textContent = 'Odeslat hodnocení';
+        }
+      }
+
+      range.oninput = () => { out.textContent = `${range.value}/10`; };
+      submit.onclick = (e) => {
+        e.preventDefault();
+        if (getUserRating(key) != null) { err.classList.remove('hidden'); return; }
+        const v = Math.max(1, Math.min(10, Number(range.value)||8));
+        setUserRating(key, v);
+        refreshUserRatingUI();
+      };
+
+      refreshUserRatingUI();
+
+      // JSON-LD Review (vkládáme/aktualizujeme)
+      const old = document.getElementById('ldReview'); if (old) old.remove();
+      const ld = document.createElement('script');
+      ld.type='application/ld+json'; ld.id='ldReview';
+      ld.textContent = JSON.stringify({
+        "@context":"https://schema.org","@type":"Review",
+        "itemReviewed": {"@type":"Organization","name": item.name},
+        "author": {"@type":"Organization","name":"Casinao.cz"},
+        "reviewRating": {"@type":"Rating","ratingValue": item.rating, "bestRating": 10, "worstRating": 1}
+      });
+      document.head.appendChild(ld);
+
+      try { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; } catch(e) { dlg.open = true; }
+    }
+
+    // --- INIT ---
     applyControls();
+
+    // --- Jednoduché "testy" v konzoli (nezávislé, nemění DOM mimo čtení) ---
+    (function runTests(){
+      try {
+        console.group('%cCasinao.cz – self-test','color:#ffc83d');
+        // 1) Po prvním vykreslení počet karet === casina.length
+        const cards = () => document.querySelectorAll('#casinaGrid article').length;
+        applyControls();
+        console.assert(cards() === casina.length, 'Počet karet neodpovídá casina.length');
+
+        // 2) Filtr CZ nesníží počet (všichni mají CZ LICENCE)
+        const before = cards();
+        document.getElementById('filterLicense').value = 'cz';
+        applyControls();
+        console.assert(cards() === before, 'Filtr CZ by neměl snížit počet karet');
+
+        // 3) Hledání podle názvu (tipsport) vrátí 1 kartu
+        document.getElementById('q').value = 'tipsport';
+        document.getElementById('searchBtn').click();
+        console.assert(cards() === 1, 'Search "tipsport" má vrátit 1 kartu');
+
+        // Reset vyhledávání
+        document.getElementById('q').value = '';
+        document.getElementById('searchBtn').click();
+
+        console.log('%cSelf-test OK','color:#22c55e');
+      } catch(err){
+        console.error('Self-test selhal:', err);
+      } finally {
+        console.groupEnd();
+      }
+    })();
   </script>
-</body>
-</html>
