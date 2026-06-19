@@ -74,7 +74,14 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 9.5rem;
+    }
+    /* Kotvy posuň o výšku sticky lišty, aby nadpis sekce nezůstal schovaný pod hlavičkou. */
+    :target {
+      scroll-margin-top: 9.5rem;
+    }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
     .tip:hover::after {
       content: attr(data-tip);
