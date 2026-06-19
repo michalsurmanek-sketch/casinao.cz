@@ -1260,15 +1260,15 @@
       const defaultCount = Number(el.getAttribute('data-default-count') || '0');
 
       el.innerHTML = '' +
-        '<div class="text-xs text-gray-300"><span class="casino-vote-avg">' + defaultAvg.toFixed(1).replace('.', ',') + '</span>/5 (<span class="casino-vote-count">' + defaultCount + '</span>)</div>' +
-        '<div class="mt-1 flex items-center gap-1">' +
-          '<button type="button" data-rating="1" class="casino-vote-star text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
-          '<button type="button" data-rating="2" class="casino-vote-star text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
-          '<button type="button" data-rating="3" class="casino-vote-star text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
-          '<button type="button" data-rating="4" class="casino-vote-star text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
-          '<button type="button" data-rating="5" class="casino-vote-star text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+        '<div class="text-[11px] sm:text-xs text-gray-300 whitespace-nowrap"><span class="casino-vote-avg">' + defaultAvg.toFixed(1).replace('.', ',') + '</span>/5 (<span class="casino-vote-count">' + defaultCount + '</span>)</div>' +
+        '<div class="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1">' +
+          '<button type="button" data-rating="1" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="2" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="3" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="4" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="5" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
         '</div>' +
-        '<div class="casino-vote-status mt-1 text-[10px] text-gray-400">Hlasuj pro toto casino</div>';
+        '<div class="casino-vote-status mt-0.5 sm:mt-1 text-[10px] text-gray-400 whitespace-nowrap">Hlasuj pro toto casino</div>';
 
       return {
         page,
