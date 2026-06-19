@@ -1187,12 +1187,12 @@
             } else {
               nextAvg = ((avg * count) + rating) / (count + 1);
               nextCount = count + 1;
-              setVoteStatus(statusEl, 'Děkujeme, hlas je uložen lokálně (offline režim).', 'text-yellow-300');
+              setVoteStatus(statusEl, 'Děkujeme, hlas je uložen.', 'text-yellow-300');
             }
           } catch {
             nextAvg = ((avg * count) + rating) / (count + 1);
             nextCount = count + 1;
-            setVoteStatus(statusEl, 'Děkujeme, hlas je uložen lokálně (offline režim).', 'text-yellow-300');
+            setVoteStatus(statusEl, 'Děkujeme, hlas je uložen.', 'text-yellow-300');
           }
 
           avg = nextAvg;
