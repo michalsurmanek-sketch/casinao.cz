@@ -31,31 +31,77 @@
   <style>html { scroll-behavior: smooth; }</style>
 </head>
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-100 font-sans">
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full bg-yellow-500/12 blur-3xl"></div>
+    <div class="absolute right-0 top-40 h-[260px] w-[260px] rounded-full bg-orange-500/10 blur-3xl"></div>
+  </div>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-black/30 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-yellow-500 text-gray-900 grid place-items-center font-display font-extrabold shadow-glow">AO</div>
+          <div>
+            <div class="font-display text-xl font-extrabold tracking-tight">Casinao.cz</div>
+            <div class="text-xs text-gray-400">Podmínky • Soukromí • Cookies</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="index.html#casina" class="hover:text-yellow-400 transition">Casina</a>
+          <a href="index.html#bonusy" class="hover:text-yellow-400 transition">Bonusy</a>
+          <a href="navody.html" class="hover:text-yellow-400 transition">Návody</a>
+          <a href="index.html#kontakt" class="hover:text-yellow-400 transition">Kontakt</a>
+        </nav>
+
+        <a href="index.html" class="px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-sm transition">Zpět na web</a>
+      </div>
+    </div>
+  </header>
+
   <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-    <a href="index.html" class="inline-flex items-center gap-2 text-yellow-400 hover:underline">← Zpět na hlavní stránku</a>
     <div class="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
       <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Cookies</h1>
-      <p class="mt-4 text-gray-300 leading-7">Cookies jsou malé soubory, které mohou pomáhat s fungováním webu, měřením návštěvnosti nebo zapamatováním preferencí. Tato stránka vysvětluje základní rozdělení a poskytuje orientační přehled.</p>
+      <p class="mt-4 text-gray-300 leading-7">Cookies jsou malé textové soubory, které mohou pomáhat s fungováním webu, zapamatováním preferencí a měřením návštěvnosti. Níže je uveden přehled hlavních kategorií, které mohou být na webu použity.</p>
+
+      <div class="mt-5 inline-flex items-center rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs text-gray-300">
+        Aktuální verze: 19. 6. 2026
+      </div>
 
       <div class="mt-8 grid gap-4 text-sm leading-6 text-gray-300">
         <section class="rounded-2xl border border-white/10 bg-black/20 p-5">
           <h2 class="font-semibold text-white">Nezbytné cookies</h2>
-          <p class="mt-2">Pomáhají s provozem webu a bez nich by některé funkce nemusely fungovat správně.</p>
+          <p class="mt-2">Jsou nutné pro základní fungování webu, například pro navigaci, zabezpečení a správné načítání obsahu.</p>
         </section>
         <section class="rounded-2xl border border-white/10 bg-black/20 p-5">
           <h2 class="font-semibold text-white">Analytické cookies</h2>
-          <p class="mt-2">Slouží k pochopení návštěvnosti a chování uživatelů. Díky nim lze zlepšovat obsah a strukturu webu.</p>
+          <p class="mt-2">Pomáhají s vyhodnocením návštěvnosti a chování uživatelů. Díky nim lze zlepšovat obsah, strukturu a použitelnost webu.</p>
         </section>
         <section class="rounded-2xl border border-white/10 bg-black/20 p-5">
           <h2 class="font-semibold text-white">Marketingové cookies</h2>
-          <p class="mt-2">Mohou být použity pro přizpůsobení obsahu a měření účinnosti kampaní. Pokud je web nepoužívá, lze tuto část ponechat jako informační text pro budoucí rozšíření.</p>
+          <p class="mt-2">Mohou být použity pro přizpůsobení obsahu, měření účinnosti kampaní nebo propojení obsahu s externími službami, pokud je to na webu zavedeno.</p>
         </section>
         <section class="rounded-2xl border border-white/10 bg-black/20 p-5">
           <h2 class="font-semibold text-white">Správa nastavení</h2>
-          <p class="mt-2">Nastavení cookies můžete obvykle upravit v prohlížeči nebo v cookie liště, pokud je na webu implementována.</p>
+          <p class="mt-2">Nastavení cookies lze obvykle upravit v prohlížeči, případně v cookie liště, pokud je na webu dostupná. Vypnutí některých kategorií může omezit funkcionalitu webu.</p>
+        </section>
+        <section class="rounded-2xl border border-white/10 bg-black/20 p-5">
+          <h2 class="font-semibold text-white">Kontakt</h2>
+          <p class="mt-2">Pokud chcete něco k používání cookies upřesnit, napište na <a class="text-yellow-400 hover:underline" href="mailto:info@casinao.cz">info@casinao.cz</a>.</p>
         </section>
       </div>
     </div>
   </main>
+
+  <footer class="pb-8">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-sm text-gray-400">
+      <div class="border-t border-white/10 pt-5 flex flex-wrap gap-x-6 gap-y-2">
+        <a href="index.html" class="hover:text-yellow-400 transition">Hlavní stránka</a>
+        <a href="navody.html" class="hover:text-yellow-400 transition">Návody</a>
+        <a href="podminky-pouziti.html" class="hover:text-yellow-400 transition">Podmínky použití</a>
+        <a href="ochrana-soukromi.html" class="hover:text-yellow-400 transition">Ochrana soukromí</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
