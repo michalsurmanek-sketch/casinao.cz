@@ -1,0 +1,63 @@
+/* Styling for the optional domain checker block on the homepage. */
+.domain-check {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 24, 39, 0.72);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.domain-check h2,
+.domain-check h3 {
+  margin: 0;
+}
+
+.domain-check__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .domain-check__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.domain-check__card {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.domain-check__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(229, 231, 235, 0.9);
+}
+
+.domain-check__input,
+.domain-check__select,
+.domain-check__button {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
+  color: #f9fafb;
+  padding: 0.85rem 1rem;
+  font: inherit;
+}
+
+.domain-check__button {
+  cursor: pointer;
+  background: #facc15;
+  color: #111827;
+  font-weight: 700;
+}
+
+.domain-check__button:hover {
+  background: #fbbf24;
+}
