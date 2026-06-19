@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt | Casinao.cz</title>
+  <meta name="description" content="Kontaktujte redakci Casinao.cz. Dotazy k recenzím, spolupráci a obsahu." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#111827" />
+  <link rel="canonical" href="https://casinao.cz/kontakt.html" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+            display: ['Montserrat', 'ui-sans-serif', 'system-ui']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-100 font-sans">
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 backdrop-blur-xl">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-display font-extrabold">AO</div>
+        <div>
+          <div class="font-display text-xl font-extrabold">Casinao.cz</div>
+          <div class="text-xs text-gray-400">Kontakt redakce</div>
+        </div>
+      </a>
+      <a href="index.html" class="px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-sm">Zpět na homepage</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <section>
+        <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Kontakt</h1>
+        <p class="mt-3 text-gray-300">Máš dotaz k recenzi, bonusům, spolupráci nebo chceš nahlásit chybu v obsahu? Napiš nám.</p>
+        <ul class="mt-6 space-y-3 text-sm text-gray-300">
+          <li>E-mail: <a href="mailto:info@casinao.cz" class="text-yellow-400 hover:underline">info@casinao.cz</a></li>
+          <li>IČO: bude doplněno</li>
+          <li>Sociální sítě: <a href="https://x.com" target="_blank" rel="noopener" class="text-yellow-400 hover:underline">X</a>, <a href="https://facebook.com" target="_blank" rel="noopener" class="text-yellow-400 hover:underline">Facebook</a>, <a href="https://instagram.com" target="_blank" rel="noopener" class="text-yellow-400 hover:underline">Instagram</a></li>
+        </ul>
+        <p class="mt-6 text-xs text-gray-400">Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost. 18+</p>
+      </section>
+
+      <section class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <h2 class="font-display text-2xl font-bold">Napiš zprávu</h2>
+        <form id="contactForm" class="mt-5 space-y-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm mb-1">Jméno</label>
+            <input id="name" name="name" type="text" required minlength="2" maxlength="80" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Tvé jméno" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm mb-1">E-mail</label>
+            <input id="email" name="email" type="email" required maxlength="120" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="name@email.cz" />
+          </div>
+          <div>
+            <label for="message" class="block text-sm mb-1">Zpráva</label>
+            <textarea id="message" name="message" required minlength="15" maxlength="2000" rows="5" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Napiš, s čím potřebuješ pomoci..."></textarea>
+          </div>
+
+          <div class="hidden" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" autocomplete="off" tabindex="-1" />
+          </div>
+
+          <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400">Odeslat</button>
+          <p id="formStatus" class="text-xs text-gray-400">Po odeslání se otevře tvůj e-mailový klient s předvyplněnou zprávou.</p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    function setStatus(text, ok) {
+      if (!status) return;
+      status.textContent = text;
+      status.classList.remove('text-gray-400', 'text-red-300', 'text-green-300');
+      status.classList.add(ok ? 'text-green-300' : 'text-red-300');
+    }
+
+    function validEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = (document.getElementById('name')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const message = (document.getElementById('message')?.value || '').trim();
+        const honeypot = (document.getElementById('website')?.value || '').trim();
+
+        if (honeypot.length > 0) {
+          setStatus('Odeslání bylo zablokováno.', false);
+          return;
+        }
+
+        if (name.length < 2) {
+          setStatus('Zadej prosím platné jméno (min. 2 znaky).', false);
+          return;
+        }
+
+        if (!validEmail(email)) {
+          setStatus('Zadej prosím platný e-mail.', false);
+          return;
+        }
+
+        if (message.length < 15) {
+          setStatus('Zpráva musí mít alespoň 15 znaků.', false);
+          return;
+        }
+
+        const subject = encodeURIComponent('Kontakt z Casinao.cz');
+        const body = encodeURIComponent(
+          'Jméno: ' + name + '\n' +
+          'E-mail: ' + email + '\n\n' +
+          'Zpráva:\n' + message
+        );
+
+        window.location.href = 'mailto:info@casinao.cz?subject=' + subject + '&body=' + body;
+        setStatus('Hotovo. Otevírám e-mailového klienta.', true);
+      });
+    }
+  </script>
+</body>
+</html>
