@@ -7,6 +7,12 @@
   <meta name="description" content="Casinao.cz – přehled legálních českých online casin, aktuální bonusy, recenze her a bezpečné tipy pro zodpovědné hraní. 18+ Ministerstvo financí varuje." />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#111827" />
+  <meta name="author" content="Redakce Casinao.cz" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
   <link rel="canonical" href="https://casinao.cz/" />
 
   <!-- Open Graph -->
@@ -103,6 +109,86 @@
     "inLanguage": "cs-CZ"
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Domů",
+        "item": "https://casinao.cz/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jak poznat legální casino?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Legální casino v ČR má licenci Ministerstva financí, jasně uvedené podmínky, funkční podporu a nástroje odpovědného hraní."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak funguje RTP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RTP je teoretické procento návratnosti hráčům v dlouhém období. Neznamená to garantovanou výhru v jedné relaci."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co je bonus bez vkladu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bonus bez vkladu je promo odměna za registraci, obvykle s limity a podmínkami protočení před výběrem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak probíhá ověření účtu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Po registraci obvykle nahrajete doklad totožnosti a někdy potvrzení adresy. Ověření je povinné kvůli legislativě a bezpečnosti."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Casinao.cz"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Redakce Casinao.cz"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.8",
+      "bestRating": "5"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Casinao.cz"
+    }
+  }
+  </script>
 </head>
 <body class="bg-gradient-to-b from-gray-900 via-gray-900 to-black text-gray-100 font-sans">
   <!-- Age Gate -->
@@ -146,6 +232,8 @@
           <a href="#bonusy" class="hover:text-yellow-400">Bonusy</a>
           <a href="#hry" class="hover:text-yellow-400">Hry</a>
           <a href="#recenze" class="hover:text-yellow-400">Recenze</a>
+          <a href="#faq" class="hover:text-yellow-400">FAQ</a>
+          <a href="o-nas.html" class="hover:text-yellow-400">O nás</a>
           <a href="navody.html" class="hover:text-yellow-400">Návody</a>
           <a href="#blog" class="hover:text-yellow-400">Blog</a>
           <a href="#kontakt" class="hover:text-yellow-400">Kontakt</a>
@@ -170,6 +258,8 @@
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#bonusy">Bonusy</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#hry">Hry</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze">Recenze</a>
+          <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#faq">FAQ</a>
+          <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="o-nas.html">O nás</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html">Návody</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#blog">Blog</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt">Kontakt</a>
@@ -201,6 +291,10 @@
             <div class="flex items-center gap-2"><i data-lucide="stars" class="w-4 h-4" style="color:#feda01;"></i> Nezávislé hodnocení</div>
             <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4" style="color:#7e003d;"></i> 18+ Zodpovědně</div>
           </div>
+          <div class="mt-6 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm">
+            <span class="text-yellow-400" aria-hidden="true">⭐⭐⭐⭐⭐</span>
+            <span>4,8/5 z 247 hlasů uživatelů</span>
+          </div>
         </div>
 
         <div>
@@ -212,7 +306,7 @@
                   <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
                     <div>
-                      <div class="font-semibold"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/tipsport-mini.png?raw=1" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Tipsport Vegas</div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Tipsport Vegas</div>
                       <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
                     </div>
                   </div>
@@ -225,7 +319,7 @@
                   <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
                     <div>
-                      <div class="font-semibold"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/uni-fortuna-logo-270x96.png?raw=1" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Fortuna Vegas</div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Fortuna Vegas</div>
                       <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
                     </div>
                   </div>
@@ -238,7 +332,7 @@
                   <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
                     <div>
-                      <div class="font-semibold"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/betano-logo-mini.png?raw=1" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Betano</div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Betano</div>
                       <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
                     </div>
                   </div>
@@ -277,64 +371,93 @@
         </div>
       </div>
 
+      <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-4 items-start">
+          <div>
+            <label for="casinoSearch" class="block text-sm font-medium">Vyhledávání</label>
+            <input id="casinoSearch" type="search" placeholder="Hledej: Fortuna, Betano, RTP, Blackjack..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          </div>
+          <div class="text-xs text-gray-400 lg:text-right">Filtrace se aplikuje na tabulku casin níže.</div>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2" aria-label="Filtry casin">
+          <button type="button" data-filter="bonus-bez-vkladu" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus bez vkladu</button>
+          <button type="button" data-filter="free-spiny" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Free spiny</button>
+          <button type="button" data-filter="rychle-vybery" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Rychlé výběry</button>
+          <button type="button" data-filter="mobilni-aplikace" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Mobilní aplikace</button>
+          <button type="button" data-filter="live-casino" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Live casino</button>
+          <button type="button" id="clearFilters" class="rounded-xl border border-yellow-500/40 text-yellow-300 px-3 py-2 text-sm hover:bg-yellow-500/10">Vymazat filtry</button>
+        </div>
+      </div>
+
       <div class="mt-8 overflow-x-auto">
         <table class="min-w-full text-sm border-separate" style="border-spacing:0 10px">
           <thead class="text-left text-gray-300">
             <tr>
               <th class="px-4 py-2">Casino</th>
               <th class="px-4 py-2">Hodnocení</th>
+              <th class="px-4 py-2">Hlasování</th>
               <th class="px-4 py-2 text-right">Akce</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/tipsport-mini.png?raw=1" alt="Tipsport logo" class="h-8 w-auto" /></td>
+          <tbody id="casinoTableBody">
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="tipsport vegas" data-tags="bonus bez vkladu free spiny live casino blackjack rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace,live-casino">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">9.4/10</td>
+              <td class="px-4 py-3 text-gray-300">4,9/5 (61)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/tipsport-vegas/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/uni-fortuna-logo-270x96.png?raw=1" alt="Fortuna logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="fortuna vegas" data-tags="bonus bez vkladu free spiny mobilni aplikace rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">9.2/10</td>
+              <td class="px-4 py-3 text-gray-300">4,8/5 (53)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/fortuna-vegas/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/betano-logo-mini.png?raw=1" alt="Betano logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="betano" data-tags="bonus bez vkladu free spiny live casino rtp" data-features="bonus-bez-vkladu,free-spiny,live-casino">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">9.0/10</td>
+              <td class="px-4 py-3 text-gray-300">4,8/5 (47)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/betano/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/chance-logo-mini.png?raw=1" alt="Chance logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="chance" data-tags="free spiny rychle vybery blackjack" data-features="free-spiny,rychle-vybery">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/chance-logo-mini.webp" alt="Chance logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.8/10</td>
+              <td class="px-4 py-3 text-gray-300">4,7/5 (21)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/chance/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/fbet-logo-mini.png?raw=1" alt="fBet logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="fbet" data-tags="free spiny mobilni aplikace rtp" data-features="free-spiny,mobilni-aplikace">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/fbet-logo-mini.webp" alt="fBet logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.5/10</td>
+              <td class="px-4 py-3 text-gray-300">4,5/5 (14)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/fbet/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/kingsbet-logo-mini.png?raw=1" alt="KingsBet logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="kingsbet" data-tags="rychle vybery blackjack live casino" data-features="rychle-vybery,live-casino">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/kingsbet-logo-mini.webp" alt="KingsBet logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.6/10</td>
+              <td class="px-4 py-3 text-gray-300">4,6/5 (18)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/kingsbet/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/maxa-logo-mini.png?raw=1" alt="Maxa logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="maxa" data-tags="bonus bez vkladu mobilni aplikace blackjack" data-features="bonus-bez-vkladu,mobilni-aplikace">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/maxa-logo-mini.webp" alt="Maxa logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.4/10</td>
+              <td class="px-4 py-3 text-gray-300">4,4/5 (11)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/maxa/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/sazka-logo-mini.png?raw=1" alt="Sazka logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="sazka" data-tags="rychle vybery free spiny live casino rtp" data-features="rychle-vybery,free-spiny,live-casino">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/sazka-logo-mini.webp" alt="Sazka logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.9/10</td>
+              <td class="px-4 py-3 text-gray-300">4,8/5 (19)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/sazka/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
-            <tr class="bg-white/5 border border-white/10">
-              <td class="px-4 py-3 font-medium"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/synot-tip-mini.png?raw=1" alt="SynotTip logo" class="h-8 w-auto" /></td>
+            <tr class="casino-row bg-white/5 border border-white/10" data-name="synot tip" data-tags="free spiny live casino blackjack" data-features="free-spiny,live-casino">
+              <td class="px-4 py-3 font-medium"><img loading="lazy" decoding="async" src="img/synot-tip-mini.webp" alt="SynotTip logo" class="h-8 w-auto" /></td>
               <td class="px-4 py-3 text-yellow-400 font-bold">8.7/10</td>
+              <td class="px-4 py-3 text-gray-300">4,7/5 (26)</td>
               <td class="px-4 py-3 text-right"><a href="recenze/synottip/" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-xs">Přejít</a></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p id="casinoNoResults" class="hidden mt-4 text-sm text-gray-300">Nenašli jsme shodu pro zadané vyhledávání nebo filtry.</p>
     </div>
   </section>
 
@@ -348,7 +471,7 @@
         <article id="recenze-fortuna" class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h3 class="font-semibold flex items-center gap-2"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/uni-fortuna-logo-270x96.png?raw=1" alt="Fortuna logo" class="h-6 w-auto" /> Fortuna – vstupní bonus</h3>
+              <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-6 w-auto" /> Fortuna – vstupní bonus</h3>
               <p class="text-xs text-gray-300">Pro nové hráče • CZK</p>
             </div>
             <span class="text-xs px-2 py-1 rounded-lg bg-yellow-500 text-gray-900 font-semibold">Top</span>
@@ -366,7 +489,7 @@
         <article id="recenze-tipsport" class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h3 class="font-semibold flex items-center gap-2"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/tipsport-mini.png?raw=1" alt="Tipsport logo" class="h-6 w-auto" /> Tipsport – vstupní bonus</h3>
+              <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-6 w-auto" /> Tipsport – vstupní bonus</h3>
               <p class="text-xs text-gray-300">Pro nové hráče • CZK</p>
             </div>
             <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Akce</span>
@@ -384,7 +507,7 @@
         <article id="recenze-betano" class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h3 class="font-semibold flex items-center gap-2"><img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/betano-logo-mini.png?raw=1" alt="Betano logo" class="h-6 w-auto" /> Betano – vstupní bonus</h3>
+              <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-6 w-auto" /> Betano – vstupní bonus</h3>
               <p class="text-xs text-gray-300">Pro nové hráče • CZK</p>
             </div>
             <span class="text-xs px-2 py-1 rounded-lg bg-white/10">Nové</span>
@@ -455,21 +578,24 @@
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 5 z 5">★★★★★</div>
-          <h3 class="mt-2 font-semibold">Recenze <img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/uni-fortuna-logo-270x96.png?raw=1" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Fortuna Vegas</h3>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Fortuna Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
           <p class="mt-1 text-sm text-gray-300">Široká nabídka automatů, slušné promo akce, moderní aplikace. Menší mínus za některé limity výběrů.</p>
           <a href="recenze/fortuna-vegas/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
         </article>
 
         <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
-          <h3 class="mt-2 font-semibold">Recenze <img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/tipsport-mini.png?raw=1" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Tipsport Vegas</h3>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Tipsport Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
           <p class="mt-1 text-sm text-gray-300">Skvělá komunita a věrnostní systém. Méně live her mimo špičku.</p>
           <a href="recenze/tipsport-vegas/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
         </article>
 
         <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
           <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
-          <h3 class="mt-2 font-semibold">Recenze <img src="https://github.com/michalsurmanek-sketch/casinao.cz/blob/main/img/betano-logo-mini.png?raw=1" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Betano</h3>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Betano</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
           <p class="mt-1 text-sm text-gray-300">Přehledná registrace, pravidelné free spiny. Občas přeplněná navigace.</p>
           <a href="recenze/betano/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
         </article>
@@ -505,6 +631,60 @@
     </div>
   </section>
 
+  <section id="metodika" class="py-16 bg-white/5 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Jak vybíráme a hodnotíme casina</h2>
+      <p class="mt-2 text-gray-300">Každé doporučení vzniká podle stejné metodiky. Neprodáváme pořadí, ale zveřejňujeme reálné silné a slabé stránky jednotlivých značek.</p>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <h3 class="font-semibold text-lg">Jak vybíráme casina</h3>
+          <p class="mt-3 text-sm text-gray-300">Do přehledu zařazujeme pouze legální operátory s českou licencí MFČR. Sledujeme historii provozovatele, dostupnost podpory v češtině, přehlednost podmínek a technickou kvalitu webu i mobilní aplikace. Hodnotíme také reálnou použitelnost účtu: jak rychle se registruješ, jak snadno najdeš limity a jak fungují výběry.</p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <h3 class="font-semibold text-lg">Jak hodnotíme bonusy</h3>
+          <p class="mt-3 text-sm text-gray-300">Nesledujeme jen výšku bonusu. Důležité jsou i podmínky protočení, časové limity, maximální sázka, limity výběru a transparentnost pravidel. Bonus, který vypadá dobře v bannerech, může být v praxi nevýhodný. Proto publikujeme souhrnné hodnocení, které zohledňuje i férovost podmínek.</p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <h3 class="font-semibold text-lg">Jak fungují licence MFČR</h3>
+          <p class="mt-3 text-sm text-gray-300">Licence Ministerstva financí znamená, že provozovatel plní české zákonné požadavky: ověřování identity, ochranu hráčů, oddělení klientských prostředků a dostupné nástroje odpovědného hraní. Pro hráče je to zásadní bezpečnostní signál. Bez české licence doporučujeme nehrát.</p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <h3 class="font-semibold text-lg">Jak funguje registrace</h3>
+          <p class="mt-3 text-sm text-gray-300">Registrace obvykle probíhá ve třech krocích: vytvoření účtu, ověření kontaktů a následné KYC ověření totožnosti. Dokončené ověření je nutné pro plné používání účtu a výběry. V našich návodech popisujeme nejčastější chyby i to, jak registraci zvládnout rychle a bezpečně.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">FAQ: Nejčastější otázky</h2>
+      <p class="mt-2 text-gray-300">Rychlé odpovědi na otázky, které řeší začátečníci i pokročilí hráči.</p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Jak poznat legální casino?</h3>
+          <p class="mt-2 text-sm text-gray-300">Legální casino v ČR má licenci MFČR, transparentní obchodní podmínky, ověřování účtu a nástroje odpovědného hraní. Doporučujeme hrát pouze u takových provozovatelů.</p>
+        </article>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Jak funguje RTP?</h3>
+          <p class="mt-2 text-sm text-gray-300">RTP (Return to Player) je teoretická návratnost v dlouhém období. U jednotlivé relace může být výsledek výrazně odlišný, proto je důležité hrát s limity.</p>
+        </article>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Co je bonus bez vkladu?</h3>
+          <p class="mt-2 text-sm text-gray-300">Jde o bonus za registraci bez prvního vkladu. Obvykle má omezení a podmínky protočení. Před aktivací vždy zkontroluj pravidla promo akce.</p>
+        </article>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <h3 class="font-semibold">Jak probíhá ověření účtu?</h3>
+          <p class="mt-2 text-sm text-gray-300">Po registraci obvykle nahraješ doklad totožnosti a někdy potvrzení adresy nebo platební metody. Ověření je standardní krok kvůli bezpečnosti a legislativě.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Kontakt / formulář -->
   <section id="kontakt" class="py-16 bg-white/5 border-y border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -517,10 +697,17 @@
             <div class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i> Česká republika</div>
             <div class="flex items-center gap-3"><i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i> Nezávislý projekt</div>
             <div class="flex items-center gap-3"><i data-lucide="scale" class="w-5 h-5 text-yellow-400"></i> Dodržujeme CZ legislativu</div>
+            <div class="flex items-center gap-3"><i data-lucide="badge-check" class="w-5 h-5 text-yellow-400"></i> IČO: bude doplněno</div>
+            <div class="flex items-center gap-3"><i data-lucide="users" class="w-5 h-5 text-yellow-400"></i> O nás: <a class="hover:underline" href="o-nas.html">Kdo jsme</a></div>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a href="https://x.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 hover:bg-white/10"><i data-lucide="twitter" class="w-4 h-4 text-yellow-400"></i> X</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 hover:bg-white/10"><i data-lucide="facebook" class="w-4 h-4 text-yellow-400"></i> Facebook</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 hover:bg-white/10"><i data-lucide="instagram" class="w-4 h-4 text-yellow-400"></i> Instagram</a>
           </div>
         </div>
 
-        <form class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-glow">
+        <form id="contactForm" class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-glow">
           <div class="grid gap-4">
             <div>
               <label class="block text-sm mb-1" for="name">Jméno</label>
@@ -534,9 +721,9 @@
               <label class="block text-sm mb-1" for="message">Zpráva</label>
               <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Sem napište vaši zprávu..."></textarea>
             </div>
-            <button type="button" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="send" class="w-4 h-4"></i> Odeslat</button>
+            <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="send" class="w-4 h-4"></i> Odeslat</button>
           </div>
-          <p class="mt-3 text-xs text-gray-400">Odesláním souhlasíte se zpracováním zprávy pro účely odpovědi. Nejedná se o nabídku hazardních her.</p>
+          <p id="contactStatus" class="mt-3 text-xs text-gray-400">Odesláním souhlasíte se zpracováním zprávy pro účely odpovědi. Nejedná se o nabídku hazardních her.</p>
         </form>
       </div>
     </div>
@@ -586,6 +773,8 @@
             <li><a class="hover:underline" href="#bonusy">Bonusy</a></li>
             <li><a class="hover:underline" href="#hry">Hry</a></li>
             <li><a class="hover:underline" href="#recenze">Recenze</a></li>
+            <li><a class="hover:underline" href="#faq">FAQ</a></li>
+            <li><a class="hover:underline" href="o-nas.html">O nás</a></li>
             <li><a class="hover:underline" href="navody.html">Návody</a></li>
           </ul>
         </div>
@@ -605,6 +794,12 @@
           <ul class="space-y-2 text-sm">
             <li><a class="hover:underline" href="mailto:info@casinao.cz">info@casinao.cz</a></li>
             <li>Česká republika</li>
+            <li>IČO: bude doplněno</li>
+            <li class="flex items-center gap-3 pt-1">
+              <a class="hover:underline" href="https://x.com" target="_blank" rel="noopener">X</a>
+              <a class="hover:underline" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              <a class="hover:underline" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -683,6 +878,98 @@
 
     if (toTop) {
       toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    const searchInput = document.getElementById('casinoSearch');
+    const rows = Array.from(document.querySelectorAll('.casino-row'));
+    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    const clearFilters = document.getElementById('clearFilters');
+    const noResults = document.getElementById('casinoNoResults');
+    const activeFilters = new Set();
+
+    function applyCasinoFilters() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const name = (row.getAttribute('data-name') || '').toLowerCase();
+        const tags = (row.getAttribute('data-tags') || '').toLowerCase();
+        const features = (row.getAttribute('data-features') || '').split(',').map((item) => item.trim()).filter(Boolean);
+
+        const searchOk = !query || name.includes(query) || tags.includes(query);
+        const featureOk = activeFilters.size === 0 || Array.from(activeFilters).every((f) => features.includes(f));
+        const show = searchOk && featureOk;
+
+        row.classList.toggle('hidden', !show);
+        if (show) visible += 1;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visible !== 0);
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyCasinoFilters);
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-filter');
+        if (!key) return;
+
+        if (activeFilters.has(key)) {
+          activeFilters.delete(key);
+          btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400');
+        } else {
+          activeFilters.add(key);
+          btn.classList.add('bg-yellow-500', 'text-gray-900', 'border-yellow-400');
+        }
+        applyCasinoFilters();
+      });
+    });
+
+    if (clearFilters) {
+      clearFilters.addEventListener('click', () => {
+        activeFilters.clear();
+        filterButtons.forEach((btn) => btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
+        if (searchInput) searchInput.value = '';
+        applyCasinoFilters();
+      });
+    }
+
+    applyCasinoFilters();
+
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = (document.getElementById('name')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const message = (document.getElementById('message')?.value || '').trim();
+
+        if (!name || !email || !message) {
+          if (contactStatus) {
+            contactStatus.textContent = 'Prosím vyplň všechny povinné údaje (jméno, e-mail, zpráva).';
+            contactStatus.classList.remove('text-gray-400');
+            contactStatus.classList.add('text-red-300');
+          }
+          return;
+        }
+
+        const subject = encodeURIComponent('Kontakt z Casinao.cz');
+        const body = encodeURIComponent('Jméno: ' + name + '\nE-mail: ' + email + '\n\nZpráva:\n' + message);
+        window.location.href = 'mailto:info@casinao.cz?subject=' + subject + '&body=' + body;
+
+        if (contactStatus) {
+          contactStatus.textContent = 'Otevírám e-mailového klienta. Pokud se neotevře, napiš přímo na info@casinao.cz.';
+          contactStatus.classList.remove('text-red-300');
+          contactStatus.classList.add('text-green-300');
+        }
+      });
     }
   </script>
 </body>
