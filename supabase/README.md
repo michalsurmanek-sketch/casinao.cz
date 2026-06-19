@@ -14,6 +14,18 @@ Execute `schema.sql` in Supabase SQL Editor.
 { "avg": 4.82, "count": 248 }
 ```
 
+Supported page keys now:
+- `homepage`
+- `casino-tipsport-vegas`
+- `casino-fortuna-vegas`
+- `casino-betano`
+- `casino-chance`
+- `casino-fbet`
+- `casino-kingsbet`
+- `casino-maxa`
+- `casino-sazka`
+- `casino-synottip`
+
 ### POST rating-vote
 - URL example: `https://<project-ref>.functions.supabase.co/rating-vote`
 - Request JSON:
