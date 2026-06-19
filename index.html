@@ -729,21 +729,41 @@
       <h2 class="font-display text-2xl sm:text-3xl font-extrabold">FAQ: Nejčastější otázky</h2>
       <p class="mt-2 text-gray-300">Rychlé odpovědi na otázky, které řeší začátečníci i pokročilí hráči.</p>
       <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
-          <h3 class="font-semibold">Jak poznat legální casino?</h3>
-          <p class="mt-2 text-sm text-gray-300">Legální casino v ČR má licenci MFČR, transparentní obchodní podmínky, ověřování účtu a nástroje odpovědného hraní. Doporučujeme hrát pouze u takových provozovatelů.</p>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak poznat legální casino?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Legální casino v ČR má licenci MFČR, transparentní obchodní podmínky, ověřování účtu a nástroje odpovědného hraní. Doporučujeme hrát pouze u takových provozovatelů.</p>
+          </div>
         </article>
-        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
-          <h3 class="font-semibold">Jak funguje RTP?</h3>
-          <p class="mt-2 text-sm text-gray-300">RTP (Return to Player) je teoretická návratnost v dlouhém období. U jednotlivé relace může být výsledek výrazně odlišný, proto je důležité hrát s limity.</p>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak funguje RTP?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">RTP (Return to Player) je teoretická návratnost v dlouhém období. U jednotlivé relace může být výsledek výrazně odlišný, proto je důležité hrát s limity.</p>
+          </div>
         </article>
-        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
-          <h3 class="font-semibold">Co je bonus bez vkladu?</h3>
-          <p class="mt-2 text-sm text-gray-300">Jde o bonus za registraci bez prvního vkladu. Obvykle má omezení a podmínky protočení. Před aktivací vždy zkontroluj pravidla promo akce.</p>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Co je bonus bez vkladu?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Jde o bonus za registraci bez prvního vkladu. Obvykle má omezení a podmínky protočení. Před aktivací vždy zkontroluj pravidla promo akce.</p>
+          </div>
         </article>
-        <article class="rounded-2xl bg-white/5 border border-white/10 p-6">
-          <h3 class="font-semibold">Jak probíhá ověření účtu?</h3>
-          <p class="mt-2 text-sm text-gray-300">Po registraci obvykle nahraješ doklad totožnosti a někdy potvrzení adresy nebo platební metody. Ověření je standardní krok kvůli bezpečnosti a legislativě.</p>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak probíhá ověření účtu?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Po registraci obvykle nahraješ doklad totožnosti a někdy potvrzení adresy nebo platební metody. Ověření je standardní krok kvůli bezpečnosti a legislativě.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -947,6 +967,19 @@
     if (toTop) {
       toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
+
+    // FAQ accordion (mobile only)
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (window.innerWidth >= 768) return; // desktop – skip
+        const body = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const open = !body.classList.contains('hidden');
+        body.classList.toggle('hidden', open);
+        icon && icon.classList.toggle('rotate-180', !open);
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    });
 
     const searchInput = document.getElementById('casinoSearch');
     const rows = Array.from(document.querySelectorAll('.casino-row'));
