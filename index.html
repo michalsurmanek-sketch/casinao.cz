@@ -879,7 +879,7 @@
   <!-- Back to top -->
 <button
   id="toTop"
-  class="fixed bottom-6 right-6 hidden md:inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+  class="fixed bottom-6 right-6 hidden items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
   aria-label="Zpět nahoru"
 >
   <i data-lucide="arrow-up" class="w-5 h-5"></i>
@@ -935,10 +935,12 @@
 
     window.addEventListener('scroll', () => {
       if (!toTop) return;
-      if (window.scrollY > 600) {
+      if (window.scrollY > 400) {
         toTop.classList.remove('hidden');
+        toTop.classList.add('inline-flex');
       } else {
         toTop.classList.add('hidden');
+        toTop.classList.remove('inline-flex');
       }
     });
 
