@@ -79,6 +79,12 @@
       scroll-padding-top: 7.5rem;
     }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
+    .mobile-menu-panel.mobile-menu-open {
+      background-image: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)), url('/img/menu.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     .tip:hover::after {
       content: attr(data-tip);
       position: absolute;
@@ -255,7 +261,7 @@
       </div>
 
       <!-- Mobile menu -->
-      <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+      <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
         <nav class="px-4 py-3 grid gap-2" aria-label="Mobilní navigace">
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#casina">Casina</a>
           <a class="mob-link block px-3 py-2 rounded-lg hover:bg-white/10" href="#bonusy">Bonusy</a>
@@ -957,12 +963,14 @@
       btnMenu.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
         const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('mobile-menu-open', isOpen);
         btnMenu.setAttribute('aria-expanded', String(isOpen));
       });
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
         a.addEventListener('click', () => {
           mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('mobile-menu-open');
           btnMenu.setAttribute('aria-expanded', 'false');
         });
       });
