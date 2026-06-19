@@ -636,7 +636,7 @@
           <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Nejnovější recenze</h2>
           <p class="mt-2 text-gray-300">Objektivně hodnotíme nabídku her, bonusy, podporu i rychlost výplat.</p>
         </div>
-        <a href="#casina" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10">Všechny recenze</a>
+        <a id="showAllReviews" href="#casina" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10">Všechny recenze</a>
       </div>
 
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -985,6 +985,7 @@
     const rows = Array.from(document.querySelectorAll('.casino-row'));
     const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
     const clearFilters = document.getElementById('clearFilters');
+    const showAllReviews = document.getElementById('showAllReviews');
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
 
@@ -1032,6 +1033,15 @@
 
     if (clearFilters) {
       clearFilters.addEventListener('click', () => {
+        activeFilters.clear();
+        filterButtons.forEach((btn) => btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
+        if (searchInput) searchInput.value = '';
+        applyCasinoFilters();
+      });
+    }
+
+    if (showAllReviews) {
+      showAllReviews.addEventListener('click', () => {
         activeFilters.clear();
         filterButtons.forEach((btn) => btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
         if (searchInput) searchInput.value = '';
