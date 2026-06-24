@@ -1,0 +1,2244 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casinao.cz – Srovnání českých online casin, bonusy a recenze</title>
+  <meta name="description" content="Casinao.cz – přehled legálních českých online casin, aktuální bonusy, recenze her a bezpečné tipy pro zodpovědné hraní. 18+ Ministerstvo financí varuje." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="author" content="Redakce Casinao.cz" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+  <link rel="canonical" href="https://casinao.cz/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:title" content="Casinao.cz – Srovnání českých online casin" />
+  <meta property="og:description" content="Přehled legálních českých online casin, bonusy, recenze a bezpečné tipy pro zodpovědné hraní." />
+  <meta property="og:url" content="https://casinao.cz/" />
+  <meta property="og:site_name" content="Casinao.cz" />
+  <meta property="og:image" content="https://casinao.cz/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Casinao.cz – Srovnání českých online casin" />
+  <meta name="twitter:description" content="Legální online casina v ČR, bonusy, recenze a zodpovědné hraní." />
+  <meta name="twitter:image" content="https://casinao.cz/og-image.jpg" />
+
+  <!-- Domain checker (WEDOS) – samostatné CSS -->
+  <link rel="stylesheet" href="/assets/domain-check.css" />
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Google Fonts (česká diakritika) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+            display: ['Montserrat', 'ui-sans-serif', 'system-ui']
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c',
+              500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12'
+            }
+          },
+          boxShadow: {
+            glow: '0 10px 30px rgba(0,0,0,0.25)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bottom-nav-height: 78px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 7.5rem;
+    }
+    .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
+    .mobile-menu-panel.mobile-menu-open {
+      background-image: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)), url('/img/menu.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      overflow: hidden;
+    }
+    .tip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      transform: translateY(-110%);
+      background: #111827;
+      color: #fff;
+      font-size: .75rem;
+      padding: .25rem .5rem;
+      border-radius: .375rem;
+      white-space: nowrap;
+    }
+
+    body {
+      padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+    }
+
+    .mbottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 45;
+      background: #07131d;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      height: var(--bottom-nav-height);
+      padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    }
+
+    .mbottom-nav__inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      height: 100%;
+    }
+
+    .mbottom-nav__item {
+      min-width: 0;
+      border-radius: 26px;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      text-decoration: none;
+      background: transparent;
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    .mbottom-nav__item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      flex-shrink: 0;
+      color: #ffffff;
+    }
+
+    .mbottom-nav__label {
+      font-size: 11px;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      color: #d1d5db;
+    }
+
+    .mbottom-nav__item.active {
+      background: #27323a;
+      color: #ffffff;
+    }
+
+    .mbottom-nav__item.active .mbottom-nav__label {
+      color: #ffffff;
+    }
+
+    @media (min-width: 1024px) {
+      body {
+        padding-bottom: 0;
+      }
+
+      .mbottom-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mbottom-nav {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      .mbottom-nav__label {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      #toTop {
+        bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 14px);
+      }
+    }
+
+    .contact-lux-card {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 24px;
+      padding: 30px;
+      border: 1px solid rgba(245, 196, 0, 0.25);
+      background: linear-gradient(145deg, rgba(16, 24, 39, 0.72), rgba(7, 19, 29, 0.8));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34), 0 0 28px rgba(245, 196, 0, 0.16);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-lux-card:hover {
+      border-color: rgba(245, 196, 0, 0.45);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), 0 0 34px rgba(245, 196, 0, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .contact-lux-title {
+      color: #f5c400;
+    }
+
+    .contact-lux-item {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-top: 1px solid rgba(245, 196, 0, 0.16);
+    }
+
+    .contact-lux-item:first-of-type {
+      border-top: 0;
+      padding-top: 8px;
+    }
+
+    .contact-lux-icon {
+      color: #f5c400;
+      flex-shrink: 0;
+    }
+
+    .contact-lux-item-title {
+      color: #ffffff;
+    }
+
+    .contact-lux-item-sub {
+      color: #cbd5e1;
+    }
+
+    .contact-gold-light {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      height: 150px;
+      pointer-events: none;
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 22px;
+    }
+
+    .contact-gold-light::before,
+    .contact-gold-light::after {
+      content: '';
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      border-radius: 999px;
+      filter: blur(24px);
+      opacity: 0.45;
+    }
+
+    .contact-gold-light::before {
+      top: 26px;
+      height: 52px;
+      background: radial-gradient(ellipse at center, rgba(245, 196, 0, 0.65) 0%, rgba(245, 196, 0, 0.18) 48%, rgba(245, 196, 0, 0) 100%);
+      transform: rotate(-1.8deg);
+    }
+
+    .contact-gold-light::after {
+      top: 76px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, rgba(254, 215, 79, 0.6) 0%, rgba(245, 196, 0, 0.14) 50%, rgba(245, 196, 0, 0) 100%);
+      transform: rotate(1.5deg);
+    }
+
+    .contact-gold-wave {
+      position: absolute;
+      left: -3%;
+      right: -3%;
+      height: 34px;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.6;
+      background: linear-gradient(90deg, rgba(245, 196, 0, 0) 0%, rgba(245, 196, 0, 0.35) 18%, rgba(254, 223, 126, 0.55) 50%, rgba(245, 196, 0, 0.35) 82%, rgba(245, 196, 0, 0) 100%);
+    }
+
+    .contact-gold-wave.w1 { top: 42px; }
+    .contact-gold-wave.w2 { top: 68px; opacity: 0.52; }
+    .contact-gold-wave.w3 { top: 96px; opacity: 0.4; }
+
+    .contact-gold-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #fde68a;
+      box-shadow: 0 0 10px rgba(245, 196, 0, 0.8), 0 0 22px rgba(245, 196, 0, 0.4);
+      opacity: 0.8;
+    }
+
+    .contact-gold-dot.d1 { top: 48px; left: 14%; }
+    .contact-gold-dot.d2 { top: 92px; left: 32%; width: 4px; height: 4px; }
+    .contact-gold-dot.d3 { top: 58px; left: 58%; width: 5px; height: 5px; }
+    .contact-gold-dot.d4 { top: 108px; left: 78%; width: 4px; height: 4px; }
+
+    .meto-section {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.74), rgba(2, 6, 23, 0.88));
+    }
+
+    .meto-bg-wave {
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: -40px;
+      height: 170px;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(32px);
+      opacity: 0.3;
+      background: radial-gradient(ellipse at center, rgba(245, 196, 0, 0.6) 0%, rgba(245, 196, 0, 0.16) 40%, rgba(245, 196, 0, 0) 72%);
+    }
+
+    .meto-bg-particle {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(254, 240, 138, 0.85);
+      box-shadow: 0 0 10px rgba(245, 196, 0, 0.42);
+      pointer-events: none;
+      opacity: 0.34;
+    }
+
+    .meto-info {
+      border-radius: 20px;
+      border: 1px solid rgba(245, 196, 0, 0.34);
+      background: linear-gradient(130deg, rgba(15, 23, 42, 0.78), rgba(7, 19, 29, 0.8));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34), 0 0 24px rgba(245, 196, 0, 0.16);
+    }
+
+    .meto-info-icon {
+      color: #f5c400;
+      background: rgba(245, 196, 0, 0.14);
+      border: 1px solid rgba(245, 196, 0, 0.45);
+    }
+
+    .meto-card {
+      border-radius: 20px;
+      border: 1px solid rgba(245, 196, 0, 0.26);
+      background: linear-gradient(155deg, rgba(15, 23, 42, 0.84), rgba(7, 19, 29, 0.82));
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .meto-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 196, 0, 0.52);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4), 0 0 24px rgba(245, 196, 0, 0.22);
+    }
+
+    .meto-num {
+      color: #f5c400;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .meto-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #f5c400;
+      border: 1px solid rgba(245, 196, 0, 0.45);
+      background: rgba(245, 196, 0, 0.12);
+      flex-shrink: 0;
+    }
+
+    .meto-banner {
+      border-radius: 22px;
+      border: 1px solid rgba(245, 196, 0, 0.56);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38), 0 0 26px rgba(245, 196, 0, 0.2);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(7, 19, 29, 0.9));
+    }
+
+    .meto-banner-bg {
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.9)), url('img/vyhledavani.png') center/cover no-repeat;
+    }
+
+    .meto-banner-bg::before,
+    .meto-banner-bg::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    .meto-banner-bg::before {
+      width: 180px;
+      height: 180px;
+      right: -44px;
+      top: -34px;
+      background: radial-gradient(circle, rgba(245, 196, 0, 0.4) 0%, rgba(245, 196, 0, 0) 72%);
+      filter: blur(4px);
+    }
+
+    .meto-banner-bg::after {
+      width: 210px;
+      height: 84px;
+      left: -24px;
+      bottom: 30px;
+      background: radial-gradient(ellipse at center, rgba(245, 196, 0, 0.24) 0%, rgba(245, 196, 0, 0) 78%);
+      filter: blur(10px);
+    }
+
+    .meto-chip {
+      position: absolute;
+      z-index: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 196, 0, 0.34);
+      background: radial-gradient(circle, rgba(245, 196, 0, 0.22) 0%, rgba(245, 196, 0, 0.06) 62%, rgba(245, 196, 0, 0) 100%);
+    }
+
+    .meto-chip.c1 { width: 92px; height: 92px; right: 24px; top: 64px; }
+    .meto-chip.c2 { width: 60px; height: 60px; right: 108px; bottom: 58px; }
+    .meto-chip.c3 { width: 42px; height: 42px; left: 22px; bottom: 30px; }
+
+    .meto-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: #fef08a;
+      box-shadow: 0 0 10px rgba(245, 196, 0, 0.7);
+      z-index: 0;
+      opacity: 0.72;
+    }
+
+    .meto-stats {
+      border-radius: 20px;
+      border: 1px solid rgba(245, 196, 0, 0.3);
+      background: linear-gradient(155deg, rgba(15, 23, 42, 0.82), rgba(7, 19, 29, 0.84));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+    }
+
+    .meto-stat-col {
+      padding: 20px;
+    }
+
+    .meto-stat-col:not(:last-child) {
+      border-right: 1px solid rgba(245, 196, 0, 0.2);
+    }
+
+    .meto-stat-num {
+      color: #f5c400;
+    }
+
+    @media (max-width: 640px) {
+      .contact-lux-card {
+        padding: 22px;
+      }
+
+      .contact-gold-light {
+        height: 130px;
+      }
+
+      .meto-stat-col {
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(245, 196, 0, 0.2);
+      }
+
+      .meto-stat-col:last-child {
+        border-bottom: 0;
+      }
+    }
+  
+/* === CASINAO FIX: bonusové kontejnery stejný styl jako casino kontejnery === */
+:root {
+  --casino-row-height: 132px;
+  --casino-radius: 22px;
+  --casino-gold: #f5c400;
+}
+
+/* Dva stejně působící sloupce */
+#casina .mt-8.grid {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.68fr) !important;
+  gap: 20px !important;
+  align-items: start !important;
+}
+
+/* Levé casino karty */
+#casina table {
+  border-collapse: separate !important;
+  border-spacing: 0 10px !important;
+}
+
+#casina thead th {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: rgba(255,255,255,.86) !important;
+  padding: 0 22px 8px !important;
+}
+
+#casinoTableBody .casino-row {
+  height: var(--casino-row-height) !important;
+  min-height: var(--casino-row-height) !important;
+  border-radius: var(--casino-radius) !important;
+  box-shadow: 0 14px 30px rgba(0,0,0,.34);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+#casinoTableBody .casino-row:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,.44), 0 0 22px rgba(245,196,0,.12);
+}
+
+#casinoTableBody .casino-row td {
+  height: var(--casino-row-height) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  vertical-align: middle !important;
+  border-top: 1px solid rgba(255,255,255,.11);
+  border-bottom: 1px solid rgba(255,255,255,.11);
+}
+
+#casinoTableBody .casino-row td:first-child {
+  border-left: 1px solid rgba(255,255,255,.11);
+  border-radius: var(--casino-radius) 0 0 var(--casino-radius);
+  padding-left: 24px !important;
+}
+
+#casinoTableBody .casino-row td:last-child {
+  border-right: 1px solid rgba(255,255,255,.11);
+  border-radius: 0 var(--casino-radius) var(--casino-radius) 0;
+  padding-right: 24px !important;
+}
+
+#casinoTableBody .casino-row img {
+  max-height: 46px !important;
+  width: auto !important;
+  object-fit: contain;
+}
+
+#casinoTableBody .casino-row td:nth-child(2) {
+  font-size: 25px !important;
+  font-weight: 900 !important;
+  color: var(--casino-gold) !important;
+}
+
+#casinoTableBody .casino-row td:last-child a {
+  min-width: 150px;
+  min-height: 48px;
+  border-radius: 13px !important;
+  justify-content: center;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.18), 0 10px 18px rgba(245,196,0,.16);
+}
+
+/* Pravé bonusové kontejnery – stejná výška, radius, pozadí, rámeček a tlačítko jako vlevo */
+#casina aside {
+  gap: 10px !important;
+}
+
+#casina aside::before {
+  content: "Bonusy";
+  display: block;
+  height: 30px;
+  padding: 0 22px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 800;
+  color: rgba(255,255,255,.86);
+}
+
+#casina aside > div {
+  height: var(--casino-row-height) !important;
+  min-height: var(--casino-row-height) !important;
+  border-radius: var(--casino-radius) !important;
+  border: 1px solid rgba(255,255,255,.11) !important;
+  background: linear-gradient(135deg, rgba(18,35,56,.80), rgba(7,19,29,.86)) !important;
+  box-shadow: 0 14px 30px rgba(0,0,0,.34);
+  padding: 0 20px !important;
+  overflow: hidden;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+#casina aside > div:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,.44), 0 0 22px rgba(245,196,0,.12);
+}
+
+#casina aside > div > div {
+  height: 100%;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+#casina aside > div > div > div {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 150px;
+  align-items: center;
+  column-gap: 16px;
+  text-align: left;
+}
+
+#casina aside > div > div > div::before {
+  content: "🎁";
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+#casina aside .text-sm {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  font-size: 20px !important;
+  line-height: 1.1 !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  letter-spacing: 0 !important;
+}
+
+#casina aside .text-xs {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  margin-top: 3px !important;
+  font-size: 15px !important;
+  line-height: 1.25 !important;
+  color: #d1d5db !important;
+}
+
+#casina aside a {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  min-width: 150px;
+  min-height: 48px;
+  border-radius: 13px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--casino-gold);
+  color: #111827 !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.18), 0 10px 18px rgba(245,196,0,.16);
+}
+
+#casina aside a::before {
+  content: "Získat bonus";
+}
+
+#casina aside a {
+  font-size: 0 !important;
+}
+
+#casina aside a svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+/* Barevné ladění ikon dárků podle pořadí */
+#casina aside > div:nth-child(2) > div > div::before { text-shadow: 0 0 0 #2b9cff; }
+#casina aside > div:nth-child(3) > div > div::before { text-shadow: 0 0 0 #f5c400; }
+#casina aside > div:nth-child(4) > div > div::before { text-shadow: 0 0 0 #ff3c00; }
+#casina aside > div:nth-child(5) > div > div::before { text-shadow: 0 0 0 #02a66a; }
+
+/* Responzivita */
+@media (max-width: 1180px) {
+  #casina .mt-8.grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #casina aside {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 720px) {
+  #casinoTableBody .casino-row,
+  #casinoTableBody .casino-row td,
+  #casina aside > div {
+    height: 112px !important;
+    min-height: 112px !important;
+  }
+
+  #casina aside > div > div > div {
+    grid-template-columns: 52px minmax(0, 1fr) 104px;
+    column-gap: 10px;
+  }
+
+  #casina aside > div > div > div::before {
+    width: 52px;
+    height: 52px;
+    font-size: 30px;
+  }
+
+  #casina aside .text-sm {
+    font-size: 15px !important;
+  }
+
+  #casina aside .text-xs {
+    font-size: 12px !important;
+  }
+
+  #casina aside a,
+  #casinoTableBody .casino-row td:last-child a {
+    min-width: 96px;
+    min-height: 40px;
+    font-size: 0 !important;
+  }
+
+  #casina aside a::before {
+    font-size: 12px;
+  }
+}
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Casinao.cz",
+    "url": "https://casinao.cz/",
+    "logo": "https://casinao.cz/android-chrome-192x192.png",
+    "description": "Nezávislý srovnávač legálních online casin v České republice."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Casinao.cz",
+    "url": "https://casinao.cz/",
+    "inLanguage": "cs-CZ"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Domů",
+        "item": "https://casinao.cz/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jak poznat legální casino?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Legální casino v ČR má licenci Ministerstva financí, jasně uvedené podmínky, funkční podporu a nástroje odpovědného hraní."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak funguje RTP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RTP je teoretické procento návratnosti hráčům v dlouhém období. Neznamená to garantovanou výhru v jedné relaci."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co je bonus bez vkladu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bonus bez vkladu je promo odměna za registraci, obvykle s limity a podmínkami protočení před výběrem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak probíhá ověření účtu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Po registraci obvykle nahrajete doklad totožnosti a někdy potvrzení adresy. Ověření je povinné kvůli legislativě a bezpečnosti."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Organization",
+      "name": "Casinao.cz"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Redakce Casinao.cz"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.8",
+      "bestRating": "5"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Casinao.cz"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
+  <script src="/assets/overflow-diagnostic.js" defer></script>
+</head>
+<body class="bg-black text-gray-100 font-sans">
+  <div aria-hidden="true" class="fixed inset-0 -z-20 bg-[url('/img/pozadi.png')] bg-cover bg-center bg-no-repeat saturate-110 contrast-105 brightness-105"></div>
+  <div aria-hidden="true" class="fixed inset-0 -z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/84 to-black/90"></div>
+  <!-- Age Gate -->
+  <div id="ageGate" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-[101] min-h-screen grid place-items-center p-4">
+      <div class="w-full max-w-xl rounded-2xl bg-white text-gray-900 shadow-2xl">
+        <div class="p-6 sm:p-8">
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Vstup pouze <span class="text-red-500">18+</span></h2>
+          <p class="mt-2 text-sm sm:text-base">Tento web obsahuje informace o hazardních hrách. Pokračováním potvrzujete, že je vám alespoň 18 let a jste si vědom(a), že <strong>Účastí na hazardní hře může vzniknout závislost</strong>.</p>
+          <div class="mt-6 flex flex-col sm:flex-row items-center gap-3">
+            <button id="btnAgeYes" class="w-full sm:flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-900 text-white px-5 py-3 font-medium hover:bg-gray-800">Je mi 18+</button>
+            <a href="https://www.napikse.cz/odpovedne-hrani" target="_blank" rel="noopener" class="w-full sm:flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-100 text-gray-900 px-5 py-3 font-medium hover:bg-gray-200">Více o zodpovědném hraní</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top notice / MF warning -->
+  <div class="sticky top-0 z-40">
+    <div class="text-center text-xs sm:text-sm bg-yellow-500 text-black py-2 px-3">
+      Ministerstvo financí varuje: <strong>Účastí na hazardní hře může vzniknout závislost.</strong> Hrajte zodpovědně. <span class="text-red-600 font-semibold">18+</span>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-8 z-30 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="glass rounded-2xl border border-white/10 shadow-glow">
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3">
+        <a href="#home" class="flex items-center gap-3" aria-label="Casinao.cz domů">
+          <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-display font-extrabold">AO</div>
+          <div class="leading-tight">
+            <div class="font-display text-lg sm:text-xl font-extrabold tracking-tight">Casinao.cz</div>
+            <div class="text-xs text-gray-300">Recenze • Bonusy • Návody</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 font-medium" aria-label="Hlavní navigace">
+          <a href="#casina" class="hover:text-yellow-400">Casina</a>
+          <a href="#bonusy" class="hover:text-yellow-400">Bonusy</a>
+          <a href="#hry" class="hover:text-yellow-400">Hry</a>
+          <a href="#recenze" class="hover:text-yellow-400">Recenze</a>
+          <a href="navody.html" class="hover:text-yellow-400">Návody</a>
+          <a href="#blog" class="hover:text-yellow-400">Blog</a>
+          <a href="#kontakt" class="hover:text-yellow-400">Kontakt</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#odpovedne" class="px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10 text-sm">Zodpovědné hraní</a>
+          <a href="#bonusy" class="px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-sm">Dnešní bonusy</a>
+        </div>
+
+        <div class="md:hidden">
+          <button id="btnMenu" class="p-2 rounded-lg bg-white/10 border border-white/10 hover:bg-white/15" aria-label="Otevřít menu" aria-expanded="false">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
+        <nav class="px-4 py-3 grid gap-2" aria-label="Mobilní navigace">
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#bonusy"><i data-lucide="gift" class="w-4 h-4 text-yellow-400"></i><span>Bonusy</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#blog"><i data-lucide="newspaper" class="w-4 h-4 text-yellow-400"></i><span>Blog</span></a>
+          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i><span>Kontakt</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.12),transparent_60%)] pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-12">
+      <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+        <div>
+          <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+            Legální online casina v ČR, <span class="text-yellow-400">bonusy</span> a férové <span class="text-yellow-400">recenze</span>
+          </h1>
+          <p class="mt-2 text-gray-300 max-w-2xl">Casinao.cz je nezávislý průvodce českým hazardem. Porovnáváme licencované provozovatele, sledujeme aktuální bonusy a učíme, jak hrát bezpečně a s rozumem.</p>
+          <div class="mt-3 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+            <a href="#bonusy" class="inline-flex w-full items-center justify-center gap-2 px-3 py-3 text-sm rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 sm:w-auto sm:justify-start sm:px-5 sm:text-base">
+              <i data-lucide="gift" class="w-5 h-5" style="color:#ff3c00;"></i> Dnešní bonusy
+            </a>
+            <a href="#casina" class="inline-flex w-full items-center justify-center gap-2 px-3 py-3 text-sm rounded-xl border border-white/10 hover:bg-white/10 sm:w-auto sm:justify-start sm:px-5 sm:text-base">
+              <i data-lucide="trophy" class="w-5 h-5" style="color:#feda01;"></i> Nejlepší casina
+            </a>
+          </div>
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-300">
+            <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4" style="color:#0078aa;"></i> Licencovaní provozovatelé</div>
+            <div class="flex items-center gap-2"><i data-lucide="stars" class="w-4 h-4" style="color:#feda01;"></i> Nezávislé hodnocení</div>
+            <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4" style="color:#7e003d;"></i> <span class="text-red-500 font-semibold">18+</span> Zodpovědně</div>
+          </div>
+          <div class="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 max-w-md">
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-yellow-400" aria-hidden="true">⭐⭐⭐⭐⭐</span>
+              <span><span id="voteAvg">4,8</span>/5 z <span id="voteCount">247</span> hlasů uživatelů</span>
+            </div>
+            <div class="mt-3">
+              <p class="text-xs text-gray-400 mb-2">Ohodnoť homepage:</p>
+              <div id="voteStars" class="flex items-center gap-1">
+                <button type="button" data-rating="1" class="home-vote-star text-xl leading-none text-gray-500 hover:text-yellow-400" aria-label="Hodnocení 1 z 5">★</button>
+                <button type="button" data-rating="2" class="home-vote-star text-xl leading-none text-gray-500 hover:text-yellow-400" aria-label="Hodnocení 2 z 5">★</button>
+                <button type="button" data-rating="3" class="home-vote-star text-xl leading-none text-gray-500 hover:text-yellow-400" aria-label="Hodnocení 3 z 5">★</button>
+                <button type="button" data-rating="4" class="home-vote-star text-xl leading-none text-gray-500 hover:text-yellow-400" aria-label="Hodnocení 4 z 5">★</button>
+                <button type="button" data-rating="5" class="home-vote-star text-xl leading-none text-gray-500 hover:text-yellow-400" aria-label="Hodnocení 5 z 5">★</button>
+              </div>
+              <p id="voteStatus" class="mt-2 text-xs text-gray-400"></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="relative">
+            <div class="absolute -inset-6 bg-gradient-to-tr from-yellow-500/20 via-transparent to-transparent rounded-3xl blur-2xl"></div>
+            <div class="relative flex h-full flex-col gap-4">
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
+                    <div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Vstupní bonus 50 000 Kč</div>
+                      <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
+                    </div>
+                  </div>
+                  <div class="text-yellow-400 font-bold whitespace-nowrap">9.4/10</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
+                    <div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Bonus
+1 000 Kč + až 5 sázek zdarma!</div>
+                      <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
+                    </div>
+                  </div>
+                  <div class="text-yellow-400 font-bold whitespace-nowrap">9.2/10</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-bold">CZ</div>
+                    <div>
+                      <div class="font-semibold"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Uvítací bonus až 50 000 Kč</div>
+                      <div class="text-xs text-gray-300">Licence MFČR • CZK • CZ podpora</div>
+                    </div>
+                  </div>
+                  <div class="text-yellow-400 font-bold whitespace-nowrap">9.0/10</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow flex-1 min-h-[112px]">
+                <div class="h-full flex items-center justify-center text-center">
+                  <div>
+                    <div class="text-sm text-yellow-300 uppercase tracking-wide">Reklamní prostor</div>
+                    <div class="mt-1 text-xs text-gray-400">Kontejner připraven pro reklamy</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="py-6 border-y border-white/10 bg-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      <div class="flex items-center gap-3"><i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i> Pouze legální CZ licence</div>
+      <div class="flex items-center gap-3"><i data-lucide="lock" class="w-5 h-5 text-yellow-400"></i> Transparentní podmínky bonusů</div>
+      <div class="flex items-center gap-3"><i data-lucide="wallet" class="w-5 h-5 text-yellow-400"></i> CZK platby & rychlé výběry</div>
+      <div class="flex items-center gap-3"><i data-lucide="headphones" class="w-5 h-5 text-yellow-400"></i> Česky mluvící podpora</div>
+    </div>
+  </section>
+
+  <!-- Srovnání casin -->
+  <section id="casina" class="py-16 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.78)), url('img/vyhledavani.png');">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Top legální casina</h2>
+          <p class="mt-2 text-gray-300">Rychlé srovnání klíčových parametrů. Hodnocení je orientační, nezávislé a může se měnit.</p>
+        </div>
+        <div class="hidden sm:flex items-center gap-2">
+          <a href="#bonusy" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="gift" class="w-4 h-4"></i> Bonusy</a>
+          <a href="navody.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10"><i data-lucide="book-open" class="w-4 h-4"></i> Návody</a>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-4 items-start">
+          <div>
+            <label for="casinoSearch" class="block text-sm font-medium">Vyhledávání</label>
+            <input id="casinoSearch" type="search" placeholder="Hledej: Fortuna, Betano, RTP, Blackjack..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          </div>
+          <div class="text-xs text-gray-400 lg:text-right">Filtrace se aplikuje na tabulku casin níže.</div>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2" aria-label="Filtry casin">
+          <button type="button" data-filter="bonus-bez-vkladu" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus bez vkladu</button>
+          <button type="button" data-filter="free-spiny" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Free spiny</button>
+          <button type="button" data-filter="rychle-vybery" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Rychlé výběry</button>
+          <button type="button" data-filter="mobilni-aplikace" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Mobilní aplikace</button>
+          <button type="button" data-filter="live-casino" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Live casino</button>
+          <button type="button" id="clearFilters" class="rounded-xl border border-yellow-500/40 text-yellow-300 px-3 py-2 text-sm hover:bg-yellow-500/10">Vymazat filtry</button>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px] items-start">
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-xs sm:text-sm border-separate" style="border-spacing:0 6px">
+            <thead class="text-left text-gray-300">
+              <tr>
+                <th class="px-2 py-1.5 sm:px-4 sm:py-2">Casino</th>
+                <th class="px-2 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap">Hodnocení</th>
+                <th class="px-2 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap">Hlasování</th>
+                <th class="px-2 py-1.5 sm:px-4 sm:py-2 text-right">Akce</th>
+              </tr>
+            </thead>
+            <tbody id="casinoTableBody">
+            <tr class="casino-row border" style="background-color: rgba(65, 143, 206, 0.22); border-color: rgba(65, 143, 206, 0.45);" data-name="tipsport vegas" data-tags="bonus bez vkladu free spiny live casino blackjack rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace,live-casino">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.4/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-tipsport-vegas" data-default-avg="4.9" data-default-count="61"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/tipsport-vegas/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(255, 221, 0, 0.20); border-color: rgba(255, 221, 0, 0.45);" data-name="fortuna vegas" data-tags="bonus bez vkladu free spiny mobilni aplikace rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.2/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-fortuna-vegas" data-default-avg="4.8" data-default-count="53"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/fortuna-vegas/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(255, 60, 1, 0.22); border-color: rgba(255, 60, 1, 0.45);" data-name="betano" data-tags="bonus bez vkladu free spiny live casino rtp" data-features="bonus-bez-vkladu,free-spiny,live-casino">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.0/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-betano" data-default-avg="4.8" data-default-count="47"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/betano/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(1, 120, 75, 0.22); border-color: rgba(1, 120, 75, 0.45);" data-name="chance" data-tags="free spiny rychle vybery blackjack" data-features="free-spiny,rychle-vybery">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/chance-logo-mini.webp" alt="Chance logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.8/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-chance" data-default-avg="4.7" data-default-count="21"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/chance/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(216, 179, 82, 0.22); border-color: rgba(216, 179, 82, 0.45);" data-name="fbet" data-tags="free spiny mobilni aplikace rtp" data-features="free-spiny,mobilni-aplikace">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/fbet-logo-mini.webp" alt="fBet logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.5/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-fbet" data-default-avg="4.5" data-default-count="14"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/fbet/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(216, 255, 0, 0.20); border-color: rgba(216, 255, 0, 0.45);" data-name="kingsbet" data-tags="rychle vybery blackjack live casino" data-features="rychle-vybery,live-casino">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/kingsbet-logo-mini.webp" alt="KingsBet logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.6/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-kingsbet" data-default-avg="4.6" data-default-count="18"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/kingsbet/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(97, 66, 200, 0.24); border-color: rgba(97, 66, 200, 0.48);" data-name="maxa" data-tags="bonus bez vkladu mobilni aplikace blackjack" data-features="bonus-bez-vkladu,mobilni-aplikace">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/maxa-logo-mini.webp" alt="Maxa logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.4/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-maxa" data-default-avg="4.4" data-default-count="11"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/maxa/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(253, 228, 41, 0.20); border-color: rgba(253, 228, 41, 0.45);" data-name="sazka" data-tags="rychle vybery free spiny live casino rtp" data-features="rychle-vybery,free-spiny,live-casino">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/sazka-logo-mini.webp" alt="Sazka logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.9/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-sazka" data-default-avg="4.8" data-default-count="19"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/sazka/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            <tr class="casino-row border" style="background-color: rgba(124, 6, 60, 0.24); border-color: rgba(124, 6, 60, 0.48);" data-name="synot tip" data-tags="free spiny live casino blackjack" data-features="free-spiny,live-casino">
+              <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/synot-tip-mini.webp" alt="SynotTip logo" class="h-6 sm:h-8 w-auto" /></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.7/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-synottip" data-default-avg="4.7" data-default-count="26"></div></td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/synottip/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="hidden lg:flex flex-col gap-4" aria-label="Bonusy vedle casin">
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Tipsport bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Vstupní nabídka + free spiny</div>
+                <a href="recenze/tipsport-vegas/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Fortuna bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Vegas promo pro nové hráče</div>
+                <a href="recenze/fortuna-vegas/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Betano bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Bonusový balíček při registraci</div>
+                <a href="recenze/betano/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Chance bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Free spiny a víkendové akce</div>
+                <a href="recenze/chance/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">fBet bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Rotující promo kampaně</div>
+                <a href="recenze/fbet/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Kingsbet bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Uvítací balíček a cashback</div>
+                <a href="recenze/kingsbet/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Maxa bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Bonus za první vklad</div>
+                <a href="recenze/maxa/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">Sazka bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Free spiny a rychlé promo</div>
+                <a href="recenze/sazka/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-dashed border-yellow-500/40 p-5 shadow-glow min-h-[112px]">
+            <div class="h-full flex items-center justify-center text-center">
+              <div>
+                <div class="text-sm text-yellow-300 uppercase tracking-wide">SynotTip bonus</div>
+                <div class="mt-1 text-xs text-gray-400">Akce pro nové i aktivní hráče</div>
+                <a href="recenze/synottip/" class="mt-2 inline-flex items-center gap-1 text-yellow-400 text-xs hover:underline">Zobrazit bonus <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <p id="casinoNoResults" class="hidden mt-4 text-sm text-gray-300">Nenašli jsme shodu pro zadané vyhledávání nebo filtry.</p>
+    </div>
+  </section>
+
+  <!-- Bonusy -->
+  <section id="bonusy" class="py-16 bg-white/5 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Aktuální bonusy</h2>
+      <p class="mt-2 text-gray-300">Před uplatněním bonusu si vždy přečtěte podmínky protočení a časové omezení.</p>
+
+      <div class="mt-8 rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-3 sm:p-6 shadow-glow">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+          <article id="recenze-fortuna" class="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+            <a href="navody/jak-zacit-hrat-v-online-casinu.html" class="block group" aria-label="Fortuna bonus detail">
+              <div class="aspect-square bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.4)), url('img/fortuna.png');"></div>
+              <div class="p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-5 w-auto" />Fortuna bonus</h3>
+                  <span class="text-[11px] px-2 py-1 rounded-lg bg-yellow-500 text-gray-900 font-semibold">Top</span>
+                </div>
+                <p class="mt-2 text-xs text-gray-300">Vstupní Vegas bonus + free spiny podle aktuální akce.</p>
+                <span class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm group-hover:gap-2 transition-all">Více o bonusu <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+              </div>
+            </a>
+          </article>
+
+          <article id="recenze-tipsport" class="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+            <a href="navody/jak-funguji-free-spiny.html" class="block group" aria-label="Tipsport bonus detail">
+              <div class="aspect-square bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.4)), url('img/tipsport.png');"></div>
+              <div class="p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-5 w-auto" />Tipsport bonus</h3>
+                  <span class="text-[11px] px-2 py-1 rounded-lg bg-white/10">Akce</span>
+                </div>
+                <p class="mt-2 text-xs text-gray-300">Pro nové hráče vstupní nabídka a volná zatočení.</p>
+                <span class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm group-hover:gap-2 transition-all">Více o bonusu <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+              </div>
+            </a>
+          </article>
+
+          <article id="recenze-betano" class="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+            <a href="navody/jak-vybrat-vyhru-z-casina.html" class="block group" aria-label="Betano bonus detail">
+              <div class="aspect-square bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.4)), url('img/betano.png');"></div>
+              <div class="p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="font-semibold flex items-center gap-2"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-5 w-auto" />Betano bonus</h3>
+                  <span class="text-[11px] px-2 py-1 rounded-lg bg-white/10">Nové</span>
+                </div>
+                <p class="mt-2 text-xs text-gray-300">Aktuální promo nabídka a bonusový balíček pro registraci.</p>
+                <span class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm group-hover:gap-2 transition-all">Více o bonusu <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+
+      <div class="mt-6 text-xs text-gray-400">Pozn.: Konkrétní částky a podmínky se mění podle aktuálních akcí jednotlivých provozovatelů.</div>
+    </div>
+  </section>
+
+  <!-- Hry -->
+  <section id="hry" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Populární hry</h2>
+      <p class="mt-2 text-gray-300">Základy pravidel a tipy pro zodpovědné hraní. Žádné návody na „jistou výhru“ – ty neexistují.</p>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-2xl overflow-hidden border border-white/10 shadow-glow bg-black/20">
+          <a href="navody/jak-funguje-rtp-automatu.html" class="block" aria-label="Automaty">
+            <img loading="lazy" decoding="async" src="img/automaty1.png" alt="Automaty" class="block w-full h-48 sm:h-52 object-contain bg-black/30" />
+          </a>
+        </article>
+
+        <article class="rounded-2xl overflow-hidden border border-white/10 shadow-glow bg-black/20">
+          <a href="blackjack.html" class="block" aria-label="Blackjack">
+            <img loading="lazy" decoding="async" src="img/blackjack1.png" alt="Blackjack" class="block w-full h-48 sm:h-52 object-contain bg-black/30" />
+          </a>
+        </article>
+
+        <article class="rounded-2xl overflow-hidden border border-white/10 shadow-glow bg-black/20">
+          <a href="ruleta.html" class="block" aria-label="Ruleta">
+            <img loading="lazy" decoding="async" src="img/ruleta1.png" alt="Ruleta" class="block w-full h-48 sm:h-52 object-contain bg-black/30" />
+          </a>
+        </article>
+
+        <article class="rounded-2xl overflow-hidden border border-white/10 shadow-glow bg-black/20">
+          <a href="sazky-pravidla.html" class="block" aria-label="Sázky">
+            <img loading="lazy" decoding="async" src="img/sazky1.png" alt="Sázky" class="block w-full h-48 sm:h-52 object-contain bg-black/30" />
+          </a>
+        </article>
+
+        <article class="rounded-2xl overflow-hidden border border-white/10 shadow-glow bg-black/20">
+          <a href="sazky-pravidla.html" class="block" aria-label="Poker">
+            <img loading="lazy" decoding="async" src="img/poker.png" alt="Poker" class="block w-full h-48 sm:h-52 object-contain bg-black/30" />
+          </a>
+        </article>
+
+        <article class="hidden lg:block rounded-2xl border border-dashed border-yellow-500/40 p-5 shadow-glow bg-black/20">
+          <div class="flex items-center gap-3">
+            <i data-lucide="megaphone" class="w-6 h-6 text-yellow-400"></i>
+            <h3 class="font-semibold">Reklamní prostor</h3>
+          </div>
+          <p class="mt-2 text-sm text-gray-300">Místo pro banner partnera nebo promo kampaň.</p>
+          <a href="#" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Rezervováno <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recenze -->
+  <section id="recenze" class="py-16 bg-white/5 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Nejnovější recenze</h2>
+          <p class="mt-2 text-gray-300">Objektivně hodnotíme nabídku her, bonusy, podporu i rychlost výplat.</p>
+        </div>
+        <a id="showAllReviews" href="#casina" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10">Všechny recenze</a>
+      </div>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/fortuna.png'); background-size: cover; background-position: center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 5 z 5">★★★★★</div>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-8 w-auto inline-block mr-2" />Fortuna Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Široká nabídka automatů, slušné promo akce, moderní aplikace. Menší mínus za některé limity výběrů.</p>
+          <a href="recenze/fortuna-vegas/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/tipsport.png'); background-size: cover; background-position: center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-8 w-auto inline-block mr-2" />Tipsport Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Skvělá komunita a věrnostní systém. Méně live her mimo špičku.</p>
+          <a href="recenze/tipsport-vegas/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/betano.png'); background-size: cover; background-position: center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze <img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-8 w-auto inline-block mr-2" />Betano</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Přehledná registrace, pravidelné free spiny. Občas přeplněná navigace.</p>
+          <a href="recenze/betano/" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / edukace -->
+  <section id="blog" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Edukace & bezpečí</h2>
+      <p class="mt-2 text-gray-300">Zodpovědné hraní je základ. Přinášíme rady, jak si nastavit limity a kdy dát pauzu.</p>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+          <h3 class="font-semibold">Jak funguje RTP a volatilita</h3>
+          <p class="mt-2 text-sm text-gray-300">Co čísla opravdu znamenají a proč nejsou zárukou výhry.</p>
+          <a href="navody/jak-funguje-rtp-automatu.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst dál <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+          <h3 class="font-semibold">Limity vkladů a sebevyloučení</h3>
+          <p class="mt-2 text-sm text-gray-300">Kdy je vhodné nastavit limit a kde to najít v účtu.</p>
+          <a href="navody/nejcastejsi-chyby-hracu-v-online-casinu.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst dál <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow">
+          <h3 class="font-semibold">Jak poznat licencované casino</h3>
+          <p class="mt-2 text-sm text-gray-300">Znaky bezpečného provozovatele a kde najít registr MFČR.</p>
+          <a href="navody/jak-poznat-legalni-casino-v-cr.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst dál <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodika" class="meto-section py-16 border-y border-white/10">
+    <span class="meto-bg-wave" aria-hidden="true"></span>
+    <span class="meto-bg-particle" aria-hidden="true" style="width:5px;height:5px;left:8%;bottom:130px;"></span>
+    <span class="meto-bg-particle" aria-hidden="true" style="width:4px;height:4px;left:24%;bottom:90px;"></span>
+    <span class="meto-bg-particle" aria-hidden="true" style="width:6px;height:6px;left:66%;bottom:116px;"></span>
+    <span class="meto-bg-particle" aria-hidden="true" style="width:4px;height:4px;left:88%;bottom:84px;"></span>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Jak vybíráme a hodnotíme casina</h2>
+      <p class="mt-2 text-gray-300">Každé doporučení vzniká podle stejné metodiky. Neprodáváme pořadí, ale zveřejňujeme reálné silné a slabé stránky jednotlivých značek.</p>
+
+      <div class="mt-7 meto-info p-5 sm:p-6">
+        <div class="flex items-start gap-4">
+          <div class="meto-info-icon w-11 h-11 rounded-full grid place-items-center">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p class="text-lg sm:text-xl font-semibold text-white">Nehodnotíme podle provize. Hodnotíme podle kvality.</p>
+            <p class="mt-1 text-sm sm:text-base text-gray-300">Naším cílem je vaše bezpečí, férovost a nejlepší herní zážitek.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="meto-card p-6">
+          <div class="flex items-start justify-between gap-3">
+            <span class="meto-num text-3xl">01</span>
+            <span class="meto-icon-wrap"><i data-lucide="search-check" class="w-5 h-5"></i></span>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg text-white">Jak vybíráme casina</h3>
+          <p class="mt-2 text-sm text-gray-300">Do přehledu zařazujeme pouze legální operátory s českou licencí MFČR. Sledujeme historii provozovatele, dostupnost podpory v češtině, přehlednost podmínek a technickou kvalitu webu i mobilní aplikace. Hodnotíme také reálnou použitelnost účtu: jak rychle se registruješ, jak snadno najdeš limity a jak fungují výběry.</p>
+        </article>
+
+        <article class="meto-card p-6">
+          <div class="flex items-start justify-between gap-3">
+            <span class="meto-num text-3xl">02</span>
+            <span class="meto-icon-wrap"><i data-lucide="gift" class="w-5 h-5"></i></span>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg text-white">Jak hodnotíme bonusy</h3>
+          <p class="mt-2 text-sm text-gray-300">Nesledujeme jen výšku bonusu. Důležité jsou i podmínky protočení, časové limity, maximální sázka, limity výběru a transparentnost pravidel. Bonus, který vypadá dobře v bannerech, může být v praxi nevýhodný. Proto publikujeme souhrnné hodnocení, které zohledňuje i férovost podmínek.</p>
+        </article>
+
+        <article class="meto-banner lg:row-span-2 lg:col-start-3">
+          <div class="meto-banner-bg h-full min-h-[340px] p-6 flex flex-col justify-between">
+            <span class="meto-chip c1" aria-hidden="true"></span>
+            <span class="meto-chip c2" aria-hidden="true"></span>
+            <span class="meto-chip c3" aria-hidden="true"></span>
+            <span class="meto-particle" aria-hidden="true" style="top:52px;right:34px;"></span>
+            <span class="meto-particle" aria-hidden="true" style="top:134px;right:84px;width:3px;height:3px;"></span>
+            <span class="meto-particle" aria-hidden="true" style="bottom:74px;right:52px;width:5px;height:5px;"></span>
+
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-yellow-500/50 bg-black/35 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-yellow-300">DOPORUČENÝ PARTNER</div>
+              <h3 class="mt-4 font-display text-2xl font-extrabold text-white">Prostor pro partnera</h3>
+              <p class="mt-3 max-w-xs text-sm text-gray-200">Vertikální prémiová plocha se zvýrazněním partnera. Vhodné pro bonus, promo kód i brandové kampaně s vysokou viditelností.</p>
+            </div>
+            <a href="#kontakt" class="inline-flex items-center gap-2 self-start rounded-xl bg-yellow-500 px-4 py-3 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
+              Rezervovat prostor
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <p class="text-xs text-gray-300">Prověřená casina pouze s licencí MFČR</p>
+          </div>
+        </article>
+
+        <article class="meto-card p-6">
+          <div class="flex items-start justify-between gap-3">
+            <span class="meto-num text-3xl">03</span>
+            <span class="meto-icon-wrap"><i data-lucide="shield" class="w-5 h-5"></i></span>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg text-white">Jak fungují licence MFČR</h3>
+          <p class="mt-2 text-sm text-gray-300">Licence Ministerstva financí znamená, že provozovatel plní české zákonné požadavky: ověřování identity, ochranu hráčů, oddělení klientských prostředků a dostupné nástroje odpovědného hraní. Pro hráče je to zásadní bezpečnostní signál. Bez české licence doporučujeme nehrát.</p>
+        </article>
+
+        <article class="meto-card p-6">
+          <div class="flex items-start justify-between gap-3">
+            <span class="meto-num text-3xl">04</span>
+            <span class="meto-icon-wrap"><i data-lucide="user-check" class="w-5 h-5"></i></span>
+          </div>
+          <h3 class="mt-4 font-semibold text-lg text-white">Jak funguje registrace</h3>
+          <p class="mt-2 text-sm text-gray-300">Registrace obvykle probíhá ve třech krocích: vytvoření účtu, ověření kontaktů a následné KYC ověření totožnosti. Dokončené ověření je nutné pro plné používání účtu a výběry. V našich návodech popisujeme nejčastější chyby i to, jak registraci zvládnout rychle a bezpečně.</p>
+        </article>
+      </div>
+
+      <div class="mt-8 meto-stats">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4">
+          <div class="meto-stat-col">
+            <div class="flex items-center gap-2 text-yellow-300"><i data-lucide="building-2" class="w-4 h-4"></i><span class="text-xs uppercase tracking-wide">Hodnocení</span></div>
+            <div class="meto-stat-num mt-2 text-3xl font-extrabold">25+</div>
+            <p class="mt-1 text-sm text-gray-300">hodnocených casin</p>
+          </div>
+          <div class="meto-stat-col">
+            <div class="flex items-center gap-2 text-yellow-300"><i data-lucide="ticket-percent" class="w-4 h-4"></i><span class="text-xs uppercase tracking-wide">Nabídky</span></div>
+            <div class="meto-stat-num mt-2 text-3xl font-extrabold">50+</div>
+            <p class="mt-1 text-sm text-gray-300">bonusů a promo akcí</p>
+          </div>
+          <div class="meto-stat-col">
+            <div class="flex items-center gap-2 text-yellow-300"><i data-lucide="book-open-check" class="w-4 h-4"></i><span class="text-xs uppercase tracking-wide">Obsah</span></div>
+            <div class="meto-stat-num mt-2 text-3xl font-extrabold">100+</div>
+            <p class="mt-1 text-sm text-gray-300">recenzí a návodů</p>
+          </div>
+          <div class="meto-stat-col">
+            <div class="flex items-center gap-2 text-yellow-300"><i data-lucide="shield-check" class="w-4 h-4"></i><span class="text-xs uppercase tracking-wide">Bezpečnost</span></div>
+            <div class="meto-stat-num mt-2 text-xl sm:text-2xl font-extrabold">Pouze legální</div>
+            <p class="mt-1 text-sm text-gray-300">casina s licencí MFČR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">FAQ: Nejčastější otázky</h2>
+      <p class="mt-2 text-gray-300">Rychlé odpovědi na otázky, které řeší začátečníci i pokročilí hráči.</p>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-2xl border border-dashed border-yellow-500/40 bg-black/20 shadow-glow overflow-hidden lg:row-span-2 lg:col-start-1">
+          <div class="h-full min-h-[320px] flex flex-col justify-between bg-cover bg-center bg-no-repeat p-6" style="background-image: linear-gradient(rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.82)), url('img/kontakt.png');">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-yellow-500/40 bg-black/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-300">Reklamní banner</div>
+              <h3 class="mt-4 font-display text-2xl font-extrabold text-white">Prostor pro partnera</h3>
+              <p class="mt-3 max-w-xs text-sm text-gray-200">Vertikální reklamní plocha vlevo přes dvě řady FAQ. Vhodné pro promo akci, bonus nebo zvýrazněnou nabídku.</p>
+            </div>
+            <a href="#kontakt" class="inline-flex items-center gap-2 self-start rounded-xl bg-yellow-500 px-4 py-3 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
+              Rezervovat prostor
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak poznat legální casino?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Legální casino v ČR má licenci MFČR, transparentní obchodní podmínky, ověřování účtu a nástroje odpovědného hraní. Doporučujeme hrát pouze u takových provozovatelů.</p>
+          </div>
+        </article>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak funguje RTP?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">RTP (Return to Player) je teoretická návratnost v dlouhém období. U jednotlivé relace může být výsledek výrazně odlišný, proto je důležité hrát s limity.</p>
+          </div>
+        </article>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Co je bonus bez vkladu?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Jde o bonus za registraci bez prvního vkladu. Obvykle má omezení a podmínky protočení. Před aktivací vždy zkontroluj pravidla promo akce.</p>
+          </div>
+        </article>
+        <article class="faq-item rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 p-6 text-left md:cursor-default" aria-expanded="false">
+            <h3 class="font-semibold">Jak probíhá ověření účtu?</h3>
+            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 flex-shrink-0 transition-transform md:hidden"></i>
+          </button>
+          <div class="faq-body hidden md:block px-6 pb-6">
+            <p class="text-sm text-gray-300">Po registraci obvykle nahraješ doklad totožnosti a někdy potvrzení adresy nebo platební metody. Ověření je standardní krok kvůli bezpečnosti a legislativě.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt / formulář -->
+  <section id="kontakt" class="py-16 bg-white/5 border-y border-white/10 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/kontakt.png');">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Kontakt</h2>
+          <p class="mt-2 text-gray-300">Máte dotaz k hodnocení, chybějící casino nebo spolupráci? Napište nám.</p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-yellow-400"></i> info@casinao.cz</div>
+            <div class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i> Česká republika</div>
+            <div class="flex items-center gap-3"><i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i> Nezávislý projekt</div>
+            <div class="flex items-center gap-3"><i data-lucide="scale" class="w-5 h-5 text-yellow-400"></i> Dodržujeme CZ legislativu</div>
+            <div class="flex items-center gap-3"><i data-lucide="badge-check" class="w-5 h-5 text-yellow-400"></i> IČO: bude doplněno</div>
+            <div class="flex items-center gap-3"><i data-lucide="users" class="w-5 h-5 text-yellow-400"></i> O nás: <a class="hover:underline" href="o-nas.html">Kdo jsme</a></div>
+          </div>
+          <div class="mt-8 contact-lux-card">
+            <h3 class="contact-lux-title font-display text-2xl font-extrabold">Proč nás kontaktovat?</h3>
+            <div class="mt-4">
+              <div class="contact-lux-item flex items-start gap-3">
+                <i data-lucide="building-2" class="contact-lux-icon w-5 h-5 mt-0.5"></i>
+                <div>
+                  <p class="contact-lux-item-title font-semibold">Doplnění nového casina</p>
+                  <p class="contact-lux-item-sub text-sm mt-1">Znáte casino, které nám chybí? Dejte nám vědět.</p>
+                </div>
+              </div>
+
+              <div class="contact-lux-item flex items-start gap-3">
+                <i data-lucide="ticket-percent" class="contact-lux-icon w-5 h-5 mt-0.5"></i>
+                <div>
+                  <p class="contact-lux-item-title font-semibold">Aktualizace bonusů a promo kódů</p>
+                  <p class="contact-lux-item-sub text-sm mt-1">Pomozte nám udržovat informace aktuální.</p>
+                </div>
+              </div>
+
+              <div class="contact-lux-item flex items-start gap-3">
+                <i data-lucide="handshake" class="contact-lux-icon w-5 h-5 mt-0.5"></i>
+                <div>
+                  <p class="contact-lux-item-title font-semibold">Spolupráce a reklama</p>
+                  <p class="contact-lux-item-sub text-sm mt-1">Máte zájem o spolupráci? Ozvěte se nám.</p>
+                </div>
+              </div>
+
+              <div class="contact-lux-item flex items-start gap-3">
+                <i data-lucide="triangle-alert" class="contact-lux-icon w-5 h-5 mt-0.5"></i>
+                <div>
+                  <p class="contact-lux-item-title font-semibold">Upozornění na chybu v recenzi</p>
+                  <p class="contact-lux-item-sub text-sm mt-1">Našli jste chybu nebo neaktuální informaci?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 contact-gold-light" aria-hidden="true">
+            <span class="contact-gold-wave w1"></span>
+            <span class="contact-gold-wave w2"></span>
+            <span class="contact-gold-wave w3"></span>
+            <span class="contact-gold-dot d1"></span>
+            <span class="contact-gold-dot d2"></span>
+            <span class="contact-gold-dot d3"></span>
+            <span class="contact-gold-dot d4"></span>
+          </div>
+        </div>
+
+        <div class="lg:col-start-2">
+          <form id="contactForm" class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-glow">
+            <div class="grid gap-4">
+              <div>
+                <label class="block text-sm mb-1" for="name">Jméno</label>
+                <input id="name" name="name" type="text" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Vaše jméno" />
+              </div>
+              <div>
+                <label class="block text-sm mb-1" for="email">E-mail</label>
+                <input id="email" name="email" type="email" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="name@email.cz" />
+              </div>
+              <div>
+                <label class="block text-sm mb-1" for="message">Zpráva</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Sem napište vaši zprávu..."></textarea>
+              </div>
+              <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="send" class="w-4 h-4"></i> Odeslat</button>
+            </div>
+            <p id="contactStatus" class="mt-3 text-xs text-gray-400">Odesláním souhlasíte se zpracováním zprávy pro účely odpovědi. Nejedná se o nabídku hazardních her.</p>
+          </form>
+
+          <div class="mt-3 flex flex-wrap justify-center gap-3 text-sm">
+            <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10 hover:bg-white/10">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
+                <path d="M18.901 1.5H22.58l-8.037 9.185L24 22.5h-7.406l-5.802-7.545L4.188 22.5H.507l8.596-9.824L0 1.5h7.594l5.245 6.915L18.901 1.5Zm-1.29 18.796h2.04L6.486 3.605H4.297L17.611 20.296Z"/>
+              </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10 hover:bg-white/10">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
+                <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.6v8h2.9Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10 hover:bg-white/10">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1"></circle>
+              </svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10 hover:bg-white/10">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none">
+                <rect x="2" y="6" width="20" height="12" rx="3" fill="currentColor"></rect>
+                <path d="M10 9.5v5l5-2.5-5-2.5Z" fill="#111827"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Odpovědné hraní -->
+  <section id="odpovedne" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Zodpovědné hraní</h2>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="img/1.png" alt="Časové limity" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="img/2.png" alt="Finanční limity" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="img/3.png" alt="Pauza a sebevyloučení" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+        </div>
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
+          <div class="flex items-center gap-3"><i data-lucide="book-open-check" class="w-5 h-5 text-yellow-400"></i><span>Informujte se</span></div>
+          <p class="mt-2 text-gray-300">Zjistěte, jak fungují hry a proč má casino matematickou výhodu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
+    <div class="border-t border-white/10"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="pt-16 pb-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-yellow-500 text-gray-900 grid place-items-center font-display font-extrabold">AO</div>
+            <div class="font-display text-xl font-extrabold">Casinao.cz</div>
+          </div>
+          <p class="mt-3 text-sm text-gray-300">Nezávislý srovnávač a magazín o legálních online casinech v ČR. Neprovozujeme hazardní hry.</p>
+        </div>
+
+        <div class="col-span-1">
+          <h4 class="font-semibold mb-3 text-yellow-400">Rychlé odkazy</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a class="hover:underline" href="#casina">Casina</a></li>
+            <li><a class="hover:underline" href="#bonusy">Bonusy</a></li>
+            <li><a class="hover:underline" href="#recenze">Recenze</a></li>
+            <li><a class="hover:underline" href="#hry">Hry</a></li>
+            <li><a class="hover:underline" href="#faq">FAQ</a></li>
+            <li><a class="hover:underline" href="o-nas.html">O nás</a></li>
+            <li><a class="hover:underline" href="navody.html">Návody</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-1">
+          <h4 class="font-semibold mb-3 text-yellow-400">Právní</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a class="hover:underline" href="#odpovedne">Zásady odpovědného hraní</a></li>
+            <li><a class="hover:underline" href="podminky-pouziti.html">Podmínky použití</a></li>
+            <li><a class="hover:underline" href="ochrana-soukromi.html">Ochrana soukromí</a></li>
+            <li><a class="hover:underline" href="cookies.html">Cookies</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-2 md:col-span-1">
+          <h4 class="font-semibold mb-3 text-yellow-400">Kontakt</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a class="hover:underline" href="mailto:info@casinao.cz">info@casinao.cz</a></li>
+            <li>Česká republika</li>
+            <li>IČO: bude doplněno</li>
+            <li><a class="hover:underline" href="kontakt.html">Kontaktní formulář</a></li>
+            <li class="flex items-center gap-3 pt-1">
+              <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="currentColor">
+                  <path d="M18.901 1.5H22.58l-8.037 9.185L24 22.5h-7.406l-5.802-7.545L4.188 22.5H.507l8.596-9.824L0 1.5h7.594l5.245 6.915L18.901 1.5Zm-1.29 18.796h2.04L6.486 3.605H4.297L17.611 20.296Z"/>
+                </svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="currentColor">
+                  <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.6v8h2.9Z"/>
+                </svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1"></circle>
+                </svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="none">
+                  <rect x="2" y="6" width="20" height="12" rx="3" fill="currentColor"></rect>
+                  <path d="M10 9.5v5l5-2.5-5-2.5Z" fill="#111827"></path>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-white/10 pt-6 text-xs text-gray-400">
+        © <span id="year"></span> Casinao.cz • Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost. <span class="text-red-500 font-semibold">18+</span> • Některé odkazy mohou být affiliate odkazy. • Web vytvořil <a href="https://www.webao.cz" target="_blank" rel="noopener" class="hover:text-yellow-400 hover:underline">Webao.cz</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+<button
+  id="toTop"
+  class="fixed bottom-6 right-6 hidden items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/10 hover:bg-white/20"
+  aria-label="Zpět nahoru"
+>
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+
+  <!-- Mobile bottom nav -->
+  <nav class="mbottom-nav lg:hidden" aria-label="Spodní mobilní navigace">
+    <div class="mbottom-nav__inner">
+      <a href="#casina" class="mbottom-nav__item" data-mobile-bottom-item>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="8"></circle>
+          <circle cx="12" cy="12" r="3.1"></circle>
+          <path d="M12 4v2.2M12 17.8V20M4 12h2.2M17.8 12H20M6.2 6.2l1.5 1.5M16.3 16.3l1.5 1.5M17.8 6.2l-1.5 1.5M7.7 16.3l-1.5 1.5"></path>
+        </svg>
+        <span class="mbottom-nav__label">Casina</span>
+      </a>
+
+      <a href="#bonusy" class="mbottom-nav__item" data-mobile-bottom-item>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3.8 19.3 12 12 20.2 4.7 12 12 3.8z"></path>
+          <path d="M12 3.8v16.4M4.7 12h14.6"></path>
+        </svg>
+        <span class="mbottom-nav__label">Bonusy</span>
+      </a>
+
+      <a href="#bonusy" class="mbottom-nav__item" data-mobile-bottom-item>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+          <path d="M7.2 14.2V9.8M10 14.2V9.8M13.2 14.2V9.8M16.4 14.2V9.8"></path>
+          <path d="M7.2 17h9.4"></path>
+        </svg>
+        <span class="mbottom-nav__label">Free spiny</span>
+      </a>
+
+      <a href="#bonusy" class="mbottom-nav__item" data-mobile-bottom-item>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.5 10.2 10.2 3.5h9.8v9.8l-6.7 6.7H3.5v-9.8z"></path>
+          <circle cx="15.3" cy="8.7" r="1.2"></circle>
+          <path d="M8.3 15.6c.8.8 2.1.8 2.9 0 .8-.8.8-2.1 0-2.9-.8-.8-2.1-.8-2.9 0-.8.8-.8 2.1 0 2.9zM9.1 12.7l5.9-5.9"></path>
+        </svg>
+        <span class="mbottom-nav__label">Promo kódy</span>
+      </a>
+
+      <a href="#hry" class="mbottom-nav__item active" data-mobile-bottom-item>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3.5" y="5" width="17" height="14" rx="2"></rect>
+          <path d="M8 9.2h2M8 12h2M8 14.8h2"></path>
+          <path d="M13.2 9.2h3.3M13.2 12h3.3M13.2 14.8h3.3"></path>
+        </svg>
+        <span class="mbottom-nav__label">Automaty</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      const year = document.getElementById('year');
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      const key = 'casinao_age_ok';
+      const ageGate = document.getElementById('ageGate');
+      const btnAgeYes = document.getElementById('btnAgeYes');
+      const ok = localStorage.getItem(key);
+
+      if (!ok && ageGate) {
+        ageGate.classList.remove('hidden');
+      }
+
+      if (btnAgeYes && ageGate) {
+        btnAgeYes.addEventListener('click', () => {
+          localStorage.setItem(key, Date.now().toString());
+          ageGate.classList.add('hidden');
+        });
+      }
+    });
+
+    const btnMenu = document.getElementById('btnMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (btnMenu && mobileMenu) {
+      btnMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('mobile-menu-open', isOpen);
+        btnMenu.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
+        a.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('mobile-menu-open');
+          btnMenu.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const toTop = document.getElementById('toTop');
+
+    window.addEventListener('scroll', () => {
+      if (!toTop) return;
+      if (window.scrollY > 400) {
+        toTop.classList.remove('hidden');
+        toTop.classList.add('inline-flex');
+      } else {
+        toTop.classList.add('hidden');
+        toTop.classList.remove('inline-flex');
+      }
+    });
+
+    if (toTop) {
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    // FAQ accordion (mobile only)
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (window.innerWidth >= 768) return; // desktop – skip
+        const body = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const open = !body.classList.contains('hidden');
+        body.classList.toggle('hidden', open);
+        icon && icon.classList.toggle('rotate-180', !open);
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    });
+
+    const searchInput = document.getElementById('casinoSearch');
+    const rows = Array.from(document.querySelectorAll('.casino-row'));
+    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    const clearFilters = document.getElementById('clearFilters');
+    const showAllReviews = document.getElementById('showAllReviews');
+    const noResults = document.getElementById('casinoNoResults');
+    const activeFilters = new Set();
+
+    function applyCasinoFilters() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const name = (row.getAttribute('data-name') || '').toLowerCase();
+        const tags = (row.getAttribute('data-tags') || '').toLowerCase();
+        const features = (row.getAttribute('data-features') || '').split(',').map((item) => item.trim()).filter(Boolean);
+
+        const searchOk = !query || name.includes(query) || tags.includes(query);
+        const featureOk = activeFilters.size === 0 || Array.from(activeFilters).every((f) => features.includes(f));
+        const show = searchOk && featureOk;
+
+        row.classList.toggle('hidden', !show);
+        if (show) visible += 1;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visible !== 0);
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyCasinoFilters);
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-filter');
+        if (!key) return;
+
+        if (activeFilters.has(key)) {
+          activeFilters.delete(key);
+          btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400');
+        } else {
+          activeFilters.add(key);
+          btn.classList.add('bg-yellow-500', 'text-gray-900', 'border-yellow-400');
+        }
+        applyCasinoFilters();
+      });
+    });
+
+    if (clearFilters) {
+      clearFilters.addEventListener('click', () => {
+        activeFilters.clear();
+        filterButtons.forEach((btn) => btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
+        if (searchInput) searchInput.value = '';
+        applyCasinoFilters();
+      });
+    }
+
+    if (showAllReviews) {
+      showAllReviews.addEventListener('click', () => {
+        activeFilters.clear();
+        filterButtons.forEach((btn) => btn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
+        if (searchInput) searchInput.value = '';
+        applyCasinoFilters();
+      });
+    }
+
+    applyCasinoFilters();
+
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = (document.getElementById('name')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const message = (document.getElementById('message')?.value || '').trim();
+
+        if (!name || !email || !message) {
+          if (contactStatus) {
+            contactStatus.textContent = 'Prosím vyplň všechny povinné údaje (jméno, e-mail, zpráva).';
+            contactStatus.classList.remove('text-gray-400');
+            contactStatus.classList.add('text-red-300');
+          }
+          return;
+        }
+
+        const subject = encodeURIComponent('Kontakt z Casinao.cz');
+        const body = encodeURIComponent('Jméno: ' + name + '\nE-mail: ' + email + '\n\nZpráva:\n' + message);
+        window.location.href = 'mailto:info@casinao.cz?subject=' + subject + '&body=' + body;
+
+        if (contactStatus) {
+          contactStatus.textContent = 'Otevírám e-mailového klienta. Pokud se neotevře, napiš přímo na info@casinao.cz.';
+          contactStatus.classList.remove('text-red-300');
+          contactStatus.classList.add('text-green-300');
+        }
+      });
+    }
+
+    const voteAvgEl = document.getElementById('voteAvg');
+    const voteCountEl = document.getElementById('voteCount');
+    const voteStatusEl = document.getElementById('voteStatus');
+    const voteStarButtons = Array.from(document.querySelectorAll('.home-vote-star'));
+
+    // Supabase-ready placeholders (doplni se pozdeji).
+    // Priklad:
+    // window.CASINAO_VOTE_API = {
+    //   summaryUrl: 'https://<project-ref>.functions.supabase.co/rating-summary?page=homepage',
+    //   submitUrl: 'https://<project-ref>.functions.supabase.co/rating-vote',
+    //   anonKey: '<supabase-anon-key>'
+    // };
+    const voteApiConfig = window.CASINAO_VOTE_API || null;
+
+    function setVoteStatus(targetEl, text, colorClass) {
+      if (!targetEl) return;
+      targetEl.textContent = text;
+      targetEl.classList.remove('text-gray-400', 'text-green-300', 'text-red-300', 'text-yellow-300');
+      targetEl.classList.add(colorClass || 'text-gray-400');
+    }
+
+    function paintStars(starButtons, selectedRating) {
+      starButtons.forEach((btn) => {
+        const val = Number(btn.getAttribute('data-rating'));
+        if (selectedRating && val <= selectedRating) {
+          btn.classList.remove('text-gray-500');
+          btn.classList.add('text-yellow-400');
+        } else {
+          btn.classList.remove('text-yellow-400');
+          btn.classList.add('text-gray-500');
+        }
+      });
+    }
+
+    function readLocalSummary(page) {
+      try {
+        const raw = localStorage.getItem('casinao_vote_summary_' + page);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (typeof parsed.avg !== 'number' || typeof parsed.count !== 'number') return null;
+        return parsed;
+      } catch {
+        return null;
+      }
+    }
+
+    function writeLocalSummary(page, avg, count) {
+      try {
+        localStorage.setItem('casinao_vote_summary_' + page, JSON.stringify({ avg, count }));
+      } catch {
+        // ignore
+      }
+    }
+
+    async function fetchSummaryFromApi(page) {
+      if (!voteApiConfig || !voteApiConfig.summaryUrl) return null;
+      const headers = voteApiConfig.anonKey ? { apikey: voteApiConfig.anonKey, Authorization: 'Bearer ' + voteApiConfig.anonKey } : {};
+      const summaryUrl = voteApiConfig.summaryUrl.includes('{page}')
+        ? voteApiConfig.summaryUrl.replace('{page}', encodeURIComponent(page))
+        : voteApiConfig.summaryUrl + (voteApiConfig.summaryUrl.includes('?') ? '&' : '?') + 'page=' + encodeURIComponent(page);
+      const response = await fetch(summaryUrl, { headers });
+      if (!response.ok) return null;
+      const data = await response.json();
+      if (!data || typeof data.avg !== 'number' || typeof data.count !== 'number') return null;
+      return data;
+    }
+
+    async function submitVoteToApi(page, rating) {
+      if (!voteApiConfig || !voteApiConfig.submitUrl) return null;
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      if (voteApiConfig.anonKey) {
+        headers.apikey = voteApiConfig.anonKey;
+        headers.Authorization = 'Bearer ' + voteApiConfig.anonKey;
+      }
+
+      const response = await fetch(voteApiConfig.submitUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ page, rating })
+      });
+
+      if (!response.ok) return null;
+      const data = await response.json();
+      if (!data || typeof data.avg !== 'number' || typeof data.count !== 'number') return null;
+      return data;
+    }
+
+    async function initVoteWidget(config) {
+      const { page, defaultAvg, defaultCount, avgEl, countEl, statusEl, starButtons } = config;
+      if (!avgEl || !countEl || starButtons.length === 0) return;
+
+      let avg = defaultAvg;
+      let count = defaultCount;
+      const cached = readLocalSummary(page);
+      if (cached) {
+        avg = cached.avg;
+        count = cached.count;
+      }
+
+      try {
+        const remote = await fetchSummaryFromApi(page);
+        if (remote) {
+          avg = remote.avg;
+          count = remote.count;
+          writeLocalSummary(page, avg, count);
+          setVoteStatus(statusEl, 'Hlasování je aktivní přes API.', 'text-green-300');
+        }
+      } catch {
+        setVoteStatus(statusEl, 'Hlasování funguje lokálně v tomto prohlížeči.', 'text-yellow-300');
+      }
+
+      avgEl.textContent = avg.toFixed(1).replace('.', ',');
+      countEl.textContent = String(count);
+
+      const voteStorageKey = 'casinao_vote_' + page;
+      const alreadyVotedRaw = localStorage.getItem(voteStorageKey);
+      const alreadyVoted = alreadyVotedRaw ? Number(alreadyVotedRaw) : 0;
+      if (alreadyVoted >= 1 && alreadyVoted <= 5) {
+        paintStars(starButtons, alreadyVoted);
+        starButtons.forEach((btn) => { btn.disabled = true; btn.classList.add('opacity-60', 'cursor-not-allowed'); });
+        if (statusEl) {
+          statusEl.innerHTML = 'Už jsi hlasoval(a). <a href="#bonusy" class="inline-flex items-center gap-1 text-yellow-400 hover:underline font-medium" aria-label="Vyzvednout si dárek"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block" aria-hidden="true"><path d="M20 12v10H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span class="hidden sm:inline">Vyzvednout si dárek</span></a>';
+          statusEl.classList.remove('text-gray-400', 'text-green-300', 'text-red-300', 'text-yellow-300');
+        }
+        return;
+      }
+
+      starButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const rating = Number(btn.getAttribute('data-rating'));
+          if (rating < 1 || rating > 5) return;
+
+          paintStars(starButtons, rating);
+
+          let nextAvg = avg;
+          let nextCount = count;
+
+          try {
+            const remote = await submitVoteToApi(page, rating);
+            if (remote) {
+              nextAvg = remote.avg;
+              nextCount = remote.count;
+              setVoteStatus(statusEl, 'Děkujeme, hlas byl uložen.', 'text-green-300');
+            } else {
+              nextAvg = ((avg * count) + rating) / (count + 1);
+              nextCount = count + 1;
+              setVoteStatus(statusEl, 'Děkujeme, hlas je uložen.', 'text-yellow-300');
+            }
+          } catch {
+            nextAvg = ((avg * count) + rating) / (count + 1);
+            nextCount = count + 1;
+            setVoteStatus(statusEl, 'Děkujeme, hlas je uložen.', 'text-yellow-300');
+          }
+
+          avg = nextAvg;
+          count = nextCount;
+          avgEl.textContent = avg.toFixed(1).replace('.', ',');
+          countEl.textContent = String(count);
+          writeLocalSummary(page, avg, count);
+          localStorage.setItem(voteStorageKey, String(rating));
+
+          starButtons.forEach((star) => { star.disabled = true; star.classList.add('opacity-60', 'cursor-not-allowed'); });
+        });
+      });
+    }
+
+    function createCasinoVoteWidget(el) {
+      const page = el.getAttribute('data-vote-page');
+      const defaultAvg = Number(el.getAttribute('data-default-avg') || '4.5');
+      const defaultCount = Number(el.getAttribute('data-default-count') || '0');
+
+      el.innerHTML = '' +
+        '<div class="text-[11px] sm:text-xs text-gray-300 whitespace-nowrap"><span class="casino-vote-avg">' + defaultAvg.toFixed(1).replace('.', ',') + '</span>/5 (<span class="casino-vote-count">' + defaultCount + '</span>)</div>' +
+        '<div class="mt-0.5 sm:mt-1 flex items-center gap-0.5 sm:gap-1">' +
+          '<button type="button" data-rating="1" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="2" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="3" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="4" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+          '<button type="button" data-rating="5" class="casino-vote-star text-xs sm:text-sm leading-none text-gray-500 hover:text-yellow-400">★</button>' +
+        '</div>' +
+        '<div class="casino-vote-status mt-0.5 sm:mt-1 text-[10px] text-gray-400 whitespace-nowrap">Hlasuj pro toto casino</div>';
+
+      return {
+        page,
+        defaultAvg,
+        defaultCount,
+        avgEl: el.querySelector('.casino-vote-avg'),
+        countEl: el.querySelector('.casino-vote-count'),
+        statusEl: el.querySelector('.casino-vote-status'),
+        starButtons: Array.from(el.querySelectorAll('.casino-vote-star'))
+      };
+    }
+
+    initVoteWidget({
+      page: 'homepage',
+      defaultAvg: 4.8,
+      defaultCount: 247,
+      avgEl: voteAvgEl,
+      countEl: voteCountEl,
+      statusEl: voteStatusEl,
+      starButtons: voteStarButtons
+    });
+
+    const casinoVoteWidgets = Array.from(document.querySelectorAll('.casino-vote')).map(createCasinoVoteWidget);
+    casinoVoteWidgets.forEach((widget) => initVoteWidget(widget));
+
+    const mobileBottomItems = Array.from(document.querySelectorAll('[data-mobile-bottom-item]'));
+    mobileBottomItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        mobileBottomItems.forEach((navItem) => navItem.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
