@@ -249,6 +249,29 @@
 </footer>
 
 <script>
+  (function bootstrapCmsConfig() {
+    if (window.CASINAO_CMS && window.CASINAO_CMS.url && window.CASINAO_CMS.anonKey) {
+      return;
+    }
+
+    try {
+      const storedUrl = localStorage.getItem('casinao.cms.url') || '';
+      const storedAnon = localStorage.getItem('casinao.cms.anon') || '';
+
+      window.CASINAO_CMS = {
+        url: storedUrl,
+        anonKey: storedAnon
+      };
+    } catch (err) {
+      window.CASINAO_CMS = {
+        url: '',
+        anonKey: ''
+      };
+    }
+  })();
+</script>
+
+<script>
   let ARTICLES = [
     {
       id: 'a1',
@@ -464,6 +487,7 @@
   async function loadRemoteArticlesIfConfigured() {
     const cfg = window.CASINAO_CMS;
     if (!cfg || !cfg.url || !cfg.anonKey) return;
+    if (cfg.url.includes('<') || cfg.anonKey.includes('<')) return;
 
     try {
       const endpoint = cfg.url.replace(/\/$/, '') + '/rest/v1/academy_articles?select=id,slug,title,description,url,image,category,level,tags,reading_time,updated_at,views,featured,published&published=eq.true&order=updated_at.desc';
