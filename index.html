@@ -563,6 +563,18 @@
   color: var(--casino-gold) !important;
 }
 
+#casinoTableBody .casino-row .score-main {
+  color: inherit;
+  font: inherit;
+}
+
+#casinoTableBody .casino-row .score-denom {
+  color: rgba(209, 213, 219, 0.8);
+  font-size: .62em;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
 #casinoTableBody .casino-row td:last-child a {
   min-width: 150px;
   min-height: 48px;
@@ -718,7 +730,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767px) {
   #casina {
     overflow-x: hidden;
   }
@@ -730,7 +742,7 @@
   #casina table {
     width: 100% !important;
     min-width: 0 !important;
-    border-spacing: 0 10px !important;
+    border-spacing: 0 14px !important;
     table-layout: fixed;
   }
 
@@ -742,109 +754,194 @@
     display: block;
   }
 
-  #casinoTableBody .casino-row,
-  #casina aside > div {
-    height: auto !important;
-    min-height: 0 !important;
+  #casinoTableBody .casino-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-areas:
+      "logo top"
+      "score benefits"
+      "votes benefits"
+      "cta cta";
+    gap: 10px 14px;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,.45) !important;
+    backdrop-filter: blur(9px);
+    min-height: 318px;
+    padding: 18px 14px 14px !important;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
   }
 
-  #casinoTableBody .casino-row {
-    display: block;
-    border-radius: 16px !important;
-    border: 1px solid rgba(255,255,255,.12) !important;
-    padding: 10px 12px !important;
-    box-shadow: 0 10px 22px rgba(0,0,0,.28);
+  #casinoTableBody .casino-row:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 44px rgba(0,0,0,.58), 0 0 26px rgba(59,130,246,.22) !important;
+  }
+
+  #casinoTableBody .casino-row::before {
+    content: "★ " attr(data-badge);
+    grid-area: top;
+    justify-self: start;
+    align-self: start;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 9px 12px;
+    border-radius: 11px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(13,30,62,.62);
+    color: #dbeafe;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #casinoTableBody .casino-row::after {
+    content: "🛡 Licence CZ\A\A🎁 " attr(data-bonus) "\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
+    grid-area: benefits;
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(243,244,246,.95);
+    padding-left: 14px;
+    border-left: 1px solid rgba(255,255,255,.2);
   }
 
   #casinoTableBody .casino-row td {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
+    display: block !important;
     width: 100%;
     height: auto !important;
     min-height: 0 !important;
-    padding: 6px 0 !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: 0 !important;
     white-space: normal !important;
     text-align: left !important;
   }
 
   #casinoTableBody .casino-row td:first-child {
-    padding-top: 0 !important;
-    padding-left: 0 !important;
+    grid-area: logo;
+    align-self: start;
   }
 
-  #casinoTableBody .casino-row td:last-child {
-    padding-right: 0 !important;
-    padding-bottom: 0 !important;
+  #casinoTableBody .casino-row td:first-child img {
+    height: 40px !important;
+    width: auto !important;
+    max-width: 150px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,.2));
   }
 
-  #casinoTableBody .casino-row td:nth-child(2)::before,
-  #casinoTableBody .casino-row td:nth-child(3)::before,
-  #casinoTableBody .casino-row td:nth-child(4)::before {
-    font-size: 12px;
-    font-weight: 700;
-    color: rgba(255,255,255,.78);
-    margin-right: 10px;
-    flex-shrink: 0;
+  #casinoTableBody .casino-row td:nth-child(2) {
+    grid-area: score;
+    align-self: end;
+    font-size: 54px !important;
+    line-height: .86 !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    letter-spacing: -.02em;
   }
 
   #casinoTableBody .casino-row td:nth-child(2)::before {
-    content: "Hodnocení";
+    content: "★★★★★";
+    display: block;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 1px;
+    color: #facc15;
+    margin-bottom: 8px;
   }
 
-  #casinoTableBody .casino-row td:nth-child(3)::before {
-    content: "Hlasování";
+  #casinoTableBody .casino-row td:nth-child(2)::after {
+    content: " 👍 " attr(data-reco);
+    display: block;
+    font-size: 27%;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #34d399;
+    margin-top: 10px;
   }
 
-  #casinoTableBody .casino-row td:nth-child(4)::before {
-    content: "Akce";
+  #casinoTableBody .casino-row td:nth-child(2) .score-denom {
+    color: rgba(209, 213, 219, 0.9);
+    font-size: .54em;
+    margin-left: 3px;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2),
+  #casinoTableBody .casino-row td:nth-child(2) * {
+    white-space: nowrap;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2) {
+    position: relative;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2):first-letter {
+    font-size: 1em;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(3) {
+    grid-area: votes;
+    align-self: start;
+    color: rgba(229,231,235,.92) !important;
+    font-size: 15px;
   }
 
   #casinoTableBody .casino-row td:nth-child(4) {
-    justify-content: space-between !important;
-    text-align: left !important;
+    grid-area: cta;
+    align-self: end;
+    padding-top: 2px !important;
   }
 
   #casinoTableBody .casino-row td:last-child a {
-    min-width: 0 !important;
-    width: auto !important;
-    min-height: 38px !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    font-size: 12px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 56px !important;
+    border-radius: 18px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #facc15, #eab308) !important;
+    color: #0b1324 !important;
+    box-shadow: 0 12px 26px rgba(245, 196, 0, .24), inset 0 -2px 0 rgba(0,0,0,.22) !important;
+    transition: transform .2s ease, box-shadow .2s ease;
   }
 
-  #casina aside > div > div > div {
-    grid-template-columns: 52px minmax(0, 1fr) 104px;
-    column-gap: 10px;
+  #casinoTableBody .casino-row td:last-child a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 34px rgba(245,196,0,.32), inset 0 -2px 0 rgba(0,0,0,.22) !important;
   }
 
-  #casina aside > div > div > div::before {
-    width: 52px;
-    height: 52px;
-    font-size: 30px;
+  #casinoTableBody .casino-row td:last-child a span:first-child {
+    display: none;
   }
 
-  #casina aside .text-sm {
-    font-size: 15px !important;
+  #casinoTableBody .casino-row td:last-child a span:last-child {
+    display: inline !important;
   }
 
-  #casina aside .text-xs {
-    font-size: 12px !important;
+  #casinoTableBody .casino-row:nth-child(1) {
+    background: radial-gradient(circle at 82% 28%, rgba(59,130,246,.24) 0, rgba(59,130,246,0) 34%), linear-gradient(125deg, rgba(5,36,94,.88), rgba(7,23,47,.94));
   }
 
-  #casina aside a {
-    min-width: 96px;
-    min-height: 40px;
-    font-size: 0 !important;
+  #casinoTableBody .casino-row:nth-child(2) {
+    background: radial-gradient(circle at 83% 28%, rgba(250,204,21,.2) 0, rgba(250,204,21,0) 36%), linear-gradient(125deg, rgba(24,24,27,.92), rgba(12,12,14,.96));
   }
 
-  #casina aside a::before {
-    font-size: 12px;
+  #casinoTableBody .casino-row:nth-child(3) {
+    background: radial-gradient(circle at 85% 28%, rgba(249,115,22,.2) 0, rgba(249,115,22,0) 35%), linear-gradient(125deg, rgba(72,10,10,.9), rgba(35,4,4,.96));
   }
 
+  #casina aside {
+    display: none !important;
+  }
 }
 
   </style>
@@ -1183,57 +1280,57 @@
               </tr>
             </thead>
             <tbody id="casinoTableBody">
-            <tr class="casino-row border" style="background-color: rgba(65, 143, 206, 0.22); border-color: rgba(65, 143, 206, 0.45);" data-name="tipsport vegas" data-tags="bonus bez vkladu free spiny live casino blackjack rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace,live-casino">
+            <tr class="casino-row border" style="background-color: rgba(65, 143, 206, 0.22); border-color: rgba(65, 143, 206, 0.45);" data-name="tipsport vegas" data-tags="bonus bez vkladu free spiny live casino blackjack rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace,live-casino" data-badge="Nejlepší bonus týdne" data-reco="Doporučujeme" data-bonus="Bonus až 500 Kč + 100 Free Spinů" data-fast="Výplaty do 5 minut" data-app="Mobilní aplikace" data-games="3000+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/tipsport-mini.webp" alt="Tipsport logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.4/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">9.4</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-tipsport-vegas" data-default-avg="4.9" data-default-count="61"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/tipsport-vegas/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(255, 221, 0, 0.20); border-color: rgba(255, 221, 0, 0.45);" data-name="fortuna vegas" data-tags="bonus bez vkladu free spiny mobilni aplikace rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace">
+            <tr class="casino-row border" style="background-color: rgba(255, 221, 0, 0.20); border-color: rgba(255, 221, 0, 0.45);" data-name="fortuna vegas" data-tags="bonus bez vkladu free spiny mobilni aplikace rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace" data-badge="Doporučeno hráči" data-reco="Skvělá volba" data-bonus="Bonus až 300 Kč + 50 Free Spinů" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="2000+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/uni-fortuna-logo-270x96.webp" alt="Fortuna logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.2/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">9.2</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-fortuna-vegas" data-default-avg="4.8" data-default-count="53"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/fortuna-vegas/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(255, 60, 1, 0.22); border-color: rgba(255, 60, 1, 0.45);" data-name="betano" data-tags="bonus bez vkladu free spiny live casino rtp" data-features="bonus-bez-vkladu,free-spiny,live-casino">
+            <tr class="casino-row border" style="background-color: rgba(255, 60, 1, 0.22); border-color: rgba(255, 60, 1, 0.45);" data-name="betano" data-tags="bonus bez vkladu free spiny live casino rtp" data-features="bonus-bez-vkladu,free-spiny,live-casino" data-badge="Nejlepší Live Casino" data-reco="Velmi dobré" data-bonus="Bonus až 600 Kč + 200 Free Spinů" data-fast="Výplaty do 5 minut" data-app="Mobilní aplikace" data-games="2500+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/betano-logo-mini.webp" alt="Betano logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">9.0/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">9.0</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-betano" data-default-avg="4.8" data-default-count="47"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/betano/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(1, 120, 75, 0.22); border-color: rgba(1, 120, 75, 0.45);" data-name="chance" data-tags="free spiny rychle vybery blackjack" data-features="free-spiny,rychle-vybery">
+            <tr class="casino-row border" style="background-color: rgba(1, 120, 75, 0.22); border-color: rgba(1, 120, 75, 0.45);" data-name="chance" data-tags="free spiny rychle vybery blackjack" data-features="free-spiny,rychle-vybery" data-badge="Rychlé výplaty" data-reco="Doporučujeme" data-bonus="Bonus až 400 Kč + Free Spiny" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="1800+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/chance-logo-mini.webp" alt="Chance logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.8/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.8</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-chance" data-default-avg="4.7" data-default-count="21"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/chance/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(216, 179, 82, 0.22); border-color: rgba(216, 179, 82, 0.45);" data-name="fbet" data-tags="free spiny mobilni aplikace rtp" data-features="free-spiny,mobilni-aplikace">
+            <tr class="casino-row border" style="background-color: rgba(216, 179, 82, 0.22); border-color: rgba(216, 179, 82, 0.45);" data-name="fbet" data-tags="free spiny mobilni aplikace rtp" data-features="free-spiny,mobilni-aplikace" data-badge="Free spiny" data-reco="Skvělá volba" data-bonus="Bonus až 350 Kč + 100 Free Spinů" data-fast="Výplaty do 15 minut" data-app="Mobilní aplikace" data-games="1600+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/fbet-logo-mini.webp" alt="fBet logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.5/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.5</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-fbet" data-default-avg="4.5" data-default-count="14"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/fbet/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(216, 255, 0, 0.20); border-color: rgba(216, 255, 0, 0.45);" data-name="kingsbet" data-tags="rychle vybery blackjack live casino" data-features="rychle-vybery,live-casino">
+            <tr class="casino-row border" style="background-color: rgba(216, 255, 0, 0.20); border-color: rgba(216, 255, 0, 0.45);" data-name="kingsbet" data-tags="rychle vybery blackjack live casino" data-features="rychle-vybery,live-casino" data-badge="Live casino" data-reco="Velmi dobré" data-bonus="Bonus až 450 Kč + Free Spiny" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="1700+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/kingsbet-logo-mini.webp" alt="KingsBet logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.6/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.6</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-kingsbet" data-default-avg="4.6" data-default-count="18"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/kingsbet/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(97, 66, 200, 0.24); border-color: rgba(97, 66, 200, 0.48);" data-name="maxa" data-tags="bonus bez vkladu mobilni aplikace blackjack" data-features="bonus-bez-vkladu,mobilni-aplikace">
+            <tr class="casino-row border" style="background-color: rgba(97, 66, 200, 0.24); border-color: rgba(97, 66, 200, 0.48);" data-name="maxa" data-tags="bonus bez vkladu mobilni aplikace blackjack" data-features="bonus-bez-vkladu,mobilni-aplikace" data-badge="Bonus bez vkladu" data-reco="Doporučujeme" data-bonus="Bonus až 300 Kč + Free Spiny" data-fast="Výplaty do 15 minut" data-app="Mobilní aplikace" data-games="1400+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/maxa-logo-mini.webp" alt="Maxa logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.4/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.4</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-maxa" data-default-avg="4.4" data-default-count="11"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/maxa/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(253, 228, 41, 0.20); border-color: rgba(253, 228, 41, 0.45);" data-name="sazka" data-tags="rychle vybery free spiny live casino rtp" data-features="rychle-vybery,free-spiny,live-casino">
+            <tr class="casino-row border" style="background-color: rgba(253, 228, 41, 0.20); border-color: rgba(253, 228, 41, 0.45);" data-name="sazka" data-tags="rychle vybery free spiny live casino rtp" data-features="rychle-vybery,free-spiny,live-casino" data-badge="Rychlé výběry" data-reco="Skvělá volba" data-bonus="Bonus až 500 Kč + 120 Free Spinů" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="2200+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/sazka-logo-mini.webp" alt="Sazka logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.9/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.9</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-sazka" data-default-avg="4.8" data-default-count="19"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/sazka/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
-            <tr class="casino-row border" style="background-color: rgba(124, 6, 60, 0.24); border-color: rgba(124, 6, 60, 0.48);" data-name="synot tip" data-tags="free spiny live casino blackjack" data-features="free-spiny,live-casino">
+            <tr class="casino-row border" style="background-color: rgba(124, 6, 60, 0.24); border-color: rgba(124, 6, 60, 0.48);" data-name="synot tip" data-tags="free spiny live casino blackjack" data-features="free-spiny,live-casino" data-badge="Top automaty" data-reco="Velmi dobré" data-bonus="Bonus až 400 Kč + 80 Free Spinů" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="2100+ her">
               <td class="px-2 py-2 sm:px-4 sm:py-3 font-medium whitespace-nowrap"><img loading="lazy" decoding="async" src="img/synot-tip-mini.webp" alt="SynotTip logo" class="h-6 sm:h-8 w-auto" /></td>
-              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap">8.7/10</td>
+              <td class="px-2 py-2 sm:px-4 sm:py-3 text-yellow-400 font-bold whitespace-nowrap"><span class="score-main">8.7</span><span class="score-denom">/10</span></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-gray-300 whitespace-nowrap"><div class="casino-vote" data-vote-page="casino-synottip" data-default-avg="4.7" data-default-count="26"></div></td>
               <td class="px-2 py-2 sm:px-4 sm:py-3 text-right whitespace-nowrap"><a href="recenze/synottip/" class="inline-flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400 text-[11px] sm:text-xs"><span class="sm:hidden">Bonus</span><span class="hidden sm:inline">Získat bonus</span></a></td>
             </tr>
