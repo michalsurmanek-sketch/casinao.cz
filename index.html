@@ -491,9 +491,21 @@
   
 /* === CASINAO FIX: bonusové kontejnery stejný styl jako casino kontejnery === */
 :root {
-  --casino-row-height: 132px;
+  --casino-row-height: 160px;
   --casino-radius: 22px;
   --casino-gold: #f5c400;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --casino-row-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --casino-row-height: 100px;
+  }
 }
 
 /* Dva stejně působící sloupce */
@@ -1336,8 +1348,8 @@
             </thead>
             <tbody id="casinoTableBody">
             <tr class="casino-row border" style="background-color: rgba(65, 143, 206, 0.22); border-color: rgba(65, 143, 206, 0.45);" data-name="tipsport vegas" data-tags="bonus bez vkladu free spiny live casino blackjack rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace,live-casino" data-badge="Nejlepší bonus týdne" data-reco="Doporučujeme" data-bonus="Bonus až 500 Kč + 100 Free Spinů" data-fast="Výplaty do 5 minut" data-app="Mobilní aplikace" data-games="3000+ her">
-              <td colspan="4" class="p-0 overflow-hidden">
-                <img loading="lazy" decoding="async" src="img/tip.png" alt="Tipsport" class="block w-full h-full min-h-[120px] object-cover" />
+              <td colspan="4" class="p-0 overflow-hidden" style="height: var(--casino-row-height);">
+                <img loading="lazy" decoding="async" src="img/tip.png" alt="Tipsport" class="block w-full h-full object-cover" />
               </td>
             </tr>
             <tr class="casino-row border" style="background-color: rgba(255, 221, 0, 0.20); border-color: rgba(255, 221, 0, 0.45);" data-name="fortuna vegas" data-tags="bonus bez vkladu free spiny mobilni aplikace rtp" data-features="bonus-bez-vkladu,free-spiny,mobilni-aplikace" data-badge="Doporučeno hráči" data-reco="Skvělá volba" data-bonus="Bonus až 300 Kč + 50 Free Spinů" data-fast="Výplaty do 10 minut" data-app="Mobilní aplikace" data-games="2000+ her">
