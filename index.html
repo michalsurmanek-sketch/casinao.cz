@@ -500,11 +500,29 @@
   :root {
     --casino-row-height: 120px;
   }
+  
+  /* Featured obrázek (Tipsport) full-width na mobilu */
+  #casina .mt-8.grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #casina aside {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
   :root {
     --casino-row-height: 100px;
+  }
+  
+  #casina .mx-auto.max-w-7xl {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  #casina table {
+    border-spacing: 0 !important;
   }
 }
 
@@ -624,6 +642,29 @@
   padding: 0 20px !important;
   overflow: hidden;
   transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+/* Featured řádek - full-width obrázek na mobilu */
+#casinoTableBody .casino-row:first-child {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+#casinoTableBody .casino-row:first-child td {
+  height: var(--casino-row-height) !important;
+  min-height: var(--casino-row-height) !important;
+}
+
+@media (max-width: 768px) {
+  #casinoTableBody .casino-row:first-child {
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+  #casinoTableBody .casino-row:first-child td {
+    border-radius: 0 !important;
+    border: none !important;
+  }
 }
 
 #casina aside > div:nth-child(1) { background-color: rgba(65, 143, 206, 0.22) !important; border-color: rgba(65, 143, 206, 0.45) !important; }
