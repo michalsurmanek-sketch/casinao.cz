@@ -719,11 +719,101 @@
 }
 
 @media (max-width: 720px) {
+  #casina {
+    overflow-x: hidden;
+  }
+
+  #casina .overflow-x-auto {
+    overflow-x: clip !important;
+  }
+
+  #casina table {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-spacing: 0 10px !important;
+    table-layout: fixed;
+  }
+
+  #casina thead {
+    display: none;
+  }
+
+  #casinoTableBody {
+    display: block;
+  }
+
   #casinoTableBody .casino-row,
-  #casinoTableBody .casino-row td,
   #casina aside > div {
-    height: 112px !important;
-    min-height: 112px !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  #casinoTableBody .casino-row {
+    display: block;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    padding: 10px 12px !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,.28);
+  }
+
+  #casinoTableBody .casino-row td {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 6px 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+
+  #casinoTableBody .casino-row td:first-child {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  #casinoTableBody .casino-row td:last-child {
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2)::before,
+  #casinoTableBody .casino-row td:nth-child(3)::before,
+  #casinoTableBody .casino-row td:nth-child(4)::before {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,.78);
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2)::before {
+    content: "Hodnocení";
+  }
+
+  #casinoTableBody .casino-row td:nth-child(3)::before {
+    content: "Hlasování";
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4)::before {
+    content: "Akce";
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) {
+    justify-content: space-between !important;
+    text-align: left !important;
+  }
+
+  #casinoTableBody .casino-row td:last-child a {
+    min-width: 0 !important;
+    width: auto !important;
+    min-height: 38px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 12px !important;
   }
 
   #casina aside > div > div > div {
@@ -745,8 +835,7 @@
     font-size: 12px !important;
   }
 
-  #casina aside a,
-  #casinoTableBody .casino-row td:last-child a {
+  #casina aside a {
     min-width: 96px;
     min-height: 40px;
     font-size: 0 !important;
@@ -755,6 +844,7 @@
   #casina aside a::before {
     font-size: 12px;
   }
+
 }
 
   </style>
