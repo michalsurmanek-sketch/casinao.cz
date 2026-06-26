@@ -539,6 +539,10 @@
   border-spacing: 0 10px !important;
 }
 
+#casinoTableBody {
+  counter-reset: casino-rank;
+}
+
 #casina thead th {
   font-size: 18px !important;
   font-weight: 800 !important;
@@ -547,6 +551,7 @@
 }
 
 #casinoTableBody .casino-row {
+  counter-increment: casino-rank;
   height: var(--casino-row-height) !important;
   min-height: var(--casino-row-height) !important;
   border-radius: var(--casino-radius) !important;
@@ -570,9 +575,30 @@
 }
 
 #casinoTableBody .casino-row td:first-child {
+  position: relative;
   border-left: 1px solid rgba(255,255,255,.11);
   border-radius: var(--casino-radius) 0 0 var(--casino-radius);
-  padding-left: 24px !important;
+  padding-left: 58px !important;
+}
+
+#casinoTableBody .casino-row td:first-child::before {
+  content: counter(casino-rank);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 900;
+  color: #ffffff;
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid rgba(255,255,255,.24);
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
 }
 
 #casinoTableBody .casino-row td:last-child {
@@ -856,6 +882,17 @@
   #casinoTableBody .casino-row td:first-child {
     grid-area: logo;
     align-self: start;
+    position: relative;
+    padding-left: 30px !important;
+  }
+
+  #casinoTableBody .casino-row td:first-child::before {
+    left: 0;
+    top: 2px;
+    transform: none;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
   }
 
   #casinoTableBody .casino-row td:first-child img {
