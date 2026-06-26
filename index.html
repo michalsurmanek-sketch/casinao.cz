@@ -757,19 +757,19 @@
   #casinoTableBody .casino-row {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
     grid-template-areas:
       "logo top"
       "score benefits"
       "votes benefits"
       "cta cta";
-    gap: 10px 14px;
+    gap: clamp(8px, 2.4vw, 12px) clamp(10px, 3vw, 14px);
     border-radius: 24px !important;
     border: 1px solid rgba(255,255,255,.08) !important;
     box-shadow: 0 10px 40px rgba(0,0,0,.45) !important;
     backdrop-filter: blur(9px);
-    min-height: 318px;
-    padding: 18px 14px 14px !important;
+    min-height: clamp(286px, 72vw, 330px);
+    padding: clamp(12px, 3.6vw, 18px) clamp(10px, 3.4vw, 14px) clamp(10px, 3.2vw, 14px) !important;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease;
   }
@@ -784,12 +784,12 @@
     grid-area: top;
     justify-self: start;
     align-self: start;
-    font-size: 12px;
+    font-size: clamp(10px, 2.8vw, 12px);
     line-height: 1;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .4px;
-    padding: 9px 12px;
+    padding: clamp(6px, 2vw, 9px) clamp(8px, 2.8vw, 12px);
     border-radius: 11px;
     border: 1px solid rgba(255,255,255,.16);
     background: rgba(13,30,62,.62);
@@ -804,10 +804,10 @@
     content: "🛡 Licence CZ\A\A🎁 " attr(data-bonus) "\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
     grid-area: benefits;
     white-space: pre-line;
-    font-size: 14px;
+    font-size: clamp(12px, 3.3vw, 14px);
     line-height: 1.45;
     color: rgba(243,244,246,.95);
-    padding-left: 14px;
+    padding-left: clamp(8px, 2.7vw, 14px);
     border-left: 1px solid rgba(255,255,255,.2);
   }
 
@@ -828,16 +828,16 @@
   }
 
   #casinoTableBody .casino-row td:first-child img {
-    height: 40px !important;
+    height: clamp(30px, 8.5vw, 40px) !important;
     width: auto !important;
-    max-width: 150px;
+    max-width: min(40vw, 150px);
     filter: drop-shadow(0 0 12px rgba(255,255,255,.2));
   }
 
   #casinoTableBody .casino-row td:nth-child(2) {
     grid-area: score;
     align-self: end;
-    font-size: 54px !important;
+    font-size: clamp(39px, 12.4vw, 54px) !important;
     line-height: .86 !important;
     font-weight: 900 !important;
     color: #ffffff !important;
@@ -847,7 +847,7 @@
   #casinoTableBody .casino-row td:nth-child(2)::before {
     content: "★★★★★";
     display: block;
-    font-size: 26px;
+    font-size: clamp(18px, 5.8vw, 26px);
     line-height: 1;
     letter-spacing: 1px;
     color: #facc15;
@@ -861,7 +861,7 @@
     line-height: 1.25;
     font-weight: 700;
     color: #34d399;
-    margin-top: 10px;
+    margin-top: clamp(5px, 1.8vw, 10px);
   }
 
   #casinoTableBody .casino-row td:nth-child(2) .score-denom {
@@ -887,7 +887,7 @@
     grid-area: votes;
     align-self: start;
     color: rgba(229,231,235,.92) !important;
-    font-size: 15px;
+    font-size: clamp(12px, 3.4vw, 15px);
   }
 
   #casinoTableBody .casino-row td:nth-child(4) {
@@ -902,12 +902,13 @@
     justify-content: center;
     gap: 10px;
     width: 100%;
-    min-height: 56px !important;
+    min-height: clamp(48px, 13vw, 56px) !important;
     border-radius: 18px !important;
-    font-size: 18px !important;
+    font-size: clamp(14px, 4.2vw, 18px) !important;
     font-weight: 700 !important;
     letter-spacing: .5px;
     text-transform: uppercase;
+    white-space: nowrap;
     background: linear-gradient(180deg, #facc15, #eab308) !important;
     color: #0b1324 !important;
     box-shadow: 0 12px 26px rgba(245, 196, 0, .24), inset 0 -2px 0 rgba(0,0,0,.22) !important;
@@ -941,6 +942,93 @@
 
   #casina aside {
     display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #casinoTableBody .casino-row {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    border-radius: 20px !important;
+  }
+
+  #casinoTableBody .casino-row::after {
+    line-height: 1.4;
+  }
+
+  #casinoTableBody .casino-row td:last-child a {
+    border-radius: 16px !important;
+    letter-spacing: .35px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  #casinoTableBody .casino-row {
+    min-height: 278px;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2)::before {
+    letter-spacing: .5px;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2) .score-denom {
+    font-size: .5em;
+  }
+
+  #casinoTableBody .casino-row::before {
+    max-width: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 340px) {
+  #casinoTableBody .casino-row {
+    min-height: 268px;
+    gap: 7px 8px;
+    padding: 10px 9px 9px !important;
+  }
+
+  #casinoTableBody .casino-row::before {
+    font-size: 10px;
+    padding: 5px 7px;
+  }
+
+  #casinoTableBody .casino-row::after {
+    font-size: 11px;
+    line-height: 1.35;
+    padding-left: 7px;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2) {
+    font-size: 37px !important;
+  }
+
+  #casinoTableBody .casino-row td:last-child a {
+    min-height: 44px !important;
+    font-size: 12px !important;
+    letter-spacing: .2px;
+    gap: 6px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  #casinoTableBody .casino-row td:last-child a svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 767px) and (orientation: landscape) and (max-height: 500px) {
+  #casinoTableBody .casino-row {
+    min-height: 252px;
+    gap: 8px 10px;
+  }
+
+  #casinoTableBody .casino-row td:last-child a {
+    min-height: 44px !important;
   }
 }
 
