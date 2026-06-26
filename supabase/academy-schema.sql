@@ -98,13 +98,33 @@ create policy "CMS admins delete academy articles"
     )
   );
 
--- Nobody except service role should read/write cms_admins directly
-drop policy if exists "No direct access to cms_admins" on public.cms_admins;
-create policy "No direct access to cms_admins"
+-- Allow authenticated users to read only their own admin row.
+-- This is required so academy_articles RLS checks can verify admin membership.
+drop policy if exists "Read own cms_admin row" on public.cms_admins;
+create policy "Read own cms_admin row"
   on public.cms_admins
-  for all
+  for select
+  using (email = auth.email());
+
+-- Block direct client-side writes to cms_admins table.
+drop policy if exists "No direct insert to cms_admins" on public.cms_admins;
+create policy "No direct insert to cms_admins"
+  on public.cms_admins
+  for insert
+  with check (false);
+
+drop policy if exists "No direct update to cms_admins" on public.cms_admins;
+create policy "No direct update to cms_admins"
+  on public.cms_admins
+  for update
   using (false)
   with check (false);
+
+drop policy if exists "No direct delete from cms_admins" on public.cms_admins;
+create policy "No direct delete from cms_admins"
+  on public.cms_admins
+  for delete
+  using (false);
 
 -- Seed minimal articles matching current navody structure
 insert into public.academy_articles (slug, title, description, url, image, category, level, tags, reading_time, views, featured, published, updated_at)
