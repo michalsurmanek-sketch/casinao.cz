@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Casino Akademie Admin | Casinao.cz</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+          display: ['Montserrat', 'ui-sans-serif', 'system-ui']
+        }
+      }
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-100 font-sans min-h-screen">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="text-xs text-yellow-300 uppercase tracking-wide">CMS</p>
+          <h1 class="font-display text-3xl font-extrabold mt-1">Casino Akademie Admin</h1>
+          <p class="text-sm text-gray-300 mt-2">Správa článků pro navody.html přes Supabase</p>
+        </div>
+        <button id="btnLogout" class="hidden rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/10">Odhlásit</button>
+      </div>
+    </header>
+
+    <section id="setupPanel" class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+      <h2 class="font-display text-xl font-bold">Nastavení připojení</h2>
+      <p class="text-sm text-gray-300 mt-1">Vyplň Supabase URL a anon key. Hodnoty lze uložit do localStorage.</p>
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <label class="text-sm">
+          <span class="text-gray-300">Supabase URL</span>
+          <input id="cfgUrl" type="url" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" placeholder="https://xxxx.supabase.co" />
+        </label>
+        <label class="text-sm">
+          <span class="text-gray-300">Anon key</span>
+          <input id="cfgAnon" type="text" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" placeholder="eyJ..." />
+        </label>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button id="btnSaveCfg" class="rounded-xl bg-yellow-500 px-4 py-2 text-gray-900 font-semibold hover:bg-yellow-400">Uložit konfiguraci</button>
+        <button id="btnConnect" class="rounded-xl border border-white/10 px-4 py-2 hover:bg-white/10">Připojit</button>
+      </div>
+      <p id="cfgStatus" class="mt-3 text-sm text-gray-400"></p>
+    </section>
+
+    <section id="authPanel" class="mt-6 hidden rounded-2xl border border-white/10 bg-white/5 p-5">
+      <h2 class="font-display text-xl font-bold">Přihlášení admina</h2>
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <label class="text-sm">
+          <span class="text-gray-300">E-mail</span>
+          <input id="loginEmail" type="email" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" />
+        </label>
+        <label class="text-sm">
+          <span class="text-gray-300">Heslo</span>
+          <input id="loginPassword" type="password" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" />
+        </label>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button id="btnLogin" class="rounded-xl bg-yellow-500 px-4 py-2 text-gray-900 font-semibold hover:bg-yellow-400">Přihlásit</button>
+      </div>
+      <p id="authStatus" class="mt-3 text-sm text-gray-400"></p>
+    </section>
+
+    <section id="adminPanel" class="mt-6 hidden space-y-6">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <h2 class="font-display text-xl font-bold">Články</h2>
+          <button id="btnReload" class="rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Obnovit data</button>
+        </div>
+        <div class="mt-4 overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="text-gray-300">
+              <tr class="border-b border-white/10">
+                <th class="text-left py-2 pr-3">Název</th>
+                <th class="text-left py-2 pr-3">Slug</th>
+                <th class="text-left py-2 pr-3">Kategorie</th>
+                <th class="text-left py-2 pr-3">Aktualizace</th>
+                <th class="text-left py-2">Akce</th>
+              </tr>
+            </thead>
+            <tbody id="articlesTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+        <h2 class="font-display text-xl font-bold">Editor článku</h2>
+        <p class="text-sm text-gray-300 mt-1">Vytvoření i úprava používá stejný formulář.</p>
+
+        <form id="articleForm" class="mt-4 grid md:grid-cols-2 gap-4">
+          <input id="fId" type="hidden" />
+          <label class="text-sm md:col-span-2"><span class="text-gray-300">Název</span><input id="fTitle" required class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">Slug</span><input id="fSlug" required class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">URL</span><input id="fUrl" required class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" placeholder="navody/moje-tema.html" /></label>
+          <label class="text-sm md:col-span-2"><span class="text-gray-300">Popis</span><textarea id="fDescription" rows="3" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2"></textarea></label>
+          <label class="text-sm"><span class="text-gray-300">Obrázek</span><input id="fImage" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" placeholder="img/vyhledavani.png" /></label>
+          <label class="text-sm"><span class="text-gray-300">Kategorie</span><input id="fCategory" required class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">Úroveň</span><select id="fLevel" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2"><option>Začátečník</option><option>Pokročilý</option></select></label>
+          <label class="text-sm"><span class="text-gray-300">Tagy (oddělené čárkou)</span><input id="fTags" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" placeholder="RTP,Automaty,Strategie" /></label>
+          <label class="text-sm"><span class="text-gray-300">Doba čtení (min)</span><input id="fReadingTime" type="number" min="1" value="5" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">Zobrazení (views)</span><input id="fViews" type="number" min="0" value="0" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">Aktualizace</span><input id="fUpdatedAt" type="date" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2" /></label>
+          <label class="text-sm"><span class="text-gray-300">Publikováno</span><select id="fPublished" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2"><option value="true">Ano</option><option value="false">Ne</option></select></label>
+          <label class="text-sm"><span class="text-gray-300">Doporučené</span><select id="fFeatured" class="mt-1 w-full rounded-xl bg-black/30 border border-white/10 px-3 py-2"><option value="false">Ne</option><option value="true">Ano</option></select></label>
+          <div class="md:col-span-2 flex flex-wrap gap-2 pt-2">
+            <button class="rounded-xl bg-yellow-500 px-4 py-2 text-gray-900 font-semibold hover:bg-yellow-400" type="submit">Uložit článek</button>
+            <button id="btnNew" class="rounded-xl border border-white/10 px-4 py-2 hover:bg-white/10" type="button">Nový formulář</button>
+          </div>
+        </form>
+        <p id="formStatus" class="mt-3 text-sm text-gray-400"></p>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const S = {
+    supabase: null,
+    articles: []
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  function getCfg() {
+    return {
+      url: localStorage.getItem('casinao.cms.url') || '',
+      anon: localStorage.getItem('casinao.cms.anon') || ''
+    };
+  }
+
+  function setCfg(url, anon) {
+    localStorage.setItem('casinao.cms.url', url.trim());
+    localStorage.setItem('casinao.cms.anon', anon.trim());
+  }
+
+  function resetForm(article) {
+    const a = article || {
+      id: '',
+      title: '',
+      slug: '',
+      url: '',
+      description: '',
+      image: 'img/vyhledavani.png',
+      category: 'FAQ',
+      level: 'Začátečník',
+      tags: [],
+      reading_time: 5,
+      views: 0,
+      updated_at: new Date().toISOString().slice(0, 10),
+      published: true,
+      featured: false
+    };
+
+    $('fId').value = a.id || '';
+    $('fTitle').value = a.title || '';
+    $('fSlug').value = a.slug || '';
+    $('fUrl').value = a.url || '';
+    $('fDescription').value = a.description || '';
+    $('fImage').value = a.image || '';
+    $('fCategory').value = a.category || '';
+    $('fLevel').value = a.level || 'Začátečník';
+    $('fTags').value = Array.isArray(a.tags) ? a.tags.join(',') : '';
+    $('fReadingTime').value = a.reading_time || 5;
+    $('fViews').value = a.views || 0;
+    $('fUpdatedAt').value = (a.updated_at || new Date().toISOString()).slice(0, 10);
+    $('fPublished').value = String(Boolean(a.published));
+    $('fFeatured').value = String(Boolean(a.featured));
+  }
+
+  async function loadArticles() {
+    const { data, error } = await S.supabase
+      .from('academy_articles')
+      .select('*')
+      .order('updated_at', { ascending: false });
+
+    if (error) {
+      $('formStatus').textContent = 'Chyba při načítání článků: ' + error.message;
+      return;
+    }
+
+    S.articles = data || [];
+    renderTable();
+  }
+
+  function renderTable() {
+    $('articlesTableBody').innerHTML = S.articles.map((a) =>
+      '<tr class="border-b border-white/5">' +
+      '<td class="py-2 pr-3">' + a.title + '</td>' +
+      '<td class="py-2 pr-3 text-gray-300">' + a.slug + '</td>' +
+      '<td class="py-2 pr-3 text-gray-300">' + a.category + '</td>' +
+      '<td class="py-2 pr-3 text-gray-300">' + (a.updated_at || '').toString().slice(0, 10) + '</td>' +
+      '<td class="py-2">' +
+      '<div class="flex gap-2">' +
+      '<button data-edit="' + a.id + '" class="rounded-lg border border-white/10 px-2 py-1 text-xs hover:bg-white/10">Upravit</button>' +
+      '<button data-del="' + a.id + '" class="rounded-lg border border-red-500/30 text-red-300 px-2 py-1 text-xs hover:bg-red-500/10">Smazat</button>' +
+      '</div>' +
+      '</td>' +
+      '</tr>'
+    ).join('');
+  }
+
+  async function connectSupabase() {
+    const cfg = getCfg();
+    if (!cfg.url || !cfg.anon) {
+      $('cfgStatus').textContent = 'Nejdřív vyplň URL a anon key.';
+      return;
+    }
+
+    S.supabase = window.supabase.createClient(cfg.url, cfg.anon);
+    $('cfgStatus').textContent = 'Připojeno. Zkontroluj přihlášení admina.';
+    $('authPanel').classList.remove('hidden');
+
+    const { data } = await S.supabase.auth.getSession();
+    if (data && data.session) {
+      await onLoggedIn();
+    }
+  }
+
+  async function onLoggedIn() {
+    $('btnLogout').classList.remove('hidden');
+    $('adminPanel').classList.remove('hidden');
+    $('authStatus').textContent = 'Přihlášení proběhlo úspěšně.';
+    await loadArticles();
+    resetForm();
+  }
+
+  function currentPayloadFromForm() {
+    return {
+      title: $('fTitle').value.trim(),
+      slug: $('fSlug').value.trim(),
+      url: $('fUrl').value.trim(),
+      description: $('fDescription').value.trim(),
+      image: $('fImage').value.trim() || 'img/vyhledavani.png',
+      category: $('fCategory').value.trim(),
+      level: $('fLevel').value,
+      tags: $('fTags').value.split(',').map((x) => x.trim()).filter(Boolean),
+      reading_time: Number($('fReadingTime').value || 5),
+      views: Number($('fViews').value || 0),
+      updated_at: $('fUpdatedAt').value,
+      published: $('fPublished').value === 'true',
+      featured: $('fFeatured').value === 'true'
+    };
+  }
+
+  async function saveArticle(e) {
+    e.preventDefault();
+    const id = $('fId').value;
+    const payload = currentPayloadFromForm();
+
+    let res;
+    if (id) {
+      res = await S.supabase.from('academy_articles').update(payload).eq('id', id);
+    } else {
+      res = await S.supabase.from('academy_articles').insert(payload);
+    }
+
+    if (res.error) {
+      $('formStatus').textContent = 'Chyba při ukládání: ' + res.error.message;
+      return;
+    }
+
+    $('formStatus').textContent = 'Článek uložen.';
+    await loadArticles();
+    if (!id) resetForm();
+  }
+
+  async function deleteArticle(id) {
+    if (!confirm('Opravdu smazat článek?')) return;
+    const { error } = await S.supabase.from('academy_articles').delete().eq('id', id);
+    if (error) {
+      $('formStatus').textContent = 'Chyba při mazání: ' + error.message;
+      return;
+    }
+    $('formStatus').textContent = 'Článek byl smazán.';
+    await loadArticles();
+    resetForm();
+  }
+
+  async function init() {
+    const cfg = getCfg();
+    $('cfgUrl').value = cfg.url;
+    $('cfgAnon').value = cfg.anon;
+
+    $('btnSaveCfg').addEventListener('click', () => {
+      setCfg($('cfgUrl').value, $('cfgAnon').value);
+      $('cfgStatus').textContent = 'Konfigurace uložena do localStorage.';
+    });
+
+    $('btnConnect').addEventListener('click', connectSupabase);
+
+    $('btnLogin').addEventListener('click', async () => {
+      if (!S.supabase) {
+        $('authStatus').textContent = 'Nejdřív klikni na Připojit.';
+        return;
+      }
+      const email = $('loginEmail').value.trim();
+      const password = $('loginPassword').value;
+      const { error } = await S.supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        $('authStatus').textContent = 'Chyba přihlášení: ' + error.message;
+        return;
+      }
+      await onLoggedIn();
+    });
+
+    $('btnLogout').addEventListener('click', async () => {
+      if (!S.supabase) return;
+      await S.supabase.auth.signOut();
+      location.reload();
+    });
+
+    $('btnReload').addEventListener('click', loadArticles);
+    $('btnNew').addEventListener('click', () => resetForm());
+    $('articleForm').addEventListener('submit', saveArticle);
+
+    $('articlesTableBody').addEventListener('click', async (e) => {
+      const editBtn = e.target.closest('[data-edit]');
+      const delBtn = e.target.closest('[data-del]');
+      if (editBtn) {
+        const id = editBtn.getAttribute('data-edit');
+        const row = S.articles.find((a) => a.id === id);
+        if (row) resetForm(row);
+      }
+      if (delBtn) {
+        const id = delBtn.getAttribute('data-del');
+        await deleteArticle(id);
+      }
+    });
+  }
+
+  init();
+</script>
+</body>
+</html>

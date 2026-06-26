@@ -56,3 +56,68 @@ If this object is missing, voting automatically works in local fallback mode.
 - 1 vote per `ip_hash` per page per 24h (enforced in Edge Function).
 - Add rate limiting (e.g. 5 req/min/IP).
 - Optional Turnstile/hCaptcha for extra protection.
+
+---
+
+# Casino Akademie CMS (Admin)
+
+Tento projekt podporuje plny CMS pro `navody.html` pres Supabase tabulku.
+
+## 1) SQL schema pro CMS
+
+V Supabase SQL Editoru spust:
+
+- `supabase/academy-schema.sql`
+
+Schema vytvori:
+
+- `public.academy_articles` (obsah clanku)
+- `public.cms_admins` (seznam admin e-mailu)
+- RLS politiky pro verejne cteni publikovanych clanku a admin CRUD
+
+## 2) Vytvor admin uzivatele
+
+1. V Supabase Auth vytvor uzivatele (email + heslo).
+2. Pridat stejny email do tabulky `public.cms_admins`:
+
+```sql
+insert into public.cms_admins (email) values ('admin@domena.cz')
+on conflict (email) do nothing;
+```
+
+## 3) Admin rozhrani
+
+- Otevri `academy-admin.html`
+- Vypln `Supabase URL` a `Anon key`
+- Prihlas se admin emailem a heslem
+- Spravuj clanky (create/update/delete)
+
+Poznamka: Stranka je bezpecna pouze pri spravne RLS konfiguraci a neveřejném přístupu k admin URL.
+
+## 4) Napojeni `navody.html` na DB
+
+Do `navody.html` pred hlavni skript vloz konfiguraci:
+
+```html
+<script>
+  window.CASINAO_CMS = {
+    url: 'https://<project-ref>.supabase.co',
+    anonKey: '<supabase-anon-key>'
+  };
+</script>
+```
+
+Kdyz konfigurace neni nastavena, stranka automaticky pouzije lokalni fallback data.
+
+## 5) Publikace clanku
+
+Sloupec `published`:
+
+- `true` = zobrazi se verejne na `navody.html`
+- `false` = jen draft v adminu
+
+## 6) Doporuceni pro produkci
+
+- Omezit pristup k `academy-admin.html` (Basic Auth, allowlist, nebo interni URL)
+- Pravidelne zalohovat tabulku `academy_articles`
+- Pred nasazenim testovat RLS pravidla s anon i admin uctem
