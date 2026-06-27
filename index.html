@@ -2466,11 +2466,22 @@
 
     const searchInput = document.getElementById('casinoSearch');
     const rows = Array.from(document.querySelectorAll('.casino-row'));
+    const bonusCards = Array.from(document.querySelectorAll('#casina aside > div'));
     const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
     const clearFilters = document.getElementById('clearFilters');
     const showAllReviews = document.getElementById('showAllReviews');
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
+
+    function normalizeSearchKey(value) {
+      return (value || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
 
     function syncMobileBonusLines() {
       rows.forEach((row) => {
@@ -2499,6 +2510,7 @@
     function applyCasinoFilters() {
       const query = (searchInput?.value || '').trim().toLowerCase();
       let visible = 0;
+      const visibleCasinoKeys = new Set();
 
       rows.forEach((row) => {
         const name = (row.getAttribute('data-name') || '').toLowerCase();
@@ -2510,7 +2522,19 @@
         const show = searchOk && featureOk;
 
         row.classList.toggle('hidden', !show);
-        if (show) visible += 1;
+        if (show) {
+          visible += 1;
+          visibleCasinoKeys.add(normalizeSearchKey(name));
+        }
+      });
+
+      bonusCards.forEach((card) => {
+        const cardText = normalizeSearchKey(card.textContent);
+        const show = visibleCasinoKeys.size === 0
+          ? !query && activeFilters.size === 0
+          : Array.from(visibleCasinoKeys).some((key) => cardText.includes(key));
+
+        card.classList.toggle('hidden', !show);
       });
 
       if (noResults) {
