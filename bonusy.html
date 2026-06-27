@@ -59,6 +59,45 @@
         justify-content: center;
       }
     }
+
+    .bonusy-filter-btn {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      color: #f3f4f6;
+      border-radius: 999px;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1.1;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .bonusy-filter-btn:hover {
+      border-color: rgba(250, 204, 21, 0.7);
+      color: #fef08a;
+    }
+
+    .bonusy-filter-btn.is-active {
+      background: #eab308;
+      color: #111827;
+      border-color: #eab308;
+    }
+
+    .casino-row.is-hidden {
+      display: none !important;
+    }
+
+    .bonusy-type-chip {
+      display: inline-block;
+      margin-top: 0.35rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 204, 21, 0.55);
+      color: #fef08a;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
@@ -75,6 +114,16 @@
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
     <h1 class="text-2xl sm:text-3xl font-extrabold">Bonusy: všech 27 kasín</h1>
     <p class="mt-2 text-gray-300 text-sm sm:text-base">Aktuální nabídky bonusů a rychlé odkazy na vyzvednutí.</p>
+
+    <section class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-3 sm:p-4" aria-label="Filtr bonusů">
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="Kategorie bonusů">
+        <button type="button" class="bonusy-filter-btn is-active" data-bonus-filter="all">Všechny bonusy</button>
+        <button type="button" class="bonusy-filter-btn" data-bonus-filter="registrace">Bonusy za registraci</button>
+        <button type="button" class="bonusy-filter-btn" data-bonus-filter="bez-vkladu">Bonusy bez vkladu</button>
+        <button type="button" class="bonusy-filter-btn" data-bonus-filter="vklad">Bonusy za vklad</button>
+      </div>
+      <p id="bonusyFilterStatus" class="mt-3 text-xs sm:text-sm text-gray-300">Zobrazeno 27 z 27 kasín</p>
+    </section>
 
     <section class="bonusy-table-wrap mt-6 overflow-x-auto">
       <table class="bonusy-table min-w-full text-xs sm:text-sm border-separate" style="border-spacing:0 8px">
@@ -253,5 +302,80 @@
       </table>
     </section>
   </main>
+
+  <script>
+    (function () {
+      var rows = Array.from(document.querySelectorAll('#casinoTableBody .casino-row'));
+      var buttons = Array.from(document.querySelectorAll('[data-bonus-filter]'));
+      var statusEl = document.getElementById('bonusyFilterStatus');
+
+      if (!rows.length || !buttons.length || !statusEl) {
+        return;
+      }
+
+      function classifyBonusType(row) {
+        var features = (row.dataset.features || '').toLowerCase();
+        var bonus = (row.dataset.bonus || '').toLowerCase();
+        var badge = (row.dataset.badge || '').toLowerCase();
+        var text = features + ' ' + bonus + ' ' + badge;
+
+        if (text.indexOf('bonus-bez-vkladu') !== -1 || text.indexOf('bez vkladu') !== -1) {
+          return 'bez-vkladu';
+        }
+
+        if (text.indexOf('registrac') !== -1 || text.indexOf('free spin') !== -1 || text.indexOf('free-spiny') !== -1) {
+          return 'registrace';
+        }
+
+        return 'vklad';
+      }
+
+      var typeLabels = {
+        registrace: 'Za registraci',
+        'bez-vkladu': 'Bez vkladu',
+        vklad: 'Za vklad'
+      };
+
+      rows.forEach(function (row) {
+        var type = classifyBonusType(row);
+        row.dataset.bonusType = type;
+
+        var firstCell = row.querySelector('td');
+        if (firstCell && !firstCell.querySelector('.bonusy-type-chip')) {
+          var chip = document.createElement('span');
+          chip.className = 'bonusy-type-chip';
+          chip.textContent = typeLabels[type] || 'Bonus';
+          firstCell.appendChild(document.createElement('br'));
+          firstCell.appendChild(chip);
+        }
+      });
+
+      function applyFilter(filter) {
+        var visibleCount = 0;
+
+        rows.forEach(function (row) {
+          var show = filter === 'all' || row.dataset.bonusType === filter;
+          row.classList.toggle('is-hidden', !show);
+          if (show) {
+            visibleCount += 1;
+          }
+        });
+
+        buttons.forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.dataset.bonusFilter === filter);
+        });
+
+        statusEl.textContent = 'Zobrazeno ' + visibleCount + ' z ' + rows.length + ' kasín';
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyFilter(btn.dataset.bonusFilter || 'all');
+        });
+      });
+
+      applyFilter('all');
+    })();
+  </script>
 </body>
 </html>
