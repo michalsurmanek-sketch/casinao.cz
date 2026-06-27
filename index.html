@@ -528,7 +528,7 @@
 
 /* Dva stejně působící sloupce */
 #casina .mt-8.grid {
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.6fr) !important;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 24vw, 360px) !important;
   gap: 2px !important;
   align-items: start !important;
 }
