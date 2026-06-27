@@ -2713,7 +2713,7 @@
         paintStars(starButtons, alreadyVoted);
         starButtons.forEach((btn) => { btn.disabled = true; btn.classList.add('opacity-60', 'cursor-not-allowed'); });
         if (statusEl) {
-          statusEl.innerHTML = 'Už jsi hlasoval(a). <a href="#bonusy" class="text-yellow-400 hover:underline font-medium" aria-label="Bonusy">Bonusy</a>';
+          statusEl.textContent = 'Už jsi hlasoval(a).';
           statusEl.classList.remove('text-gray-400', 'text-green-300', 'text-red-300', 'text-yellow-300');
         }
         return;
