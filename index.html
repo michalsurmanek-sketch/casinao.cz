@@ -884,7 +884,7 @@
   }
 
   #casinoTableBody .casino-row::after {
-    content: "🛡 Licence CZ " attr(data-license) "\A🎁 BONUS: " attr(data-bonus) "\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
+    content: "🛡 Licence CZ " attr(data-license) "\A\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
     grid-area: benefits;
     white-space: pre-line;
     font-size: clamp(9px, 2.2vw, 10.5px);
@@ -896,7 +896,21 @@
     border-left: 1px solid rgba(255,255,255,.2);
     margin-top: 0;
     padding-top: 4px;
+  }
+
+  #casinoTableBody .casino-row .casino-bonus-line {
+    grid-area: benefits;
+    align-self: start;
+    margin-top: 16px;
+    margin-left: -6px;
+    padding-left: clamp(10px, 3vw, 16px);
+    font-size: clamp(9px, 2.2vw, 10.5px);
+    line-height: 1.2;
+    font-weight: 800;
+    color: #facc15;
+    text-shadow: 0 0 6px rgba(250, 204, 21, 0.45);
     animation: casino-bonus-blink 1.2s ease-in-out infinite;
+    pointer-events: none;
   }
 
   @keyframes casino-bonus-blink {
@@ -2359,6 +2373,23 @@
     const showAllReviews = document.getElementById('showAllReviews');
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
+
+    function syncMobileBonusLines() {
+      rows.forEach((row) => {
+        const bonusText = row.getAttribute('data-bonus') || '';
+        let bonusLine = row.querySelector('.casino-bonus-line');
+
+        if (!bonusLine) {
+          bonusLine = document.createElement('div');
+          bonusLine.className = 'casino-bonus-line';
+          row.appendChild(bonusLine);
+        }
+
+        bonusLine.textContent = '🎁 BONUS: ' + bonusText;
+      });
+    }
+
+    syncMobileBonusLines();
 
     function applyCasinoFilters() {
       const query = (searchInput?.value || '').trim().toLowerCase();
