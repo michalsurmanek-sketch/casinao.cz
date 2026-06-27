@@ -98,6 +98,101 @@
       font-weight: 700;
       letter-spacing: 0.02em;
     }
+
+    /* Fallback: keep bottom mobile nav visible even if shared CSS fails to load */
+    :root {
+      --bottom-nav-height: 74px;
+    }
+
+    body {
+      padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+    }
+
+    .mbottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 45;
+      background: #07131d;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      height: var(--bottom-nav-height);
+      padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    }
+
+    .mbottom-nav__inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      height: 100%;
+    }
+
+    .mbottom-nav__item {
+      min-width: 0;
+      border-radius: 26px;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      text-decoration: none;
+      background: transparent;
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    .mbottom-nav__item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      flex-shrink: 0;
+      color: #ffffff;
+    }
+
+    .mbottom-nav__label {
+      font-size: 11px;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      color: #d1d5db;
+    }
+
+    .mbottom-nav__item.active {
+      background: #27323a;
+      color: #ffffff;
+    }
+
+    .mbottom-nav__item.active .mbottom-nav__label {
+      color: #ffffff;
+    }
+
+    @media (min-width: 1024px) {
+      body {
+        padding-bottom: 0;
+      }
+
+      .mbottom-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mbottom-nav {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      .mbottom-nav__label {
+        font-size: 10px;
+      }
+    }
   </style>
   <link rel="stylesheet" href="/assets/mobile-bottom-nav.css" />
 </head>
