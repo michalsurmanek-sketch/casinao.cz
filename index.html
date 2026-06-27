@@ -1561,7 +1561,9 @@
           <div class="text-xs text-gray-400 lg:text-right">Filtrace se aplikuje na tabulku casin níže.</div>
         </div>
         <div class="mt-4 flex flex-wrap gap-2" aria-label="Filtry casin">
-          <button type="button" data-filter="bonus-bez-vkladu" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za registraci</button>
+          <button type="button" data-search="bonus za registraci" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za registraci</button>
+          <button type="button" data-search="bonus za vklad" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za vklad</button>
+          <button type="button" data-search="bonus bez vkladu" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus bez vkladu</button>
           <button type="button" data-filter="free-spiny" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Free spiny</button>
           <button type="button" data-filter="rychle-vybery" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Rychlé výběry</button>
           <button type="button" data-filter="mobilni-aplikace" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Mobilní aplikace</button>
@@ -2567,7 +2569,18 @@
 
     filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
+        const searchTerm = btn.getAttribute('data-search');
         const key = btn.getAttribute('data-filter');
+
+        if (searchTerm) {
+          if (searchInput) searchInput.value = searchTerm;
+          activeFilters.clear();
+          filterButtons.forEach((otherBtn) => otherBtn.classList.remove('bg-yellow-500', 'text-gray-900', 'border-yellow-400'));
+          btn.classList.add('bg-yellow-500', 'text-gray-900', 'border-yellow-400');
+          applyCasinoFilters();
+          return;
+        }
+
         if (!key) return;
 
         if (activeFilters.has(key)) {
