@@ -8,6 +8,58 @@
   <meta name="theme-color" content="#111827" />
   <link rel="canonical" href="https://casinao.cz/bonusy.html" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 767px) {
+      .bonusy-table-wrap {
+        overflow-x: visible !important;
+      }
+
+      .bonusy-table {
+        width: 100%;
+        min-width: 0;
+        border-spacing: 0;
+      }
+
+      .bonusy-table thead {
+        display: none;
+      }
+
+      .bonusy-table tbody,
+      .bonusy-table tr,
+      .bonusy-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .bonusy-table tr {
+        margin-bottom: 12px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .bonusy-table td {
+        white-space: normal !important;
+        text-align: left !important;
+      }
+
+      .bonusy-table td:last-child a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
   <header class="border-b border-white/10 bg-gray-900/80 backdrop-blur sticky top-0 z-30">
@@ -24,8 +76,8 @@
     <h1 class="text-2xl sm:text-3xl font-extrabold">Bonusy: všech 27 kasín</h1>
     <p class="mt-2 text-gray-300 text-sm sm:text-base">Aktuální nabídky bonusů a rychlé odkazy na vyzvednutí.</p>
 
-    <section class="mt-6 overflow-x-auto">
-      <table class="min-w-full text-xs sm:text-sm border-separate" style="border-spacing:0 8px">
+    <section class="bonusy-table-wrap mt-6 overflow-x-auto">
+      <table class="bonusy-table min-w-full text-xs sm:text-sm border-separate" style="border-spacing:0 8px">
         <thead class="text-left text-gray-300">
           <tr>
             <th class="px-2 py-2 sm:px-4 sm:py-2">Casino</th>
