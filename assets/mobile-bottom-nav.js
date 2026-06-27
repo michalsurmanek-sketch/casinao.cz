@@ -21,7 +21,7 @@
     '    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.8 19.3 12 12 20.2 4.7 12 12 3.8z"></path><path d="M12 3.8v16.4M4.7 12h14.6"></path></svg>',
     '    <span class="mbottom-nav__label">Bonusy</span>',
     '  </a>',
-    '  <a href="/index.html#casina" class="mbottom-nav__item" data-mobile-bottom-item>',
+    '  <a href="/index.html#top-casina" class="mbottom-nav__item" data-mobile-bottom-item>',
     '    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.2 14.2 8.8l5.1.7-3.7 3.5.9 5.1-4.5-2.4-4.5 2.4.9-5.1-3.7-3.5 5.1-.7z"></path></svg>',
     '    <span class="mbottom-nav__label">TOP Casina</span>',
     '  </a>',
