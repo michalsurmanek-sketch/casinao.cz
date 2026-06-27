@@ -1119,7 +1119,6 @@
   #casinoTableBody .casino-row:nth-child(1)::after,
   #casinoTableBody .casino-row:nth-child(1) .casino-bonus-line,
   #casinoTableBody .casino-row:nth-child(1) td:nth-child(2),
-  #casinoTableBody .casino-row:nth-child(1) td:nth-child(3),
   #casinoTableBody .casino-row:nth-child(1) td:nth-child(4) {
     display: none !important;
   }
@@ -1132,6 +1131,17 @@
   #casinoTableBody .casino-row:nth-child(1) td:first-child::before,
   #casinoTableBody .casino-row:nth-child(1) td:first-child img {
     display: none !important;
+  }
+
+  #casinoTableBody .casino-row:nth-child(1) td:nth-child(3) {
+    display: block !important;
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    width: auto;
+    font-size: clamp(11px, 3vw, 13px);
+    color: rgba(243, 244, 246, 0.96) !important;
+    z-index: 2;
   }
 
 
