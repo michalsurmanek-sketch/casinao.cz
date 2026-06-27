@@ -1556,7 +1556,7 @@
         <div class="grid lg:grid-cols-[1fr_auto] gap-4 items-start">
           <div>
             <label for="casinoSearch" class="block text-sm font-medium">Vyhledávání</label>
-            <input id="casinoSearch" type="search" placeholder="Hledej: Fortuna, Betano, RTP, Blackjack..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input id="casinoSearch" type="search" placeholder="Hledej: Fortuna, bonus za registraci, bonus za vklad..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
           </div>
           <div class="text-xs text-gray-400 lg:text-right">Filtrace se aplikuje na tabulku casin níže.</div>
         </div>
@@ -2514,16 +2514,29 @@
     window.addEventListener('resize', syncMobileBonusLines);
 
     function applyCasinoFilters() {
-      const query = (searchInput?.value || '').trim().toLowerCase();
+      const rawQuery = (searchInput?.value || '').trim().toLowerCase();
+      const query = normalizeSearchKey(rawQuery);
       let visible = 0;
       const visibleCasinoKeys = new Set();
 
       rows.forEach((row) => {
         const name = (row.getAttribute('data-name') || '').toLowerCase();
         const tags = (row.getAttribute('data-tags') || '').toLowerCase();
+        const bonus = (row.getAttribute('data-bonus') || '').toLowerCase();
+        const badge = (row.getAttribute('data-badge') || '').toLowerCase();
         const features = (row.getAttribute('data-features') || '').split(',').map((item) => item.trim()).filter(Boolean);
+        const bonusPhrases = features.includes('bonus-bez-vkladu')
+          ? 'bonus za registraci bonus bez vkladu'
+          : bonus
+            ? 'bonus za vklad'
+            : '';
+        const searchableText = normalizeSearchKey([name, tags, bonus, badge, bonusPhrases].join(' '));
 
-        const searchOk = !query || name.includes(query) || tags.includes(query);
+        const searchOk = !query
+          || searchableText.includes(query)
+          || (query === 'bonus' && searchableText.includes('bonus'))
+          || (query === 'bonus-za-registraci' && searchableText.includes('bonus-za-registraci'))
+          || (query === 'bonus-za-vklad' && searchableText.includes('bonus-za-vklad'));
         const featureOk = activeFilters.size === 0 || Array.from(activeFilters).every((f) => features.includes(f));
         const show = searchOk && featureOk;
 
