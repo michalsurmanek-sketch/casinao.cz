@@ -843,6 +843,7 @@
     box-shadow: 0 10px 40px rgba(0,0,0,.45) !important;
     backdrop-filter: blur(9px);
     min-height: clamp(390px, 104vw, 490px);
+    margin-bottom: 14px;
     padding: clamp(12px, 3.6vw, 18px) clamp(10px, 3.4vw, 14px) clamp(10px, 3.2vw, 14px) !important;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease;
@@ -1033,6 +1034,10 @@
 
   #casinoTableBody .casino-row:nth-child(n+4) {
     background: radial-gradient(circle at 82% 20%, rgba(148, 163, 184, 0.14), rgba(148, 163, 184, 0) 42%), linear-gradient(130deg, rgba(9, 26, 46, 0.92), rgba(7, 16, 30, 0.97)) !important;
+  }
+
+  #casinoTableBody .casino-row:last-child {
+    margin-bottom: 0;
   }
 
   #casina aside {
