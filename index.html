@@ -560,6 +560,32 @@
   width: 100% !important;
 }
 
+@media (min-width: 768px) {
+  #casina table {
+    table-layout: fixed !important;
+  }
+
+  #casina thead th:nth-child(1),
+  #casinoTableBody .casino-row td:first-child {
+    width: 28%;
+  }
+
+  #casina thead th:nth-child(2),
+  #casinoTableBody .casino-row td:nth-child(2) {
+    width: 18%;
+  }
+
+  #casina thead th:nth-child(3),
+  #casinoTableBody .casino-row td:nth-child(3) {
+    width: 22%;
+  }
+
+  #casina thead th:nth-child(4),
+  #casinoTableBody .casino-row td:nth-child(4) {
+    width: 32%;
+  }
+}
+
 #casinoTableBody {
   counter-reset: casino-rank;
 }
