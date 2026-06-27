@@ -1556,19 +1556,19 @@
         <div class="grid lg:grid-cols-[1fr_auto] gap-4 items-start">
           <div>
             <label for="casinoSearch" class="block text-sm font-medium">Vyhledávání</label>
-            <input id="casinoSearch" type="search" placeholder="Hledej: Fortuna, bonus za registraci, bonus za vklad..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input id="casinoSearch" type="search" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" placeholder="Hledej: Fortuna, bonus za registraci, bonus za vklad..." class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
           </div>
           <div class="text-xs text-gray-400 lg:text-right">Filtrace se aplikuje na tabulku casin níže.</div>
         </div>
-        <div class="mt-4 flex flex-wrap gap-2" aria-label="Filtry casin">
-          <button type="button" data-search="bonus za registraci" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za registraci</button>
-          <button type="button" data-search="bonus za vklad" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za vklad</button>
-          <button type="button" data-search="bonus bez vkladu" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus bez vkladu</button>
-          <button type="button" data-filter="free-spiny" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Free spiny</button>
-          <button type="button" data-filter="rychle-vybery" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Rychlé výběry</button>
-          <button type="button" data-filter="mobilni-aplikace" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Mobilní aplikace</button>
-          <button type="button" data-filter="live-casino" class="filter-btn rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Live casino</button>
-          <button type="button" id="clearFilters" class="rounded-xl border border-yellow-500/40 text-yellow-300 px-3 py-2 text-sm hover:bg-yellow-500/10">Vymazat filtry</button>
+        <div class="mt-4 flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible" aria-label="Filtry casin">
+          <button type="button" data-search="bonus za registraci" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za registraci</button>
+          <button type="button" data-search="bonus za vklad" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus za vklad</button>
+          <button type="button" data-search="bonus bez vkladu" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Bonus bez vkladu</button>
+          <button type="button" data-filter="free-spiny" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Free spiny</button>
+          <button type="button" data-filter="rychle-vybery" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Rychlé výběry</button>
+          <button type="button" data-filter="mobilni-aplikace" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Mobilní aplikace</button>
+          <button type="button" data-filter="live-casino" class="filter-btn shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/10">Live casino</button>
+          <button type="button" id="clearFilters" class="shrink-0 rounded-xl border border-yellow-500/40 text-yellow-300 px-3 py-2 text-sm hover:bg-yellow-500/10">Vymazat filtry</button>
         </div>
       </div>
 
