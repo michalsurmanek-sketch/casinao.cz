@@ -91,3 +91,9 @@ body {
     font-size: 10px;
   }
 }
+
+@media (max-width: 1023px) {
+  #toTop {
+    bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 14px);
+  }
+}
