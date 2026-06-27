@@ -2435,8 +2435,14 @@
 
     function syncMobileBonusLines() {
       rows.forEach((row) => {
-        const bonusText = row.getAttribute('data-bonus') || '';
         let bonusLine = row.querySelector('.casino-bonus-line');
+
+        if (window.innerWidth >= 768) {
+          if (bonusLine) bonusLine.remove();
+          return;
+        }
+
+        const bonusText = row.getAttribute('data-bonus') || '';
 
         if (!bonusLine) {
           bonusLine = document.createElement('div');
@@ -2449,6 +2455,7 @@
     }
 
     syncMobileBonusLines();
+    window.addEventListener('resize', syncMobileBonusLines);
 
     function applyCasinoFilters() {
       const query = (searchInput?.value || '').trim().toLowerCase();
