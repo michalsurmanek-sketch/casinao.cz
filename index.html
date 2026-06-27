@@ -842,7 +842,7 @@
     border: 1px solid rgba(255,255,255,.08) !important;
     box-shadow: 0 10px 40px rgba(0,0,0,.45) !important;
     backdrop-filter: blur(9px);
-    min-height: clamp(273px, 74vw, 339px);
+    min-height: clamp(300px, 81vw, 373px);
     padding: clamp(12px, 3.6vw, 18px) clamp(10px, 3.4vw, 14px) clamp(10px, 3.2vw, 14px) !important;
     overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease;
@@ -873,7 +873,7 @@
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: -4px;
+    margin-top: 0;
   }
 
   #casinoTableBody .casino-row::after {
@@ -885,7 +885,8 @@
     color: rgba(243,244,246,.95);
     padding-left: clamp(8px, 2.7vw, 14px);
     border-left: 1px solid rgba(255,255,255,.2);
-    margin-top: -10px;
+    margin-top: 0;
+    padding-top: 4px;
   }
 
   #casinoTableBody .casino-row td {
@@ -1058,7 +1059,7 @@
 
 @media (max-width: 360px) {
   #casinoTableBody .casino-row {
-    min-height: 260px;
+    min-height: 286px;
     gap: 6px 8px;
     padding: 10px 9px 9px !important;
   }
@@ -1113,7 +1114,7 @@
 
 @media (max-width: 767px) and (orientation: landscape) and (max-height: 500px) {
   #casinoTableBody .casino-row {
-    min-height: 240px;
+    min-height: 264px;
     gap: 6px 10px;
   }
 
