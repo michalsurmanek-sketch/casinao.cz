@@ -847,7 +847,7 @@
     border: 1px solid rgba(255,255,255,.08) !important;
     box-shadow: 0 10px 40px rgba(0,0,0,.45) !important;
     backdrop-filter: blur(9px);
-    min-height: clamp(390px, 104vw, 490px);
+    min-height: clamp(460px, 122vw, 580px);
     margin-bottom: 14px;
     padding: clamp(12px, 3.6vw, 18px) clamp(10px, 3.4vw, 14px) clamp(10px, 3.2vw, 14px) !important;
     overflow: hidden;
@@ -988,6 +988,7 @@
 
   #casinoTableBody .casino-row td:nth-child(4) {
     grid-area: cta;
+    display: block !important;
     align-self: end;
     padding-top: 6px !important;
   }
@@ -1008,6 +1009,8 @@
     white-space: nowrap;
     background: linear-gradient(180deg, #facc15, #eab308) !important;
     color: #0b1324 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     box-shadow: 0 10px 22px rgba(245, 196, 0, .22), inset 0 -2px 0 rgba(0,0,0,.22) !important;
     transition: transform .2s ease, box-shadow .2s ease;
   }
@@ -1022,7 +1025,12 @@
   }
 
   #casinoTableBody .casino-row td:last-child a span:last-child {
-    display: inline !important;
+    display: none !important;
+  }
+
+  #casinoTableBody .casino-row td:last-child a::before {
+    content: "Ziskat bonus";
+    display: inline;
   }
 
   #casinoTableBody .casino-row:nth-child(1) {
@@ -1071,7 +1079,7 @@
 
 @media (max-width: 360px) {
   #casinoTableBody .casino-row {
-    min-height: 370px;
+    min-height: 430px;
     gap: 6px 8px;
     padding: 10px 9px 9px !important;
   }
@@ -1126,7 +1134,7 @@
 
 @media (max-width: 767px) and (orientation: landscape) and (max-height: 500px) {
   #casinoTableBody .casino-row {
-    min-height: 340px;
+    min-height: 390px;
     gap: 6px 10px;
   }
 
