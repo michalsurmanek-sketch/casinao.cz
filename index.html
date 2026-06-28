@@ -2530,6 +2530,15 @@
         .replace(/^-+|-+$/g, '');
     }
 
+    function compactSearchKey(value) {
+      return (value || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '');
+    }
+
     function syncMobileBonusLines() {
       rows.forEach((row) => {
         let bonusLine = row.querySelector('.casino-bonus-line');
@@ -2596,6 +2605,7 @@
     function applyCasinoFilters() {
       const rawQuery = (searchInput?.value || '').trim().toLowerCase();
       const query = normalizeSearchKey(rawQuery);
+      const queryCompact = compactSearchKey(rawQuery);
       let visible = 0;
       const visibleCasinoKeys = new Set();
 
@@ -2614,11 +2624,36 @@
         const voteAvg = (voteEl?.getAttribute('data-default-avg') || '').toLowerCase();
         const voteCount = (voteEl?.getAttribute('data-default-count') || '').toLowerCase();
         const rank = String(index + 1);
+        const nameCompact = compactSearchKey(name);
+        const nameWordCompacts = name
+          .split(/\s+/)
+          .map((part) => compactSearchKey(part))
+          .filter(Boolean);
+        const datasetText = Object.values(row.dataset || {}).join(' ').toLowerCase();
+        const visibleText = (row.textContent || '').toLowerCase();
         const bonusPhrases = features.includes('bonus-bez-vkladu')
           ? 'bonus za registraci bonus bez vkladu'
           : bonus
             ? 'bonus za vklad'
             : '';
+        const rawSearchableText = [
+          name,
+          tags,
+          bonus,
+          badge,
+          bonusPhrases,
+          license,
+          fast,
+          app,
+          games,
+          reco,
+          voteAvg,
+          voteCount,
+          rank,
+          datasetText,
+          visibleText
+        ].join(' ');
+        const searchableCompact = compactSearchKey(rawSearchableText);
         const searchableText = normalizeSearchKey([
           name,
           tags,
@@ -2632,11 +2667,21 @@
           reco,
           voteAvg,
           voteCount,
-          rank
+          rank,
+          datasetText,
+          visibleText
         ].join(' '));
+
+        const namePrefixOk = queryCompact.length >= 3 && (
+          nameCompact.startsWith(queryCompact)
+          || nameWordCompacts.some((part) => part.startsWith(queryCompact))
+        );
 
         const searchOk = !query
           || searchableText.includes(query)
+          || (!!rawQuery && rawSearchableText.includes(rawQuery))
+          || (!!queryCompact && searchableCompact.includes(queryCompact))
+          || namePrefixOk
           || (query === 'bonus' && searchableText.includes('bonus'))
           || (query === 'bonus-za-registraci' && searchableText.includes('bonus-za-registraci'))
           || (query === 'bonus-za-vklad' && searchableText.includes('bonus-za-vklad'));
