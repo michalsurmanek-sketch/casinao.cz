@@ -2710,7 +2710,9 @@
     }
 
     if (searchInput) {
-      searchInput.addEventListener('input', applyCasinoFilters);
+      ['input', 'search', 'keyup', 'change'].forEach((eventName) => {
+        searchInput.addEventListener(eventName, applyCasinoFilters);
+      });
     }
 
     filterButtons.forEach((btn) => {
