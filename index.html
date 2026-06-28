@@ -1140,6 +1140,9 @@
     color: transparent !important;
     text-shadow: none !important;
     background: none !important;
+    background-position: center !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
   }
 
   #casinoTableBody .casino-row td:first-child * {
@@ -2515,7 +2518,7 @@
 
         if (firstCell) {
           firstCell.style.setProperty('background', cardBackground, 'important');
-          firstCell.style.setProperty('background-size', 'cover', 'important');
+          firstCell.style.setProperty('background-size', '100% 100%', 'important');
           firstCell.style.setProperty('background-position', 'center', 'important');
           firstCell.style.setProperty('background-repeat', 'no-repeat', 'important');
         }
