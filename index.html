@@ -1139,10 +1139,7 @@
     line-height: 0 !important;
     color: transparent !important;
     text-shadow: none !important;
-    background: inherit !important;
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
+    background: none !important;
   }
 
   #casinoTableBody .casino-row td:first-child * {
@@ -2509,18 +2506,18 @@
         }
 
         const imageName = rank + 'bonus.png';
-        const layeredBackground = "url('/img/" + imageName + "') center/cover no-repeat, url('img/" + imageName + "') center/cover no-repeat";
+        const cardBackground = "url('/img/" + imageName + "') center/cover no-repeat";
 
-        row.style.setProperty('background', layeredBackground, 'important');
-        row.style.setProperty('background-size', 'cover, cover', 'important');
-        row.style.setProperty('background-position', 'center, center', 'important');
-        row.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
+        row.style.setProperty('background', 'none', 'important');
+        row.style.setProperty('background-size', 'initial', 'important');
+        row.style.setProperty('background-position', 'initial', 'important');
+        row.style.setProperty('background-repeat', 'initial', 'important');
 
         if (firstCell) {
-          firstCell.style.setProperty('background', layeredBackground, 'important');
-          firstCell.style.setProperty('background-size', 'cover, cover', 'important');
-          firstCell.style.setProperty('background-position', 'center, center', 'important');
-          firstCell.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
+          firstCell.style.setProperty('background', cardBackground, 'important');
+          firstCell.style.setProperty('background-size', 'cover', 'important');
+          firstCell.style.setProperty('background-position', 'center', 'important');
+          firstCell.style.setProperty('background-repeat', 'no-repeat', 'important');
         }
       });
     }
