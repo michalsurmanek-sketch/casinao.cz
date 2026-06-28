@@ -1111,7 +1111,10 @@
   #casinoTableBody .casino-row {
     grid-template-columns: 1fr;
     grid-template-areas: "logo";
-    min-height: clamp(236px, 64vw, 312px) !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
     background-origin: border-box;
     background-clip: border-box;
     background-position: center;
@@ -1188,13 +1191,13 @@
 @media (max-width: 420px) {
   #casinoTableBody .casino-row {
     border-radius: 20px !important;
-    min-height: clamp(220px, 68vw, 300px) !important;
+    aspect-ratio: 16 / 10;
   }
 }
 
 @media (max-width: 360px) {
   #casinoTableBody .casino-row {
-    min-height: clamp(204px, 72vw, 276px) !important;
+    aspect-ratio: 4 / 3;
     padding: 8px !important;
   }
 
