@@ -1115,6 +1115,8 @@
     height: auto !important;
     min-height: 0 !important;
     aspect-ratio: 16 / 9;
+    overflow: visible;
+    margin-bottom: 30px;
     background-origin: border-box;
     background-clip: border-box;
     background-position: center;
@@ -1159,10 +1161,12 @@
   #casinoTableBody .casino-row td:nth-child(3) {
     display: block !important;
     position: absolute;
-    left: 10px;
-    bottom: 8px;
-    width: auto;
+    left: 0;
+    bottom: -22px;
+    width: 100%;
+    padding-left: 10px !important;
     font-size: clamp(11px, 3vw, 13px);
+    line-height: 1.2;
     color: rgba(243, 244, 246, 0.96) !important;
     z-index: 2;
   }
@@ -1218,8 +1222,8 @@
   }
 
   #casinoTableBody .casino-row td:nth-child(3) {
-    left: 8px;
-    bottom: 6px;
+    bottom: -20px;
+    padding-left: 8px !important;
     font-size: clamp(10px, 2.9vw, 12px);
   }
 }
