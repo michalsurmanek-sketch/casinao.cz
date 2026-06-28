@@ -2448,6 +2448,21 @@
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
 
+    function setupMobileRowLinks() {
+      rows.forEach((row) => {
+        const ctaLink = row.querySelector('td:last-child a');
+        if (!ctaLink) return;
+
+        row.style.cursor = 'pointer';
+
+        row.addEventListener('click', (event) => {
+          if (window.innerWidth >= 768) return;
+          if (event.target.closest('a, button')) return;
+          window.location.href = ctaLink.href;
+        });
+      });
+    }
+
     function normalizeSearchKey(value) {
       return (value || '')
         .toString()
@@ -2517,6 +2532,7 @@
 
     syncMobileBonusLines();
     applyMobileBonusCardBackgrounds();
+    setupMobileRowLinks();
     window.addEventListener('resize', syncMobileBonusLines);
     window.addEventListener('resize', applyMobileBonusCardBackgrounds);
 
