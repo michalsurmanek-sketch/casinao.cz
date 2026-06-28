@@ -2599,18 +2599,41 @@
       let visible = 0;
       const visibleCasinoKeys = new Set();
 
-      rows.forEach((row) => {
+      rows.forEach((row, index) => {
         const name = (row.getAttribute('data-name') || '').toLowerCase();
         const tags = (row.getAttribute('data-tags') || '').toLowerCase();
         const bonus = (row.getAttribute('data-bonus') || '').toLowerCase();
         const badge = (row.getAttribute('data-badge') || '').toLowerCase();
+        const license = (row.getAttribute('data-license') || '').toLowerCase();
+        const fast = (row.getAttribute('data-fast') || '').toLowerCase();
+        const app = (row.getAttribute('data-app') || '').toLowerCase();
+        const games = (row.getAttribute('data-games') || '').toLowerCase();
+        const reco = (row.getAttribute('data-reco') || '').toLowerCase();
         const features = (row.getAttribute('data-features') || '').split(',').map((item) => item.trim()).filter(Boolean);
+        const voteEl = row.querySelector('.casino-vote');
+        const voteAvg = (voteEl?.getAttribute('data-default-avg') || '').toLowerCase();
+        const voteCount = (voteEl?.getAttribute('data-default-count') || '').toLowerCase();
+        const rank = String(index + 1);
         const bonusPhrases = features.includes('bonus-bez-vkladu')
           ? 'bonus za registraci bonus bez vkladu'
           : bonus
             ? 'bonus za vklad'
             : '';
-        const searchableText = normalizeSearchKey([name, tags, bonus, badge, bonusPhrases].join(' '));
+        const searchableText = normalizeSearchKey([
+          name,
+          tags,
+          bonus,
+          badge,
+          bonusPhrases,
+          license,
+          fast,
+          app,
+          games,
+          reco,
+          voteAvg,
+          voteCount,
+          rank
+        ].join(' '));
 
         const searchOk = !query
           || searchableText.includes(query)
