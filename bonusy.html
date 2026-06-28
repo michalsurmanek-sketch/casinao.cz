@@ -99,6 +99,20 @@
       letter-spacing: 0.02em;
     }
 
+    .bonusy-rank-image {
+      display: none;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 767px) {
+      .bonusy-rank-image {
+        display: block;
+      }
+    }
+
   </style>
   <link rel="stylesheet" href="/assets/mobile-bottom-nav.css" />
 </head>
@@ -387,6 +401,18 @@
         row.dataset.bonusType = type;
 
         var firstCell = row.querySelector('td');
+        var rank = rows.indexOf(row) + 1;
+
+        if (firstCell && !firstCell.querySelector('.bonusy-rank-image')) {
+          var rankImage = document.createElement('img');
+          rankImage.className = 'bonusy-rank-image';
+          rankImage.loading = 'lazy';
+          rankImage.decoding = 'async';
+          rankImage.src = 'img/' + rank + 'bonus.png';
+          rankImage.alt = 'Bonus karta ' + rank;
+          firstCell.insertBefore(rankImage, firstCell.firstChild);
+        }
+
         if (firstCell && !firstCell.querySelector('.bonusy-type-chip')) {
           var chip = document.createElement('span');
           chip.className = 'bonusy-type-chip';
