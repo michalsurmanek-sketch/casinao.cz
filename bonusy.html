@@ -116,9 +116,40 @@
       margin-bottom: 0.5rem;
     }
 
+    .bonusy-rank-wrap {
+      display: none;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .bonusy-rank-cta {
+      display: none;
+    }
+
     @media (max-width: 767px) {
+      .bonusy-table td:last-child {
+        display: none !important;
+      }
+
+      .bonusy-rank-wrap {
+        display: block;
+      }
+
       .bonusy-rank-image {
         display: block;
+        margin-bottom: 0;
+      }
+
+      .bonusy-rank-cta {
+        position: absolute;
+        left: 0.5rem;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -410,7 +441,17 @@
         row.dataset.bonusType = type;
 
         var firstCell = row.querySelector('td');
+        var actionCell = row.querySelector('td:last-child');
+        var actionLink = actionCell ? actionCell.querySelector('a') : null;
         var rank = rows.indexOf(row) + 1;
+
+        var rankWrap = firstCell ? firstCell.querySelector('.bonusy-rank-wrap') : null;
+
+        if (firstCell && !rankWrap) {
+          rankWrap = document.createElement('div');
+          rankWrap.className = 'bonusy-rank-wrap';
+          firstCell.insertBefore(rankWrap, firstCell.firstChild);
+        }
 
         if (firstCell && !firstCell.querySelector('.bonusy-rank-image')) {
           var rankImage = document.createElement('img');
@@ -419,7 +460,20 @@
           rankImage.decoding = 'async';
           rankImage.src = 'img/' + rank + 'bonus.png';
           rankImage.alt = 'Bonus karta ' + rank;
-          firstCell.insertBefore(rankImage, firstCell.firstChild);
+          if (rankWrap) {
+            rankWrap.insertBefore(rankImage, rankWrap.firstChild);
+          }
+        }
+
+        var existingRankImage = firstCell ? firstCell.querySelector('.bonusy-rank-image') : null;
+        if (rankWrap && existingRankImage && existingRankImage.parentNode !== rankWrap) {
+          rankWrap.insertBefore(existingRankImage, rankWrap.firstChild);
+        }
+
+        if (rankWrap && actionLink && !rankWrap.querySelector('.bonusy-rank-cta')) {
+          var mobileCta = actionLink.cloneNode(true);
+          mobileCta.classList.add('bonusy-rank-cta');
+          rankWrap.appendChild(mobileCta);
         }
 
         if (firstCell && !firstCell.querySelector('.bonusy-type-chip')) {
