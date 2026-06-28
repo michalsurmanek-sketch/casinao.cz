@@ -2724,7 +2724,16 @@
         searchInput.blur();
       };
 
+      const hideKeyboardOnOutsideTap = (event) => {
+        if (window.innerWidth >= 1024) return;
+        if (document.activeElement !== searchInput) return;
+        if (event.target === searchInput || searchInput.contains(event.target)) return;
+
+        searchInput.blur();
+      };
+
       searchInput.addEventListener('touchstart', hideKeyboardOnRepeatedTap, { passive: false });
+      document.addEventListener('touchstart', hideKeyboardOnOutsideTap, { passive: true });
     }
 
     filterButtons.forEach((btn) => {
