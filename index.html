@@ -2713,6 +2713,18 @@
       ['input', 'search', 'keyup', 'change'].forEach((eventName) => {
         searchInput.addEventListener(eventName, applyCasinoFilters);
       });
+
+      // Mobile UX: tap na jiz aktivni vyhledavac s textem skryje klavesnici.
+      const hideKeyboardOnRepeatedTap = (event) => {
+        if (window.innerWidth >= 1024) return;
+        if (document.activeElement !== searchInput) return;
+        if (!(searchInput.value || '').trim()) return;
+
+        event.preventDefault();
+        searchInput.blur();
+      };
+
+      searchInput.addEventListener('touchstart', hideKeyboardOnRepeatedTap, { passive: false });
     }
 
     filterButtons.forEach((btn) => {
