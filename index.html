@@ -2690,6 +2690,11 @@
 
         row.classList.toggle('hidden', !show);
         if (show) {
+          row.style.removeProperty('display');
+        } else {
+          row.style.setProperty('display', 'none', 'important');
+        }
+        if (show) {
           visible += 1;
           visibleCasinoKeys.add(normalizeSearchKey(name));
         }
@@ -2712,6 +2717,15 @@
     if (searchInput) {
       ['input', 'search', 'keyup', 'change'].forEach((eventName) => {
         searchInput.addEventListener(eventName, applyCasinoFilters);
+      });
+
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        applyCasinoFilters();
+        if (window.innerWidth < 1024) {
+          searchInput.blur();
+        }
       });
 
       // Mobile UX: tap na jiz aktivni vyhledavac s textem skryje klavesnici.
