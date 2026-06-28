@@ -2479,8 +2479,46 @@
       });
     }
 
+    function applyMobileBonusCardBackgrounds() {
+      rows.forEach((row, index) => {
+        const rank = index + 1;
+        const firstCell = row.querySelector('td:first-child');
+
+        if (window.innerWidth >= 768) {
+          row.style.removeProperty('background');
+          row.style.removeProperty('background-size');
+          row.style.removeProperty('background-position');
+          row.style.removeProperty('background-repeat');
+          if (firstCell) {
+            firstCell.style.removeProperty('background');
+            firstCell.style.removeProperty('background-size');
+            firstCell.style.removeProperty('background-position');
+            firstCell.style.removeProperty('background-repeat');
+          }
+          return;
+        }
+
+        const imageName = rank + 'bonus.png';
+        const layeredBackground = "url('/img/" + imageName + "') center/cover no-repeat, url('img/" + imageName + "') center/cover no-repeat";
+
+        row.style.setProperty('background', layeredBackground, 'important');
+        row.style.setProperty('background-size', 'cover, cover', 'important');
+        row.style.setProperty('background-position', 'center, center', 'important');
+        row.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
+
+        if (firstCell) {
+          firstCell.style.setProperty('background', layeredBackground, 'important');
+          firstCell.style.setProperty('background-size', 'cover, cover', 'important');
+          firstCell.style.setProperty('background-position', 'center, center', 'important');
+          firstCell.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
+        }
+      });
+    }
+
     syncMobileBonusLines();
+    applyMobileBonusCardBackgrounds();
     window.addEventListener('resize', syncMobileBonusLines);
+    window.addEventListener('resize', applyMobileBonusCardBackgrounds);
 
     function applyCasinoFilters() {
       const rawQuery = (searchInput?.value || '').trim().toLowerCase();
