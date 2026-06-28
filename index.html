@@ -1108,34 +1108,36 @@
     display: inline !important;
   }
 
-  #casinoTableBody .casino-row:nth-child(1) {
-    background: url('img/tipkarta.png') center/cover no-repeat !important;
-    background-origin: border-box;
-    background-clip: border-box;
+  #casinoTableBody .casino-row {
     grid-template-columns: 1fr;
     grid-template-areas: "logo";
     min-height: clamp(236px, 64vw, 312px) !important;
+    background-origin: border-box;
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
-  #casinoTableBody .casino-row:nth-child(1)::before,
-  #casinoTableBody .casino-row:nth-child(1)::after,
-  #casinoTableBody .casino-row:nth-child(1) .casino-bonus-line,
-  #casinoTableBody .casino-row:nth-child(1) td:nth-child(2),
-  #casinoTableBody .casino-row:nth-child(1) td:nth-child(4) {
+  #casinoTableBody .casino-row::before,
+  #casinoTableBody .casino-row::after,
+  #casinoTableBody .casino-row .casino-bonus-line,
+  #casinoTableBody .casino-row td:nth-child(2),
+  #casinoTableBody .casino-row td:nth-child(4) {
     display: none !important;
   }
 
-  #casinoTableBody .casino-row:nth-child(1) td:first-child {
+  #casinoTableBody .casino-row td:first-child {
     align-self: center;
     padding-left: 34px !important;
   }
 
-  #casinoTableBody .casino-row:nth-child(1) td:first-child::before,
-  #casinoTableBody .casino-row:nth-child(1) td:first-child img {
+  #casinoTableBody .casino-row td:first-child::before,
+  #casinoTableBody .casino-row td:first-child img {
     display: none !important;
   }
 
-  #casinoTableBody .casino-row:nth-child(1) td:nth-child(3) {
+  #casinoTableBody .casino-row td:nth-child(3) {
     display: block !important;
     position: absolute;
     left: 10px;
@@ -1146,65 +1148,33 @@
     z-index: 2;
   }
 
-
-  #casinoTableBody .casino-row:nth-child(2) {
-    background: radial-gradient(circle at 82% 20%, rgba(255, 221, 0, 0.28), rgba(255, 221, 0, 0) 42%), linear-gradient(130deg, rgba(32, 29, 12, 0.96), rgba(12, 12, 10, 0.98)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(3) {
-    background: radial-gradient(circle at 85% 22%, rgba(251, 113, 20, 0.18), rgba(251, 113, 20, 0) 38%), linear-gradient(130deg, rgba(68, 10, 10, 0.92), rgba(31, 5, 5, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(4),
-  #casinoTableBody .casino-row:nth-child(13),
-  #casinoTableBody .casino-row:nth-child(22) {
-    background: radial-gradient(circle at 84% 22%, rgba(1, 120, 75, 0.22), rgba(1, 120, 75, 0) 40%), linear-gradient(130deg, rgba(8, 44, 28, 0.92), rgba(6, 22, 14, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(5),
-  #casinoTableBody .casino-row:nth-child(14),
-  #casinoTableBody .casino-row:nth-child(23) {
-    background: radial-gradient(circle at 84% 22%, rgba(216, 179, 82, 0.22), rgba(216, 179, 82, 0) 40%), linear-gradient(130deg, rgba(56, 34, 12, 0.92), rgba(28, 18, 8, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(6),
-  #casinoTableBody .casino-row:nth-child(15),
-  #casinoTableBody .casino-row:nth-child(24) {
-    background: radial-gradient(circle at 84% 22%, rgba(216, 255, 0, 0.22), rgba(216, 255, 0, 0) 40%), linear-gradient(130deg, rgba(32, 44, 8, 0.92), rgba(16, 24, 6, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(7),
-  #casinoTableBody .casino-row:nth-child(16),
-  #casinoTableBody .casino-row:nth-child(25) {
-    background: radial-gradient(circle at 84% 22%, rgba(97, 66, 200, 0.24), rgba(97, 66, 200, 0) 40%), linear-gradient(130deg, rgba(24, 18, 58, 0.92), rgba(14, 10, 36, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(8),
-  #casinoTableBody .casino-row:nth-child(17),
-  #casinoTableBody .casino-row:nth-child(26) {
-    background: radial-gradient(circle at 84% 22%, rgba(253, 228, 41, 0.20), rgba(253, 228, 41, 0) 40%), linear-gradient(130deg, rgba(58, 52, 14, 0.92), rgba(30, 26, 8, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(9),
-  #casinoTableBody .casino-row:nth-child(18),
-  #casinoTableBody .casino-row:nth-child(27) {
-    background: radial-gradient(circle at 84% 22%, rgba(124, 6, 60, 0.24), rgba(124, 6, 60, 0) 40%), linear-gradient(130deg, rgba(52, 8, 30, 0.92), rgba(24, 4, 14, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(10),
-  #casinoTableBody .casino-row:nth-child(19) {
-    background: radial-gradient(circle at 84% 22%, rgba(65, 143, 206, 0.22), rgba(65, 143, 206, 0) 40%), linear-gradient(130deg, rgba(8, 34, 56, 0.92), rgba(6, 18, 30, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(11),
-  #casinoTableBody .casino-row:nth-child(20) {
-    background: radial-gradient(circle at 84% 22%, rgba(255, 221, 0, 0.20), rgba(255, 221, 0, 0) 40%), linear-gradient(130deg, rgba(52, 48, 10, 0.92), rgba(24, 22, 6, 0.97)) !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(12),
-  #casinoTableBody .casino-row:nth-child(21) {
-    background: radial-gradient(circle at 84% 22%, rgba(255, 60, 1, 0.22), rgba(255, 60, 1, 0) 40%), linear-gradient(130deg, rgba(58, 16, 8, 0.92), rgba(28, 10, 4, 0.97)) !important;
-  }
+  #casinoTableBody .casino-row:nth-child(1) { background-image: url('img/1bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(2) { background-image: url('img/2bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(3) { background-image: url('img/3bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(4) { background-image: url('img/4bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(5) { background-image: url('img/5bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(6) { background-image: url('img/6bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(7) { background-image: url('img/7bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(8) { background-image: url('img/8bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(9) { background-image: url('img/9bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(10) { background-image: url('img/10bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(11) { background-image: url('img/11bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(12) { background-image: url('img/12bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(13) { background-image: url('img/13bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(14) { background-image: url('img/14bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(15) { background-image: url('img/15bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(16) { background-image: url('img/16bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(17) { background-image: url('img/17bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(18) { background-image: url('img/18bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(19) { background-image: url('img/19bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(20) { background-image: url('img/20bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(21) { background-image: url('img/21bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(22) { background-image: url('img/22bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(23) { background-image: url('img/23bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(24) { background-image: url('img/24bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(25) { background-image: url('img/25bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(26) { background-image: url('img/26bonus.png') !important; }
+  #casinoTableBody .casino-row:nth-child(27) { background-image: url('img/27bonus.png') !important; }
 
   #casinoTableBody .casino-row:last-child {
     margin-bottom: 0;
@@ -1217,67 +1187,21 @@
 
 @media (max-width: 420px) {
   #casinoTableBody .casino-row {
-    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
     border-radius: 20px !important;
-  }
-
-  #casinoTableBody .casino-row::after {
-    font-size: 11px;
-    line-height: 1.35;
-  }
-
-  #casinoTableBody .casino-row td:last-child a {
-    border-radius: 16px !important;
-    letter-spacing: .35px;
-    gap: 8px;
+    min-height: clamp(220px, 68vw, 300px) !important;
   }
 }
 
 @media (max-width: 360px) {
   #casinoTableBody .casino-row {
-    height: auto !important;
-    min-height: 220px !important;
-    gap: 6px 8px;
-    padding: 10px 9px 9px !important;
+    min-height: clamp(204px, 72vw, 276px) !important;
+    padding: 8px !important;
   }
 
-  #casinoTableBody .casino-row td:nth-child(2)::before {
-    letter-spacing: .5px;
-  }
-
-  #casinoTableBody .casino-row td:nth-child(2) .score-denom {
-    font-size: .5em;
-  }
-
-  #casinoTableBody .casino-row::before {
-    font-size: 10px;
-    padding: 5px 7px;
-    max-width: 100%;
-    white-space: nowrap;
-  }
-
-  #casinoTableBody .casino-row::after {
-    font-size: 11px;
-    line-height: 1.35;
-    padding-left: 7px;
-  }
-
-  #casinoTableBody .casino-row td:nth-child(2) {
-    font-size: 18px !important;
-  }
-
-  #casinoTableBody .casino-row td:last-child a {
-    min-height: 44px !important;
-    font-size: 12px !important;
-    letter-spacing: .2px;
-    gap: 6px;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-
-  #casinoTableBody .casino-row td:last-child a svg {
-    width: 14px;
-    height: 14px;
+  #casinoTableBody .casino-row td:nth-child(3) {
+    left: 8px;
+    bottom: 6px;
+    font-size: clamp(10px, 2.9vw, 12px);
   }
 }
 
