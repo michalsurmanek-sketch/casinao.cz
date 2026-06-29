@@ -132,16 +132,15 @@
     .mbottom-nav__item {
       min-width: 0;
       border-radius: 26px;
-      color: #cbd5e1;
+      color: #e5e7eb;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 3px;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
+      background: transparent;
+      transition: background-color .2s ease, color .2s ease;
     }
 
     .mbottom-nav__item svg {
@@ -166,32 +165,16 @@
     }
 
     .mbottom-nav__item.active {
-      background: linear-gradient(180deg, #ffd84d 0%, #f5c400 48%, #d69e00 100%);
-      color: #0f172a;
-      border-color: rgba(255, 229, 143, 0.9);
-      box-shadow: 0 0 0 1px rgba(255, 229, 143, 0.28) inset, 0 10px 22px rgba(245, 196, 0, 0.44), 0 0 28px rgba(245, 196, 0, 0.25);
-      transform: translateY(-5px) scale(1.04);
+      background: #27323a;
+      color: #ffffff;
     }
 
     .mbottom-nav__item.active .mbottom-nav__label {
-      color: #0f172a;
-      font-weight: 800;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+      color: #ffffff;
     }
 
     .mbottom-nav__item.active svg {
-      color: #0f172a;
-      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.28));
-    }
-
-    .mbottom-nav__item.active::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 30px;
-      border: 1px solid rgba(255, 229, 143, 0.45);
-      box-shadow: 0 0 0 1px rgba(245, 196, 0, 0.12), 0 0 22px rgba(245, 196, 0, 0.24);
-      pointer-events: none;
+      color: #ffffff;
     }
 
     @media (min-width: 1024px) {
