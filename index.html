@@ -3091,10 +3091,13 @@
       mobileBottomItems.forEach((navItem) => navItem.classList.remove('active'));
       const targetItem = mobileBottomItems.find((navItem) => {
         const href = (navItem.getAttribute('href') || '').toLowerCase();
+        const hashIndex = href.indexOf('#');
+        const hrefHash = hashIndex >= 0 ? href.slice(hashIndex) : '';
+        const hrefPath = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
         if (isBonusPage) {
-          return href.endsWith('/bonusy.html');
+          return hrefPath.endsWith('/bonusy.html') || hrefPath === 'bonusy.html';
         }
-        return href === targetHash;
+        return hrefHash === targetHash || href === targetHash || (targetHash === '#home' && (hrefPath.endsWith('/index.html') || hrefPath === '/'));
       });
       if (targetItem) {
         targetItem.classList.add('active');
