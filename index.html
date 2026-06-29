@@ -165,12 +165,18 @@
     }
 
     .mbottom-nav__item.active {
-      background: #27323a;
-      color: #ffffff;
+      background: linear-gradient(180deg, rgba(245, 196, 0, 0.95), rgba(214, 158, 0, 0.95));
+      color: #111827;
+      box-shadow: 0 8px 18px rgba(245, 196, 0, 0.25);
     }
 
     .mbottom-nav__item.active .mbottom-nav__label {
-      color: #ffffff;
+      color: #111827;
+      font-weight: 700;
+    }
+
+    .mbottom-nav__item.active svg {
+      color: #111827;
     }
 
     @media (min-width: 1024px) {
@@ -3078,11 +3084,16 @@
     const mobileBottomItems = Array.from(document.querySelectorAll('[data-mobile-bottom-item]'));
 
     const syncMobileBottomActive = () => {
-      const currentHash = (window.location.hash || '#home').toLowerCase();
+      const currentHash = (window.location.hash || '').toLowerCase();
+      const currentPath = (window.location.pathname || '/').toLowerCase();
+      const isBonusPage = currentPath.endsWith('/bonusy.html') || currentPath.endsWith('/bonusy');
       const targetHash = currentHash === '#top-casina' ? '#top-casina' : (currentHash === '#casina' ? '#casina' : '#home');
       mobileBottomItems.forEach((navItem) => navItem.classList.remove('active'));
       const targetItem = mobileBottomItems.find((navItem) => {
         const href = (navItem.getAttribute('href') || '').toLowerCase();
+        if (isBonusPage) {
+          return href.endsWith('/bonusy.html');
+        }
         return href === targetHash;
       });
       if (targetItem) {

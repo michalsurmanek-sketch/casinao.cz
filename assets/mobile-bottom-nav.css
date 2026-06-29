@@ -63,12 +63,18 @@ body {
 }
 
 .mbottom-nav__item.active {
-  background: #27323a;
-  color: #ffffff;
+  background: linear-gradient(180deg, rgba(245, 196, 0, 0.95), rgba(214, 158, 0, 0.95));
+  color: #111827;
+  box-shadow: 0 8px 18px rgba(245, 196, 0, 0.25);
 }
 
 .mbottom-nav__item.active .mbottom-nav__label {
-  color: #ffffff;
+  color: #111827;
+  font-weight: 700;
+}
+
+.mbottom-nav__item.active svg {
+  color: #111827;
 }
 
 @media (min-width: 1024px) {
