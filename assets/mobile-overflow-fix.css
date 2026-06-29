@@ -57,3 +57,13 @@ h6 {
     height: min(260px, 72vw);
   }
 }
+
+/* Hard-disable legacy mobile bottom navigation if any stale HTML version is served */
+@media (max-width: 1023px) {
+  .mbottom-nav,
+  nav[aria-label="Spodní mobilní navigace"],
+  [data-mobile-bottom-item],
+  [data-mobile-bottom-menu] {
+    display: none !important;
+  }
+}
