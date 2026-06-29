@@ -16,12 +16,15 @@
 
     var targetItem = items.find(function (item) {
       var href = (item.getAttribute('href') || '').toLowerCase();
+      var hashIndex = href.indexOf('#');
+      var hrefHash = hashIndex >= 0 ? href.slice(hashIndex) : '';
+      var hrefPath = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
 
       if (isBonusPage) {
-        return href.endsWith('/bonusy.html');
+        return hrefPath.endsWith('/bonusy.html') || hrefPath === '/bonusy.html';
       }
 
-      return href === targetHash;
+      return hrefHash === targetHash || href === targetHash || (targetHash === '#home' && (hrefPath.endsWith('/index.html') || hrefPath === '/'));
     });
 
     if (targetItem) {
