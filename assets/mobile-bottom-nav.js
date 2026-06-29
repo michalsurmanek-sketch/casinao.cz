@@ -3,6 +3,32 @@
     return;
   }
 
+  function syncActiveState(nav) {
+    var items = Array.from(nav.querySelectorAll('[data-mobile-bottom-item]'));
+    var currentHash = (window.location.hash || '').toLowerCase();
+    var currentPath = (window.location.pathname || '/').toLowerCase();
+    var isBonusPage = currentPath.endsWith('/bonusy.html') || currentPath.endsWith('/bonusy');
+    var targetHash = currentHash === '#top-casina' ? '#top-casina' : (currentHash === '#casina' ? '#casina' : '#home');
+
+    items.forEach(function (item) {
+      item.classList.remove('active');
+    });
+
+    var targetItem = items.find(function (item) {
+      var href = (item.getAttribute('href') || '').toLowerCase();
+
+      if (isBonusPage) {
+        return href.endsWith('/bonusy.html');
+      }
+
+      return href === targetHash;
+    });
+
+    if (targetItem) {
+      targetItem.classList.add('active');
+    }
+  }
+
   var nav = document.createElement('nav');
   nav.className = 'mbottom-nav lg:hidden';
   nav.setAttribute('aria-label', 'Spodní mobilní navigace');
@@ -33,4 +59,23 @@
   ].join('');
 
   document.body.appendChild(nav);
+
+  syncActiveState(nav);
+  window.addEventListener('hashchange', function () {
+    syncActiveState(nav);
+  });
+
+  nav.querySelectorAll('[data-mobile-bottom-item]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      if (item.hasAttribute('data-mobile-bottom-menu')) {
+        return;
+      }
+
+      nav.querySelectorAll('[data-mobile-bottom-item]').forEach(function (navItem) {
+        navItem.classList.remove('active');
+      });
+
+      item.classList.add('active');
+    });
+  });
 })();
