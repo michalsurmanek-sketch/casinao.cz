@@ -861,6 +861,44 @@
     overflow-x: hidden;
   }
 
+      footer .col-span-2.md\:col-span-1.footer-contact-panel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid rgba(245, 196, 0, 0.28);
+        background-image: linear-gradient(rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.84)), url('img/kontakt.png');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38), 0 0 24px rgba(245, 196, 0, 0.12);
+        padding: 1.25rem 1.25rem 1.15rem;
+      }
+
+      footer .col-span-2.md\:col-span-1.footer-contact-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(7, 19, 29, 0.14), rgba(7, 19, 29, 0.48));
+        pointer-events: none;
+      }
+
+      footer .col-span-2.md\:col-span-1.footer-contact-panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      footer .col-span-2.md\:col-span-1.footer-contact-panel h4 {
+        margin-bottom: 0.9rem;
+        color: #f5c400;
+      }
+
+      footer .col-span-2.md\:col-span-1.footer-contact-panel ul {
+        color: #f8fafc;
+      }
+
+      footer .col-span-2.md\:col-span-1.footer-contact-panel li {
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+      }
+
   #bonusy {
     display: none;
   }
@@ -2323,7 +2361,7 @@
           </ul>
         </div>
 
-        <div class="col-span-2 md:col-span-1">
+        <div class="col-span-2 md:col-span-1 footer-contact-panel">
           <h4 class="font-semibold mb-3 text-yellow-400">Kontakt</h4>
           <ul class="space-y-2 text-sm">
             <li><a class="hover:underline" href="mailto:info@casinao.cz">info@casinao.cz</a></li>
