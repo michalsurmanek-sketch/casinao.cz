@@ -49,6 +49,31 @@
 </script>
   <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
   <script src="/assets/overflow-diagnostic.js" defer></script>
+  <style>
+    body {
+      position: relative;
+      background-color: #020617;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('/img/blackjack-pozadi.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.9));
+    }
+  </style>
 </head>
 
 <body class="bg-gray-950 text-gray-100 font-[Roboto]">
