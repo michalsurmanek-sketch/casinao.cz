@@ -96,6 +96,14 @@
       display: none;
     }
 
+    .bonusy-table tbody .casino-row {
+      --casino-accent: #fef08a;
+    }
+
+    .bonusy-table tbody td:first-child {
+      color: var(--casino-accent);
+    }
+
     .bonusy-table tbody td:first-child::before {
       content: attr(data-fixed-rank) ".";
       display: inline-flex;
@@ -103,7 +111,7 @@
       justify-content: center;
       min-width: 1.75rem;
       margin-right: 0.55rem;
-      color: #fef08a;
+      color: var(--casino-accent);
       font-weight: 800;
       font-size: 0.9rem;
       line-height: 1;
@@ -430,6 +438,11 @@
         var actionCell = row.querySelector('td:last-child');
         var actionLink = actionCell ? actionCell.querySelector('a') : null;
         var rank = rows.indexOf(row) + 1;
+        var accentColor = row.style.borderColor || row.style.backgroundColor;
+
+        if (accentColor) {
+          row.style.setProperty('--casino-accent', accentColor);
+        }
 
         if (firstCell) {
           firstCell.dataset.fixedRank = String(rank);
