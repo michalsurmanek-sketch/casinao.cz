@@ -507,6 +507,7 @@
   height: var(--casino-row-height) !important;
   min-height: var(--casino-row-height) !important;
   border-radius: var(--casino-radius) !important;
+  background-color: var(--casino-row-bg, rgba(8, 25, 46, 0.94)) !important;
   box-shadow: 0 14px 30px rgba(0,0,0,.34);
   transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
 }
@@ -524,6 +525,7 @@
   vertical-align: middle !important;
   border-top: 1px solid rgba(255,255,255,.11);
   border-bottom: 1px solid rgba(255,255,255,.11);
+    background-color: var(--casino-row-bg, transparent) !important;
 }
 
 #casinoTableBody .casino-row td:first-child {
@@ -2125,14 +2127,14 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Zodpovědné hraní</h2>
       <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-        <div class="rounded-2xl overflow-hidden border border-white/10">
-          <img src="img/1.png" alt="Časové limity" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30" style="aspect-ratio: 1699 / 926;">
+          <img src="img/1.png" alt="Časové limity" class="block w-full h-full object-contain" loading="lazy" decoding="async" />
         </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10">
-          <img src="img/2.png" alt="Finanční limity" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30" style="aspect-ratio: 1672 / 941;">
+          <img src="img/2.png" alt="Finanční limity" class="block w-full h-full object-contain" loading="lazy" decoding="async" />
         </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10">
-          <img src="img/3.png" alt="Pauza a sebevyloučení" class="w-full h-full object-contain" loading="lazy" decoding="async" />
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30" style="aspect-ratio: 1672 / 941;">
+          <img src="img/3.png" alt="Pauza a sebevyloučení" class="block w-full h-full object-contain" loading="lazy" decoding="async" />
         </div>
         <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
           <div class="flex items-center gap-3"><i data-lucide="book-open-check" class="w-5 h-5 text-yellow-400"></i><span>Informujte se</span></div>
@@ -2348,6 +2350,8 @@
 
       row.dataset.baseBgColor = row.style.backgroundColor || '';
       row.dataset.baseBorderColor = row.style.borderColor || '';
+      row.style.setProperty('--casino-row-bg', row.dataset.baseBgColor || '');
+      row.style.setProperty('--casino-row-border', row.dataset.baseBorderColor || '');
 
       if (firstCell) {
         firstCell.dataset.fixedRank = String(index + 1);
