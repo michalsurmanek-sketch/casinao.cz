@@ -96,6 +96,20 @@
       display: none;
     }
 
+    .bonusy-table tbody td:first-child::before {
+      content: attr(data-fixed-rank) ".";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.75rem;
+      margin-right: 0.55rem;
+      color: #fef08a;
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
     .bonusy-type-chip {
       display: inline-block;
       margin-top: 0.35rem;
@@ -140,6 +154,10 @@
       }
 
       .bonusy-type-chip {
+        display: none;
+      }
+
+      .bonusy-table tbody td:first-child::before {
         display: none;
       }
 
@@ -412,6 +430,10 @@
         var actionCell = row.querySelector('td:last-child');
         var actionLink = actionCell ? actionCell.querySelector('a') : null;
         var rank = rows.indexOf(row) + 1;
+
+        if (firstCell) {
+          firstCell.dataset.fixedRank = String(rank);
+        }
 
         var rankWrap = firstCell ? firstCell.querySelector('.bonusy-rank-wrap') : null;
 
