@@ -1080,92 +1080,6 @@
     display: inline !important;
   }
 
-  #casinoTableBody .casino-row {
-    grid-template-columns: 1fr;
-    grid-template-areas: "logo";
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 16 / 9;
-    overflow: visible;
-    margin-bottom: 30px;
-    background-origin: border-box;
-    background-clip: border-box;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  #casinoTableBody .casino-row::before,
-  #casinoTableBody .casino-row::after,
-  #casinoTableBody .casino-row .casino-bonus-line,
-  #casinoTableBody .casino-row td:nth-child(2),
-  #casinoTableBody .casino-row td:nth-child(4) {
-    display: none !important;
-  }
-
-  #casinoTableBody .casino-row td:first-child {
-    align-self: center;
-    padding-left: 34px !important;
-    width: 100% !important;
-    height: 100% !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-    color: transparent !important;
-    text-shadow: none !important;
-    background: none !important;
-    background-position: center !important;
-    background-size: 100% 100% !important;
-    background-repeat: no-repeat !important;
-  }
-
-  #casinoTableBody .casino-row td:first-child * {
-    color: transparent !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-  }
-
-  #casinoTableBody .casino-row td:first-child::before,
-  #casinoTableBody .casino-row td:first-child img {
-    display: none !important;
-  }
-
-  #casinoTableBody .casino-row td:nth-child(3) {
-    display: none !important;
-  }
-
-  #casinoTableBody .casino-row:nth-child(1) { background: url('/img/1bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(2) { background: url('/img/2bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(3) { background: url('/img/3bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(4) { background: url('/img/4bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(5) { background: url('/img/5bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(6) { background: url('/img/6bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(7) { background: url('/img/7bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(8) { background: url('/img/8bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(9) { background: url('/img/9bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(10) { background: url('/img/10bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(11) { background: url('/img/11bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(12) { background: url('/img/12bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(13) { background: url('/img/13bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(14) { background: url('/img/14bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(15) { background: url('/img/15bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(16) { background: url('/img/16bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(17) { background: url('/img/17bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(18) { background: url('/img/18bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(19) { background: url('/img/19bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(20) { background: url('/img/20bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(21) { background: url('/img/21bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(22) { background: url('/img/22bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(23) { background: url('/img/23bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(24) { background: url('/img/24bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(25) { background: url('/img/25bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(26) { background: url('/img/26bonus.png') center/cover no-repeat !important; }
-  #casinoTableBody .casino-row:nth-child(27) { background: url('/img/27bonus.png') center/cover no-repeat !important; }
-
-  #casinoTableBody .casino-row:last-child {
-    margin-bottom: 0;
-  }
-
   #casina aside {
     display: none !important;
   }
@@ -2499,48 +2413,10 @@
       });
     }
 
-    function applyMobileBonusCardBackgrounds() {
-      rows.forEach((row, index) => {
-        const rank = index + 1;
-        const firstCell = row.querySelector('td:first-child');
-
-        if (window.innerWidth >= 768) {
-          row.style.removeProperty('background');
-          row.style.removeProperty('background-size');
-          row.style.removeProperty('background-position');
-          row.style.removeProperty('background-repeat');
-          if (firstCell) {
-            firstCell.style.removeProperty('background');
-            firstCell.style.removeProperty('background-size');
-            firstCell.style.removeProperty('background-position');
-            firstCell.style.removeProperty('background-repeat');
-          }
-          return;
-        }
-
-        const imageName = rank + 'bonus.png';
-        const cardBackground = "url('/img/" + imageName + "') center/cover no-repeat";
-
-        row.style.setProperty('background', 'none', 'important');
-        row.style.setProperty('background-size', 'initial', 'important');
-        row.style.setProperty('background-position', 'initial', 'important');
-        row.style.setProperty('background-repeat', 'initial', 'important');
-
-        if (firstCell) {
-          firstCell.style.setProperty('background', cardBackground, 'important');
-          firstCell.style.setProperty('background-size', '100% 100%', 'important');
-          firstCell.style.setProperty('background-position', 'center', 'important');
-          firstCell.style.setProperty('background-repeat', 'no-repeat', 'important');
-        }
-      });
-    }
-
     syncMobileBonusLines();
-    applyMobileBonusCardBackgrounds();
     enforceDesktopCasinoColors();
     setupMobileRowLinks();
     window.addEventListener('resize', syncMobileBonusLines);
-    window.addEventListener('resize', applyMobileBonusCardBackgrounds);
     window.addEventListener('resize', enforceDesktopCasinoColors);
 
     function applyCasinoFilters() {
