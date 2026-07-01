@@ -2409,9 +2409,31 @@
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
 
+    function enforceDesktopCasinoColors() {
+      if (window.innerWidth < 768) return;
+
+      rows.forEach((row) => {
+        const baseBg = row.dataset.baseBgColor;
+        const baseBorder = row.dataset.baseBorderColor;
+
+        if (baseBg) {
+          row.style.setProperty('background-color', baseBg, 'important');
+        }
+
+        if (baseBorder) {
+          row.style.setProperty('border-color', baseBorder, 'important');
+        }
+
+        row.style.removeProperty('background');
+      });
+    }
+
     rows.forEach((row, index) => {
       const firstCell = row.querySelector('td:first-child');
       const accentColor = row.style.borderColor || row.style.backgroundColor;
+
+      row.dataset.baseBgColor = row.style.backgroundColor || '';
+      row.dataset.baseBorderColor = row.style.borderColor || '';
 
       if (firstCell) {
         firstCell.dataset.fixedRank = String(index + 1);
@@ -2515,9 +2537,11 @@
 
     syncMobileBonusLines();
     applyMobileBonusCardBackgrounds();
+    enforceDesktopCasinoColors();
     setupMobileRowLinks();
     window.addEventListener('resize', syncMobileBonusLines);
     window.addEventListener('resize', applyMobileBonusCardBackgrounds);
+    window.addEventListener('resize', enforceDesktopCasinoColors);
 
     function applyCasinoFilters() {
       const rawQuery = (searchInput?.value || '').trim().toLowerCase();
@@ -2616,6 +2640,8 @@
           visibleCasinoKeys.add(normalizeSearchKey(name));
         }
       });
+
+      enforceDesktopCasinoColors();
 
       bonusCards.forEach((card) => {
         const cardText = normalizeSearchKey(card.textContent);
