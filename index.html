@@ -495,10 +495,6 @@
   }
 }
 
-#casinoTableBody {
-  counter-reset: casino-rank;
-}
-
 #casina thead th {
   font-size: 18px !important;
   font-weight: 800 !important;
@@ -507,7 +503,7 @@
 }
 
 #casinoTableBody .casino-row {
-  counter-increment: casino-rank;
+  --casino-accent: #fef08a;
   height: var(--casino-row-height) !important;
   min-height: var(--casino-row-height) !important;
   border-radius: var(--casino-radius) !important;
@@ -535,10 +531,11 @@
   border-left: 1px solid rgba(255,255,255,.11);
   border-radius: var(--casino-radius) 0 0 var(--casino-radius);
   padding-left: 58px !important;
+  color: var(--casino-accent);
 }
 
 #casinoTableBody .casino-row td:first-child::before {
-  content: counter(casino-rank);
+  content: attr(data-fixed-rank);
   position: absolute;
   left: 20px;
   top: 50%;
@@ -551,7 +548,7 @@
   font-size: 13px;
   line-height: 1;
   font-weight: 900;
-  color: #ffffff;
+  color: var(--casino-accent);
   background: rgba(2, 6, 23, 0.55);
   border: 1px solid rgba(255,255,255,.24);
   box-shadow: 0 6px 14px rgba(0,0,0,.25);
@@ -2411,6 +2408,19 @@
     const showAllReviews = document.getElementById('showAllReviews');
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
+
+    rows.forEach((row, index) => {
+      const firstCell = row.querySelector('td:first-child');
+      const accentColor = row.style.borderColor || row.style.backgroundColor;
+
+      if (firstCell) {
+        firstCell.dataset.fixedRank = String(index + 1);
+      }
+
+      if (accentColor) {
+        row.style.setProperty('--casino-accent', accentColor);
+      }
+    });
 
     function setupMobileRowLinks() {
       rows.forEach((row) => {
