@@ -107,44 +107,46 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
   <section id="hero" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-glow">
-    <div class="max-w-4xl">
-      <p class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs text-yellow-300"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Znalostní centrum Casinao.cz</p>
-      <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Casino Akademie</h1>
-      <p class="mt-4 text-gray-300 text-base sm:text-lg">Najdete zde návody, pravidla a praktické postupy pro legální hraní v ČR. Struktura stránky je navržena tak, aby bez problémů škálovala na tisíce záznamů.</p>
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_250px] gap-6 lg:gap-8 items-start">
+      <div class="min-w-0">
+        <p class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs text-yellow-300"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Znalostní centrum Casinao.cz</p>
+        <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Casino Akademie</h1>
+        <p class="mt-4 text-gray-300 text-base sm:text-lg">Najdete zde návody, pravidla a praktické postupy pro legální hraní v ČR. Struktura stránky je navržena tak, aby bez problémů škálovala na tisíce záznamů.</p>
 
-      <form id="heroSearchForm" class="mt-8 rounded-2xl border border-white/10 bg-black/25 p-2 sm:p-3 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search">
-        <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-        <button type="submit" class="rounded-xl bg-yellow-500 px-6 py-3 text-gray-900 font-semibold hover:bg-yellow-400 transition">Hledat</button>
-      </form>
+        <form id="heroSearchForm" class="mt-8 rounded-2xl border border-white/10 bg-black/25 p-2 sm:p-3 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search">
+          <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          <button type="submit" class="rounded-xl bg-yellow-500 px-6 py-3 text-gray-900 font-semibold hover:bg-yellow-400 transition">Hledat</button>
+        </form>
 
-      <div class="mt-5 flex flex-wrap gap-2" aria-label="Nejvyhledávanější štítky">
-        <button type="button" data-quick-tag="Bonus bez vkladu" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Bonus bez vkladu</button>
-        <button type="button" data-quick-tag="Free Spiny" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Free Spiny</button>
-        <button type="button" data-quick-tag="RTP" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">RTP</button>
-        <button type="button" data-quick-tag="Blackjack" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Blackjack</button>
-        <button type="button" data-quick-tag="Ruleta" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Ruleta</button>
-        <button type="button" data-quick-tag="Registrace" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Registrace</button>
+        <div class="mt-5 flex flex-wrap gap-2" aria-label="Nejvyhledávanější štítky">
+          <button type="button" data-quick-tag="Bonus bez vkladu" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Bonus bez vkladu</button>
+          <button type="button" data-quick-tag="Free Spiny" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Free Spiny</button>
+          <button type="button" data-quick-tag="RTP" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">RTP</button>
+          <button type="button" data-quick-tag="Blackjack" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Blackjack</button>
+          <button type="button" data-quick-tag="Ruleta" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Ruleta</button>
+          <button type="button" data-quick-tag="Registrace" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Registrace</button>
+        </div>
       </div>
+
+      <aside class="hidden lg:block">
+        <div class="sticky top-28 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
+          <nav class="grid gap-1 text-sm" aria-label="Sticky navigace">
+            <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
+            <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
+            <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
+            <a href="#sekce-platby" class="px-3 py-2 rounded-lg hover:bg-white/10">Platby</a>
+            <a href="#sekce-rtp" class="px-3 py-2 rounded-lg hover:bg-white/10">RTP</a>
+            <a href="#sekce-bezpecnost" class="px-3 py-2 rounded-lg hover:bg-white/10">Bezpečnost</a>
+            <a href="#sekce-strategie" class="px-3 py-2 rounded-lg hover:bg-white/10">Strategie</a>
+            <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
+          </nav>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <div class="mt-10 grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8">
-    <aside class="hidden lg:block">
-      <div class="sticky top-28 rounded-2xl border border-white/10 bg-white/5 p-4">
-        <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
-        <nav class="grid gap-1 text-sm" aria-label="Sticky navigace">
-          <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
-          <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
-          <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
-          <a href="#sekce-platby" class="px-3 py-2 rounded-lg hover:bg-white/10">Platby</a>
-          <a href="#sekce-rtp" class="px-3 py-2 rounded-lg hover:bg-white/10">RTP</a>
-          <a href="#sekce-bezpecnost" class="px-3 py-2 rounded-lg hover:bg-white/10">Bezpečnost</a>
-          <a href="#sekce-strategie" class="px-3 py-2 rounded-lg hover:bg-white/10">Strategie</a>
-          <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
-        </nav>
-      </div>
-    </aside>
-
+  <div class="mt-10">
     <div class="space-y-10 min-w-0">
       <section id="sekce-kategorie">
         <div class="flex items-end justify-between mb-4">
