@@ -85,6 +85,14 @@
   #mostReadSlider::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(90deg, rgba(245, 196, 0, 0.65), rgba(253, 224, 71, 0.9));
   }
+
+  /* Natvrdo: levy box navigace se musi posouvat spolu se strankou */
+  #academyNavBox {
+    position: static !important;
+    top: auto !important;
+    inset: auto !important;
+    transform: none !important;
+  }
 </style>
   <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
   <script src="/assets/overflow-diagnostic.js" defer></script>
@@ -133,9 +141,9 @@
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
   <div class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
     <aside class="hidden lg:block">
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <div id="academyNavBox" class="rounded-2xl border border-white/10 bg-white/5 p-4">
         <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
-        <nav class="grid gap-1 text-sm" aria-label="Sticky navigace">
+        <nav class="grid gap-1 text-sm" aria-label="Navigace akademie">
           <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
           <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
           <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
