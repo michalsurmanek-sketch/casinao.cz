@@ -93,6 +93,11 @@
     inset: auto !important;
     transform: none !important;
   }
+
+  body > header {
+    position: static !important;
+    top: auto !important;
+  }
 </style>
   <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
   <script src="/assets/overflow-diagnostic.js" defer></script>
@@ -799,6 +804,20 @@
           btnMenu.setAttribute('aria-expanded', 'false');
         });
       });
+    }
+
+    const headerEl = document.querySelector('body > header');
+    if (headerEl) {
+      headerEl.style.position = 'static';
+      headerEl.style.top = 'auto';
+    }
+
+    const academyNavBox = document.getElementById('academyNavBox');
+    if (academyNavBox) {
+      academyNavBox.style.position = 'static';
+      academyNavBox.style.top = 'auto';
+      academyNavBox.style.inset = 'auto';
+      academyNavBox.style.transform = 'none';
     }
   }
 
