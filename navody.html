@@ -106,9 +106,26 @@
 </header>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-  <section id="hero" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-glow">
-    <div class="grid lg:grid-cols-[minmax(0,1fr)_250px] gap-6 lg:gap-8 items-start">
-      <div class="min-w-0">
+  <div class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
+    <aside class="hidden lg:block">
+      <div class="sticky top-28 rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
+        <nav class="grid gap-1 text-sm" aria-label="Sticky navigace">
+          <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
+          <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
+          <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
+          <a href="#sekce-platby" class="px-3 py-2 rounded-lg hover:bg-white/10">Platby</a>
+          <a href="#sekce-rtp" class="px-3 py-2 rounded-lg hover:bg-white/10">RTP</a>
+          <a href="#sekce-bezpecnost" class="px-3 py-2 rounded-lg hover:bg-white/10">Bezpečnost</a>
+          <a href="#sekce-strategie" class="px-3 py-2 rounded-lg hover:bg-white/10">Strategie</a>
+          <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="min-w-0">
+      <section id="hero" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-glow">
+        <div class="max-w-4xl">
         <p class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs text-yellow-300"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Znalostní centrum Casinao.cz</p>
         <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Casino Akademie</h1>
         <p class="mt-4 text-gray-300 text-base sm:text-lg">Najdete zde návody, pravidla a praktické postupy pro legální hraní v ČR. Struktura stránky je navržena tak, aby bez problémů škálovala na tisíce záznamů.</p>
@@ -127,27 +144,10 @@
           <button type="button" data-quick-tag="Registrace" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Registrace</button>
         </div>
       </div>
+      </section>
 
-      <aside class="hidden lg:block">
-        <div class="sticky top-28 rounded-2xl border border-white/10 bg-white/5 p-4">
-          <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
-          <nav class="grid gap-1 text-sm" aria-label="Sticky navigace">
-            <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
-            <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
-            <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
-            <a href="#sekce-platby" class="px-3 py-2 rounded-lg hover:bg-white/10">Platby</a>
-            <a href="#sekce-rtp" class="px-3 py-2 rounded-lg hover:bg-white/10">RTP</a>
-            <a href="#sekce-bezpecnost" class="px-3 py-2 rounded-lg hover:bg-white/10">Bezpečnost</a>
-            <a href="#sekce-strategie" class="px-3 py-2 rounded-lg hover:bg-white/10">Strategie</a>
-            <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
-          </nav>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <div class="mt-10">
-    <div class="space-y-10 min-w-0">
+      <div class="mt-10">
+        <div class="space-y-10 min-w-0">
       <section id="sekce-kategorie">
         <div class="flex items-end justify-between mb-4">
           <div>
@@ -211,6 +211,8 @@
       <section id="sekce-bezpecnost" class="sr-only" aria-hidden="true"></section>
       <section id="sekce-strategie" class="sr-only" aria-hidden="true"></section>
       <section id="sekce-faq" class="sr-only" aria-hidden="true"></section>
+    </div>
+  </div>
     </div>
   </div>
 </main>
