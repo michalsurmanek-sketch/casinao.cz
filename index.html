@@ -2332,6 +2332,9 @@
         const baseBg = row.dataset.baseBgColor;
         const baseBorder = row.dataset.baseBorderColor;
 
+        // Desktop must keep brand row colors; only clear potential mobile background image.
+        row.style.removeProperty('background-image');
+
         if (baseBg) {
           row.style.setProperty('background-color', baseBg, 'important');
         }
@@ -2339,8 +2342,6 @@
         if (baseBorder) {
           row.style.setProperty('border-color', baseBorder, 'important');
         }
-
-        row.style.removeProperty('background');
       });
     }
 
