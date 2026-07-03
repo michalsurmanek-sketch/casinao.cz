@@ -3,188 +3,673 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Denní bonusy online casin | Casinao.cz</title>
-  <meta name="description" content="Aktuální denní bonusy legálních online casin v ČR. Přehled ověřených nabídek, podmínek a odkazů na recenze." />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#111827" />
-  <link rel="canonical" href="https://casinao.cz/denni-bonusy.html" />
+  <title>Denní casino bonusy – aktuální bonusy dnes | Casinao.cz</title>
+  <meta name="description" content="Aktuální denní casino bonusy, free spiny a promo akce pro dnešní den. Přehledně, s podmínkami a upozorněním na zodpovědné hraní." />
+  <link rel="canonical" href="https://www.casinao.cz/denni-bonusy.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="cs_CZ" />
-  <meta property="og:title" content="Denní bonusy online casin | Casinao.cz" />
-  <meta property="og:description" content="Přehled denních bonusů legálních online casin v ČR." />
-  <meta property="og:url" content="https://casinao.cz/denni-bonusy.html" />
-  <meta property="og:site_name" content="Casinao.cz" />
-  <meta property="og:image" content="https://casinao.cz/img/og-image.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Denní bonusy online casin | Casinao.cz" />
-  <meta name="twitter:description" content="Aktuální denní bonusy legálních online casin v ČR." />
-  <meta name="twitter:image" content="https://casinao.cz/img/og-image.png" />
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
-            display: ['Montserrat', 'ui-sans-serif', 'system-ui']
-          },
-          boxShadow: {
-            glow: '0 12px 34px rgba(0,0,0,0.35)'
-          }
-        }
-      }
-    };
-  </script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
+  <meta property="og:title" content="Denní casino bonusy – aktuální bonusy dnes | Casinao.cz" />
+  <meta property="og:description" content="Denní přehled aktuálních casino bonusů, free spinů a promo akcí." />
+  <meta property="og:url" content="https://www.casinao.cz/denni-bonusy.html" />
 
   <style>
-    html { scroll-behavior: smooth; }
-    .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.62); }
-    .bonus-card {
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.34);
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    :root{
+      --bg:#080b13;
+      --bg2:#101727;
+      --card:#141d31;
+      --card2:#19243c;
+      --gold:#f6c453;
+      --gold2:#ffdf88;
+      --text:#f5f7fb;
+      --muted:#aeb8cc;
+      --green:#28c76f;
+      --red:#ff5c77;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 24px 80px rgba(0,0,0,.35);
+      --radius:22px;
     }
-    .bonus-card:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.06);
-      box-shadow: 0 20px 42px rgba(0,0,0,0.42), 0 0 20px rgba(245,196,0,0.15);
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(246,196,83,.20), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(40,199,111,.12), transparent 28%),
+        linear-gradient(180deg, #070910 0%, #0d1321 42%, #070910 100%);
+      min-height:100vh;
     }
-    .pill {
-      border-radius: 999px;
-      padding: .35rem .7rem;
-      font-size: .75rem;
-      font-weight: 700;
-      line-height: 1;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(17,24,39,0.5);
-      color: #e5e7eb;
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1180px, calc(100% - 32px));margin:auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(8,11,19,.78);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:16px 0;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.3px;
+      font-size:22px;
+    }
+
+    .logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--gold), #ff8a00);
+      color:#171000;
+      box-shadow:0 0 34px rgba(246,196,83,.35);
+    }
+
+    .menu{
+      display:flex;
+      gap:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .menu a:hover{color:var(--gold)}
+
+    .hero{
+      padding:70px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border:1px solid rgba(246,196,83,.35);
+      border-radius:999px;
+      color:var(--gold2);
+      background:rgba(246,196,83,.08);
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(34px, 6vw, 66px);
+      line-height:.98;
+      letter-spacing:-2px;
+    }
+
+    .lead{
+      margin:20px 0 0;
+      color:var(--muted);
+      max-width:680px;
+      font-size:18px;
+      line-height:1.65;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      border-radius:14px;
+      padding:14px 18px;
+      font-weight:900;
+      border:1px solid transparent;
+      transition:.2s;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--gold), #ff9f1c);
+      color:#150f03;
+      box-shadow:0 12px 35px rgba(246,196,83,.22);
+    }
+
+    .btn-secondary{
+      border-color:var(--line);
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-80px -80px auto auto;
+      width:180px;
+      height:180px;
+      background:rgba(246,196,83,.20);
+      border-radius:50%;
+      filter:blur(10px);
+    }
+
+    .today-box{
+      position:relative;
+      display:grid;
+      gap:14px;
+    }
+
+    .today-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px;
+      background:rgba(8,11,19,.46);
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+
+    .today-row strong{color:var(--gold)}
+    .today-row span{color:var(--muted);font-size:14px}
+
+    .section{
+      padding:38px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:end;
+      margin-bottom:18px;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(26px, 4vw, 40px);
+      letter-spacing:-1px;
+    }
+
+    .section-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .filters{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:18px 0 22px;
+    }
+
+    .chip{
+      border:1px solid var(--line);
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+      padding:10px 13px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .chip.active{
+      background:rgba(246,196,83,.13);
+      color:var(--gold2);
+      border-color:rgba(246,196,83,.34);
+    }
+
+    .bonus-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .bonus-card{
+      background:linear-gradient(180deg, var(--card2), var(--card));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.20);
+      display:flex;
+      flex-direction:column;
+      min-height:315px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .bonus-card:after{
+      content:"";
+      position:absolute;
+      right:-40px;
+      top:-40px;
+      width:115px;
+      height:115px;
+      border-radius:50%;
+      background:rgba(246,196,83,.10);
+    }
+
+    .topline{
+      position:relative;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      margin-bottom:16px;
+    }
+
+    .casino-logo{
+      width:54px;
+      height:54px;
+      border-radius:17px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.07);
+      border:1px solid var(--line);
+      font-size:24px;
+      font-weight:900;
+    }
+
+    .tag{
+      font-size:12px;
+      font-weight:900;
+      padding:8px 10px;
+      border-radius:999px;
+      color:#071108;
+      background:var(--green);
+    }
+
+    .tag.hot{background:var(--gold)}
+    .tag.ends{background:var(--red);color:#fff}
+
+    .bonus-card h3{
+      position:relative;
+      margin:0 0 10px;
+      font-size:22px;
+    }
+
+    .offer{
+      position:relative;
+      font-size:28px;
+      font-weight:950;
+      color:var(--gold2);
+      margin-bottom:10px;
+      line-height:1.1;
+    }
+
+    .desc{
+      position:relative;
+      color:var(--muted);
+      line-height:1.55;
+      margin:0 0 16px;
+      font-size:15px;
+    }
+
+    .meta{
+      position:relative;
+      display:grid;
+      gap:8px;
+      margin-top:auto;
+      color:var(--muted);
+      font-size:14px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta b{color:var(--text)}
+
+    .card-actions{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .small-btn{
+      border-radius:13px;
+      padding:12px 10px;
+      text-align:center;
+      font-weight:900;
+      font-size:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+    }
+
+    .small-btn.main{
+      background:linear-gradient(135deg, var(--gold), #ff9f1c);
+      color:#161003;
+      border:0;
+    }
+
+    .notice{
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .notice strong{color:var(--text)}
+
+    .how-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .step{
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .num{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:11px;
+      background:rgba(246,196,83,.14);
+      color:var(--gold2);
+      font-weight:950;
+      margin-bottom:12px;
+    }
+
+    .step h3{margin:0 0 8px;font-size:18px}
+    .step p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+
+    footer{
+      margin-top:40px;
+      padding:26px 0;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      font-size:14px;
+    }
+
+    @media (max-width:920px){
+      .hero-grid{grid-template-columns:1fr}
+      .bonus-grid{grid-template-columns:1fr 1fr}
+      .how-grid{grid-template-columns:1fr 1fr}
+      .menu{display:none}
+    }
+
+    @media (max-width:620px){
+      .bonus-grid,.how-grid{grid-template-columns:1fr}
+      .section-head{display:block}
+      .card-actions{grid-template-columns:1fr}
+      .hero{padding-top:42px}
     }
   </style>
 </head>
-<body class="bg-black text-gray-100 font-sans">
-  <div aria-hidden="true" class="fixed inset-0 -z-20 bg-[url('/img/pozadi.png')] bg-cover bg-center bg-no-repeat saturate-110 contrast-105 brightness-105"></div>
-  <div aria-hidden="true" class="fixed inset-0 -z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/84 to-black/90"></div>
-
-  <div class="sticky top-0 z-40">
-    <div class="text-center text-xs sm:text-sm bg-yellow-500 text-black py-2 px-3">
-      Ministerstvo financí varuje: <strong>Účastí na hazardní hře může vzniknout závislost.</strong> Hrajte zodpovědně. <span class="text-red-600 font-semibold">18+</span>
-    </div>
-  </div>
-
-  <header class="sticky top-8 z-30 px-4 sm:px-6 lg:px-8 mt-1">
-    <div class="max-w-7xl mx-auto glass border border-white/10 rounded-2xl px-4 py-3 flex items-center justify-between gap-3">
-      <a href="/" class="flex items-center gap-3 min-w-0">
-        <img src="/android-chrome-192x192.png" alt="Casinao.cz" class="w-10 h-10 rounded-xl" />
-        <div class="min-w-0">
-          <div class="font-display font-extrabold text-2xl leading-none tracking-tight text-white">Casinao.cz</div>
-          <div class="text-xs text-gray-300">Recenze • Bonusy • Návody</div>
-        </div>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="/" class="logo" aria-label="Casinao.cz">
+        <span class="logo-mark">C</span>
+        <span>Casinao.cz</span>
       </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-100">
-        <a href="/index.html#casina" class="hover:text-yellow-300">Casina</a>
-        <a href="/bonusy.html" class="hover:text-yellow-300">Bonusy</a>
-        <a href="/navody.html" class="hover:text-yellow-300">Návody</a>
-        <a href="/kontakt.html" class="hover:text-yellow-300">Kontakt</a>
+      <nav class="menu" aria-label="Hlavní menu">
+        <a href="/bonusy.html">Stálé bonusy</a>
+        <a href="/denni-bonusy.html">Denní bonusy</a>
+        <a href="/blackjack.html">Blackjack</a>
+        <a href="/recenze.html">Recenze</a>
       </nav>
-
-      <a href="/index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-bold hover:bg-yellow-400 text-sm">
-        <i data-lucide="arrow-left" class="w-4 h-4"></i>
-        Zpět na hlavní stránku
-      </a>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-    <section class="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/70 p-6 sm:p-10 shadow-glow">
-      <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-400/35 bg-yellow-400/12 text-yellow-300 text-xs font-bold uppercase tracking-wide">Denní přehled</p>
-      <h1 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold text-white">Dnešní bonusy legálních online casin</h1>
-      <p class="mt-3 text-gray-300 max-w-3xl">Aktualizovaný výběr nejzajímavějších bonusů z českých licencovaných online casin. Před registrací vždy zkontrolujte podmínky promo akce a požadavky na protočení.</p>
-    </section>
-
-    <section class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
-      <article class="bonus-card p-5 sm:p-6" style="background-color: rgba(65, 143, 206, 0.22); border-color: rgba(65, 143, 206, 0.45);">
-        <div class="flex items-start justify-between gap-3">
-          <h2 class="font-display text-2xl font-extrabold">Tipsport Vegas</h2>
-          <span class="pill">TOP dne</span>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="badge">🔥 Aktualizováno dnes • denní přehled</div>
+          <h1>Denní casino bonusy a akce na dnes</h1>
+          <p class="lead">
+            Rychlý přehled časově omezených casino bonusů, free spinů, cashbacků a turnajových akcí.
+            Stálé nabídky najdete zvlášť na stránce Bonusy.
+          </p>
+          <div class="hero-actions">
+            <a href="#bonusy" class="btn btn-primary">Zobrazit dnešní bonusy</a>
+            <a href="#podminky" class="btn btn-secondary">Na co si dát pozor</a>
+          </div>
         </div>
-        <p class="mt-2 text-lg font-bold text-yellow-300">Bonus až 500 Kč + 100 Free Spinů</p>
-        <p class="mt-2 text-sm text-gray-200">Vhodné pro hráče, kteří chtějí kombinaci free spinů a rychlého startovního bonusu.</p>
-        <a href="/recenze/tipsport-vegas/" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-4 py-2 font-bold text-gray-900 hover:bg-yellow-400">
-          Zobrazit recenzi
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </article>
 
-      <article class="bonus-card p-5 sm:p-6" style="background-color: rgba(255, 221, 0, 0.20); border-color: rgba(255, 221, 0, 0.45);">
-        <h2 class="font-display text-2xl font-extrabold">Fortuna Vegas</h2>
-        <p class="mt-2 text-lg font-bold text-yellow-300">Bonus až 300 Kč + 50 Free Spinů</p>
-        <p class="mt-2 text-sm text-gray-200">Klasický startovací balíček s jednodušší strukturou odměn.</p>
-        <a href="/recenze/fortuna-vegas/" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-4 py-2 font-bold text-gray-900 hover:bg-yellow-400">
-          Zobrazit recenzi
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </article>
-
-      <article class="bonus-card p-5 sm:p-6" style="background-color: rgba(255, 60, 1, 0.22); border-color: rgba(255, 60, 1, 0.45);">
-        <h2 class="font-display text-2xl font-extrabold">Betano</h2>
-        <p class="mt-2 text-lg font-bold text-yellow-300">Bonus až 600 Kč + 200 Free Spinů</p>
-        <p class="mt-2 text-sm text-gray-200">Vyšší počet free spinů pro hráče, kteří chtějí delší herní rozjezd.</p>
-        <a href="/recenze/betano/" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-4 py-2 font-bold text-gray-900 hover:bg-yellow-400">
-          Zobrazit recenzi
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </article>
-
-      <article class="bonus-card p-5 sm:p-6" style="background-color: rgba(1, 120, 75, 0.22); border-color: rgba(1, 120, 75, 0.45);">
-        <h2 class="font-display text-2xl font-extrabold">Chance</h2>
-        <p class="mt-2 text-lg font-bold text-yellow-300">Bonus až 400 Kč + Free Spiny</p>
-        <p class="mt-2 text-sm text-gray-200">Vyvážený bonus pro nové hráče s důrazem na rychlý vstup do hry.</p>
-        <a href="/recenze/chance/" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-4 py-2 font-bold text-gray-900 hover:bg-yellow-400">
-          Zobrazit recenzi
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </article>
+        <aside class="hero-card" aria-label="Souhrn dne">
+          <div class="today-box">
+            <div class="today-row">
+              <span>Dnešní TOP typ</span>
+              <strong>Free spiny</strong>
+            </div>
+            <div class="today-row">
+              <span>Nejčastější akce</span>
+              <strong>Cashback</strong>
+            </div>
+            <div class="today-row">
+              <span>Kontrola</span>
+              <strong>Podmínky vždy ověřit</strong>
+            </div>
+            <div class="today-row">
+              <span>Doporučení</span>
+              <strong>Hrajte zodpovědně</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
-      <h2 class="font-display text-2xl font-extrabold text-white">Důležité upozornění</h2>
-      <p class="mt-2 text-sm text-gray-300">Výše bonusů se může měnit. Vždy si ověřte aktuální podmínky přímo u provozovatele. Informace mají orientační charakter.</p>
+    <section class="section" id="bonusy">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Aktuální denní bonusy</h2>
+            <p>Ukázková struktura pro každodenní doplňování bonusů. Texty a částky stačí měnit podle aktuální nabídky.</p>
+          </div>
+        </div>
+
+        <div class="filters" aria-label="Kategorie bonusů">
+          <span class="chip active">Vše</span>
+          <span class="chip">Free spiny</span>
+          <span class="chip">Cashback</span>
+          <span class="chip">Vkladový bonus</span>
+          <span class="chip">Turnaje</span>
+        </div>
+
+        <div class="bonus-grid">
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">A</div>
+              <span class="tag hot">TOP DNES</span>
+            </div>
+            <h3>Casino akce dne</h3>
+            <div class="offer">50 free spinů</div>
+            <p class="desc">Denní promo pro vybrané automaty. Vhodné jako krátká akce bez složitého hledání.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> pouze dnes</span>
+              <span><b>Typ:</b> free spiny</span>
+              <span><b>Poznámka:</b> ověřte minimální vklad a protočení</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit bonus</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">B</div>
+              <span class="tag">NOVÉ</span>
+            </div>
+            <h3>Cashback bonus</h3>
+            <div class="offer">až 15 % zpět</div>
+            <p class="desc">Denní cashback z čisté prohry. Hodí se hlavně pro hráče, kteří sledují limity a rozpočet.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> dnešní den</span>
+              <span><b>Typ:</b> cashback</span>
+              <span><b>Poznámka:</b> může mít maximum výplaty</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit bonus</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">C</div>
+              <span class="tag ends">KONČÍ DNES</span>
+            </div>
+            <h3>Vkladová akce</h3>
+            <div class="offer">100 % do 1 000 Kč</div>
+            <p class="desc">Časově omezený bonus k dnešnímu vkladu. Sledujte hlavně požadavek protočení.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> do půlnoci</span>
+              <span><b>Typ:</b> vkladový bonus</span>
+              <span><b>Poznámka:</b> kontrolujte kurz a pravidla her</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit bonus</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">D</div>
+              <span class="tag">DNES</span>
+            </div>
+            <h3>Turnaj dne</h3>
+            <div class="offer">prizepool 25 000 Kč</div>
+            <p class="desc">Denní turnaj na automatech. Sledujte počet účastníků, minimální sázku a pořadí výher.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> dnes</span>
+              <span><b>Typ:</b> turnaj</span>
+              <span><b>Poznámka:</b> výhra nemusí být garantovaná</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit akci</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">E</div>
+              <span class="tag hot">EXTRA</span>
+            </div>
+            <h3>Bonus bez vkladu</h3>
+            <div class="offer">malá odměna zdarma</div>
+            <p class="desc">Akce pro registrované hráče. U těchto bonusů bývají přísnější výherní limity.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> podle dostupnosti</span>
+              <span><b>Typ:</b> bez vkladu</span>
+              <span><b>Poznámka:</b> zkontrolujte limit výběru</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit bonus</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+
+          <article class="bonus-card">
+            <div class="topline">
+              <div class="casino-logo">F</div>
+              <span class="tag">TIP</span>
+            </div>
+            <h3>Happy hours</h3>
+            <div class="offer">bonus v určitém čase</div>
+            <p class="desc">Krátká akce dostupná jen několik hodin. Dobré umístit nahoru v den, kdy opravdu běží.</p>
+            <div class="meta">
+              <span><b>Platnost:</b> časové okno</span>
+              <span><b>Typ:</b> promo akce</span>
+              <span><b>Poznámka:</b> doplňte přesný čas</span>
+            </div>
+            <div class="card-actions">
+              <a class="small-btn main" href="#">Zobrazit bonus</a>
+              <a class="small-btn" href="#">Podmínky</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="podminky">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Na co si dát pozor u denních bonusů</h2>
+            <p>Denní akce vypadají lákavě, ale rozhodují hlavně podmínky.</p>
+          </div>
+        </div>
+
+        <div class="how-grid">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Protočení</h3>
+            <p>Zkontrolujte, kolikrát je nutné bonus nebo výhru protočit.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Platnost</h3>
+            <p>Denní bonus může skončit o půlnoci nebo po vyčerpání nabídky.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Maximální výhra</h3>
+            <p>Některé free spiny a bonusy mají omezený limit výběru.</p>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <h3>Ověření účtu</h3>
+            <p>Výběr peněz často vyžaduje dokončenou registraci a ověření identity.</p>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top:18px">
+          <strong>Upozornění:</strong> Tato stránka je informační přehled. Bonusy, částky, platnost a podmínky se mohou měnit.
+          Před registrací nebo vkladem vždy ověřte aktuální podmínky přímo u provozovatele. Hazardní hry jsou určeny pouze osobám starším 18 let.
+          Hrajte zodpovědně.
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="border-t border-white/10 bg-black/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="text-xs text-gray-400">
-        © <span id="year"></span> Casinao.cz • Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost. <span class="text-red-500 font-semibold">18+</span>
-      </div>
+  <footer>
+    <div class="wrap">
+      © Casinao.cz • Denní bonusy • 18+ • Hrajte zodpovědně
     </div>
   </footer>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide) {
-        lucide.createIcons();
-      }
-      const year = document.getElementById('year');
-      if (year) {
-        year.textContent = new Date().getFullYear();
-      }
-    });
-  </script>
 </body>
 </html>
