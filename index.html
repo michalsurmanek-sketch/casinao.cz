@@ -2350,6 +2350,13 @@
     const showAllReviews = document.getElementById('showAllReviews');
     const noResults = document.getElementById('casinoNoResults');
     const activeFilters = new Set();
+    const desktopSearchPlaceholder = 'Hledej: Fortuna, bonus za registraci, bonus za vklad...';
+    const mobileSearchPlaceholder = 'Hledej: Tipsport, bonus ...';
+
+    function syncSearchPlaceholder() {
+      if (!searchInput) return;
+      searchInput.placeholder = window.innerWidth < 768 ? mobileSearchPlaceholder : desktopSearchPlaceholder;
+    }
 
     function enforceDesktopCasinoColors() {
       if (window.innerWidth < 768) return;
@@ -2445,9 +2452,11 @@
     }
 
     syncMobileBonusLines();
+    syncSearchPlaceholder();
     enforceDesktopCasinoColors();
     setupMobileRowLinks();
     window.addEventListener('resize', syncMobileBonusLines);
+    window.addEventListener('resize', syncSearchPlaceholder);
     window.addEventListener('resize', enforceDesktopCasinoColors);
 
     function applyCasinoFilters() {
