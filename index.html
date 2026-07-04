@@ -1257,7 +1257,7 @@
   <script src="/assets/overflow-diagnostic.js" defer></script>
 </head>
 <body class="bg-black text-gray-100 font-sans">
-  <div aria-hidden="true" class="fixed inset-0 -z-20 bg-[url('/img/casino-pozadi.webp')] bg-cover bg-center bg-no-repeat saturate-110 contrast-105 brightness-105"></div>
+  <div aria-hidden="true" class="fixed inset-0 -z-20 bg-[url('/img/pozadi.png')] bg-cover bg-center bg-no-repeat saturate-110 contrast-105 brightness-105"></div>
   <div aria-hidden="true" class="fixed inset-0 -z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/84 to-black/90"></div>
   <!-- Age Gate -->
   <div id="ageGate" class="fixed inset-0 z-[100] hidden">
@@ -1333,9 +1333,11 @@
   </header>
 
   <!-- Hero -->
-  <section id="home" class="relative">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.12),transparent_60%)] pointer-events-none"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8 pb-12">
+  <section id="home" class="relative overflow-hidden">
+    <div aria-hidden="true" class="absolute inset-y-0 right-0 w-full lg:w-[56%] bg-[url('/img/casino-pozadi.webp')] bg-cover bg-center bg-no-repeat pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-black/90 via-gray-950/82 to-black/40 lg:to-transparent pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,204,21,0.12),transparent_60%)] pointer-events-none"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8 pb-12">
       <div class="grid lg:grid-cols-2 gap-10 items-stretch">
         <div>
           <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
