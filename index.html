@@ -893,6 +893,16 @@
     #casinoTableBody .casino-row {
       background: linear-gradient(130deg, rgba(6, 14, 28, 0.05), rgba(6, 14, 28, 0.1)) !important;
     }
+
+    #casinoTableBody .casino-row td {
+      background: transparent !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(2)::before,
+    #casinoTableBody .casino-row td:nth-child(2)::after,
+    #casinoTableBody .casino-row td:nth-child(3) {
+      background: transparent !important;
+    }
   }
 
   #casinoTableBody .casino-row:hover {
