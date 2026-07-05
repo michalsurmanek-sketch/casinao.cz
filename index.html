@@ -1333,13 +1333,20 @@
   }
 
   #casinoTableBody {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, 390px);
+    display: flex !important;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 14px;
   }
 
+  #casina table {
+    display: block !important;
+    width: 100% !important;
+    border-spacing: 0 !important;
+  }
+
   #casinoTableBody .casino-row {
+    flex: 0 0 390px;
     width: 390px;
     max-width: 390px;
     margin-left: 0 !important;
