@@ -1188,7 +1188,7 @@
       }
 
       #bonusy::before{
-        height:360px;
+        height:100%;
         background-image:
           linear-gradient(180deg,
             rgba(8,11,19,.78) 0%,
@@ -1197,13 +1197,13 @@
           url('/img/denni-bonusy-pohar-bg.webp?v=2');
         background-repeat:no-repeat, no-repeat;
         background-position:left top, center top;
-        background-size:100% 100%, 100% auto;
+        background-size:100% 100%, cover;
       }
     }
 
     @media (max-width:480px){
       .hero::before{
-        height:372px;
+        height:100%;
         background-image:
           linear-gradient(90deg,
             rgba(5, 11, 9, .98) 0%,
@@ -1212,9 +1212,9 @@
             rgba(8, 18, 14, .34) 74%,
             rgba(7, 16, 13, .08) 100%),
           url('/img/denni-bonusy-hero-bg.webp');
-        background-position:left top, right -10px top;
+        background-position:left top, right -22px top;
         background-repeat:no-repeat, no-repeat;
-        background-size:100% 100%, auto 92%;
+        background-size:100% 100%, auto 124%;
       }
 
       .hero-actions .btn-primary{
@@ -1228,8 +1228,8 @@
       }
 
       #bonusy::before{
-        height:330px;
-        background-size:100% 100%, 100% auto;
+        height:100%;
+        background-size:100% 100%, cover;
       }
     }
   </style>
