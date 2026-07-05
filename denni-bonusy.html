@@ -226,7 +226,32 @@
     }
 
     .today-row strong{color:var(--gold)}
-    .today-row span{color:var(--muted);font-size:14px}
+    .today-row span{
+      color:var(--muted);
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .today-row span::before{
+      content:"★";
+      width:20px;
+      height:20px;
+      display:grid;
+      place-items:center;
+      border-radius:7px;
+      font-size:11px;
+      line-height:1;
+      color:#111827;
+      background:linear-gradient(135deg, var(--gold), #ff9f1c);
+      box-shadow:0 5px 14px rgba(246,196,83,.26);
+      flex:0 0 auto;
+    }
+
+    .today-row:nth-child(2) span::before{content:"%";}
+    .today-row:nth-child(3) span::before{content:"!";}
+    .today-row:nth-child(4) span::before{content:"+";}
 
     .today-row strong::after{
       content:"›";
