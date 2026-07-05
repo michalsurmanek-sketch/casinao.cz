@@ -1309,6 +1309,9 @@
     margin-bottom: 0;
     align-content: start;
     gap: 10px;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 16px !important;
   }
 
   #casinoTableBody .casino-row::before,
@@ -1322,9 +1325,13 @@
   #casinoTableBody .casino-row td:nth-child(2),
   #casinoTableBody .casino-row td:nth-child(3),
   #casinoTableBody .casino-row td:nth-child(4) {
+    display: block !important;
     width: auto !important;
     height: auto !important;
     min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    vertical-align: top !important;
   }
 
   #casinoTableBody .casino-row td:first-child,
@@ -1358,6 +1365,7 @@
   #casinoTableBody .casino-row td:nth-child(4) {
     grid-area: cta;
     order: 5;
+    width: 100% !important;
   }
 
   #casina aside {
