@@ -889,7 +889,7 @@
     background: linear-gradient(130deg, rgba(6, 14, 28, 0.72), rgba(6, 14, 28, 0.86)), var(--casino-row-bg, rgba(8, 25, 46, 0.94)) !important;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 767px), (min-width: 768px) {
     #casinoTableBody .casino-row {
       background-image: none !important;
     }
@@ -2690,11 +2690,6 @@
       rows.forEach((row) => {
         let bonusLine = row.querySelector('.casino-bonus-line');
 
-        if (window.innerWidth >= 768) {
-          if (bonusLine) bonusLine.remove();
-          return;
-        }
-
         const bonusText = row.getAttribute('data-bonus') || '';
 
         if (!bonusLine) {
@@ -2710,11 +2705,6 @@
     function syncMobileMetaLines() {
       rows.forEach((row) => {
         let metaBlock = row.querySelector('.casino-mobile-meta');
-
-        if (window.innerWidth >= 768) {
-          if (metaBlock) metaBlock.remove();
-          return;
-        }
 
         if (!metaBlock) {
           metaBlock = document.createElement('div');
