@@ -828,6 +828,9 @@
 
     .notice strong{color:var(--text)}
 
+    .notice-toggle summary{display:none}
+    .notice-toggle .notice-content{display:block}
+
     .how-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -1036,6 +1039,55 @@
       .bonus-grid,.how-grid{grid-template-columns:1fr}
       .section-head{display:block}
       .card-actions{grid-template-columns:1fr}
+
+      .notice-toggle{
+        padding:0;
+        overflow:hidden;
+      }
+
+      .notice-toggle summary{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        padding:14px 16px;
+        cursor:pointer;
+        list-style:none;
+        font-weight:800;
+        color:var(--text);
+      }
+
+      .notice-toggle summary::-webkit-details-marker{display:none}
+
+      .notice-toggle summary::after{
+        content:"▾";
+        color:var(--gold2);
+        font-size:14px;
+        transition:transform .2s ease;
+      }
+
+      .notice-toggle[open] summary::after{
+        transform:rotate(180deg);
+      }
+
+      .notice-toggle .notice-hint{
+        color:var(--gold2);
+        font-size:12px;
+        font-weight:700;
+      }
+
+      .notice-toggle .notice-content{
+        display:none;
+        padding:0 16px 15px;
+        line-height:1.65;
+      }
+
+      .notice-toggle[open] .notice-content{display:block}
+
+      .notice-toggle[open] summary{
+        border-bottom:1px solid var(--line);
+      }
+
       .hero{
         padding-top:42px;
         padding-bottom:14px;
@@ -1503,11 +1555,14 @@
           </div>
         </div>
 
-        <div class="notice" style="margin-top:18px">
-          <strong>Upozornění:</strong> Tato stránka je informační přehled. Bonusy, částky, platnost a podmínky se mohou měnit.
-          Před registrací nebo vkladem vždy ověřte aktuální podmínky přímo u provozovatele. Hazardní hry jsou určeny pouze osobám starším 18 let.
-          Hrajte zodpovědně.
-        </div>
+        <details class="notice notice-toggle" style="margin-top:18px" open>
+          <summary><strong>Upozornění:</strong><span class="notice-hint">Rozkliknout</span></summary>
+          <div class="notice-content">
+            Tato stránka je informační přehled. Bonusy, částky, platnost a podmínky se mohou měnit.
+            Před registrací nebo vkladem vždy ověřte aktuální podmínky přímo u provozovatele. Hazardní hry jsou určeny pouze osobám starším 18 let.
+            Hrajte zodpovědně.
+          </div>
+        </details>
       </div>
     </section>
   </main>
@@ -1532,6 +1587,11 @@
           details.hidden = isExpanded;
         });
       });
+
+      const noticeToggle = document.querySelector('.notice-toggle');
+      if (noticeToggle && window.matchMedia('(max-width:620px)').matches) {
+        noticeToggle.removeAttribute('open');
+      }
 
       const chips = document.querySelectorAll('.filters .chip[data-filter]');
       const cards = document.querySelectorAll('.bonus-grid .bonus-card[data-categories]');
