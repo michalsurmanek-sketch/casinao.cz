@@ -1204,17 +1204,38 @@
     }
 
     #casinoTableBody .casino-row td:nth-child(3)::after {
-      content: "🛡 Licence CZ " attr(data-license) "\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
-      display: block;
+      content: none;
+    }
+
+    #casinoTableBody .casino-row .casino-mobile-meta {
+      display: grid;
+      gap: 8px;
       margin-top: 10px;
       padding-top: 10px;
-      white-space: pre-line;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    #casinoTableBody .casino-row .casino-mobile-meta-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
       font-size: clamp(12px, 3.4vw, 14px);
       line-height: 1.45;
       font-weight: 700;
       color: rgba(243,244,246,.95);
-      border-top: 1px solid rgba(255,255,255,.12);
-      border-left: 0;
+    }
+
+    #casinoTableBody .casino-row .casino-mobile-meta-icon {
+      flex: 0 0 auto;
+      width: 18px;
+      text-align: center;
+      opacity: 0.92;
+    }
+
+    #casinoTableBody .casino-row .casino-mobile-meta-text {
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     #casinoTableBody .casino-row .casino-bonus-line {
@@ -2624,11 +2645,73 @@
       });
     }
 
+    function syncMobileMetaLines() {
+      rows.forEach((row) => {
+        let metaBlock = row.querySelector('.casino-mobile-meta');
+
+        if (window.innerWidth >= 768) {
+          if (metaBlock) metaBlock.remove();
+          return;
+        }
+
+        const voteCell = row.querySelector('td:nth-child(3)');
+        if (!voteCell) return;
+
+        if (!metaBlock) {
+          metaBlock = document.createElement('div');
+          metaBlock.className = 'casino-mobile-meta';
+          voteCell.appendChild(metaBlock);
+        }
+
+        const license = row.getAttribute('data-license') || '';
+        const since = row.getAttribute('data-fast') || '';
+        const operator = row.getAttribute('data-app') || '';
+        const games = row.getAttribute('data-games') || '';
+        const lines = [];
+
+        if (license) {
+          lines.push({ icon: '🛡', text: 'Licence CZ ' + license });
+        }
+
+        if (since) {
+          lines.push({ icon: '⚡', text: since });
+        }
+
+        if (operator) {
+          lines.push({ icon: '📱', text: operator });
+        }
+
+        if (games) {
+          lines.push({ icon: '🎰', text: games });
+        }
+
+        metaBlock.innerHTML = '';
+
+        lines.forEach((line) => {
+          const item = document.createElement('div');
+          item.className = 'casino-mobile-meta-line';
+
+          const icon = document.createElement('span');
+          icon.className = 'casino-mobile-meta-icon';
+          icon.textContent = line.icon;
+
+          const text = document.createElement('span');
+          text.className = 'casino-mobile-meta-text';
+          text.textContent = line.text;
+
+          item.append(icon, text);
+          metaBlock.appendChild(item);
+        });
+      });
+    }
+
     syncMobileBonusLines();
+    syncMobileMetaLines();
     syncSearchPlaceholder();
     enforceDesktopCasinoColors();
     setupMobileRowLinks();
     window.addEventListener('resize', syncMobileBonusLines);
+    window.addEventListener('resize', syncMobileMetaLines);
     window.addEventListener('resize', syncSearchPlaceholder);
     window.addEventListener('resize', enforceDesktopCasinoColors);
 
