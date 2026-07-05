@@ -781,6 +781,75 @@
       border:1px solid var(--line);
       border-radius:18px;
       padding:18px;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .step::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg,
+          rgba(8,11,19,.86) 0%,
+          rgba(8,11,19,.72) 56%,
+          rgba(8,11,19,.68) 100%);
+    }
+
+    .step > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .step-protoceni::before{
+      background-image:
+        linear-gradient(180deg,
+          rgba(8,11,19,.86) 0%,
+          rgba(8,11,19,.72) 56%,
+          rgba(8,11,19,.68) 100%),
+        url('/img/protoceni-bonusu-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:center center, center center;
+      background-size:100% 100%, cover;
+    }
+
+    .step-platnost::before{
+      background-image:
+        linear-gradient(180deg,
+          rgba(8,11,19,.86) 0%,
+          rgba(8,11,19,.72) 56%,
+          rgba(8,11,19,.68) 100%),
+        url('/img/platnost-bonusu-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:center center, center center;
+      background-size:100% 100%, cover;
+    }
+
+    .step-max-vyhra::before{
+      background-image:
+        linear-gradient(180deg,
+          rgba(8,11,19,.86) 0%,
+          rgba(8,11,19,.72) 56%,
+          rgba(8,11,19,.68) 100%),
+        url('/img/maximalni-vyhra-limit-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:center center, center center;
+      background-size:100% 100%, cover;
+    }
+
+    .step-overeni::before{
+      background-image:
+        linear-gradient(180deg,
+          rgba(8,11,19,.86) 0%,
+          rgba(8,11,19,.72) 56%,
+          rgba(8,11,19,.68) 100%),
+        url('/img/overeni-uctu-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:center center, center center;
+      background-size:100% 100%, cover;
     }
 
     .num{
@@ -1295,22 +1364,22 @@
         </div>
 
         <div class="how-grid">
-          <div class="step">
+          <div class="step step-protoceni">
             <div class="num">1</div>
             <h3>Protočení</h3>
             <p>Zkontrolujte, kolikrát je nutné bonus nebo výhru protočit.</p>
           </div>
-          <div class="step">
+          <div class="step step-platnost">
             <div class="num">2</div>
             <h3>Platnost</h3>
             <p>Denní bonus může skončit o půlnoci nebo po vyčerpání nabídky.</p>
           </div>
-          <div class="step">
+          <div class="step step-max-vyhra">
             <div class="num">3</div>
             <h3>Maximální výhra</h3>
             <p>Některé free spiny a bonusy mají omezený limit výběru.</p>
           </div>
-          <div class="step">
+          <div class="step step-overeni">
             <div class="num">4</div>
             <h3>Ověření účtu</h3>
             <p>Výběr peněz často vyžaduje dokončenou registraci a ověření identity.</p>
