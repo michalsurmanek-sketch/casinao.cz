@@ -1292,26 +1292,25 @@
 
   #casinoTableBody .casino-row {
     display: grid !important;
-    width: 460px;
-    max-width: 460px;
-    flex: 0 0 460px;
-    grid-template-columns: 1fr;
+    width: 520px;
+    max-width: 520px;
+    flex: 0 0 520px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
-      "logo"
-      "score"
-      "votes"
-      "details"
-      "cta";
+      "logo top"
+      "score votes"
+      "details details"
+      "cta cta";
     align-items: start;
     justify-self: center;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 0;
     align-content: start;
-    gap: 10px;
+    gap: 10px 14px;
     height: auto !important;
     min-height: 0 !important;
-    padding: 16px !important;
+    padding: 18px !important;
     background:
       linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,0) 1px) top/100% 1px no-repeat,
       linear-gradient(180deg, rgba(6, 14, 28, 0.92), rgba(8, 25, 46, 0.94)) !important;
@@ -1345,27 +1344,31 @@
   #casinoTableBody .casino-row td:first-child {
     grid-area: logo;
     order: 1;
+    padding-bottom: 10px !important;
   }
 
   #casinoTableBody .casino-row td:nth-child(2) {
     grid-area: score;
     order: 2;
     text-align: left;
+    padding-top: 6px !important;
   }
 
   #casinoTableBody .casino-row td:nth-child(3) {
     grid-area: votes;
     order: 3;
-    justify-self: start;
-    text-align: left !important;
+    justify-self: end;
+    text-align: right !important;
+    padding-top: 6px !important;
     padding-bottom: 12px !important;
-    border-bottom: 1px solid rgba(255,255,255,.12);
   }
 
   #casinoTableBody .casino-row .casino-mobile-meta {
     grid-area: details;
     order: 4;
     padding-top: 12px;
+    padding-bottom: 12px;
+    border-top: 1px solid rgba(255,255,255,.12);
   }
 
   #casinoTableBody .casino-row td:nth-child(4) {
@@ -1373,6 +1376,7 @@
     order: 5;
     width: 100% !important;
     padding-top: 2px !important;
+    grid-column: 1 / -1;
   }
 
   #casinoTableBody .casino-row td:nth-child(4) > a {
