@@ -22,43 +22,76 @@
       box-sizing: border-box;
     }
 
-    @media (max-width: 767px) {
-      .bonusy-table-wrap {
-        overflow-x: visible !important;
-      }
+    .bonusy-table-wrap {
+      overflow: visible !important;
+    }
 
-      .bonusy-table {
-        width: 100%;
-        min-width: 0;
-        border-spacing: 0;
-      }
+    .bonusy-table {
+      width: 100%;
+      min-width: 0;
+      border-spacing: 0;
+    }
 
-      .bonusy-table thead {
-        display: none;
-      }
+    .bonusy-table thead {
+      display: none;
+    }
 
-      .bonusy-table tbody,
-      .bonusy-table tr,
-      .bonusy-table td {
-        display: block;
-        width: 100%;
-      }
+    .bonusy-table tbody {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
 
-      .bonusy-table tr {
-        margin-bottom: 12px;
-        border-radius: 12px;
-        overflow: hidden;
-      }
+    .bonusy-table tbody .casino-row {
+      --casino-accent: #fef08a;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "media media"
+        "score vote"
+        "cta cta";
+      gap: 10px;
+      border-radius: 16px;
+      border-width: 1px;
+      overflow: hidden;
+      padding: 12px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    }
 
-      .bonusy-table td {
-        white-space: normal !important;
-        text-align: left !important;
-      }
+    .bonusy-table td {
+      display: block;
+      width: 100%;
+      padding: 0 !important;
+      white-space: normal !important;
+      text-align: left !important;
+    }
 
-      .bonusy-table td:last-child a {
-        width: 100%;
-        justify-content: center;
-      }
+    .bonusy-table td:nth-child(1) {
+      grid-area: media;
+    }
+
+    .bonusy-table td:nth-child(2) {
+      grid-area: score;
+      justify-self: start;
+    }
+
+    .bonusy-table td:nth-child(3) {
+      grid-area: vote;
+      justify-self: end;
+      text-align: right !important;
+    }
+
+    .bonusy-table td:nth-child(4) {
+      grid-area: cta;
+    }
+
+    .bonusy-table td:last-child a {
+      width: 100%;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 12px;
+      padding: 10px 12px;
     }
 
     .bonusy-filter-btn {
@@ -88,17 +121,8 @@
       display: none !important;
     }
 
-    .bonusy-table th:nth-child(2),
-    .bonusy-table td:nth-child(2) {
-      display: none;
-    }
-
     .bonusy-table td:first-child > img:not(.bonusy-rank-image) {
       display: none;
-    }
-
-    .bonusy-table tbody .casino-row {
-      --casino-accent: #fef08a;
     }
 
     .bonusy-table tbody td:first-child {
@@ -140,15 +164,43 @@
     }
 
     .bonusy-rank-wrap {
-      display: none;
+      display: block;
       position: relative;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
     }
 
     .bonusy-rank-cta {
       display: none;
+    }
+
+    .bonusy-table .score-main,
+    .bonusy-table .score-denom {
+      display: inline-block;
+      padding: 2px 0;
+    }
+
+    .bonusy-table td:nth-child(2),
+    .bonusy-table td:nth-child(3) {
+      background: rgba(2, 6, 23, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 8px 10px !important;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 1024px) {
+      .bonusy-table tbody {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .bonusy-table tbody .casino-row {
+        height: 100%;
+      }
     }
 
     @media (max-width: 767px) {
@@ -156,22 +208,8 @@
         display: none !important;
       }
 
-      .bonusy-table td:first-child {
-        font-size: 0;
-        line-height: 0;
-        color: transparent;
-      }
-
-      .bonusy-type-chip {
-        display: none;
-      }
-
       .bonusy-table tbody td:first-child::before {
         display: none;
-      }
-
-      .bonusy-rank-wrap {
-        display: block;
       }
 
       .bonusy-rank-image {
@@ -180,7 +218,21 @@
       }
 
       .bonusy-rank-cta {
-        display: none !important;
+        display: inline-flex !important;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+        border-radius: 10px;
+        background: #eab308;
+        color: #111827;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 10px 12px;
+      }
+
+      .bonusy-type-chip {
+        margin-top: 0.3rem;
       }
     }
 
