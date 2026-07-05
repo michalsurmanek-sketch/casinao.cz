@@ -1276,14 +1276,25 @@
       width: 100%;
       margin-top: 2px;
       padding-top: 0 !important;
-      text-align: left !important;
+      text-align: center !important;
     }
 
     #casinoTableBody .casino-row td:nth-child(4) a {
       display: flex !important;
+      align-items: center;
+      justify-content: center;
       width: 100% !important;
       max-width: none !important;
       box-sizing: border-box;
+      text-align: center !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) a::after {
+      content: "→";
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 1.05em;
+      line-height: 1;
     }
   }
 
