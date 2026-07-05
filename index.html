@@ -791,10 +791,6 @@
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
       }
 
-  #bonusy {
-    display: none;
-  }
-
   #blog {
     display: none;
   }
@@ -1289,13 +1285,6 @@
     overflow: visible !important;
   }
 
-  #bonusy .mt-8.rounded-2xl {
-    width: 100%;
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   #casinoTableBody {
     display: flex !important;
     flex-wrap: wrap;
@@ -1408,9 +1397,6 @@
     display: none !important;
   }
 
-  #bonusy .mt-8.rounded-2xl > .grid {
-    grid-template-columns: 1fr !important;
-  }
 }
 
 @media (max-width: 360px) {
@@ -1616,7 +1602,6 @@
 
         <nav class="hidden md:flex items-center gap-6 font-medium" aria-label="Hlavní navigace">
           <a href="#casina" class="hover:text-yellow-400">Casina</a>
-          <a href="#bonusy" class="hover:text-yellow-400">Bonusy</a>
           <a href="#hry" class="hover:text-yellow-400">Hry</a>
           <a href="#recenze" class="hover:text-yellow-400">Recenze</a>
           <a href="navody.html" class="hover:text-yellow-400">Návody</a>
@@ -1640,7 +1625,6 @@
       <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
         <nav class="px-4 py-3 grid gap-2" aria-label="Mobilní navigace">
           <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#bonusy"><i data-lucide="gift" class="w-4 h-4 text-yellow-400"></i><span>Bonusy</span></a>
           <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
           <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
           <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
@@ -1766,7 +1750,6 @@
             <p class="mt-2 text-gray-300">Rychlé srovnání klíčových parametrů. Hodnocení je orientační, nezávislé a může se měnit.</p>
           </div>
           <div class="hidden sm:flex items-center gap-2">
-            <a href="#bonusy" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="gift" class="w-4 h-4"></i> Bonusy</a>
             <a href="navody.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10"><i data-lucide="book-open" class="w-4 h-4"></i> Návody</a>
           </div>
         </div>
@@ -2439,7 +2422,6 @@
           <h4 class="font-semibold mb-3 text-yellow-400">Rychlé odkazy</h4>
           <ul class="space-y-2 text-sm">
             <li><a class="hover:underline" href="#casina">Casina</a></li>
-            <li><a class="hover:underline" href="#bonusy">Bonusy</a></li>
             <li><a class="hover:underline" href="#recenze">Recenze</a></li>
             <li><a class="hover:underline" href="#hry">Hry</a></li>
             <li><a class="hover:underline" href="#faq">FAQ</a></li>
@@ -2596,7 +2578,6 @@
 
     const searchInput = document.getElementById('casinoSearch');
     const rows = Array.from(document.querySelectorAll('.casino-row'));
-    const bonusCards = Array.from(document.querySelectorAll('#casina aside > div'));
     const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
     const clearFilters = document.getElementById('clearFilters');
     const showAllReviews = document.getElementById('showAllReviews');
@@ -2841,15 +2822,6 @@
       });
 
       enforceDesktopCasinoColors();
-
-      bonusCards.forEach((card) => {
-        const cardText = normalizeSearchKey(card.textContent);
-        const show = visibleCasinoKeys.size === 0
-          ? !query && activeFilters.size === 0
-          : Array.from(visibleCasinoKeys).some((key) => cardText.includes(key));
-
-        card.classList.toggle('hidden', !show);
-      });
 
       if (noResults) {
         noResults.classList.toggle('hidden', visible !== 0);
