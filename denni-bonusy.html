@@ -531,16 +531,13 @@
     }
 
     .cashback-bonus::before{
-      background-image:
+      background:
         linear-gradient(90deg,
-          rgba(3,9,16,.96) 0%,
-          rgba(3,9,16,.92) 44%,
-          rgba(3,9,16,.52) 66%,
-          rgba(3,9,16,.08) 100%),
-        url('/img/cashback-bonus-bg.webp?v=1');
-      background-repeat:no-repeat, no-repeat;
-      background-position:left top, right center;
-      background-size:100% 100%, auto 92%;
+          rgba(3,9,16,.90) 0%,
+          rgba(3,9,16,.84) 40%,
+          rgba(3,9,16,.40) 66%,
+          rgba(3,9,16,.06) 100%),
+        url('/img/cashback-bonus-bg.webp?v=2') right center / auto 94% no-repeat !important;
     }
 
     .vkladovy-bonus::before{
@@ -906,8 +903,13 @@
       }
 
       .cashback-bonus::before{
-        background-position:left top, right -8px center;
-        background-size:100% 100%, auto 88%;
+        background:
+          linear-gradient(90deg,
+            rgba(3,9,16,.90) 0%,
+            rgba(3,9,16,.84) 40%,
+            rgba(3,9,16,.40) 66%,
+            rgba(3,9,16,.06) 100%),
+          url('/img/cashback-bonus-bg.webp?v=2') right -8px center / auto 88% no-repeat !important;
       }
 
       .vkladovy-bonus::before{
