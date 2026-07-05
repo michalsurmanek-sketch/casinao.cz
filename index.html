@@ -471,27 +471,7 @@
 
 @media (min-width: 768px) {
   #casina table {
-    table-layout: fixed !important;
-  }
-
-  #casina thead th:nth-child(1),
-  #casinoTableBody .casino-row td:first-child {
-    width: 28%;
-  }
-
-  #casina thead th:nth-child(2),
-  #casinoTableBody .casino-row td:nth-child(2) {
-    width: 18%;
-  }
-
-  #casina thead th:nth-child(3),
-  #casinoTableBody .casino-row td:nth-child(3) {
-    width: 22%;
-  }
-
-  #casina thead th:nth-child(4),
-  #casinoTableBody .casino-row td:nth-child(4) {
-    width: 32%;
+    table-layout: auto !important;
   }
 }
 
@@ -1315,11 +1295,26 @@
     width: 390px;
     max-width: 390px;
     flex: 0 0 390px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "score"
+      "votes"
+      "details"
+      "cta";
+    align-items: start;
     justify-self: center;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 0;
     align-content: start;
+    gap: 10px;
+  }
+
+  #casinoTableBody .casino-row::before,
+  #casinoTableBody .casino-row::after {
+    content: none !important;
+    display: none !important;
   }
 
   #casinoTableBody .casino-row td,
@@ -1335,6 +1330,34 @@
   #casinoTableBody .casino-row td:first-child,
   #casinoTableBody .casino-row td:last-child {
     border-radius: 0 !important;
+  }
+
+  #casinoTableBody .casino-row td:first-child {
+    grid-area: logo;
+    order: 1;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2) {
+    grid-area: score;
+    order: 2;
+    text-align: left;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(3) {
+    grid-area: votes;
+    order: 3;
+    justify-self: start;
+    text-align: left !important;
+  }
+
+  #casinoTableBody .casino-row .casino-mobile-meta {
+    grid-area: details;
+    order: 4;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) {
+    grid-area: cta;
+    order: 5;
   }
 
   #casina aside {
