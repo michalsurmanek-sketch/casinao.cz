@@ -186,13 +186,65 @@
     .hero-actions .btn{
       padding:12px 16px;
       font-size:15px;
+      gap:10px;
     }
 
-    .gift-icon-black{
-      display:inline-block;
-      margin-right:8px;
-      filter:grayscale(1) brightness(0);
-      vertical-align:-1px;
+    .btn-icon,
+    .today-icon{
+      width:18px;
+      height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+
+    .btn-icon svg,
+    .today-icon svg{
+      width:100%;
+      height:100%;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .btn-primary .btn-icon{color:#171003}
+    .btn-secondary .btn-icon{color:#f5f7fb}
+    .btn-arrow{font-size:22px;line-height:1;transform:translateY(-1px)}
+
+    .today-label{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .today-icon{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      color:#f7ca62;
+      background:radial-gradient(circle at 30% 30%, rgba(246,196,83,.24), rgba(246,196,83,.10) 52%, rgba(8,11,19,.36) 100%);
+      border:1px solid rgba(246,196,83,.34);
+      box-shadow:0 5px 14px rgba(246,196,83,.16);
+    }
+
+    .today-copy{
+      display:grid;
+      gap:1px;
+      line-height:1.2;
+    }
+
+    .today-copy b{
+      color:var(--text);
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .today-copy small{
+      color:var(--muted);
+      font-size:12px;
     }
 
     .btn{
@@ -265,25 +317,6 @@
       align-items:center;
       gap:10px;
     }
-
-    .today-row span::before{
-      content:"★";
-      width:20px;
-      height:20px;
-      display:grid;
-      place-items:center;
-      border-radius:7px;
-      font-size:11px;
-      line-height:1;
-      color:#111827;
-      background:linear-gradient(135deg, var(--gold), #ff9f1c);
-      box-shadow:0 5px 14px rgba(246,196,83,.26);
-      flex:0 0 auto;
-    }
-
-    .today-row:nth-child(2) span::before{content:"%";}
-    .today-row:nth-child(3) span::before{content:"!";}
-    .today-row:nth-child(4) span::before{content:"+";}
 
     .today-row strong::after{
       content:"›";
@@ -612,6 +645,14 @@
         font-size:13px;
       }
 
+      .today-copy b{
+        font-size:14px;
+      }
+
+      .today-copy small{
+        font-size:11px;
+      }
+
       .today-row strong{
         font-size:16px;
       }
@@ -674,28 +715,28 @@
             <span class="lead-line">stránce <a href="/bonusy.html" class="lead-bonus-link">Bonusy</a>.</span>
           </p>
           <div class="hero-actions">
-            <a href="#bonusy" class="btn btn-primary"><span class="gift-icon-black">🎁</span>Zobrazit dnešní bonusy &gt;</a>
-            <a href="#podminky" class="btn btn-secondary">🔔︎ Na co si dát pozor &gt;</a>
+            <a href="#bonusy" class="btn btn-primary"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span>Zobrazit dnešní bonusy <span class="btn-arrow" aria-hidden="true">›</span></a>
+            <a href="#podminky" class="btn btn-secondary"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 17H5.5a2.5 2.5 0 0 1 0-5H7V9a5 5 0 0 1 10 0v3h1.5a2.5 2.5 0 0 1 0 5H15"></path><path d="M12 21a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z"></path></svg></span>Na co si dát pozor <span class="btn-arrow" aria-hidden="true">›</span></a>
           </div>
         </div>
 
         <aside class="hero-card" aria-label="Souhrn dne">
           <div class="today-box">
             <div class="today-row">
-              <span>Dnešní TOP typ</span>
+              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy"><b>Dnešní TOP typ</b><small>Nejlepší bonusy dne</small></span></span>
               <strong>Free spiny</strong>
             </div>
             <div class="today-row">
-              <span>Nejčastější akce</span>
+              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 2.1 3-.5.8 2.9 2.8 1.3-1.3 2.8.5 3-2.9.8L12 21l-2.1-2.1-3 .5-.8-2.9-2.8-1.3 1.3-2.8-.5-3 2.9-.8z"></path><path d="M9.5 12.5l1.8 1.8 3.2-3.2"></path></svg></span><span class="today-copy"><b>Nejčastější akce</b><small>Co se vyplatí využít</small></span></span>
               <strong>Cashback</strong>
             </div>
             <div class="today-row">
-              <span>Kontrola</span>
-              <strong>Podmínky vždy ověřit</strong>
+              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5h12"></path><path d="M8 5V3h8v2"></path><path d="M9 12h6"></path><path d="M12 9v6"></path><path d="M4 8h16v4a8 8 0 0 1-16 0z"></path></svg></span><span class="today-copy"><b>Turnajové akce</b><small>Oblíbené denní klání</small></span></span>
+              <strong>Turnaje</strong>
             </div>
             <div class="today-row">
-              <span>Doporučení</span>
-              <strong>Hrajte zodpovědně</strong>
+              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16h.01"></path></svg></span><span class="today-copy"><b>Kontrola podmínek</b><small>Vždy si je ověřte</small></span></span>
+              <strong>Bezpečně</strong>
             </div>
           </div>
         </aside>
