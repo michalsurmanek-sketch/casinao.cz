@@ -908,6 +908,8 @@
       position:relative;
     }
 
+    .footer-mobile-only{display:none}
+
     footer::before{
       content:"";
       position:absolute;
@@ -1084,6 +1086,9 @@
       #podminky .podminky-intro-line{
         display:block;
       }
+
+      .footer-desktop-only{display:none}
+      .footer-mobile-only{display:inline}
 
       .featured-bonus{
         border-radius:18px;
@@ -1455,7 +1460,7 @@
 
   <footer>
     <div class="wrap">
-      © Casinao.cz • Denní bonusy • 18+ • Hrajte zodpovědně
+      © Casinao.cz • Denní bonusy • 18+ • <span class="footer-desktop-only">Hrajte zodpovědně</span><span class="footer-mobile-only">Todpovědně</span>
     </div>
   </footer>
 
