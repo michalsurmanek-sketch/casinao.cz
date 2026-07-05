@@ -475,6 +475,7 @@
       border-radius:999px;
       font-weight:800;
       font-size:14px;
+      cursor:pointer;
     }
 
     .chip.active{
@@ -1108,15 +1109,15 @@
         </div>
 
         <div class="filters" aria-label="Kategorie bonusů">
-          <span class="chip active">Vše</span>
-          <span class="chip">Free spiny</span>
-          <span class="chip">Cashback</span>
-          <span class="chip">Vkladový bonus</span>
-          <span class="chip">Turnaje</span>
+          <span class="chip active" role="button" tabindex="0" data-filter="all">Vše</span>
+          <span class="chip" role="button" tabindex="0" data-filter="free-spiny">Free spiny</span>
+          <span class="chip" role="button" tabindex="0" data-filter="cashback">Cashback</span>
+          <span class="chip" role="button" tabindex="0" data-filter="vkladovy-bonus">Vkladový bonus</span>
+          <span class="chip" role="button" tabindex="0" data-filter="turnaje">Turnaje</span>
         </div>
 
         <div class="bonus-grid">
-          <article class="bonus-card featured-bonus">
+          <article class="bonus-card featured-bonus" data-categories="free-spiny">
             <div class="topline">
               <div class="casino-logo">A</div>
               <span class="tag hot"><span class="tag-icon" aria-hidden="true">★</span>TOP DNES</span>
@@ -1135,7 +1136,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus cashback-bonus">
+          <article class="bonus-card featured-bonus cashback-bonus" data-categories="cashback">
             <div class="topline">
               <div class="casino-logo">B</div>
               <span class="tag"><span class="tag-icon" aria-hidden="true">✦</span>NOVÉ</span>
@@ -1154,7 +1155,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus vkladovy-bonus">
+          <article class="bonus-card featured-bonus vkladovy-bonus" data-categories="vkladovy-bonus">
             <div class="topline">
               <div class="casino-logo">C</div>
               <span class="tag ends"><span class="tag-icon" aria-hidden="true">⏱</span>KONČÍ DNES</span>
@@ -1173,7 +1174,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus">
+          <article class="bonus-card featured-bonus" data-categories="turnaje">
             <div class="topline">
               <div class="casino-logo">D</div>
               <span class="tag"><span class="tag-icon" aria-hidden="true">✦</span>DNES</span>
@@ -1192,7 +1193,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus">
+          <article class="bonus-card featured-bonus" data-categories="vkladovy-bonus">
             <div class="topline">
               <div class="casino-logo">E</div>
               <span class="tag hot"><span class="tag-icon" aria-hidden="true">★</span>EXTRA</span>
@@ -1211,7 +1212,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus happy-hours-bonus">
+          <article class="bonus-card featured-bonus happy-hours-bonus" data-categories="turnaje">
             <div class="topline">
               <div class="casino-logo">F</div>
               <span class="tag"><span class="tag-icon" aria-hidden="true">✦</span>TIP</span>
@@ -1283,8 +1284,6 @@
   <script>
     (function(){
       const toggles = document.querySelectorAll('.today-toggle');
-      if (!toggles.length) return;
-
       toggles.forEach(function(toggle){
         const detailsId = toggle.getAttribute('aria-controls');
         const details = detailsId ? document.getElementById(detailsId) : null;
@@ -1296,6 +1295,47 @@
           details.hidden = isExpanded;
         });
       });
+
+      const chips = document.querySelectorAll('.filters .chip[data-filter]');
+      const cards = document.querySelectorAll('.bonus-grid .bonus-card[data-categories]');
+
+      if (!chips.length || !cards.length) return;
+
+      function applyFilter(filterValue){
+        cards.forEach(function(card){
+          if (filterValue === 'all') {
+            card.hidden = false;
+            return;
+          }
+
+          const categories = (card.getAttribute('data-categories') || '').split(',').map(function(item){
+            return item.trim();
+          });
+
+          card.hidden = categories.indexOf(filterValue) === -1;
+        });
+
+        chips.forEach(function(chip){
+          const isActive = chip.getAttribute('data-filter') === filterValue;
+          chip.classList.toggle('active', isActive);
+          chip.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      chips.forEach(function(chip){
+        chip.addEventListener('click', function(){
+          applyFilter(chip.getAttribute('data-filter') || 'all');
+        });
+
+        chip.addEventListener('keydown', function(event){
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            applyFilter(chip.getAttribute('data-filter') || 'all');
+          }
+        });
+      });
+
+      applyFilter('all');
     })();
   </script>
 </body>
