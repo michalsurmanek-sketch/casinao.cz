@@ -488,7 +488,6 @@
   min-height: var(--casino-row-height) !important;
   border-radius: var(--casino-radius) !important;
   background-color: var(--casino-row-bg, rgba(8, 25, 46, 0.94)) !important;
-  border-color: rgba(255,255,255,.11) !important;
   box-shadow: 0 14px 30px rgba(0,0,0,.34);
   transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
 }
@@ -2589,20 +2588,20 @@
 
     rows.forEach((row, index) => {
       const firstCell = row.querySelector('td:first-child');
-      const neutralBgColor = 'rgba(8, 25, 46, 0.94)';
-      const neutralBorderColor = 'rgba(255,255,255,.11)';
-      const neutralAccentColor = '#fef08a';
+      const accentColor = row.style.borderColor || row.style.backgroundColor;
 
-      row.dataset.baseBgColor = neutralBgColor;
-      row.dataset.baseBorderColor = neutralBorderColor;
-      row.style.setProperty('--casino-row-bg', neutralBgColor);
-      row.style.setProperty('--casino-row-border', neutralBorderColor);
+      row.dataset.baseBgColor = row.style.backgroundColor || '';
+      row.dataset.baseBorderColor = row.style.borderColor || '';
+      row.style.setProperty('--casino-row-bg', row.dataset.baseBgColor || '');
+      row.style.setProperty('--casino-row-border', row.dataset.baseBorderColor || '');
 
       if (firstCell) {
         firstCell.dataset.fixedRank = String(index + 1);
       }
 
-      row.style.setProperty('--casino-accent', neutralAccentColor);
+      if (accentColor) {
+        row.style.setProperty('--casino-accent', accentColor);
+      }
     });
 
     function setupMobileRowLinks() {
