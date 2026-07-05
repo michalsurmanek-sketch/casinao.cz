@@ -1312,6 +1312,9 @@
     height: auto !important;
     min-height: 0 !important;
     padding: 16px !important;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,0) 1px) top/100% 1px no-repeat,
+      linear-gradient(180deg, rgba(6, 14, 28, 0.92), rgba(8, 25, 46, 0.94)) !important;
   }
 
   #casinoTableBody .casino-row::before,
@@ -1355,17 +1358,37 @@
     order: 3;
     justify-self: start;
     text-align: left !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid rgba(255,255,255,.12);
   }
 
   #casinoTableBody .casino-row .casino-mobile-meta {
     grid-area: details;
     order: 4;
+    padding-top: 12px;
   }
 
   #casinoTableBody .casino-row td:nth-child(4) {
     grid-area: cta;
     order: 5;
     width: 100% !important;
+    padding-top: 2px !important;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) > a {
+    position: relative;
+    margin-top: 2px;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) > a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: -10px;
+    height: 1px;
+    background: rgba(255,255,255,.12);
   }
 
   #casina aside {
