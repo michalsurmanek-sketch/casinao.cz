@@ -262,10 +262,11 @@
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      justify-content:center;
+      justify-content:flex-start;
       text-align:left;
       gap:2px;
       white-space:normal;
+      min-height:0;
     }
 
     .today-copy-top b,
@@ -345,12 +346,6 @@
       background:rgba(8,11,19,.46);
       border:1px solid var(--line);
       border-radius:16px;
-    }
-
-    .today-row--leftfocus .today-copy-top{
-      justify-content:flex-start;
-      min-height:0;
-      align-items:flex-start;
     }
 
     .today-row strong{color:var(--gold)}
