@@ -1054,18 +1054,7 @@
       }
 
       .bonusy-top::before{
-        content:"";
-        position:absolute;
-        inset:0;
-        background-image:linear-gradient(180deg,
-          rgba(8,11,19,.78) 0%,
-          rgba(8,11,19,.56) 58%,
-          rgba(8,11,19,0) 100%);
-        background-repeat:no-repeat;
-        background-position:left top;
-        background-size:100% 100%;
-        z-index:0;
-        pointer-events:none;
+        display:none;
       }
 
       .bonusy-top > *{
@@ -1301,7 +1290,7 @@
         font-size:14px;
       }
 
-      .bonusy-top::before{background-size:100% 100%;}
+      .bonusy-top::before{display:none;}
     }
   </style>
 </head>
