@@ -543,6 +543,19 @@
       background-size:100% 100%, auto 92%;
     }
 
+    .vkladovy-bonus::before{
+      background-image:
+        linear-gradient(90deg,
+          rgba(3,9,16,.96) 0%,
+          rgba(3,9,16,.92) 44%,
+          rgba(3,9,16,.52) 66%,
+          rgba(3,9,16,.08) 100%),
+        url('/img/vkladovy-bonus-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:left top, right center;
+      background-size:100% 100%, auto 92%;
+    }
+
     .featured-bonus > *{
       position:relative;
       z-index:1;
@@ -897,6 +910,11 @@
         background-size:100% 100%, auto 88%;
       }
 
+      .vkladovy-bonus::before{
+        background-position:left top, right -8px center;
+        background-size:100% 100%, auto 88%;
+      }
+
       .featured-bonus .offer{
         font-size:54px;
       }
@@ -1116,7 +1134,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus">
+          <article class="bonus-card featured-bonus vkladovy-bonus">
             <div class="topline">
               <div class="casino-logo">C</div>
               <span class="tag ends"><span class="tag-icon" aria-hidden="true">⏱</span>KONČÍ DNES</span>
