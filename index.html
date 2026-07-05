@@ -1144,7 +1144,7 @@
     #casinoTableBody .casino-row::after {
       content: "★★★★★";
       grid-area: stars;
-      justify-self: center;
+      justify-self: start;
       align-self: start;
       font-size: clamp(18px, 5vw, 22px);
       line-height: 1;
@@ -1209,6 +1209,17 @@
       font-size: 14px;
       line-height: 1.35;
       white-space: nowrap !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(3) .casino-vote {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(3) .casino-vote > div:nth-child(2) {
+      justify-content: flex-end;
     }
 
     #casinoTableBody .casino-row td:nth-child(3)::after {
