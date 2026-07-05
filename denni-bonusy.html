@@ -788,6 +788,18 @@
       font-size:14px;
     }
 
+    @media (min-width:921px){
+      .hero{
+        min-height:calc(100vh - 74px);
+      }
+
+      .hero::before{
+        height:100%;
+        background-position:left top, right bottom;
+        background-size:100% 100%, auto 118%;
+      }
+    }
+
     @media (max-width:920px){
       .hero::before{
         height:clamp(400px, 62vw, 520px);
