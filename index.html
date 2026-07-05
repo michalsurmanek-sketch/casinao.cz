@@ -1115,16 +1115,16 @@
 
   @media (max-width: 767px) {
     #casinoTableBody .casino-row {
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas:
-        "logo"
-        "top"
-        "stars"
-        "score"
-        "votes"
-        "bonus"
-        "cta";
-      gap: 9px;
+        "logo logo"
+        "top top"
+        "stars stars"
+        "score votes"
+        "details details"
+        "bonus bonus"
+        "cta cta";
+      gap: 9px 12px;
       min-height: 0 !important;
       padding: 14px 14px 16px !important;
     }
@@ -1176,6 +1176,7 @@
     }
 
     #casinoTableBody .casino-row td:nth-child(2) {
+      grid-area: score;
       align-self: start;
       margin-top: 0;
       text-align: left;
@@ -1199,8 +1200,13 @@
     }
 
     #casinoTableBody .casino-row td:nth-child(3) {
+      grid-area: votes;
+      align-self: center;
+      justify-self: end;
+      text-align: right !important;
       font-size: 14px;
       line-height: 1.35;
+      white-space: nowrap !important;
     }
 
     #casinoTableBody .casino-row td:nth-child(3)::after {
@@ -1208,9 +1214,10 @@
     }
 
     #casinoTableBody .casino-row .casino-mobile-meta {
+      grid-area: details;
       display: grid;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 2px;
       padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,.12);
     }
@@ -2654,13 +2661,10 @@
           return;
         }
 
-        const voteCell = row.querySelector('td:nth-child(3)');
-        if (!voteCell) return;
-
         if (!metaBlock) {
           metaBlock = document.createElement('div');
           metaBlock.className = 'casino-mobile-meta';
-          voteCell.appendChild(metaBlock);
+          row.appendChild(metaBlock);
         }
 
         const license = row.getAttribute('data-license') || '';
