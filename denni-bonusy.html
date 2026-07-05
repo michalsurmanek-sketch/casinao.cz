@@ -521,7 +521,26 @@
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin:18px 0 22px;
+      margin:18px 0 16px;
+      padding-bottom:16px;
+      position:relative;
+    }
+
+    .filters::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(90deg,
+        rgba(245,196,0,0) 0%,
+        rgba(245,196,0,0.30) 18%,
+        rgba(254,223,126,0.62) 50%,
+        rgba(245,196,0,0.30) 82%,
+        rgba(245,196,0,0) 100%);
+      box-shadow:0 0 11px rgba(245,196,0,.28);
+      pointer-events:none;
     }
 
     .chip{
@@ -545,26 +564,6 @@
       display:grid;
       grid-template-columns:repeat(3, 1fr);
       gap:18px;
-      position:relative;
-      margin-top:18px;
-      padding-top:18px;
-    }
-
-    .bonus-grid::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg,
-        rgba(245,196,0,0) 0%,
-        rgba(245,196,0,0.26) 18%,
-        rgba(254,223,126,0.55) 50%,
-        rgba(245,196,0,0.26) 82%,
-        rgba(245,196,0,0) 100%);
-      box-shadow:0 0 10px rgba(245,196,0,.25);
-      pointer-events:none;
     }
 
     .bonus-card{
