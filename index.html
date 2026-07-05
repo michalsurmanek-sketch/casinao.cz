@@ -1325,6 +1325,10 @@
     margin-right: auto;
   }
 
+  #casina .overflow-x-auto {
+    overflow: visible !important;
+  }
+
   #bonusy .mt-8.rounded-2xl {
     width: 100%;
     max-width: none;
@@ -1333,8 +1337,8 @@
   }
 
   #casinoTableBody {
-    display: flex !important;
-    flex-wrap: wrap;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, 390px);
     justify-content: center;
     gap: 14px;
   }
@@ -1346,9 +1350,9 @@
   }
 
   #casinoTableBody .casino-row {
-    flex: 0 0 390px;
     width: 390px;
     max-width: 390px;
+    justify-self: center;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 0;
