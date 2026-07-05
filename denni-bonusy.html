@@ -421,6 +421,25 @@
       padding:38px 0;
     }
 
+    #bonusy{
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    #bonusy .wrap{
+      position:relative;
+      z-index:1;
+    }
+
+    #bonusy::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:0;
+      z-index:0;
+    }
+
     .section-head{
       display:flex;
       justify-content:space-between;
@@ -756,6 +775,19 @@
       .today-value{
         font-size:16px;
       }
+
+      #bonusy::before{
+        height:360px;
+        background-image:
+          linear-gradient(180deg,
+            rgba(8,11,19,.78) 0%,
+            rgba(8,11,19,.56) 58%,
+            rgba(8,11,19,0) 100%),
+          url('/img/denni-bonusy-pohar-bg.webp');
+        background-repeat:no-repeat, no-repeat;
+        background-position:left top, center top;
+        background-size:100% 100%, auto 100%;
+      }
     }
 
     @media (max-width:480px){
@@ -782,6 +814,11 @@
       .hero-actions .btn-secondary{
         width:auto;
         font-size:14px;
+      }
+
+      #bonusy::before{
+        height:330px;
+        background-size:100% 100%, auto 96%;
       }
     }
   </style>
