@@ -1271,9 +1271,19 @@
     }
 
     #casinoTableBody .casino-row td:nth-child(4) {
+      grid-area: cta;
+      justify-self: stretch;
+      width: 100%;
       margin-top: 2px;
       padding-top: 0 !important;
       text-align: left !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) a {
+      display: flex !important;
+      width: 100% !important;
+      max-width: none !important;
+      box-sizing: border-box;
     }
   }
 
