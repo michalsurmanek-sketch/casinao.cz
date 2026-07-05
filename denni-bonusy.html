@@ -440,6 +440,10 @@
       z-index:1;
     }
 
+    .bonusy-top{
+      position:relative;
+    }
+
     #bonusy::before{
       content:"";
       position:absolute;
@@ -1041,6 +1045,35 @@
       .section-head{display:block}
       .card-actions{grid-template-columns:1fr}
 
+      #bonusy::before{display:none}
+
+      .bonusy-top{
+        position:relative;
+        overflow:hidden;
+      }
+
+      .bonusy-top::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background-image:
+          linear-gradient(180deg,
+            rgba(8,11,19,.78) 0%,
+            rgba(8,11,19,.56) 58%,
+            rgba(8,11,19,0) 100%),
+          url('/img/denni-bonusy-pohar-bg.webp?v=2');
+        background-repeat:no-repeat, no-repeat;
+        background-position:left top, center 10px top;
+        background-size:100% 100%, auto 128%;
+        z-index:0;
+        pointer-events:none;
+      }
+
+      .bonusy-top > *{
+        position:relative;
+        z-index:1;
+      }
+
       .notice-toggle{
         padding:0;
         overflow:hidden;
@@ -1240,18 +1273,7 @@
         max-width:62%;
       }
 
-      #bonusy::before{
-        height:360px;
-        background-image:
-          linear-gradient(180deg,
-            rgba(8,11,19,.78) 0%,
-            rgba(8,11,19,.56) 58%,
-            rgba(8,11,19,0) 100%),
-          url('/img/denni-bonusy-pohar-bg.webp?v=2');
-        background-repeat:no-repeat, no-repeat;
-        background-position:left top, center top;
-        background-size:100% 100%, 100% auto;
-      }
+      #bonusy::before{display:none}
     }
 
     @media (max-width:480px){
@@ -1280,10 +1302,9 @@
         font-size:14px;
       }
 
-      #bonusy::before{
-        height:330px;
-        background-position:left top, center top;
-        background-size:100% 100%, 100% auto;
+      .bonusy-top::before{
+        background-position:left top, center 14px top;
+        background-size:100% 100%, auto 136%;
       }
     }
   </style>
@@ -1392,19 +1413,21 @@
 
     <section class="section" id="bonusy">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Aktuální <span class="gold-words">denní bonusy</span></h2>
-            <p>Ukázková struktura pro každodenní doplňování bonusů. Texty a částky stačí měnit podle aktuální nabídky.</p>
+        <div class="bonusy-top">
+          <div class="section-head">
+            <div>
+              <h2>Aktuální <span class="gold-words">denní bonusy</span></h2>
+              <p>Ukázková struktura pro každodenní doplňování bonusů. Texty a částky stačí měnit podle aktuální nabídky.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="filters" aria-label="Kategorie bonusů">
-          <span class="chip active" role="button" tabindex="0" data-filter="all">Vše</span>
-          <span class="chip" role="button" tabindex="0" data-filter="free-spiny">Free spiny</span>
-          <span class="chip" role="button" tabindex="0" data-filter="cashback">Cashback</span>
-          <span class="chip" role="button" tabindex="0" data-filter="vkladovy-bonus">Vkladový bonus</span>
-          <span class="chip" role="button" tabindex="0" data-filter="turnaje">Turnaje</span>
+          <div class="filters" aria-label="Kategorie bonusů">
+            <span class="chip active" role="button" tabindex="0" data-filter="all">Vše</span>
+            <span class="chip" role="button" tabindex="0" data-filter="free-spiny">Free spiny</span>
+            <span class="chip" role="button" tabindex="0" data-filter="cashback">Cashback</span>
+            <span class="chip" role="button" tabindex="0" data-filter="vkladovy-bonus">Vkladový bonus</span>
+            <span class="chip" role="button" tabindex="0" data-filter="turnaje">Turnaje</span>
+          </div>
         </div>
 
         <div class="bonus-grid">
