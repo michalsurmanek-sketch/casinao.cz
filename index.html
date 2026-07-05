@@ -1297,9 +1297,10 @@
   }
 
   #casinoTableBody {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, 390px);
+    display: flex !important;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     gap: 14px;
   }
 
@@ -1310,12 +1311,15 @@
   }
 
   #casinoTableBody .casino-row {
+    display: grid !important;
     width: 390px;
     max-width: 390px;
+    flex: 0 0 390px;
     justify-self: center;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 0;
+    align-content: start;
   }
 
   #casinoTableBody .casino-row td,
