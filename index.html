@@ -1311,9 +1311,97 @@
   }
 
   #casinoTableBody .casino-row {
+    display: grid !important;
     width: 520px;
     max-width: 520px;
     flex: 0 0 520px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo top"
+      "stars stars"
+      "score votes"
+      "details details"
+      "cta cta";
+    gap: 9px 12px;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 14px 14px 16px !important;
+    align-content: start;
+  }
+
+  #casinoTableBody .casino-row td {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+
+  #casinoTableBody .casino-row td:first-child {
+    grid-area: logo;
+    display: flex !important;
+    align-items: center;
+    min-width: 0;
+    min-height: 34px;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+
+  #casinoTableBody .casino-row td:first-child::before {
+    position: static;
+    transform: none;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(2) {
+    grid-area: score;
+    align-self: start;
+    justify-self: center;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(3) {
+    grid-area: votes;
+    align-self: center;
+    justify-self: end;
+    text-align: right !important;
+    font-size: 14px;
+    line-height: 1.35;
+    white-space: nowrap !important;
+  }
+
+  #casinoTableBody .casino-row .casino-mobile-meta {
+    grid-area: details;
+    display: grid;
+    gap: 8px;
+    margin-top: 2px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) {
+    grid-area: cta;
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 2px;
+    padding-top: 0 !important;
+    text-align: center !important;
+  }
+
+  #casinoTableBody .casino-row td:nth-child(4) > a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+    text-align: center !important;
   }
 
   #casina thead {
