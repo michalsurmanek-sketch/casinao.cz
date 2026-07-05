@@ -380,12 +380,6 @@
       gap:10px;
     }
 
-    .today-row strong::after{
-      content:"›";
-      margin-left:10px;
-      opacity:.9;
-    }
-
     .section{
       padding:38px 0;
     }
@@ -801,17 +795,35 @@
                 <li>zas něco</li>
               </ul>
             </div>
-            <div class="today-row">
+            <div class="today-row today-row--expandable">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 2.1 3-.5.8 2.9 2.8 1.3-1.3 2.8.5 3-2.9.8L12 21l-2.1-2.1-3 .5-.8-2.9-2.8-1.3 1.3-2.8-.5-3 2.9-.8z"></path><path d="M9.5 12.5l1.8 1.8 3.2-3.2"></path></svg></span><span class="today-copy"><b>Nejčastější akce</b><small>Co se vyplatí využít</small></span></span>
-              <strong class="today-value">Cashback</strong>
+              <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="cashback-details">Cashback</button>
             </div>
-            <div class="today-row">
+            <div id="cashback-details" class="today-expand" hidden>
+              <ul>
+                <li>Obvykle denní vrácení části čisté prohry</li>
+                <li>Sledujte procento cashbacku a maximální strop</li>
+              </ul>
+            </div>
+            <div class="today-row today-row--expandable">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5h12"></path><path d="M8 5V3h8v2"></path><path d="M9 12h6"></path><path d="M12 9v6"></path><path d="M4 8h16v4a8 8 0 0 1-16 0z"></path></svg></span><span class="today-copy"><b>Turnajové akce</b><small>Oblíbené denní klání</small></span></span>
-              <strong class="today-value">Turnaje</strong>
+              <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="turnaje-details">Turnaje</button>
             </div>
-            <div class="today-row">
+            <div id="turnaje-details" class="today-expand" hidden>
+              <ul>
+                <li>Prizepool se může během dne měnit</li>
+                <li>Zkontrolujte minimální sázku a podmínky účasti</li>
+              </ul>
+            </div>
+            <div class="today-row today-row--expandable">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16h.01"></path></svg></span><span class="today-copy"><b>Kontrola podmínek</b><small>Vždy si je ověřte</small></span></span>
-              <strong class="today-value">Bezpečně</strong>
+              <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="bezpecne-details">Bezpečně</button>
+            </div>
+            <div id="bezpecne-details" class="today-expand" hidden>
+              <ul>
+                <li>Nastavte si denní limit rozpočtu před hrou</li>
+                <li>Porovnejte platnost akce a pravidla protočení</li>
+              </ul>
             </div>
           </div>
         </aside>
@@ -1002,15 +1014,19 @@
 
   <script>
     (function(){
-      const topTipToggle = document.querySelector('.today-toggle');
-      const topTipDetails = document.getElementById('top-tip-details');
+      const toggles = document.querySelectorAll('.today-toggle');
+      if (!toggles.length) return;
 
-      if (!topTipToggle || !topTipDetails) return;
+      toggles.forEach(function(toggle){
+        const detailsId = toggle.getAttribute('aria-controls');
+        const details = detailsId ? document.getElementById(detailsId) : null;
+        if (!details) return;
 
-      topTipToggle.addEventListener('click', function(){
-        const isExpanded = topTipToggle.getAttribute('aria-expanded') === 'true';
-        topTipToggle.setAttribute('aria-expanded', String(!isExpanded));
-        topTipDetails.hidden = isExpanded;
+        toggle.addEventListener('click', function(){
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          details.hidden = isExpanded;
+        });
       });
     })();
   </script>
