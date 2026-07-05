@@ -502,6 +502,68 @@
       overflow:hidden;
     }
 
+    .featured-bonus{
+      border-color:rgba(255,215,0,.58);
+      background:
+        linear-gradient(180deg, rgba(6,10,18,.95), rgba(4,8,14,.98));
+      box-shadow:
+        0 0 0 1px rgba(255,215,0,.25),
+        0 18px 55px rgba(0,0,0,.34),
+        0 0 28px rgba(255,215,0,.18);
+    }
+
+    .featured-bonus::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,
+          rgba(3,9,16,.96) 0%,
+          rgba(3,9,16,.92) 44%,
+          rgba(3,9,16,.52) 66%,
+          rgba(3,9,16,.08) 100%),
+        url('/img/denni-bonusy-pohar-bg.webp');
+      background-repeat:no-repeat, no-repeat;
+      background-position:left top, right center;
+      background-size:100% 100%, auto 92%;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .featured-bonus > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .featured-bonus .offer{
+      color:#ffc533;
+      font-size:clamp(34px, 4.2vw, 46px);
+      letter-spacing:-.6px;
+      line-height:1.03;
+      text-shadow:0 0 10px rgba(255,197,51,.16);
+    }
+
+    .featured-bonus .desc,
+    .featured-bonus .meta{
+      max-width:58%;
+    }
+
+    .featured-bonus .card-actions{
+      grid-template-columns:1fr;
+      max-width:58%;
+    }
+
+    .featured-bonus .card-actions .small-btn:not(.main){
+      display:none;
+    }
+
+    .featured-bonus .small-btn.main{
+      border-radius:14px;
+      font-size:15px;
+      padding:13px 14px;
+      box-shadow:0 8px 24px rgba(255,197,51,.28);
+    }
+
     .bonus-card:after{
       content:"";
       position:absolute;
@@ -776,6 +838,25 @@
         font-size:16px;
       }
 
+      .featured-bonus{
+        border-radius:18px;
+      }
+
+      .featured-bonus::before{
+        background-position:left top, right -8px center;
+        background-size:100% 100%, auto 88%;
+      }
+
+      .featured-bonus .offer{
+        font-size:54px;
+      }
+
+      .featured-bonus .desc,
+      .featured-bonus .meta,
+      .featured-bonus .card-actions{
+        max-width:62%;
+      }
+
       #bonusy::before{
         height:360px;
         background-image:
@@ -943,7 +1024,7 @@
         </div>
 
         <div class="bonus-grid">
-          <article class="bonus-card">
+          <article class="bonus-card featured-bonus">
             <div class="topline">
               <div class="casino-logo">A</div>
               <span class="tag hot">TOP DNES</span>
