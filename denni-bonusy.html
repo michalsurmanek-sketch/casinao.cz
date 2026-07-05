@@ -228,6 +228,12 @@
     .today-row strong{color:var(--gold)}
     .today-row span{color:var(--muted);font-size:14px}
 
+    .today-row strong::after{
+      content:"›";
+      margin-left:10px;
+      opacity:.9;
+    }
+
     .section{
       padding:38px 0;
     }
@@ -473,48 +479,103 @@
       .card-actions{grid-template-columns:1fr}
       .hero{
         padding-top:42px;
+        padding-bottom:14px;
       }
 
       .hero::before{
-        height:360px;
+        height:338px;
         background-image:
           linear-gradient(90deg,
             rgba(5, 11, 9, .98) 0%,
-            rgba(6, 14, 11, .95) 30%,
-            rgba(8, 17, 13, .84) 48%,
-            rgba(8, 18, 14, .44) 66%,
-            rgba(7, 16, 13, .10) 100%),
+            rgba(6, 14, 11, .95) 34%,
+            rgba(8, 17, 13, .84) 54%,
+            rgba(8, 18, 14, .38) 72%,
+            rgba(7, 16, 13, .08) 100%),
           url('/img/denni-bonusy-hero-bg.webp');
-        background-position:left top, right 6px center;
+        background-position:left top, right -6px top;
         background-repeat:no-repeat, no-repeat;
-        background-size:100% 100%, auto 108%;
+        background-size:100% 100%, auto 96%;
+      }
+
+      h1{
+        font-size:clamp(30px, 9vw, 42px);
+        line-height:1.02;
+      }
+
+      .lead{
+        font-size:16px;
+        line-height:1.55;
+        max-width:unset;
+      }
+
+      .hero-actions{
+        margin-top:22px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+
+      .hero-actions .btn-primary{
+        width:min(100%, 360px);
+      }
+
+      .hero-actions .btn-secondary{
+        padding:12px 16px;
       }
 
       .hero-card{
-        background:transparent;
-        border:none;
-        border-radius:0;
-        padding:0;
-        box-shadow:none;
-        overflow:visible;
+        margin-top:18px;
+        background:rgba(5, 11, 9, .68);
+        border:1px solid rgba(246,196,83,.14);
+        border-radius:18px;
+        padding:10px;
+        box-shadow:0 12px 32px rgba(0,0,0,.28);
+        backdrop-filter:blur(2px);
       }
+
       .hero-card:before{display:none}
+
+      .today-box{
+        gap:8px;
+      }
+
+      .today-row{
+        padding:11px 12px;
+        border-radius:13px;
+        background:rgba(8,11,19,.58);
+      }
+
+      .today-row span{
+        font-size:13px;
+      }
+
+      .today-row strong{
+        font-size:16px;
+      }
     }
 
     @media (max-width:480px){
       .hero::before{
-        height:340px;
+        height:322px;
         background-image:
           linear-gradient(90deg,
             rgba(5, 11, 9, .98) 0%,
-            rgba(6, 14, 11, .95) 32%,
-            rgba(8, 17, 13, .84) 50%,
-            rgba(8, 18, 14, .38) 68%,
+            rgba(6, 14, 11, .95) 36%,
+            rgba(8, 17, 13, .84) 56%,
+            rgba(8, 18, 14, .34) 74%,
             rgba(7, 16, 13, .08) 100%),
           url('/img/denni-bonusy-hero-bg.webp');
-        background-position:left top, right 12px center;
+        background-position:left top, right -10px top;
         background-repeat:no-repeat, no-repeat;
-        background-size:100% 100%, auto 102%;
+        background-size:100% 100%, auto 92%;
+      }
+
+      .hero-actions .btn-primary{
+        width:100%;
+      }
+
+      .hero-actions .btn-secondary{
+        width:auto;
       }
     }
   </style>
