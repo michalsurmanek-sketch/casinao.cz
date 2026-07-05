@@ -853,13 +853,25 @@
               </ul>
             </div>
 
-            <div class="today-row">
+            <div class="today-row today-row--expandable">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M3 10h18"></path></svg></span><span class="today-copy today-copy-top"><b>Nadcházející akce</b><small>Co bude následovat</small></span></span>
-              <a class="today-value" href="#bonusy">Přehled ›</a>
+              <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="nadchazejici-details">Přehled</button>
             </div>
-            <div class="today-row">
+            <div id="nadchazejici-details" class="today-expand" hidden>
+              <ul>
+                <li>Nejbližší denní akce najdete v sekci níže na této stránce</li>
+                <li>Sledujte změny během dne, nabídky se často aktualizují</li>
+              </ul>
+            </div>
+            <div class="today-row today-row--expandable">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy today-copy-top"><b>Stálé bonusy</b><small>Dlouhodobé nabídky casin</small></span></span>
-              <a class="today-value" href="/bonusy.html">Bonusy ›</a>
+              <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="stale-bonusy-details">Bonusy</button>
+            </div>
+            <div id="stale-bonusy-details" class="today-expand" hidden>
+              <ul>
+                <li>Kompletní přehled najdete na stránce <a href="/bonusy.html">Stálé bonusy</a></li>
+                <li>Dlouhodobé nabídky mívají jiné podmínky než denní akce</li>
+              </ul>
             </div>
           </div>
         </aside>
