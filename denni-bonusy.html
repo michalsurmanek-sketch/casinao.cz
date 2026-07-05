@@ -553,6 +553,19 @@
       background-size:100% 100%, auto 92%;
     }
 
+    .happy-hours-bonus::before{
+      background-image:
+        linear-gradient(90deg,
+          rgba(3,9,16,.90) 0%,
+          rgba(3,9,16,.84) 40%,
+          rgba(3,9,16,.40) 66%,
+          rgba(3,9,16,.06) 100%),
+        url('/img/happy-hours-bonus-bg.webp?v=1');
+      background-repeat:no-repeat, no-repeat;
+      background-position:left top, right center;
+      background-size:100% 100%, auto 92%;
+    }
+
     .featured-bonus > *{
       position:relative;
       z-index:1;
@@ -917,6 +930,11 @@
         background-size:100% 100%, auto 88%;
       }
 
+      .happy-hours-bonus::before{
+        background-position:left top, right -8px center;
+        background-size:100% 100%, auto 88%;
+      }
+
       .featured-bonus .offer{
         font-size:54px;
       }
@@ -1193,7 +1211,7 @@
             </div>
           </article>
 
-          <article class="bonus-card featured-bonus">
+          <article class="bonus-card featured-bonus happy-hours-bonus">
             <div class="topline">
               <div class="casino-logo">F</div>
               <span class="tag"><span class="tag-icon" aria-hidden="true">✦</span>TIP</span>
