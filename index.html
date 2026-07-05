@@ -1117,8 +1117,7 @@
     #casinoTableBody .casino-row {
       grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas:
-        "logo logo"
-        "top top"
+        "logo top"
         "stars votes"
         "score votes"
         "details details"
@@ -1131,9 +1130,10 @@
 
     #casinoTableBody .casino-row::before {
       grid-area: top;
-      justify-self: start;
-      align-self: start;
-      white-space: normal;
+      justify-self: end;
+      align-self: center;
+      text-align: right;
+      white-space: nowrap;
       overflow: visible;
       text-overflow: clip;
       max-width: 100%;
@@ -1159,6 +1159,7 @@
     #casinoTableBody .casino-row td:first-child {
       display: flex !important;
       align-items: center;
+      min-width: 0;
       min-height: 34px;
       padding-left: 34px !important;
       text-align: left !important;
