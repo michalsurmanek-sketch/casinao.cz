@@ -1119,7 +1119,7 @@
       grid-template-areas:
         "logo logo"
         "top top"
-        "stars stars"
+        "stars votes"
         "score votes"
         "details details"
         "bonus bonus"
@@ -1144,7 +1144,7 @@
     #casinoTableBody .casino-row::after {
       content: "★★★★★";
       grid-area: stars;
-      justify-self: start;
+      justify-self: center;
       align-self: start;
       font-size: clamp(18px, 5vw, 22px);
       line-height: 1;
@@ -1178,8 +1178,9 @@
     #casinoTableBody .casino-row td:nth-child(2) {
       grid-area: score;
       align-self: start;
+      justify-self: center;
       margin-top: 0;
-      text-align: left;
+      text-align: center;
       line-height: 1 !important;
       white-space: nowrap !important;
     }
