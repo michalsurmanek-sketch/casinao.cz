@@ -251,6 +251,11 @@
       line-height:1.2;
     }
 
+    .today-copy-top b,
+    .today-copy-top small{
+      display:block;
+    }
+
     .today-copy b{
       color:var(--text);
       font-size:15px;
@@ -792,7 +797,7 @@
         <aside class="hero-card" aria-label="Souhrn dne">
           <div class="today-box">
             <div class="today-row today-row--expandable">
-              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy"><b>Dnešní TOP typ</b><small>Nejlepší bonusy dne</small></span></span>
+              <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy today-copy-top"><b>Dnešní TOP typ</b><small>Nejlepší bonusy dne</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="top-tip-details">Free spiny</button>
             </div>
             <div id="top-tip-details" class="today-expand" hidden>
