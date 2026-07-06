@@ -2379,8 +2379,40 @@
 
   <section id="odpovedne" class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Zodpovědné hraní</h2>
-      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+      <div class="relative mb-6 overflow-hidden rounded-3xl border border-yellow-500/20 bg-black/35 px-4 py-5 sm:px-7 sm:py-7">
+        <div aria-hidden="true" class="pointer-events-none absolute -right-8 top-1/2 hidden -translate-y-1/2 sm:block opacity-[0.14]">
+          <svg viewBox="0 0 180 180" class="h-44 w-44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M90 14L146 36V78C146 117 121 145 90 158C59 145 34 117 34 78V36L90 14Z" stroke="#f5c400" stroke-width="2.6"/>
+            <circle cx="90" cy="76" r="17" stroke="#f5c400" stroke-width="2"/>
+            <path d="M62 130C67 113 78 104 90 104C102 104 113 113 118 130" stroke="#f5c400" stroke-width="2" stroke-linecap="round"/>
+            <path d="M112 92L122 102L141 83" stroke="#f5c400" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="relative flex items-start gap-4 sm:gap-5">
+          <span aria-hidden="true" class="mt-1 block h-[112px] w-px bg-gradient-to-b from-yellow-300/10 via-yellow-400/85 to-yellow-300/10 shadow-[0_0_14px_rgba(245,196,0,0.55)] sm:h-[126px]"></span>
+
+          <div class="min-w-0">
+            <div class="inline-flex w-auto items-center gap-2 rounded-full border border-yellow-500/55 bg-black/85 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-yellow-300 sm:text-xs">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 flex-none text-yellow-400" fill="none" aria-hidden="true">
+                <path d="M12 3L18 5.5V10.6C18 15 15.2 18.8 12 20.2C8.8 18.8 6 15 6 10.6V5.5L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+              <span>BEZPEČNOST • KONTROLA • 18+</span>
+            </div>
+
+            <h2 class="mt-4 font-display text-[clamp(1.8rem,9vw,4.3rem)] font-extrabold uppercase leading-[0.9] tracking-[0.09em]">
+              <span class="block text-white">ZODPOVĚDNÉ</span>
+              <span class="mt-1 block text-yellow-400 drop-shadow-[0_0_10px_rgba(245,196,0,0.28)]">HRANÍ</span>
+            </h2>
+
+            <div aria-hidden="true" class="relative mt-3 h-px w-28 bg-gradient-to-r from-yellow-300 via-yellow-400 to-transparent shadow-[0_0_12px_rgba(245,196,0,0.55)] sm:w-36">
+              <span class="absolute -left-1 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-yellow-200 blur-[1px]"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
         <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/30" style="aspect-ratio: 1699 / 926;">
           <img src="img/1.png" alt="Časové limity" class="block w-full h-full object-cover" loading="lazy" decoding="async" />
         </div>
