@@ -60,17 +60,6 @@
     border-bottom-right-radius: 1rem;
     overflow: hidden;
   }
-  html.menu-scroll-lock {
-    overscroll-behavior: none;
-  }
-  body.menu-scroll-lock {
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 100%;
-    overflow: hidden;
-    touch-action: none;
-  }
 
   /* Jemný scrollbar jen pro sekci Nejctenejsi */
   #mostReadSlider {
@@ -801,51 +790,19 @@
     const btnMenu = document.getElementById('btnMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     if (btnMenu && mobileMenu) {
-      const lockPageScroll = () => {
-        if (document.body.classList.contains('menu-scroll-lock')) return;
-        const scrollY = window.scrollY || window.pageYOffset || 0;
-        document.body.dataset.menuScrollY = String(scrollY);
-        document.body.style.top = `-${scrollY}px`;
-        document.documentElement.classList.add('menu-scroll-lock');
-        document.body.classList.add('menu-scroll-lock');
-      };
-
-      const unlockPageScroll = () => {
-        if (!document.body.classList.contains('menu-scroll-lock')) return;
-        const scrollY = Number(document.body.dataset.menuScrollY || '0');
-        document.documentElement.classList.remove('menu-scroll-lock');
-        document.body.classList.remove('menu-scroll-lock');
-        document.body.style.top = '';
-        delete document.body.dataset.menuScrollY;
-        window.scrollTo(0, scrollY);
-      };
-
-      const setMenuState = (isOpen) => {
-        mobileMenu.classList.toggle('hidden', !isOpen);
+      btnMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.contains('hidden');
         mobileMenu.classList.toggle('mobile-menu-open', isOpen);
         btnMenu.setAttribute('aria-expanded', String(isOpen));
-        if (isOpen) {
-          lockPageScroll();
-        } else {
-          unlockPageScroll();
-        }
-      };
-
-      btnMenu.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        setMenuState(!isOpen);
       });
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
         a.addEventListener('click', () => {
-          setMenuState(false);
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('mobile-menu-open');
+          btnMenu.setAttribute('aria-expanded', 'false');
         });
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
-          setMenuState(false);
-        }
       });
     }
 
