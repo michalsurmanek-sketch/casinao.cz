@@ -221,6 +221,126 @@
     .contact-gold-dot.d3 { top: 58px; left: 58%; width: 5px; height: 5px; }
     .contact-gold-dot.d4 { top: 108px; left: 78%; width: 4px; height: 4px; }
 
+    .contact-section {
+      padding: 70px 20px;
+      background: radial-gradient(circle at top right, rgba(245, 190, 0, 0.16), transparent 35%),
+                  linear-gradient(180deg, #07080c, #11151f);
+    }
+
+    .contact-main-title {
+      font-size: clamp(2rem, 4vw, 2.65rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+    }
+
+    .contact-main-title::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #f5c400;
+      border-radius: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-intro {
+      color: #b9beca;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      max-width: 40ch;
+    }
+
+    .contact-card {
+      background: rgba(18, 20, 27, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(245, 196, 0, 0.28);
+      border-radius: 26px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .contact-card label {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-radius: 18px;
+      padding: 17px 18px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .contact-card input::placeholder,
+    .contact-card textarea::placeholder {
+      color: #c1c8d4;
+      opacity: 0.92;
+    }
+
+    .contact-card input:focus,
+    .contact-card textarea:focus {
+      border-color: #f5c400;
+      box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.14);
+    }
+
+    .contact-card textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 17px;
+      background: linear-gradient(135deg, #ffd84d, #f0b400);
+      color: #111;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      justify-content: center;
+    }
+
+    .contact-submit:hover {
+      filter: brightness(1.04);
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      color: #d7d7d7;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    .contact-response-box {
+      border: 1px solid rgba(245, 196, 0, 0.24);
+      border-radius: 14px;
+      background: rgba(245, 196, 0, 0.1);
+      color: #f8e7aa;
+      font-size: 13px;
+      padding: 10px 12px;
+    }
+
+    .contact-social-btn {
+      background: rgba(0, 0, 0, 0.35);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-social-btn:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(245, 196, 0, 0.28);
+    }
+
     .meto-section {
       position: relative;
       overflow: hidden;
@@ -380,6 +500,18 @@
     }
 
     @media (max-width: 640px) {
+      .contact-section {
+        padding: 56px 16px;
+      }
+
+      .contact-card {
+        padding: 20px 16px;
+      }
+
+      .contact-intro {
+        margin-bottom: 18px;
+      }
+
       .contact-lux-card {
         display: none;
       }
@@ -2367,12 +2499,12 @@
   <!-- Kontakt / formulář -->
   <div class="mx-auto h-px max-w-7xl" style="background: linear-gradient(90deg, rgba(245, 196, 0, 0) 0%, rgba(245, 196, 0, 0.45) 20%, rgba(245, 196, 0, 0.78) 50%, rgba(245, 196, 0, 0.45) 80%, rgba(245, 196, 0, 0) 100%);"></div>
 
-  <section id="kontakt" class="py-16 bg-white/5 border-y border-white/10 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/kontakt.png');">
+  <section id="kontakt" class="contact-section border-y border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-10 items-start lg:items-stretch">
         <div>
-          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Kontakt</h2>
-          <p class="mt-2 text-gray-300">Máte dotaz k hodnocení, chybějící casino nebo spolupráci? Napište nám.</p>
+          <h2 class="contact-main-title font-display">Kontakt</h2>
+          <p class="contact-intro mt-3">Máte dotaz, návrh nebo chcete upozornit na chybu? Napište nám.</p>
           <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
             <div class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-yellow-400"></i> info@casinao.cz</div>
             <div class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-yellow-400"></i> Česká republika</div>
@@ -2381,7 +2513,7 @@
             <div class="flex items-center gap-3"><i data-lucide="badge-check" class="w-5 h-5 text-yellow-400"></i> IČO: bude doplněno</div>
             <div class="flex items-center gap-3"><i data-lucide="users" class="w-5 h-5 text-yellow-400"></i> O nás: <a class="hover:underline" href="o-nas.html">Kdo jsme</a></div>
           </div>
-          <div class="mt-8 contact-lux-card">
+          <div class="mt-8 contact-lux-card lg:mt-6">
             <h3 class="contact-lux-title font-display text-2xl font-extrabold">Proč nás kontaktovat?</h3>
             <div class="mt-4">
               <div class="contact-lux-item flex items-start gap-3">
@@ -2431,44 +2563,45 @@
         </div>
 
         <div class="lg:col-start-2 lg:h-full">
-          <form id="contactForm" class="rounded-2xl bg-white/5 border border-white/10 p-6 shadow-glow h-full flex flex-col">
+          <form id="contactForm" class="contact-card h-full flex flex-col">
+            <div class="contact-response-box mb-4">Odpovídáme obvykle do 24 hodin</div>
             <div class="grid gap-4">
               <div>
                 <label class="block text-sm mb-1" for="name">Jméno</label>
-                <input id="name" name="name" type="text" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Vaše jméno" />
+                <input id="name" name="name" type="text" class="w-full" placeholder="Vaše jméno" />
               </div>
               <div>
                 <label class="block text-sm mb-1" for="email">E-mail</label>
-                <input id="email" name="email" type="email" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="name@email.cz" />
+                <input id="email" name="email" type="email" class="w-full" placeholder="name@email.cz" />
               </div>
               <div>
                 <label class="block text-sm mb-1" for="message">Zpráva</label>
-                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-xl bg-black/40 border border-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Sem napište vaši zprávu..."></textarea>
+                <textarea id="message" name="message" rows="4" class="w-full" placeholder="Sem napište vaši zprávu..."></textarea>
               </div>
-              <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400"><i data-lucide="send" class="w-4 h-4"></i> Odeslat</button>
+              <button type="submit" class="contact-submit inline-flex items-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Odeslat zprávu</button>
             </div>
-            <p id="contactStatus" class="mt-3 text-xs text-gray-400">Odesláním souhlasíte se zpracováním zprávy pro účely odpovědi. Nejedná se o nabídku hazardních her.</p>
+            <p id="contactStatus" class="contact-note">Odesláním souhlasíte se zpracováním zprávy pro účely odpovědi. Nejedná se o nabídku hazardních her.</p>
 
             <div class="mt-auto pt-5">
               <div class="flex flex-wrap justify-center gap-3 text-sm">
-                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-black/35 w-10 h-10 hover:bg-black/50">
+                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
                     <path d="M18.901 1.5H22.58l-8.037 9.185L24 22.5h-7.406l-5.802-7.545L4.188 22.5H.507l8.596-9.824L0 1.5h7.594l5.245 6.915L18.901 1.5Zm-1.29 18.796h2.04L6.486 3.605H4.297L17.611 20.296Z"/>
                   </svg>
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-black/35 w-10 h-10 hover:bg-black/50">
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
                     <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.6v8h2.9Z"/>
                   </svg>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-black/35 w-10 h-10 hover:bg-black/50">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
                     <circle cx="12" cy="12" r="4"></circle>
                     <circle cx="17.5" cy="6.5" r="1"></circle>
                   </svg>
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-black/35 w-10 h-10 hover:bg-black/50">
+                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none">
                     <rect x="2" y="6" width="20" height="12" rx="3" fill="currentColor"></rect>
                     <path d="M10 9.5v5l5-2.5-5-2.5Z" fill="#111827"></path>
