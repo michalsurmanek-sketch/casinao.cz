@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/img/blackjack-hero-mobile.webp" media="(max-width: 768px)" fetchpriority="high" />
+<link rel="preload" as="image" href="/images/blackjack/blackjack-hero-mobile.webp" media="(max-width: 768px)" fetchpriority="high" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script type="application/ld+json">
 {
@@ -151,10 +151,10 @@
       margin: 0 -16px;
       padding: 32px 28px 28px;
       min-height: auto;
-      background-image: linear-gradient(90deg, rgba(2, 7, 5, 0.98) 0%, rgba(2, 7, 5, 0.86) 48%, rgba(2, 7, 5, 0.3) 100%),
-        url('/img/blackjack-hero-mobile.webp');
+      background-image: linear-gradient(90deg, rgba(2, 7, 5, 0.99) 0%, rgba(2, 7, 5, 0.94) 42%, rgba(2, 7, 5, 0.62) 68%, rgba(2, 7, 5, 0.28) 100%),
+        url('/images/blackjack/blackjack-hero-mobile.webp');
       background-size: cover;
-      background-position: center right;
+      background-position: 62% center;
       background-repeat: no-repeat;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -177,10 +177,11 @@
       letter-spacing: 0.04em;
       background: rgba(4, 16, 10, 0.42);
       text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
     .bj-title {
-      margin: 16px 0 20px;
+      margin: 0 0 24px;
       max-width: 650px;
       font-family: Montserrat, sans-serif;
       font-size: clamp(42px, 11vw, 58px);
@@ -223,7 +224,7 @@
 
     .bj-intro {
       max-width: 680px;
-      margin: 0 0 28px;
+      margin: 0;
       font-size: clamp(20px, 5.2vw, 22px);
       line-height: 1.65;
       color: rgba(255, 255, 255, 0.82);
@@ -231,56 +232,57 @@
 
     .bj-21 {
       color: var(--bj-gold);
-      font-size: 1.45em;
+      font-size: 1em;
       font-weight: 800;
-      line-height: 1;
+      line-height: inherit;
     }
 
     .bj-quick-card {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr) auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+      gap: 14px;
       background: linear-gradient(90deg, rgba(4, 45, 22, 0.92), rgba(2, 20, 12, 0.94));
       border: 1px solid rgba(73, 214, 111, 0.45);
-      border-radius: 18px;
-      padding: 22px;
+      border-radius: 16px;
+      padding: 16px 18px;
+      min-height: 108px;
       max-width: 680px;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
     }
 
     .bj-quick-main {
+      display: contents;
+    }
+
+    .bj-quick-main > div {
       min-width: 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      flex: 1;
     }
 
     .bj-quick-main svg {
-      width: 28px;
-      height: 28px;
+      width: 48px;
+      height: 48px;
       color: #61e27d;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .bj-quick-title {
-      margin: 0;
+      margin: 0 0 4px;
       font-weight: 800;
       color: #66df7f;
-      font-size: clamp(20px, 4.9vw, 24px);
+      font-size: 18px;
       line-height: 1.2;
       font-family: Montserrat, sans-serif;
+      white-space: nowrap;
     }
 
     .bj-quick-text {
-      margin: 6px 0 0;
+      margin: 0;
       color: rgba(255, 255, 255, 0.78);
-      font-size: 15px;
-      line-height: 1.45;
-      max-width: 420px;
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: none;
     }
 
     .bj-quick-btn {
@@ -288,7 +290,8 @@
       color: var(--bj-gold);
       background: transparent;
       border-radius: 10px;
-      padding: 14px 18px;
+      padding: 11px 14px;
+      font-size: 13px;
       font-weight: 800;
       text-decoration: none;
       white-space: nowrap;
@@ -526,45 +529,102 @@
       .bj-hero {
         padding: 32px 28px 28px;
         min-height: auto;
-        background-position: center right;
+        background-image: linear-gradient(90deg, rgba(2, 7, 5, 0.99) 0%, rgba(2, 7, 5, 0.94) 42%, rgba(2, 7, 5, 0.62) 68%, rgba(2, 7, 5, 0.28) 100%),
+          url('/images/blackjack/blackjack-hero-mobile.webp');
+        background-position: 62% center;
         background-size: cover;
       }
 
-      .bj-title {
-        font-size: clamp(40px, 9vw, 52px);
-        line-height: 1.05;
+      .blackjack-hero h1 {
+        font-size: clamp(38px, 9vw, 48px);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        font-weight: 800;
+        width: 100%;
+        max-width: none;
       }
 
-      .bj-meta {
+      .blackjack-hero h1 span {
+        white-space: nowrap;
+      }
+
+      .blackjack-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: center;
+        width: 100%;
+        gap: 0;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 12px;
+        background: rgba(5, 10, 8, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      .blackjack-meta-item {
+        min-width: 0;
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 10px;
-        font-size: 12px;
-        padding: 10px 14px;
-        overflow-x: auto;
-        white-space: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 0 7px;
+        font-size: 10px;
+        line-height: 1.25;
+        color: rgba(255, 255, 255, 0.82);
       }
 
-      .bj-meta-item {
-        font-size: 12px;
-        white-space: nowrap;
+      .blackjack-meta-item + .blackjack-meta-item {
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
       }
 
-      .bj-meta-item svg {
-        width: 14px;
-        height: 14px;
+      .blackjack-meta-item svg {
+        width: 15px;
+        height: 15px;
+        flex: 0 0 15px;
       }
 
-      .bj-intro {
-        font-size: 20px;
+      .blackjack-meta-item span {
+        min-width: 0;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .blackjack-intro {
+        font-size: 18px;
         line-height: 1.55;
-        max-width: 620px;
+        letter-spacing: 0;
+        margin: 0;
+        max-width: 100%;
       }
 
-      .bj-quick-card {
-        padding: 16px 20px;
-        border-radius: 16px;
+      .blackjack-quick-card {
+        grid-template-columns: 54px minmax(0, 1fr) auto;
+        gap: 14px;
+        padding: 16px 18px;
+        min-height: 108px;
+      }
+
+      .blackjack-quick-card .bj-quick-title {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .blackjack-quick-card .bj-quick-text {
+        font-size: 13px;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .blackjack-quick-card .bj-quick-btn {
+        font-size: 13px;
+        padding: 11px 14px;
+        white-space: nowrap;
+      }
+
+      .blackjack-quick-card .bj-quick-main svg {
+        width: 48px;
+        height: 48px;
       }
 
       .bj-carousel-nav-prev {
@@ -573,6 +633,36 @@
 
       .bj-carousel-nav-next {
         right: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .blackjack-hero h1 {
+        font-size: 37px;
+      }
+
+      .blackjack-quick-card {
+        grid-template-columns: 42px minmax(0, 1fr) auto;
+        gap: 8px;
+        padding: 14px 12px;
+      }
+
+      .blackjack-quick-card .bj-quick-title {
+        font-size: 15px;
+      }
+
+      .blackjack-quick-card .bj-quick-text {
+        font-size: 11px;
+      }
+
+      .blackjack-quick-card .button {
+        font-size: 11px;
+        padding: 9px 10px;
+      }
+
+      .blackjack-quick-card .bj-quick-main svg {
+        width: 42px;
+        height: 42px;
       }
     }
 
@@ -629,21 +719,21 @@
 
 <main class="bj-main">
 
-  <section class="bj-hero" aria-labelledby="blackjack-title">
+  <section class="bj-hero blackjack-hero" aria-labelledby="blackjack-title">
     <div class="bj-hero-inner">
       <span class="bj-badge">Karetní hry</span>
 
-      <h1 id="blackjack-title" class="bj-title">Blackjack:<br>kompletní pravidla</h1>
+      <h1 id="blackjack-title" class="bj-title">Blackjack:<br><span>kompletní pravidla</span></h1>
 
-      <div class="bj-meta" aria-label="Metadata článku">
-        <div class="bj-meta-item">
+      <div class="bj-meta blackjack-meta" aria-label="Metadata článku">
+        <div class="bj-meta-item blackjack-meta-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
           <span>Autor: Redakce Casinao.cz</span>
         </div>
-        <div class="bj-meta-item">
+        <div class="bj-meta-item blackjack-meta-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -652,7 +742,7 @@
           </svg>
           <span>Publikováno: 19. 6. 2026</span>
         </div>
-        <div class="bj-meta-item">
+        <div class="bj-meta-item blackjack-meta-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M23 4v6h-6"></path>
             <path d="M1 20v-6h6"></path>
@@ -663,13 +753,13 @@
         </div>
       </div>
 
-      <p class="bj-intro">
+      <p class="bj-intro blackjack-intro">
         Cílem blackjacku je mít součet karet blíž k <span class="bj-21">21</span> než dealer, ale nepřesáhnout <span class="bj-21">21</span>.
         Níže najdete přehledná pravidla: hodnoty karet, průběh kola, rozhodnutí hráče
         i praktické tipy pro rozumnou hru.
       </p>
 
-      <div class="bj-quick-card">
+      <div class="bj-quick-card blackjack-quick-card">
         <div class="bj-quick-main">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="13" r="8"></circle>
@@ -680,11 +770,11 @@
             <path d="M14 3v2"></path>
           </svg>
           <div>
-            <p class="bj-quick-title">Blackjack za 60 sekund</p>
+            <h3 class="bj-quick-title">Blackjack za 60 sekund</h3>
             <p class="bj-quick-text">Cíl hry: Překonat dealera s kartami co nejblíže 21, ale ne více.</p>
           </div>
         </div>
-        <a href="#blackjack-pravidla" class="bj-quick-btn" data-scroll-rules>JAK HRÁT</a>
+        <a href="#blackjack-pravidla" class="bj-quick-btn button" data-scroll-rules>JAK HRÁT</a>
       </div>
     </div>
   </section>
