@@ -149,12 +149,12 @@
       overflow: hidden;
       border-radius: 0;
       margin: 0 -16px;
-      padding: 24px 20px 40px;
-      min-height: 640px;
-      background-image: linear-gradient(90deg, rgba(2, 7, 5, 0.98) 0%, rgba(2, 7, 5, 0.88) 48%, rgba(2, 7, 5, 0.25) 100%),
+      padding: 32px 28px 28px;
+      min-height: auto;
+      background-image: linear-gradient(90deg, rgba(2, 7, 5, 0.98) 0%, rgba(2, 7, 5, 0.86) 48%, rgba(2, 7, 5, 0.3) 100%),
         url('/img/blackjack-hero-mobile.webp');
       background-size: cover;
-      background-position: center center;
+      background-position: center right;
       background-repeat: no-repeat;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -524,7 +524,47 @@
 
     @media (max-width: 768px) {
       .bj-hero {
-        background-position: right center;
+        padding: 32px 28px 28px;
+        min-height: auto;
+        background-position: center right;
+        background-size: cover;
+      }
+
+      .bj-title {
+        font-size: clamp(40px, 9vw, 52px);
+        line-height: 1.05;
+      }
+
+      .bj-meta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10px;
+        font-size: 12px;
+        padding: 10px 14px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .bj-meta-item {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .bj-meta-item svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .bj-intro {
+        font-size: 20px;
+        line-height: 1.55;
+        max-width: 620px;
+      }
+
+      .bj-quick-card {
+        padding: 16px 20px;
+        border-radius: 16px;
       }
 
       .bj-carousel-nav-prev {
@@ -593,7 +633,7 @@
     <div class="bj-hero-inner">
       <span class="bj-badge">Karetní hry</span>
 
-      <h1 id="blackjack-title" class="bj-title">Blackjack: kompletní pravidla</h1>
+      <h1 id="blackjack-title" class="bj-title">Blackjack:<br>kompletní pravidla</h1>
 
       <div class="bj-meta" aria-label="Metadata článku">
         <div class="bj-meta-item">
