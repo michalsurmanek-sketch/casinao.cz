@@ -739,9 +739,27 @@
         border-radius: 0 0 22px 22px;
         min-height: 560px;
         padding: 34px 34px 46px;
-        background-size: 100% 100%, auto 82%;
-        background-position: center, 88% center;
+        background-image: linear-gradient(90deg, rgba(2, 7, 5, 1) 0%, rgba(2, 7, 5, 0.98) 42%, rgba(2, 7, 5, 0.72) 58%, rgba(2, 7, 5, 0.18) 76%, rgba(2, 7, 5, 0.55) 100%),
+          url('/images/blackjack/blackjack-hero-mobile.webp');
+        background-size: 100% 100%, 52% auto;
+        background-position: center, 84% 58%;
         background-repeat: no-repeat, no-repeat;
+      }
+
+      .blackjack-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background: linear-gradient(90deg, #020705 0%, transparent 48%, transparent 84%, rgba(2, 7, 5, 0.72) 100%),
+          linear-gradient(180deg, rgba(2, 7, 5, 0.45) 0%, transparent 20%, transparent 75%, rgba(2, 7, 5, 0.8) 100%);
+      }
+
+      .blackjack-hero-content,
+      .blackjack-hero .bj-hero-inner {
+        position: relative;
+        z-index: 2;
       }
 
       .blackjack-rules-card {
@@ -786,7 +804,7 @@
 <main class="bj-main">
 
   <section class="bj-hero blackjack-hero" aria-labelledby="blackjack-title">
-    <div class="bj-hero-inner">
+    <div class="bj-hero-inner blackjack-hero-content">
       <span class="bj-badge">Karetní hry</span>
 
       <h1 id="blackjack-title" class="bj-title">Blackjack:<br><span>kompletní pravidla</span></h1>
