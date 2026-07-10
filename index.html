@@ -79,32 +79,153 @@
       scroll-padding-top: 7.5rem;
     }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
-    .mobile-menu-panel.mobile-menu-open {
-      background-image: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)), url('/img/menu.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
+    .mobile-menu-lock {
       overflow: hidden;
+      touch-action: none;
     }
-    .mobile-menu-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 0.75rem;
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 62;
+      background: rgba(0, 0, 0, 0.62);
+      opacity: 0;
+      transition: opacity 300ms ease;
     }
-    .mobile-menu-group {
-      display: grid;
-      gap: 0.5rem;
-      align-content: start;
+
+    .mobile-menu-overlay.mobile-menu-overlay-open {
+      opacity: 1;
     }
-    .mobile-menu-group-title {
-      padding: 0 0.75rem;
+
+    .mobile-menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100dvh;
+      width: min(88vw, 430px);
+      z-index: 63;
+      transform: translateX(100%);
+      transition: transform 300ms ease;
+      background: linear-gradient(180deg, rgba(6, 14, 24, 0.99), rgba(6, 12, 20, 0.99));
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      box-shadow: -20px 0 38px rgba(0, 0, 0, 0.34);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu-panel.mobile-menu-open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: calc(env(safe-area-inset-top) + 14px) 20px 12px;
+      background: rgba(7, 15, 25, 0.96);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .mobile-menu-close {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(15, 23, 42, 0.72);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #f8fafc;
+    }
+
+    .mobile-menu-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 20px calc(env(safe-area-inset-bottom) + 20px);
+    }
+
+    .mobile-menu-section-title {
+      margin: 0 0 8px;
       color: #facc15;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .mobile-menu-divider {
+      margin: 16px 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.3), rgba(148, 163, 184, 0));
+    }
+
+    .mobile-menu-item {
+      min-height: 66px;
+      padding: 10px 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .mobile-menu-item:last-child {
+      border-bottom: 0;
+    }
+
+    .mobile-menu-item-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .mobile-menu-item-chevron {
+      color: rgba(226, 232, 240, 0.75);
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-cta {
+      margin-top: 14px;
+      border-radius: 24px;
+      border: 1px solid rgba(245, 196, 0, 0.38);
+      background: linear-gradient(145deg, rgba(70, 46, 8, 0.42), rgba(33, 22, 5, 0.38));
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mobile-menu-cta-title {
+      color: #fef3c7;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .mobile-menu-cta-subtitle {
+      color: #cbd5e1;
+      font-size: 0.84rem;
+      line-height: 1.25;
+      margin: 2px 0 0;
+    }
+
+    .mobile-menu-safe-card {
+      margin-top: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(15, 23, 42, 0.56);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
     .tip:hover::after {
       content: attr(data-tip);
@@ -1886,28 +2007,100 @@
         </div>
       </div>
 
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
-        <nav class="px-4 py-3 mobile-menu-grid" aria-label="Mobilní navigace">
-          <div class="mobile-menu-group">
-            <p class="mobile-menu-group-title">Navigace</p>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#blog"><i data-lucide="newspaper" class="w-4 h-4 text-yellow-400"></i><span>Blog</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i><span>Kontakt</span></a>
+      <!-- Mobile menu drawer -->
+      <div id="mobileMenuOverlay" class="mobile-menu-overlay md:hidden hidden" aria-hidden="true"></div>
+      <aside id="mobileMenu" class="mobile-menu-panel md:hidden hidden" aria-label="Mobilní navigace" aria-hidden="true">
+        <div class="mobile-menu-header">
+          <div class="flex items-center justify-between gap-3">
+            <a href="#home" class="mob-link flex items-center gap-3" aria-label="Casinao.cz domů">
+              <img src="/assets/icons/casinao-logo.png" alt="Casinao.cz" class="w-10 h-10 rounded-xl object-contain flex-none" />
+              <div class="leading-tight">
+                <div class="font-display text-lg font-extrabold tracking-tight text-white">Casinao.cz</div>
+                <div class="text-xs text-gray-300">Recenze • Bonusy • Návody</div>
+              </div>
+            </a>
+            <button id="btnMenuClose" type="button" class="mobile-menu-close" aria-label="Zavřít menu">
+              <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
           </div>
-          <div class="mobile-menu-group">
-            <p class="mobile-menu-group-title">Populární hry</p>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="automaty.html"><i data-lucide="slot-machine" class="w-4 h-4 text-yellow-400"></i><span>Automaty</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="blackjack.html"><i data-lucide="club" class="w-4 h-4 text-yellow-400"></i><span>Blackjack</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="ruleta.html"><i data-lucide="circle-dot" class="w-4 h-4 text-yellow-400"></i><span>Ruleta</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="sazky-pravidla.html"><i data-lucide="badge-percent" class="w-4 h-4 text-yellow-400"></i><span>Sázky</span></a>
-            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="poker.html"><i data-lucide="spade" class="w-4 h-4 text-yellow-400"></i><span>Poker</span></a>
-          </div>
-        </nav>
-      </div>
+        </div>
+
+        <div class="mobile-menu-scroll">
+          <section>
+            <h3 class="mobile-menu-section-title">Navigace</h3>
+            <a class="mob-link mobile-menu-item" href="#casina">
+              <span class="mobile-menu-item-main"><i data-lucide="trophy" class="w-5 h-5 text-yellow-400"></i><span>Casina</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="#hry">
+              <span class="mobile-menu-item-main"><i data-lucide="dice-5" class="w-5 h-5 text-yellow-400"></i><span>Hry</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="#recenze">
+              <span class="mobile-menu-item-main"><i data-lucide="star" class="w-5 h-5 text-yellow-400"></i><span>Recenze</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="navody.html">
+              <span class="mobile-menu-item-main"><i data-lucide="book-open" class="w-5 h-5 text-yellow-400"></i><span>Návody</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="#blog">
+              <span class="mobile-menu-item-main"><i data-lucide="newspaper" class="w-5 h-5 text-yellow-400"></i><span>Blog</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="#kontakt">
+              <span class="mobile-menu-item-main"><i data-lucide="mail" class="w-5 h-5 text-yellow-400"></i><span>Kontakt</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+          </section>
+
+          <div class="mobile-menu-divider" aria-hidden="true"></div>
+
+          <section>
+            <h3 class="mobile-menu-section-title">Populární hry</h3>
+            <a class="mob-link mobile-menu-item" href="automaty.html">
+              <span class="mobile-menu-item-main"><i data-lucide="dice-6" class="w-5 h-5 text-yellow-400"></i><span>Automaty</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="blackjack.html">
+              <span class="mobile-menu-item-main"><i data-lucide="club" class="w-5 h-5 text-yellow-400"></i><span>Blackjack</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="ruleta.html">
+              <span class="mobile-menu-item-main"><i data-lucide="circle-dot" class="w-5 h-5 text-yellow-400"></i><span>Ruleta</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="sazky-pravidla.html">
+              <span class="mobile-menu-item-main"><i data-lucide="badge-percent" class="w-5 h-5 text-yellow-400"></i><span>Sázky</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+            <a class="mob-link mobile-menu-item" href="poker.html">
+              <span class="mobile-menu-item-main"><i data-lucide="spade" class="w-5 h-5 text-yellow-400"></i><span>Poker</span></span>
+              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+            </a>
+          </section>
+
+          <a class="mob-link mobile-menu-cta" href="/denni-bonusy.html">
+            <span class="mobile-menu-item-main"><i data-lucide="gift" class="w-5 h-5 text-yellow-400"></i>
+              <span>
+                <strong class="mobile-menu-cta-title">Aktuální bonusy</strong>
+                <small class="mobile-menu-cta-subtitle">Denní a speciální nabídky</small>
+              </span>
+            </span>
+            <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+          </a>
+
+          <a class="mob-link mobile-menu-safe-card" href="#odpovedne">
+            <span class="mobile-menu-item-main"><i data-lucide="shield-check" class="w-5 h-5 text-slate-300"></i>
+              <span>
+                <strong class="mobile-menu-cta-title text-slate-100">Hrajte zodpovědně</strong>
+                <small class="mobile-menu-cta-subtitle text-slate-300">Nastavte si limity a hrajte bezpečně.</small>
+              </span>
+            </span>
+            <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
+          </a>
+        </div>
+      </aside>
     </div>
   </header>
 
@@ -2999,21 +3192,65 @@
 
     const btnMenu = document.getElementById('btnMenu');
     const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const btnMenuClose = document.getElementById('btnMenuClose');
 
-    if (btnMenu && mobileMenu) {
+    if (btnMenu && mobileMenu && mobileMenuOverlay) {
+      const closeMenu = () => {
+        if (!mobileMenu.classList.contains('mobile-menu-open')) {
+          return;
+        }
+
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenuOverlay.classList.remove('mobile-menu-overlay-open');
+        btnMenu.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('mobile-menu-lock');
+
+        window.setTimeout(() => {
+          if (!mobileMenu.classList.contains('mobile-menu-open')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuOverlay.classList.add('hidden');
+          }
+        }, 320);
+      };
+
+      const openMenu = () => {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuOverlay.classList.remove('hidden');
+
+        window.requestAnimationFrame(() => {
+          mobileMenu.classList.add('mobile-menu-open');
+          mobileMenuOverlay.classList.add('mobile-menu-overlay-open');
+        });
+
+        btnMenu.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('mobile-menu-lock');
+      };
+
       btnMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('mobile-menu-open', isOpen);
-        btnMenu.setAttribute('aria-expanded', String(isOpen));
+        if (mobileMenu.classList.contains('mobile-menu-open')) {
+          closeMenu();
+          return;
+        }
+
+        openMenu();
+      });
+
+      btnMenuClose && btnMenuClose.addEventListener('click', closeMenu);
+      mobileMenuOverlay.addEventListener('click', closeMenu);
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
       });
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
-        a.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('mobile-menu-open');
-          btnMenu.setAttribute('aria-expanded', 'false');
-        });
+        a.addEventListener('click', closeMenu);
       });
     }
 
