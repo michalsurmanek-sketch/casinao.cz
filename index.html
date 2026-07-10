@@ -88,6 +88,29 @@
       border-bottom-right-radius: 1rem;
       overflow: hidden;
     }
+    .mobile-menu-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+    .mobile-menu-group {
+      display: grid;
+      gap: 0.5rem;
+      align-content: start;
+    }
+    .mobile-menu-group-title {
+      padding: 0 0.75rem;
+      color: #facc15;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 380px) {
+      .mobile-menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
     .tip:hover::after {
       content: attr(data-tip);
       position: absolute;
@@ -1870,13 +1893,24 @@
 
       <!-- Mobile menu -->
       <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
-        <nav class="px-4 py-3 grid gap-2" aria-label="Mobilní navigace">
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#blog"><i data-lucide="newspaper" class="w-4 h-4 text-yellow-400"></i><span>Blog</span></a>
-          <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i><span>Kontakt</span></a>
+        <nav class="px-4 py-3 mobile-menu-grid" aria-label="Mobilní navigace">
+          <div class="mobile-menu-group">
+            <p class="mobile-menu-group-title">Navigace</p>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#blog"><i data-lucide="newspaper" class="w-4 h-4 text-yellow-400"></i><span>Blog</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i><span>Kontakt</span></a>
+          </div>
+          <div class="mobile-menu-group">
+            <p class="mobile-menu-group-title">Populární hry</p>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="automaty.html"><i data-lucide="slot-machine" class="w-4 h-4 text-yellow-400"></i><span>Automaty</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="blackjack.html"><i data-lucide="club" class="w-4 h-4 text-yellow-400"></i><span>Blackjack</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="ruleta.html"><i data-lucide="circle-dot" class="w-4 h-4 text-yellow-400"></i><span>Ruleta</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="sazky-pravidla.html"><i data-lucide="badge-percent" class="w-4 h-4 text-yellow-400"></i><span>Sázky</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="poker.html"><i data-lucide="spade" class="w-4 h-4 text-yellow-400"></i><span>Poker</span></a>
+          </div>
         </nav>
       </div>
     </div>
