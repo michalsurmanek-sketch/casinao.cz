@@ -132,6 +132,17 @@
       color: #ffd24f;
     }
 
+    .bj-next-link {
+      color: var(--bj-gold);
+      font-weight: 700;
+      text-decoration: none;
+      text-align: right;
+    }
+
+    .bj-next-link:hover {
+      color: #ffd24f;
+    }
+
     .bj-brand-link {
       color: rgba(255, 255, 255, 0.82);
       text-decoration: none;
@@ -530,6 +541,19 @@
     }
 
     @media (max-width: 768px) {
+      .bj-topbar-inner {
+        width: min(1120px, 100% - 24px);
+      }
+
+      .bj-brand-link {
+        display: none;
+      }
+
+      .bj-back-link,
+      .bj-next-link {
+        font-size: 14px;
+      }
+
       .bj-hero {
         padding: 32px 28px 28px;
         min-height: auto;
@@ -814,6 +838,7 @@
   <div class="bj-topbar-inner">
     <a href="index.html#hry" class="bj-back-link">← Zpět na hry</a>
     <a href="index.html" class="bj-brand-link">Casinao.cz</a>
+    <a href="automaty.html" class="bj-next-link">Automaty →</a>
   </div>
 </header>
 
