@@ -1150,6 +1150,7 @@
 
       const state = {
         isOpen: false,
+        currentIndex: 0,
         scale: 1,
         translateX: 0,
         translateY: 0,
@@ -1159,9 +1160,28 @@
         pinchStartScale: 1,
         panStartX: 0,
         panStartY: 0,
+        swipeStartX: 0,
+        swipeStartY: 0,
+        swipeDeltaX: 0,
+        swipeDeltaY: 0,
       };
 
       const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      const setImageByIndex = (index) => {
+        const clampedIndex = clamp(index, 0, slides.length - 1);
+        const slide = slides[clampedIndex];
+        const slideImage = slide ? slide.querySelector('img') : null;
+
+        if (!slideImage) {
+          return false;
+        }
+
+        state.currentIndex = clampedIndex;
+        image.src = slideImage.currentSrc || slideImage.src;
+        image.alt = slideImage.alt || '';
+        return true;
+      };
 
       const measureBaseSize = () => {
         const previousTransform = image.style.transform;
@@ -1204,13 +1224,23 @@
         image.alt = '';
       };
 
-      const open = (src, alt) => {
+      const goToIndex = (index) => {
+        if (!setImageByIndex(index)) {
+          return;
+        }
+
+        resetTransform();
+      };
+
+      const open = (index) => {
         if (!mobileMediaQuery.matches) {
           return;
         }
 
-        image.src = src;
-        image.alt = alt || '';
+        if (!setImageByIndex(index)) {
+          return;
+        }
+
         overlay.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('bj-lightbox-open');
@@ -1251,6 +1281,10 @@
 
         if (event.touches.length === 1) {
           const touch = event.touches[0];
+          state.swipeStartX = touch.clientX;
+          state.swipeStartY = touch.clientY;
+          state.swipeDeltaX = 0;
+          state.swipeDeltaY = 0;
           state.panStartX = touch.clientX - state.translateX;
           state.panStartY = touch.clientY - state.translateY;
         }
@@ -1280,6 +1314,13 @@
           state.translateX = touch.clientX - state.panStartX;
           state.translateY = touch.clientY - state.panStartY;
           applyTransform();
+          return;
+        }
+
+        if (event.touches.length === 1) {
+          const touch = event.touches[0];
+          state.swipeDeltaX = touch.clientX - state.swipeStartX;
+          state.swipeDeltaY = touch.clientY - state.swipeStartY;
         }
       }, { passive: false });
 
@@ -1287,6 +1328,11 @@
         if (!state.isOpen) {
           return;
         }
+
+        const shouldNavigate = state.scale <= 1
+          && event.touches.length === 0
+          && Math.abs(state.swipeDeltaX) > 48
+          && Math.abs(state.swipeDeltaX) > Math.abs(state.swipeDeltaY) * 1.2;
 
         if (event.touches.length < 2) {
           state.pinchStartDistance = 0;
@@ -1304,7 +1350,14 @@
           state.translateX = 0;
           state.translateY = 0;
           applyTransform();
+
+          if (shouldNavigate) {
+            goToIndex(state.currentIndex + (state.swipeDeltaX < 0 ? 1 : -1));
+          }
         }
+
+        state.swipeDeltaX = 0;
+        state.swipeDeltaY = 0;
       });
 
       window.addEventListener('keydown', (event) => {
@@ -1427,7 +1480,7 @@
       dot.addEventListener('click', () => scrollToIndex(index));
     });
 
-    slides.forEach((slide) => {
+    slides.forEach((slide, index) => {
       const image = slide.querySelector('img');
 
       if (!image) {
@@ -1475,7 +1528,7 @@
 
         event.preventDefault();
         event.stopPropagation();
-        lightbox.open(image.currentSrc || image.src, image.alt);
+        lightbox.open(index);
       });
     });
 
