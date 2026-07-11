@@ -79,8 +79,11 @@
       scroll-padding-top: 7.5rem;
     }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
-    .mobile-menu-lock {
+    .mobile-menu-lock,
+    .mobile-menu-lock body {
       overflow: hidden;
+      height: 100%;
+      touch-action: none;
     }
 
     .mobile-menu-overlay {
@@ -3341,6 +3344,40 @@
 
     if (btnMenu && mobileMenu && mobileMenuOverlay) {
       let closeTimer = 0;
+      let lockedScrollY = 0;
+
+      const lockBodyScroll = () => {
+        if (document.body.classList.contains('mobile-menu-lock')) {
+          return;
+        }
+
+        lockedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${lockedScrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+        document.body.classList.add('mobile-menu-lock');
+        document.documentElement.classList.add('mobile-menu-lock');
+      };
+
+      const unlockBodyScroll = () => {
+        const hasBodyLock = document.body.classList.contains('mobile-menu-lock');
+        const hasHtmlLock = document.documentElement.classList.contains('mobile-menu-lock');
+
+        if (!hasBodyLock && !hasHtmlLock) {
+          return;
+        }
+
+        document.body.classList.remove('mobile-menu-lock');
+        document.documentElement.classList.remove('mobile-menu-lock');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo({ top: lockedScrollY, behavior: 'auto' });
+      };
 
       const resetMobileMenuViewport = () => {
         mobileMenu.scrollTop = 0;
@@ -3356,8 +3393,10 @@
         });
       };
 
-      const closeMenu = () => {
-        if (!mobileMenu.classList.contains('mobile-menu-open')) {
+      const closeMenu = ({ immediate = false } = {}) => {
+        const isOpen = mobileMenu.classList.contains('mobile-menu-open');
+
+        if (!isOpen && !immediate) {
           return;
         }
 
@@ -3375,11 +3414,18 @@
 
         window.clearTimeout(closeTimer);
 
+        if (immediate) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuOverlay.classList.add('hidden');
+          unlockBodyScroll();
+          return;
+        }
+
         closeTimer = window.setTimeout(() => {
           if (!mobileMenu.classList.contains('mobile-menu-open')) {
             mobileMenu.classList.add('hidden');
             mobileMenuOverlay.classList.add('hidden');
-            document.body.classList.remove('mobile-menu-lock');
+            unlockBodyScroll();
           }
         }, 320);
       };
@@ -3402,7 +3448,7 @@
         btnMenu.setAttribute('aria-expanded', 'true');
         mobileMenu.setAttribute('aria-hidden', 'false');
         mobileMenuOverlay.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('mobile-menu-lock');
+        lockBodyScroll();
       };
 
       btnMenu.addEventListener('click', () => {
@@ -3427,13 +3473,9 @@
         a.addEventListener('click', closeMenu);
       });
 
-      window.addEventListener('hashchange', () => {
-        resetMobileMenuViewport();
-      });
-
       window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
-          closeMenu();
+          closeMenu({ immediate: true });
         }
       });
     }
