@@ -51,14 +51,73 @@
 <style>
   html { scroll-behavior: smooth; }
   .glass { backdrop-filter: blur(12px); background: rgba(17,24,39,.68); }
-  .mobile-menu-panel.mobile-menu-open {
-    background-image: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)), url('/img/menu.png');
+
+  .mobile-menu-lock {
+    overflow: hidden;
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 62;
+    background: rgba(0, 0, 0, 0.62);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .mobile-menu-overlay.mobile-menu-overlay-open {
+    opacity: 1;
+  }
+
+  .mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(88vw, 430px);
+    height: 100dvh;
+    z-index: 63;
+    transform: translateX(100%);
+    transition: transform 300ms ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(148, 163, 184, 0.34);
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(10, 16, 28, 0.98), rgba(8, 13, 24, 0.98)), url('/img/menu.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    overflow: hidden;
+  }
+
+  .mobile-menu-panel.mobile-menu-open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-header {
+    padding: calc(env(safe-area-inset-top) + 12px) 16px 10px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(6, 12, 22, 0.78);
+  }
+
+  .mobile-menu-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    background: rgba(15, 23, 42, 0.72);
+    color: #f8fafc;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu-scroll {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 10px 12px calc(env(safe-area-inset-bottom) + 12px);
   }
 
   /* Jemný scrollbar jen pro sekci Nejctenejsi */
@@ -133,11 +192,24 @@
       </button>
     </div>
 
-    <div id="mobileMenu" class="mobile-menu-panel hidden md:hidden pb-4">
-      <div class="glass rounded-2xl border border-white/10 p-3 grid gap-2 text-sm">
-        <a href="index.html#casina" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
-        <a href="index.html#bonusy" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="gift" class="w-4 h-4 text-yellow-400"></i><span>Bonusy</span></a>
-        <a href="navody.html" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 text-yellow-400"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Casino Akademie</span></a>
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay hidden md:hidden" aria-hidden="true"></div>
+
+    <div id="mobileMenu" class="mobile-menu-panel hidden md:hidden" aria-hidden="true" aria-label="Mobilní navigace">
+      <div class="mobile-menu-header">
+        <div class="flex items-center justify-between gap-3">
+          <strong class="font-display text-sm tracking-wide text-gray-200">Menu</strong>
+          <button id="btnMenuClose" type="button" class="mobile-menu-close" aria-label="Zavřít menu">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu-scroll">
+        <div class="glass rounded-2xl border border-white/10 p-3 grid gap-2 text-sm">
+          <a href="index.html#casina" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
+          <a href="index.html#bonusy" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="gift" class="w-4 h-4 text-yellow-400"></i><span>Bonusy</span></a>
+          <a href="navody.html" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 text-yellow-400"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Casino Akademie</span></a>
+        </div>
       </div>
     </div>
   </div>
@@ -789,20 +861,75 @@
 
     const btnMenu = document.getElementById('btnMenu');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (btnMenu && mobileMenu) {
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const btnMenuClose = document.getElementById('btnMenuClose');
+
+    if (btnMenu && mobileMenu && mobileMenuOverlay) {
+      let closeTimer = 0;
+
+      const closeMenu = () => {
+        if (!mobileMenu.classList.contains('mobile-menu-open')) {
+          return;
+        }
+
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenuOverlay.classList.remove('mobile-menu-overlay-open');
+        btnMenu.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+
+        window.clearTimeout(closeTimer);
+        closeTimer = window.setTimeout(() => {
+          if (!mobileMenu.classList.contains('mobile-menu-open')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.classList.remove('mobile-menu-lock');
+          }
+        }, 320);
+      };
+
+      const openMenu = () => {
+        window.clearTimeout(closeTimer);
+        mobileMenu.classList.remove('hidden');
+        mobileMenuOverlay.classList.remove('hidden');
+
+        window.requestAnimationFrame(() => {
+          mobileMenu.classList.add('mobile-menu-open');
+          mobileMenuOverlay.classList.add('mobile-menu-overlay-open');
+        });
+
+        btnMenu.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('mobile-menu-lock');
+      };
+
       btnMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('mobile-menu-open', isOpen);
-        btnMenu.setAttribute('aria-expanded', String(isOpen));
+        if (mobileMenu.classList.contains('mobile-menu-open')) {
+          closeMenu();
+          return;
+        }
+
+        openMenu();
+      });
+
+      btnMenuClose && btnMenuClose.addEventListener('click', closeMenu);
+      mobileMenuOverlay.addEventListener('click', closeMenu);
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
       });
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
-        a.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('mobile-menu-open');
-          btnMenu.setAttribute('aria-expanded', 'false');
-        });
+        a.addEventListener('click', closeMenu);
       });
     }
 
