@@ -96,7 +96,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 0.75rem;
-      padding: 22px !important;
+      padding: 16px !important;
     }
 
     .mobile-menu-group {
@@ -106,24 +106,35 @@
     }
 
     .mobile-menu-group-title {
-      padding: 0 0.35rem 0.4rem;
+      padding: 0 0.25rem 0.2rem;
       color: #f5c400;
-      font-size: 0.64rem;
+      font-size: 0.6rem;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 193, 7, 0.35);
+      border-bottom: 0;
+      position: relative;
+      margin-bottom: 0.08rem;
+    }
+
+    .mobile-menu-group-title::after {
+      content: '';
+      display: block;
+      width: 52px;
+      height: 1px;
+      margin-top: 4px;
+      background: rgba(255, 193, 7, 0.22);
     }
 
     .mobile-menu-panel .mob-link {
-      min-height: 56px;
+      min-height: 66px;
       border-radius: 16px;
       background: #171b28;
       border: 1px solid rgba(255, 193, 7, 0.2);
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 0 12px;
+      padding: 0 11px;
       position: relative;
       transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
@@ -138,18 +149,20 @@
 
     .mobile-menu-panel .mob-link span {
       flex: 1;
-      font-size: 0.94rem;
-      line-height: 1.2;
+      font-size: 1.14rem;
+      line-height: 1.1;
     }
 
     .mobile-menu-panel .mob-link::after {
       content: '›';
       margin-left: auto;
       color: rgba(245, 196, 0, 0.82);
-      font-size: 1.05rem;
+      font-size: 0.9rem;
       font-weight: 800;
       line-height: 1;
-      transform: translateY(-1px);
+      transform: translateY(0);
+      width: 16px;
+      text-align: center;
     }
 
     .mobile-menu-panel .mob-link:hover,
@@ -160,32 +173,26 @@
       transform: scale(1.02);
     }
 
-    .mobile-menu-group:nth-of-type(1)::after,
-    .mobile-menu-group:nth-of-type(2)::after,
     .mobile-menu-grid::after {
-      min-height: 42px;
+      min-height: 38px;
       border-radius: 14px;
       border: 1px solid rgba(255, 193, 7, 0.24);
       background: rgba(23, 27, 40, 0.92);
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: 0 10px;
       color: #e5e7eb;
-      font-size: 0.77rem;
-      letter-spacing: 0.01em;
-    }
-
-    .mobile-menu-group:nth-of-type(1)::after {
-      content: '🛡️  Legální v ČR';
-    }
-
-    .mobile-menu-group:nth-of-type(2)::after {
-      content: '🎁  Ověřené bonusy';
+      font-size: 0.72rem;
+      letter-spacing: 0;
+      text-align: center;
+      white-space: nowrap;
     }
 
     .mobile-menu-grid::after {
-      content: '🔒  Bezpečné hraní';
+      content: '🛡️ Legální v ČR   •   🎁 Ověřené bonusy   •   🔒 Bezpečné hraní';
       grid-column: 1 / -1;
+      margin-top: 2px;
     }
 
     @media (max-width: 767px) {
