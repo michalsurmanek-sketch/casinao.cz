@@ -3337,6 +3337,7 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
     const btnMenuClose = document.getElementById('btnMenuClose');
+    const mobileMenuScroll = mobileMenu ? mobileMenu.querySelector('.mobile-menu-scroll') : null;
 
     if (btnMenu && mobileMenu && mobileMenuOverlay) {
       let closeTimer = 0;
@@ -3344,6 +3345,12 @@
       const closeMenu = () => {
         if (!mobileMenu.classList.contains('mobile-menu-open')) {
           return;
+        }
+
+        const activeInsideMenu = document.activeElement instanceof HTMLElement
+          && mobileMenu.contains(document.activeElement);
+        if (activeInsideMenu) {
+          document.activeElement.blur();
         }
 
         mobileMenu.classList.remove('mobile-menu-open');
@@ -3367,6 +3374,10 @@
         window.clearTimeout(closeTimer);
         mobileMenu.classList.remove('hidden');
         mobileMenuOverlay.classList.remove('hidden');
+
+        if (mobileMenuScroll) {
+          mobileMenuScroll.scrollTop = 0;
+        }
 
         window.requestAnimationFrame(() => {
           mobileMenu.classList.add('mobile-menu-open');
