@@ -3342,6 +3342,20 @@
     if (btnMenu && mobileMenu && mobileMenuOverlay) {
       let closeTimer = 0;
 
+      const resetMobileMenuViewport = () => {
+        mobileMenu.scrollTop = 0;
+
+        if (mobileMenuScroll) {
+          mobileMenuScroll.scrollTop = 0;
+        }
+
+        mobileMenu.querySelectorAll('.mob-link').forEach((link) => {
+          if (link instanceof HTMLElement) {
+            link.blur();
+          }
+        });
+      };
+
       const closeMenu = () => {
         if (!mobileMenu.classList.contains('mobile-menu-open')) {
           return;
@@ -3374,14 +3388,15 @@
         window.clearTimeout(closeTimer);
         mobileMenu.classList.remove('hidden');
         mobileMenuOverlay.classList.remove('hidden');
-
-        if (mobileMenuScroll) {
-          mobileMenuScroll.scrollTop = 0;
-        }
+        resetMobileMenuViewport();
 
         window.requestAnimationFrame(() => {
           mobileMenu.classList.add('mobile-menu-open');
           mobileMenuOverlay.classList.add('mobile-menu-overlay-open');
+
+          window.requestAnimationFrame(() => {
+            resetMobileMenuViewport();
+          });
         });
 
         btnMenu.setAttribute('aria-expanded', 'true');
@@ -3410,6 +3425,10 @@
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
         a.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('hashchange', () => {
+        resetMobileMenuViewport();
       });
 
       window.addEventListener('resize', () => {
