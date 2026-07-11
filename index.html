@@ -608,9 +608,29 @@
       }
 
       .reviews-cta {
-        width: 100%;
-        min-height: 62px;
-        border-radius: 18px;
+        width: min(100%, 340px);
+        min-height: 52px;
+        border-radius: 14px;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        gap: 8px;
+        padding: 0 6px 0 8px;
+      }
+
+      .reviews-cta__lead {
+        width: 30px;
+        height: 30px;
+        font-size: 0.84rem;
+      }
+
+      .reviews-cta__text {
+        font-weight: 700;
+      }
+
+      .reviews-cta__tail {
+        min-width: 48px;
+        border-radius: 0 13px 13px 0;
+        font-size: 1.05rem;
       }
 
       .contact-section {
@@ -645,21 +665,23 @@
 
     @media (max-width: 420px) {
       .reviews-cta {
-        font-size: 15px;
-        letter-spacing: 0.035em;
-        gap: 8px;
-        padding: 0 6px 0 8px;
+        min-height: 48px;
+        width: min(100%, 300px);
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        border-radius: 13px;
       }
 
       .reviews-cta__lead {
-        width: 34px;
-        height: 34px;
-        font-size: 0.9rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
       }
 
       .reviews-cta__tail {
-        min-width: 58px;
-        font-size: 1.2rem;
+        min-width: 44px;
+        border-radius: 0 12px 12px 0;
+        font-size: 0.96rem;
       }
     }
   
