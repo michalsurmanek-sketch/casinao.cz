@@ -79,296 +79,32 @@
       scroll-padding-top: 7.5rem;
     }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.6); }
-    .mobile-menu-lock {
-      overflow: hidden;
-    }
-
-    .mobile-menu-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 62;
-      background: radial-gradient(circle at 18% 16%, rgba(245, 196, 0, 0.08), rgba(0, 0, 0, 0.72) 42%), rgba(0, 0, 0, 0.66);
-      opacity: 0;
-      transition: opacity 280ms ease;
-    }
-
-    .mobile-menu-overlay.mobile-menu-overlay-open {
-      opacity: 1;
-    }
-
-    .mobile-menu-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100dvh;
-      width: min(88vw, 430px);
-      z-index: 63;
-      transform: translateX(100%);
-      opacity: 0;
-      transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 280ms ease;
-      background: linear-gradient(168deg, rgba(5, 9, 16, 0.99) 0%, rgba(8, 14, 25, 0.99) 56%, rgba(6, 12, 21, 0.99) 100%);
-      border-left: 1px solid rgba(148, 163, 184, 0.34);
-      border-top-left-radius: 24px;
-      border-bottom-left-radius: 24px;
-      box-shadow: -20px 0 38px rgba(0, 0, 0, 0.34), -2px 0 0 rgba(255, 193, 7, 0.24);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mobile-menu-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 88% 4%, rgba(245, 196, 0, 0.12), transparent 40%),
-        radial-gradient(circle at 18% 76%, rgba(59, 130, 246, 0.11), transparent 48%),
-        repeating-linear-gradient(-28deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 13px);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
     .mobile-menu-panel.mobile-menu-open {
-      transform: translateX(0);
-      opacity: 1;
+      background-image: linear-gradient(rgba(17,24,39,0.7), rgba(17,24,39,0.7)), url('/img/menu.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      overflow: hidden;
     }
-
-    .mobile-menu-header {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      padding: calc(env(safe-area-inset-top) + 7px) 14px 7px;
-      background: linear-gradient(180deg, rgba(9, 18, 31, 0.97), rgba(7, 15, 25, 0.92));
-      border-bottom: 1px solid rgba(255, 193, 7, 0.2);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.34);
-    }
-
-    .mobile-menu-header img {
-      width: 2.55rem;
-      height: 2.55rem;
-    }
-
-    .mobile-menu-close {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 193, 7, 0.42);
-      background: linear-gradient(180deg, rgba(14, 23, 38, 0.95), rgba(10, 16, 27, 0.95));
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #f5c400;
-      transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
-    }
-
-    .mobile-menu-close:hover,
-    .mobile-menu-close:focus-visible {
-      border-color: rgba(255, 215, 76, 0.75);
-      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.24), 0 0 22px rgba(245, 196, 0, 0.25);
-      transform: translateY(-1px);
-    }
-
-    .mobile-menu-scroll {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
-      position: relative;
-      z-index: 1;
-      padding: 8px 14px calc(env(safe-area-inset-bottom) + 10px);
-    }
-
-    .mobile-menu-scroll > * {
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: transform 260ms ease, opacity 260ms ease;
-    }
-
-    .mobile-menu-panel.mobile-menu-open .mobile-menu-scroll > * {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .mobile-menu-scroll section {
+    .mobile-menu-grid {
       display: grid;
-      gap: 7px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.75rem;
     }
-
-    .mobile-menu-section-title {
-      position: relative;
-      margin: 0 0 10px;
-      padding: 0 0 8px 18px;
-      color: #f5c400;
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .mobile-menu-group {
+      display: grid;
+      gap: 0.5rem;
+      align-content: start;
     }
-
-    .mobile-menu-section-title::before {
-      content: '✦';
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #ffdd76;
-      font-size: 0.72rem;
-      text-shadow: 0 0 10px rgba(245, 196, 0, 0.45);
-    }
-
-    .mobile-menu-section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(245, 196, 0, 0.68), rgba(245, 196, 0, 0.08));
-      box-shadow: 0 0 12px rgba(245, 196, 0, 0.26);
-    }
-
-    .mobile-menu-divider {
-      margin: 18px 0 16px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(245, 196, 0, 0), rgba(245, 196, 0, 0.62), rgba(245, 196, 0, 0));
-      box-shadow: 0 0 16px rgba(245, 196, 0, 0.18);
-    }
-
-    .mobile-menu-item {
-      min-height: 58px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 193, 7, 0.25);
-      background: linear-gradient(180deg, rgba(15, 21, 32, 0.96), rgba(12, 18, 30, 0.96));
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      transition: transform 200ms ease, background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-    }
-
-    .mobile-menu-item:hover,
-    .mobile-menu-item:focus-visible {
-      transform: translateX(4px);
-      border-color: rgba(255, 215, 76, 0.58);
-      background: linear-gradient(180deg, rgba(20, 28, 42, 0.98), rgba(16, 24, 36, 0.98));
-      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.16), 0 0 24px rgba(245, 196, 0, 0.2);
-    }
-
-    .mobile-menu-item-main {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      color: #e5e7eb;
-      font-weight: 600;
-      font-size: 0.93rem;
-      line-height: 1.1;
-    }
-
-    .mobile-menu-item-main > [data-lucide] {
-      width: 24px;
-      height: 24px;
-      color: #f5c400 !important;
-      stroke-width: 1.9;
-      flex-shrink: 0;
-      transition: color 200ms ease, transform 200ms ease;
-    }
-
-    .mobile-menu-item:hover .mobile-menu-item-main > [data-lucide],
-    .mobile-menu-item:focus-visible .mobile-menu-item-main > [data-lucide] {
-      color: #ffd54f !important;
-      transform: translateX(1px);
-    }
-
-    .mobile-menu-item-chevron {
-      width: 19px;
-      height: 19px;
-      color: #f5c400;
-      flex-shrink: 0;
-      transition: transform 200ms ease, color 200ms ease;
-    }
-
-    .mobile-menu-item:hover .mobile-menu-item-chevron,
-    .mobile-menu-item:focus-visible .mobile-menu-item-chevron {
-      color: #ffd54f;
-      transform: translateX(4px);
-    }
-
-    .mobile-menu-cta {
-      margin-top: 9px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 193, 7, 0.4);
-      background: linear-gradient(145deg, rgba(72, 49, 11, 0.46), rgba(34, 22, 6, 0.42));
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-    }
-
-    .mobile-menu-cta:hover,
-    .mobile-menu-cta:focus-visible {
-      transform: translateX(4px);
-      border-color: rgba(255, 215, 76, 0.66);
-      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.16), 0 0 24px rgba(245, 196, 0, 0.22);
-    }
-
-    .mobile-menu-cta-title {
-      color: #fef3c7;
+    .mobile-menu-group-title {
+      padding: 0 0.75rem;
+      color: #facc15;
+      font-size: 0.7rem;
       font-weight: 800;
-      line-height: 1.15;
-      margin: 0;
-    }
-
-    .mobile-menu-cta-subtitle {
-      color: #cbd5e1;
-      font-size: 0.8rem;
-      line-height: 1.25;
-      margin: 1px 0 0;
-    }
-
-    .mobile-menu-safe-card {
-      position: relative;
-      margin-top: 9px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 193, 7, 0.28);
-      background: linear-gradient(145deg, rgba(13, 20, 33, 0.9), rgba(10, 16, 28, 0.9));
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-    }
-
-    .mobile-menu-safe-card::after {
-      content: 'Více informací';
-      position: absolute;
-      right: 34px;
-      bottom: 8px;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #fff6d2;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 193, 7, 0.45);
-      background: linear-gradient(180deg, rgba(62, 44, 11, 0.7), rgba(43, 29, 8, 0.7));
-      box-shadow: 0 0 18px rgba(245, 196, 0, 0.14);
-      pointer-events: none;
-    }
-
-    .mobile-menu-safe-card:hover,
-    .mobile-menu-safe-card:focus-visible {
-      transform: translateX(4px);
-      border-color: rgba(255, 215, 76, 0.6);
-      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.16), 0 0 24px rgba(245, 196, 0, 0.18);
-    }
-
-    .mobile-menu-safe-card .mobile-menu-item-chevron {
-      margin-left: auto;
     }
     .tip:hover::after {
       content: attr(data-tip);
@@ -2150,100 +1886,28 @@
         </div>
       </div>
 
-      <!-- Mobile menu drawer -->
-      <div id="mobileMenuOverlay" class="mobile-menu-overlay md:hidden hidden" aria-hidden="true"></div>
-      <aside id="mobileMenu" class="mobile-menu-panel md:hidden hidden" aria-label="Mobilní navigace" aria-hidden="true">
-        <div class="mobile-menu-header">
-          <div class="flex items-center justify-between gap-3">
-            <a href="#home" class="mob-link flex items-center gap-3" aria-label="Casinao.cz domů">
-              <img src="/assets/icons/casinao-logo.png" alt="Casinao.cz" class="w-10 h-10 rounded-xl object-contain flex-none" />
-              <div class="leading-tight">
-                <div class="font-display text-lg font-extrabold tracking-tight text-white">Casinao.cz</div>
-                <div class="text-xs text-gray-300">Recenze • Bonusy • Návody</div>
-              </div>
-            </a>
-            <button id="btnMenuClose" type="button" class="mobile-menu-close" aria-label="Zavřít menu">
-              <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="mobile-menu-panel md:hidden hidden border-t border-white/10">
+        <nav class="px-4 py-3 mobile-menu-grid" aria-label="Mobilní navigace">
+          <div class="mobile-menu-group">
+            <p class="mobile-menu-group-title">Navigace</p>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#casina"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#hry"><i data-lucide="dice-5" class="w-4 h-4 text-yellow-400"></i><span>Hry</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#recenze"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="navody.html"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Návody</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#blog"><i data-lucide="newspaper" class="w-4 h-4 text-yellow-400"></i><span>Blog</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="#kontakt"><i data-lucide="mail" class="w-4 h-4 text-yellow-400"></i><span>Kontakt</span></a>
           </div>
-        </div>
-
-        <div class="mobile-menu-scroll">
-          <section>
-            <h3 class="mobile-menu-section-title">Navigace</h3>
-            <a class="mob-link mobile-menu-item" href="#casina">
-              <span class="mobile-menu-item-main"><i data-lucide="trophy" class="w-5 h-5 text-yellow-400"></i><span>Casina</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="#hry">
-              <span class="mobile-menu-item-main"><i data-lucide="dice-5" class="w-5 h-5 text-yellow-400"></i><span>Hry</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="#recenze">
-              <span class="mobile-menu-item-main"><i data-lucide="star" class="w-5 h-5 text-yellow-400"></i><span>Recenze</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="navody.html">
-              <span class="mobile-menu-item-main"><i data-lucide="book-open" class="w-5 h-5 text-yellow-400"></i><span>Návody</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="#blog">
-              <span class="mobile-menu-item-main"><i data-lucide="newspaper" class="w-5 h-5 text-yellow-400"></i><span>Blog</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="#kontakt">
-              <span class="mobile-menu-item-main"><i data-lucide="mail" class="w-5 h-5 text-yellow-400"></i><span>Kontakt</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-          </section>
-
-          <div class="mobile-menu-divider" aria-hidden="true"></div>
-
-          <section>
-            <h3 class="mobile-menu-section-title">Populární hry</h3>
-            <a class="mob-link mobile-menu-item" href="automaty.html">
-              <span class="mobile-menu-item-main"><i data-lucide="dice-6" class="w-5 h-5 text-yellow-400"></i><span>Automaty</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="blackjack.html">
-              <span class="mobile-menu-item-main"><i data-lucide="club" class="w-5 h-5 text-yellow-400"></i><span>Blackjack</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="ruleta.html">
-              <span class="mobile-menu-item-main"><i data-lucide="circle-dot" class="w-5 h-5 text-yellow-400"></i><span>Ruleta</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="sazky-pravidla.html">
-              <span class="mobile-menu-item-main"><i data-lucide="badge-percent" class="w-5 h-5 text-yellow-400"></i><span>Sázky</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-            <a class="mob-link mobile-menu-item" href="poker.html">
-              <span class="mobile-menu-item-main"><i data-lucide="spade" class="w-5 h-5 text-yellow-400"></i><span>Poker</span></span>
-              <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-            </a>
-          </section>
-
-          <a class="mob-link mobile-menu-cta" href="/denni-bonusy.html">
-            <span class="mobile-menu-item-main"><i data-lucide="gift" class="w-5 h-5 text-yellow-400"></i>
-              <span>
-                <strong class="mobile-menu-cta-title">Aktuální bonusy</strong>
-                <small class="mobile-menu-cta-subtitle">Denní a speciální nabídky</small>
-              </span>
-            </span>
-            <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-          </a>
-
-          <a class="mob-link mobile-menu-safe-card" href="#odpovedne">
-            <span class="mobile-menu-item-main"><i data-lucide="shield-check" class="w-5 h-5 text-slate-300"></i>
-              <span>
-                <strong class="mobile-menu-cta-title text-slate-100">Hrajte zodpovědně</strong>
-                <small class="mobile-menu-cta-subtitle text-slate-300">Nastavte si limity a hrajte bezpečně.</small>
-              </span>
-            </span>
-            <i data-lucide="chevron-right" class="mobile-menu-item-chevron w-5 h-5"></i>
-          </a>
-        </div>
-      </aside>
+          <div class="mobile-menu-group">
+            <p class="mobile-menu-group-title">Populární hry</p>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="automaty.html"><i data-lucide="slot-machine" class="w-4 h-4 text-yellow-400"></i><span>Automaty</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="blackjack.html"><i data-lucide="club" class="w-4 h-4 text-yellow-400"></i><span>Blackjack</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="ruleta.html"><i data-lucide="circle-dot" class="w-4 h-4 text-yellow-400"></i><span>Ruleta</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="sazky-pravidla.html"><i data-lucide="badge-percent" class="w-4 h-4 text-yellow-400"></i><span>Sázky</span></a>
+            <a class="mob-link flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10" href="poker.html"><i data-lucide="spade" class="w-4 h-4 text-yellow-400"></i><span>Poker</span></a>
+          </div>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -3335,87 +2999,21 @@
 
     const btnMenu = document.getElementById('btnMenu');
     const mobileMenu = document.getElementById('mobileMenu');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const btnMenuClose = document.getElementById('btnMenuClose');
-    const mobileMenuScroll = mobileMenu ? mobileMenu.querySelector('.mobile-menu-scroll') : null;
 
-    if (btnMenu && mobileMenu && mobileMenuOverlay) {
-      let closeTimer = 0;
-
-      const closeMenu = () => {
-        if (!mobileMenu.classList.contains('mobile-menu-open')) {
-          return;
-        }
-
-        const activeInsideMenu = document.activeElement instanceof HTMLElement
-          && mobileMenu.contains(document.activeElement);
-        if (activeInsideMenu) {
-          document.activeElement.blur();
-        }
-
-        mobileMenu.classList.remove('mobile-menu-open');
-        mobileMenuOverlay.classList.remove('mobile-menu-overlay-open');
-        btnMenu.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
-
-        window.clearTimeout(closeTimer);
-
-        closeTimer = window.setTimeout(() => {
-          if (!mobileMenu.classList.contains('mobile-menu-open')) {
-            mobileMenu.classList.add('hidden');
-            mobileMenuOverlay.classList.add('hidden');
-            document.body.classList.remove('mobile-menu-lock');
-          }
-        }, 320);
-      };
-
-      const openMenu = () => {
-        window.clearTimeout(closeTimer);
-        mobileMenu.classList.remove('hidden');
-        mobileMenuOverlay.classList.remove('hidden');
-
-        if (mobileMenuScroll) {
-          mobileMenuScroll.scrollTop = 0;
-        }
-
-        window.requestAnimationFrame(() => {
-          mobileMenu.classList.add('mobile-menu-open');
-          mobileMenuOverlay.classList.add('mobile-menu-overlay-open');
-        });
-
-        btnMenu.setAttribute('aria-expanded', 'true');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('mobile-menu-lock');
-      };
-
+    if (btnMenu && mobileMenu) {
       btnMenu.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('mobile-menu-open')) {
-          closeMenu();
-          return;
-        }
-
-        openMenu();
-      });
-
-      btnMenuClose && btnMenuClose.addEventListener('click', closeMenu);
-      mobileMenuOverlay.addEventListener('click', closeMenu);
-
-      window.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeMenu();
-        }
+        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('mobile-menu-open', isOpen);
+        btnMenu.setAttribute('aria-expanded', String(isOpen));
       });
 
       document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
-        a.addEventListener('click', closeMenu);
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          closeMenu();
-        }
+        a.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('mobile-menu-open');
+          btnMenu.setAttribute('aria-expanded', 'false');
+        });
       });
     }
 
