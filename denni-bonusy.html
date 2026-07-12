@@ -523,6 +523,47 @@
       position:relative;
     }
 
+    #podminky .wrap{
+      position:relative;
+      z-index:1;
+    }
+
+    .podminky-icons{
+      position:absolute;
+      inset:18px 0 10px;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .podminky-icon{
+      position:absolute;
+      color:rgba(246,196,83,.18);
+      text-shadow:0 0 10px rgba(246,196,83,.16);
+      font-weight:800;
+      line-height:1;
+      user-select:none;
+      transform:rotate(var(--prot, 0deg));
+    }
+
+    .podminky-icon:nth-child(1){left:2%;top:10%;font-size:18px;--prot:-10deg;}
+    .podminky-icon:nth-child(2){left:12%;top:5%;font-size:24px;--prot:6deg;}
+    .podminky-icon:nth-child(3){left:24%;top:14%;font-size:16px;--prot:-8deg;}
+    .podminky-icon:nth-child(4){left:74%;top:7%;font-size:23px;--prot:8deg;}
+    .podminky-icon:nth-child(5){left:86%;top:14%;font-size:17px;--prot:-6deg;}
+    .podminky-icon:nth-child(6){left:95%;top:8%;font-size:26px;--prot:10deg;}
+    .podminky-icon:nth-child(7){left:4%;top:74%;font-size:20px;--prot:7deg;}
+    .podminky-icon:nth-child(8){left:15%;top:86%;font-size:15px;--prot:-9deg;}
+    .podminky-icon:nth-child(9){left:84%;top:82%;font-size:18px;--prot:9deg;}
+    .podminky-icon:nth-child(10){left:96%;top:76%;font-size:24px;--prot:-11deg;}
+
+    #podminky .section-head,
+    #podminky .how-grid,
+    #podminky .notice{
+      position:relative;
+      z-index:1;
+    }
+
     #podminky::before{
       content:"";
       position:absolute;
@@ -1092,6 +1133,11 @@
       .bonusy-icon:nth-child(26){
         display:none;
       }
+
+      .podminky-icon:nth-child(6),
+      .podminky-icon:nth-child(10){
+        display:none;
+      }
     }
 
     @media (max-width:620px){
@@ -1108,6 +1154,14 @@
       }
 
       .bonusy-icon:nth-child(2n){
+        display:none;
+      }
+
+      .podminky-icons{
+        opacity:.65;
+      }
+
+      .podminky-icon:nth-child(2n){
         display:none;
       }
 
@@ -1633,6 +1687,19 @@
 
     <section class="section" id="podminky">
       <div class="wrap">
+        <div class="podminky-icons" aria-hidden="true">
+          <span class="podminky-icon">⚠</span>
+          <span class="podminky-icon">★</span>
+          <span class="podminky-icon">✦</span>
+          <span class="podminky-icon">%</span>
+          <span class="podminky-icon">⏱</span>
+          <span class="podminky-icon">⚖</span>
+          <span class="podminky-icon">18+</span>
+          <span class="podminky-icon">✧</span>
+          <span class="podminky-icon">✔</span>
+          <span class="podminky-icon">⚠</span>
+        </div>
+
         <div class="section-head">
           <div>
             <h2><span class="podminky-title-line">Na co si dát pozor</span><span class="podminky-title-line gold">u denních bonusů</span></h2>
