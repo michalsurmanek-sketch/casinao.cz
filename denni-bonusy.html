@@ -133,14 +133,38 @@
       }
     }
 
+    @keyframes rightIconPulse {
+      0%, 100% {
+        transform:scale(1);
+        box-shadow:0 5px 14px rgba(255,215,0,.18);
+      }
+      50% {
+        transform:scale(1.1);
+        box-shadow:0 7px 20px rgba(255,215,0,.32);
+      }
+    }
+
     .btn-primary .btn-icon.gift-pulse-icon{
       animation:giftIconPulse 1.7s ease-in-out infinite;
       transform-origin:center;
     }
 
+    .today-row--pulse .today-icon{
+      animation:rightIconPulse 4.1s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    .today-row--pulse-1 .today-icon{animation-delay:0s}
+    .today-row--pulse-2 .today-icon{animation-delay:.55s}
+    .today-row--pulse-3 .today-icon{animation-delay:1.1s}
+    .today-row--pulse-4 .today-icon{animation-delay:1.65s}
+    .today-row--pulse-5 .today-icon{animation-delay:2.2s}
+    .today-row--pulse-6 .today-icon{animation-delay:2.75s}
+
     @media (prefers-reduced-motion:reduce){
       .menu a,
-      .btn-primary .btn-icon.gift-pulse-icon{animation:none}
+      .btn-primary .btn-icon.gift-pulse-icon,
+      .today-row--pulse .today-icon{animation:none}
     }
 
     .menu a:hover{color:var(--gold)}
@@ -1565,7 +1589,7 @@
 
         <aside class="hero-card" aria-label="Souhrn dne">
           <div class="today-box">
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-1">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy today-copy-top"><b>Dnešní TOP typ</b><small>Nejlepší bonusy dne</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="top-tip-details">Free spiny</button>
             </div>
@@ -1575,7 +1599,7 @@
                 <li>zas něco</li>
               </ul>
             </div>
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-2">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 2.1 3-.5.8 2.9 2.8 1.3-1.3 2.8.5 3-2.9.8L12 21l-2.1-2.1-3 .5-.8-2.9-2.8-1.3 1.3-2.8-.5-3 2.9-.8z"></path><path d="M9.5 12.5l1.8 1.8 3.2-3.2"></path></svg></span><span class="today-copy today-copy-top"><b>Nejčastější akce</b><small>Co se vyplatí využít</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="cashback-details">Cashback</button>
             </div>
@@ -1585,7 +1609,7 @@
                 <li>Sledujte procento cashbacku a maximální strop</li>
               </ul>
             </div>
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-3">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 4h8v3a4 4 0 0 1-8 0z"></path><path d="M6 7H4a2 2 0 0 0 2 2"></path><path d="M18 7h2a2 2 0 0 1-2 2"></path><path d="M12 11v4"></path><path d="M9 19h6"></path><path d="M10 15h4v4h-4z"></path></svg></span><span class="today-copy today-copy-top"><b>Turnajové akce</b><small>Oblíbené denní klání</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="turnaje-details">Turnaje</button>
             </div>
@@ -1595,7 +1619,7 @@
                 <li>Zkontrolujte minimální sázku a podmínky účasti</li>
               </ul>
             </div>
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-4">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16h.01"></path></svg></span><span class="today-copy today-copy-top"><b>Kontrola podmínek</b><small>Vždy si je ověřte</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="bezpecne-details">Bezpečně</button>
             </div>
@@ -1606,7 +1630,7 @@
               </ul>
             </div>
 
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-5">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M3 10h18"></path></svg></span><span class="today-copy today-copy-top"><b>Nadcházející akce</b><small>Co bude následovat</small></span></span>
               <button class="today-value today-toggle" type="button" aria-expanded="false" aria-controls="nadchazejici-details">Přehled</button>
             </div>
@@ -1616,7 +1640,7 @@
                 <li>Sledujte změny během dne, nabídky se často aktualizují</li>
               </ul>
             </div>
-            <div class="today-row today-row--expandable today-row--leftfocus">
+            <div class="today-row today-row--expandable today-row--leftfocus today-row--pulse today-row--pulse-6">
               <span class="today-label"><span class="today-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8H8.5a2.5 2.5 0 1 1 0-5c2.1 0 3.2 1.3 3.5 5z"></path><path d="M12 8h3.5a2.5 2.5 0 1 0 0-5c-2.1 0-3.2 1.3-3.5 5z"></path></svg></span><span class="today-copy today-copy-top"><b>Stálé bonusy</b><small>Dlouhodobé nabídky casin</small></span></span>
               <a class="today-value" href="/bonusy.html">Bonusy &gt;</a>
             </div>
