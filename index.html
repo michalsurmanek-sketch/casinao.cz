@@ -1950,7 +1950,7 @@
           <p class="mt-2 text-sm sm:text-base">Tento web obsahuje informace o hazardních hrách. Pokračováním potvrzujete, že je vám alespoň 18 let a jste si vědom(a), že <strong>Účastí na hazardní hře může vzniknout závislost</strong>.</p>
           <div class="mt-6 flex flex-col sm:flex-row items-center gap-3">
             <button id="btnAgeYes" class="w-full sm:flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-900 text-white px-5 py-3 font-medium hover:bg-gray-800">Je mi 18+</button>
-            <a href="https://www.napikse.cz/odpovedne-hrani" target="_blank" rel="noopener" class="w-full sm:flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-100 text-gray-900 px-5 py-3 font-medium hover:bg-gray-200">Více o zodpovědném hraní</a>
+            <a id="btnAgeResponsible" href="#odpovedne" class="w-full sm:flex-1 inline-flex justify-center items-center gap-2 rounded-xl bg-gray-100 text-gray-900 px-5 py-3 font-medium hover:bg-gray-200">Více o zodpovědném hraní</a>
           </div>
         </div>
       </div>
@@ -3215,6 +3215,7 @@
       const key = 'casinao_age_ok';
       const ageGate = document.getElementById('ageGate');
       const btnAgeYes = document.getElementById('btnAgeYes');
+      const btnAgeResponsible = document.getElementById('btnAgeResponsible');
       const ok = localStorage.getItem(key);
 
       if (!ok && ageGate) {
@@ -3225,6 +3226,19 @@
         btnAgeYes.addEventListener('click', () => {
           localStorage.setItem(key, Date.now().toString());
           ageGate.classList.add('hidden');
+        });
+      }
+
+      if (btnAgeResponsible && ageGate) {
+        btnAgeResponsible.addEventListener('click', (event) => {
+          event.preventDefault();
+          localStorage.setItem(key, Date.now().toString());
+          ageGate.classList.add('hidden');
+
+          const responsibleSection = document.getElementById('odpovedne');
+          if (responsibleSection) {
+            responsibleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         });
       }
     });
