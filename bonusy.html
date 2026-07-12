@@ -902,6 +902,8 @@
       rows.forEach(function (row) {
         var type = classifyBonusType(row);
         row.dataset.bonusType = type;
+        row.dataset.originalBadge = row.dataset.badge || '';
+        row.dataset.originalReco = row.dataset.reco || '';
 
         var firstCell = row.querySelector('td');
         var rank = rows.indexOf(row) + 1;
@@ -916,12 +918,29 @@
         }
       });
 
+      function getFilterLabel(filter) {
+        if (filter === 'registrace') return 'Bonusy za registraci';
+        if (filter === 'bez-vkladu') return 'Bonusy bez vkladu';
+        if (filter === 'vklad') return 'Bonusy za vklad';
+        return 'Všechny bonusy';
+      }
+
       function applyFilter(filter) {
         var visibleCount = 0;
+        var selectedLabel = getFilterLabel(filter);
 
         rows.forEach(function (row) {
           var show = filter === 'all' || row.dataset.bonusType === filter;
           row.classList.toggle('is-hidden', !show);
+
+          if (filter === 'all') {
+            row.dataset.badge = row.dataset.originalBadge || '';
+            row.dataset.reco = row.dataset.originalReco || '';
+          } else if (show) {
+            row.dataset.badge = selectedLabel;
+            row.dataset.reco = selectedLabel;
+          }
+
           if (show) {
             visibleCount += 1;
           }
