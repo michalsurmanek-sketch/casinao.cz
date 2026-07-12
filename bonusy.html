@@ -468,22 +468,38 @@
       white-space: nowrap;
     }
 
+    @keyframes bonusPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.22), 0 0 18px rgba(250, 204, 21, 0.24);
+      }
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.34), 0 0 28px rgba(250, 204, 21, 0.42);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.22), 0 0 18px rgba(250, 204, 21, 0.24);
+      }
+    }
+
     .bonusy-vote-promo {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 7px;
-      padding: 4px 10px;
+      padding: 8px 20px;
       border-radius: 999px;
       border: 1px solid rgba(250, 204, 21, 0.8);
       background: linear-gradient(180deg, rgba(253, 224, 71, 0.22), rgba(234, 179, 8, 0.26));
       color: #fde68a;
-      font-size: 11px;
+      font-size: 22px;
       font-weight: 900;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.22), 0 0 18px rgba(250, 204, 21, 0.24);
       white-space: nowrap;
+      animation: bonusPulse 1.45s ease-in-out infinite;
     }
 
     #casinoTableBody .casino-row:nth-child(1) .bonusy-casino-name { color: #4db8ff; }
