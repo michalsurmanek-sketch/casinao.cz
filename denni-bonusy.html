@@ -1066,23 +1066,36 @@
       z-index:0;
       pointer-events:none;
       background:
-        linear-gradient(180deg,
-          rgba(6,9,16,.78) 0%,
-          rgba(6,9,16,.66) 56%,
-          rgba(6,9,16,.60) 100%);
+        linear-gradient(165deg,
+          rgba(4,7,13,.84) 0%,
+          rgba(5,8,14,.78) 38%,
+          rgba(6,9,15,.72) 68%,
+          rgba(7,10,16,.66) 100%);
+    }
+
+    .step::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      background:
+        radial-gradient(120% 80% at 12% 18%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.05) 42%, rgba(0,0,0,0) 68%),
+        linear-gradient(180deg, rgba(2,4,9,.36) 0%, rgba(2,4,9,.46) 55%, rgba(2,4,9,.62) 100%);
     }
 
     .step > *{
       position:relative;
-      z-index:1;
+      z-index:2;
     }
 
     .step-protoceni::before{
       background-image:
-        linear-gradient(180deg,
-          rgba(6,9,16,.78) 0%,
-          rgba(6,9,16,.66) 56%,
-          rgba(6,9,16,.60) 100%),
+        linear-gradient(165deg,
+          rgba(4,7,13,.84) 0%,
+          rgba(5,8,14,.78) 38%,
+          rgba(6,9,15,.72) 68%,
+          rgba(7,10,16,.66) 100%),
         url('/img/protoceni-bonusu-bg.webp?v=1');
       background-repeat:no-repeat, no-repeat;
       background-position:center center, center center;
@@ -1091,10 +1104,11 @@
 
     .step-platnost::before{
       background-image:
-        linear-gradient(180deg,
-          rgba(6,9,16,.78) 0%,
-          rgba(6,9,16,.66) 56%,
-          rgba(6,9,16,.60) 100%),
+        linear-gradient(165deg,
+          rgba(4,7,13,.84) 0%,
+          rgba(5,8,14,.78) 38%,
+          rgba(6,9,15,.72) 68%,
+          rgba(7,10,16,.66) 100%),
         url('/img/platnost-bonusu-bg.webp?v=1');
       background-repeat:no-repeat, no-repeat;
       background-position:center center, center center;
@@ -1103,10 +1117,11 @@
 
     .step-max-vyhra::before{
       background-image:
-        linear-gradient(180deg,
-          rgba(6,9,16,.78) 0%,
-          rgba(6,9,16,.66) 56%,
-          rgba(6,9,16,.60) 100%),
+        linear-gradient(165deg,
+          rgba(4,7,13,.84) 0%,
+          rgba(5,8,14,.78) 38%,
+          rgba(6,9,15,.72) 68%,
+          rgba(7,10,16,.66) 100%),
         url('/img/maximalni-vyhra-limit-bg.webp?v=1');
       background-repeat:no-repeat, no-repeat;
       background-position:center center, center center;
@@ -1115,10 +1130,11 @@
 
     .step-overeni::before{
       background-image:
-        linear-gradient(180deg,
-          rgba(6,9,16,.78) 0%,
-          rgba(6,9,16,.66) 56%,
-          rgba(6,9,16,.60) 100%),
+        linear-gradient(165deg,
+          rgba(4,7,13,.84) 0%,
+          rgba(5,8,14,.78) 38%,
+          rgba(6,9,15,.72) 68%,
+          rgba(7,10,16,.66) 100%),
         url('/img/overeni-uctu-bg.webp?v=1');
       background-repeat:no-repeat, no-repeat;
       background-position:center center, center center;
@@ -1140,20 +1156,15 @@
     .step h3{
       margin:0 0 8px;
       font-size:18px;
-      display:inline-block;
-      padding:4px 10px;
-      border-radius:10px;
-      background:rgba(3,6,12,.70);
+      color:#f3f6fb;
+      text-shadow:0 2px 10px rgba(0,0,0,.34);
     }
     .step p{
       margin:0;
       color:#d7dde7;
       line-height:1.55;
       font-size:14px;
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:10px;
-      background:rgba(3,6,12,.72);
+      text-shadow:0 2px 8px rgba(0,0,0,.30);
     }
 
     footer{
