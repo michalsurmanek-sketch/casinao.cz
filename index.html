@@ -498,47 +498,47 @@
       position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      width: min(100%, 420px);
-      min-height: 62px;
-      border-radius: 18px;
-      padding: 0 8px 0 10px;
-      background: linear-gradient(90deg, #FFD43B 0%, #F5B900 56%, #DFA500 100%);
-      border: 1px solid rgba(255, 235, 160, 0.6);
-      box-shadow: 0 8px 16px rgba(245, 185, 0, 0.17), 0 0 10px rgba(245, 185, 0, 0.12);
-      color: #111;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+      gap: 8px;
+      width: min(100%, 320px);
+      min-height: 48px;
+      border-radius: 14px;
+      padding: 0 7px 0 8px;
+      background: linear-gradient(150deg, rgba(20, 27, 41, 0.96), rgba(12, 18, 29, 0.96));
+      border: 1px solid rgba(245, 196, 0, 0.32);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+      color: #fef3c7;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.035em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       overflow: hidden;
     }
 
     .reviews-cta::before {
       content: "";
       position: absolute;
-      left: 12px;
-      right: 12px;
+      left: 10px;
+      right: 10px;
       top: 0;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255, 250, 215, 0.2) 0%, rgba(255, 246, 196, 0.9) 50%, rgba(255, 250, 215, 0.2) 100%);
+      background: linear-gradient(90deg, rgba(254, 243, 199, 0.1) 0%, rgba(245, 196, 0, 0.45) 50%, rgba(254, 243, 199, 0.1) 100%);
       pointer-events: none;
     }
 
     .reviews-cta__lead {
       flex: none;
-      width: 40px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
       border-radius: 999px;
       display: grid;
       place-items: center;
-      background: #0b0b0c;
-      color: #f5c400;
-      font-size: 1rem;
+      background: rgba(245, 196, 0, 0.12);
+      color: #f8d64e;
+      font-size: 0.78rem;
       line-height: 1;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 0 0 1px rgba(245, 196, 0, 0.35);
     }
 
     .reviews-cta__text {
@@ -549,22 +549,23 @@
     .reviews-cta__tail {
       margin-left: auto;
       align-self: stretch;
-      min-width: 68px;
-      border-radius: 0 17px 17px 0;
+      min-width: 38px;
+      border-radius: 0 13px 13px 0;
       display: grid;
       place-items: center;
-      background: #0b0b0c;
-      color: #f5c400;
-      font-size: 1.45rem;
-      font-weight: 900;
+      background: rgba(245, 196, 0, 0.1);
+      color: #f8d64e;
+      font-size: 0.98rem;
+      font-weight: 800;
       line-height: 1;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(245, 196, 0, 0.24);
     }
 
     .reviews-cta:hover {
-      filter: brightness(1.04);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(245, 185, 0, 0.24), 0 0 14px rgba(245, 185, 0, 0.18);
+      transform: translateY(-1px);
+      border-color: rgba(245, 196, 0, 0.5);
+      background: linear-gradient(150deg, rgba(23, 31, 47, 0.98), rgba(14, 22, 36, 0.98));
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.33), 0 0 0 1px rgba(245, 196, 0, 0.08);
     }
 
     .reviews-cta:active {
@@ -735,29 +736,29 @@
       }
 
       .reviews-cta {
-        width: min(100%, 340px);
-        min-height: 52px;
-        border-radius: 14px;
-        font-size: 14px;
-        letter-spacing: 0.03em;
-        gap: 8px;
-        padding: 0 6px 0 8px;
+        width: min(100%, 285px);
+        min-height: 44px;
+        border-radius: 13px;
+        font-size: 12px;
+        letter-spacing: 0.025em;
+        gap: 6px;
+        padding: 0 6px 0 7px;
       }
 
       .reviews-cta__lead {
-        width: 30px;
-        height: 30px;
-        font-size: 0.84rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.72rem;
       }
 
       .reviews-cta__text {
-        font-weight: 700;
+        font-weight: 600;
       }
 
       .reviews-cta__tail {
-        min-width: 48px;
-        border-radius: 0 13px 13px 0;
-        font-size: 1.05rem;
+        min-width: 30px;
+        border-radius: 0 12px 12px 0;
+        font-size: 0.86rem;
       }
 
       .contact-section {
@@ -792,23 +793,23 @@
 
     @media (max-width: 420px) {
       .reviews-cta {
-        min-height: 48px;
-        width: min(100%, 300px);
-        font-size: 13px;
-        letter-spacing: 0.02em;
-        border-radius: 13px;
+        min-height: 42px;
+        width: min(100%, 260px);
+        font-size: 11px;
+        letter-spacing: 0.015em;
+        border-radius: 12px;
       }
 
       .reviews-cta__lead {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
+        width: 22px;
+        height: 22px;
+        font-size: 0.68rem;
       }
 
       .reviews-cta__tail {
-        min-width: 44px;
-        border-radius: 0 12px 12px 0;
-        font-size: 0.96rem;
+        min-width: 28px;
+        border-radius: 0 11px 11px 0;
+        font-size: 0.8rem;
       }
     }
   
