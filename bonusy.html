@@ -245,6 +245,240 @@
       }
     }
 
+    /* Sjednoceny vzhled karet s hlavni sekci na index.html */
+    .bonusy-table {
+      display: block;
+      width: 100%;
+      border-spacing: 0 !important;
+    }
+
+    .bonusy-table tbody,
+    #casinoTableBody {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    #casinoTableBody .casino-row {
+      position: relative;
+      display: grid !important;
+      width: 410px;
+      max-width: 410px;
+      flex: 0 0 410px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "logo top"
+        "score votes"
+        "details details"
+        "cta cta";
+      gap: 9px 12px;
+      border-radius: 22px !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45) !important;
+      backdrop-filter: blur(9px);
+      height: auto !important;
+      min-height: 220px !important;
+      margin-bottom: 0;
+      padding: 14px 14px 16px !important;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: linear-gradient(130deg, rgba(6, 14, 28, 0.72), rgba(6, 14, 28, 0.86)), var(--casino-row-bg, rgba(8, 25, 46, 0.94)) !important;
+    }
+
+    #casinoTableBody .casino-row:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.58), 0 0 26px rgba(59, 130, 246, 0.22) !important;
+    }
+
+    #casinoTableBody .casino-row::before {
+      content: "★ " attr(data-badge);
+      grid-area: top;
+      justify-self: end;
+      align-self: center;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(15, 34, 67, 0.58);
+      color: #dbeafe;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    #casinoTableBody .casino-row::after {
+      content: "🛡 Licence CZ " attr(data-license) "\A\A⚡ " attr(data-fast) "\A📱 " attr(data-app) "\A🎰 " attr(data-games);
+      grid-area: details;
+      white-space: pre-line;
+      font-size: 13px;
+      line-height: 1.28;
+      font-weight: 700;
+      color: rgba(243, 244, 246, 0.95);
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    #casinoTableBody .casino-row td {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      white-space: normal !important;
+      text-align: left !important;
+    }
+
+    #casinoTableBody .casino-row td:first-child {
+      grid-area: logo;
+      display: flex !important;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 34px;
+    }
+
+    #casinoTableBody .casino-row td:first-child::before {
+      content: attr(data-fixed-rank) ".";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.12);
+      color: #fef08a;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      flex: 0 0 24px;
+      margin-right: 4px;
+    }
+
+    #casinoTableBody .casino-row td:first-child img {
+      height: clamp(26px, 7.4vw, 36px) !important;
+      width: auto !important;
+      max-width: min(40vw, 150px);
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+    }
+
+    #casinoTableBody .casino-row td:nth-child(2) {
+      grid-area: score;
+      align-self: start;
+      justify-self: center;
+      text-align: center;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+      font-size: clamp(21px, 6vw, 28px) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      letter-spacing: -0.02em;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(2)::before {
+      content: "★★★★★";
+      display: block;
+      font-size: clamp(18px, 5vw, 22px);
+      line-height: 1;
+      letter-spacing: 0.8px;
+      color: #facc15;
+      margin-bottom: 6px;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(2)::after {
+      content: attr(data-reco);
+      display: block;
+      font-size: 34%;
+      line-height: 1.25;
+      font-weight: 700;
+      color: #34d399;
+      margin-top: 6px;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(3) {
+      grid-area: votes;
+      align-self: center;
+      justify-self: end;
+      text-align: right !important;
+      font-size: 14px;
+      line-height: 1.35;
+      white-space: nowrap !important;
+      color: rgba(229, 231, 235, 0.92) !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) {
+      display: block !important;
+      grid-area: cta;
+      justify-self: stretch;
+      width: 100%;
+      margin-top: 2px;
+      text-align: center !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) > a {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100% !important;
+      min-height: 40px !important;
+      border-radius: 18px !important;
+      font-size: clamp(13px, 3.8vw, 17px) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
+      background: linear-gradient(180deg, #facc15, #eab308) !important;
+      color: #0b1324 !important;
+      box-shadow: 0 10px 22px rgba(245, 196, 0, 0.22), inset 0 -2px 0 rgba(0, 0, 0, 0.22) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) > a:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 34px rgba(245, 196, 0, 0.32), inset 0 -2px 0 rgba(0, 0, 0, 0.22) !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) > a span:first-child {
+      display: none !important;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) > a span:last-child {
+      display: inline !important;
+    }
+
+    @media (max-width: 767px) {
+      #casinoTableBody {
+        gap: 10px;
+      }
+
+      #casinoTableBody .casino-row {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+        min-height: 0 !important;
+        padding: 13px 12px 14px !important;
+      }
+
+      #casinoTableBody .casino-row::before {
+        font-size: 11px;
+        padding: 5px 8px;
+      }
+
+      #casinoTableBody .casino-row::after {
+        font-size: 12px;
+      }
+    }
+
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
@@ -477,19 +711,11 @@
         return 'vklad';
       }
 
-      var typeLabels = {
-        registrace: 'Za registraci',
-        'bez-vkladu': 'Bez vkladu',
-        vklad: 'Za vklad'
-      };
-
       rows.forEach(function (row) {
         var type = classifyBonusType(row);
         row.dataset.bonusType = type;
 
         var firstCell = row.querySelector('td');
-        var actionCell = row.querySelector('td:last-child');
-        var actionLink = actionCell ? actionCell.querySelector('a') : null;
         var rank = rows.indexOf(row) + 1;
         var accentColor = row.style.borderColor || row.style.backgroundColor;
 
@@ -499,45 +725,6 @@
 
         if (firstCell) {
           firstCell.dataset.fixedRank = String(rank);
-        }
-
-        var rankWrap = firstCell ? firstCell.querySelector('.bonusy-rank-wrap') : null;
-
-        if (firstCell && !rankWrap) {
-          rankWrap = document.createElement('div');
-          rankWrap.className = 'bonusy-rank-wrap';
-          firstCell.insertBefore(rankWrap, firstCell.firstChild);
-        }
-
-        if (firstCell && !firstCell.querySelector('.bonusy-rank-image')) {
-          var rankImage = document.createElement('img');
-          rankImage.className = 'bonusy-rank-image';
-          rankImage.loading = 'lazy';
-          rankImage.decoding = 'async';
-          rankImage.src = 'img/' + rank + 'bonus.png';
-          rankImage.alt = 'Bonus karta ' + rank;
-          if (rankWrap) {
-            rankWrap.insertBefore(rankImage, rankWrap.firstChild);
-          }
-        }
-
-        var existingRankImage = firstCell ? firstCell.querySelector('.bonusy-rank-image') : null;
-        if (rankWrap && existingRankImage && existingRankImage.parentNode !== rankWrap) {
-          rankWrap.insertBefore(existingRankImage, rankWrap.firstChild);
-        }
-
-        if (rankWrap && actionLink && !rankWrap.querySelector('.bonusy-rank-cta')) {
-          var mobileCta = actionLink.cloneNode(true);
-          mobileCta.classList.add('bonusy-rank-cta');
-          rankWrap.appendChild(mobileCta);
-        }
-
-        if (firstCell && !firstCell.querySelector('.bonusy-type-chip')) {
-          var chip = document.createElement('span');
-          chip.className = 'bonusy-type-chip';
-          chip.textContent = typeLabels[type] || 'Bonus';
-          firstCell.appendChild(document.createElement('br'));
-          firstCell.appendChild(chip);
         }
       });
 
