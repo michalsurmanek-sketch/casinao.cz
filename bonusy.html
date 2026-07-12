@@ -506,6 +506,16 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
+    #casinoTableBody .casino-row td:nth-child(4) > a::before {
+      content: "★ ";
+      line-height: 1;
+    }
+
+    #casinoTableBody .casino-row td:nth-child(4) > a::after {
+      content: " >";
+      line-height: 1;
+    }
+
     #casinoTableBody .casino-row td:nth-child(4) > a:hover {
       transform: scale(1.03);
       box-shadow: 0 16px 34px rgba(245, 196, 0, 0.32), inset 0 -2px 0 rgba(0, 0, 0, 0.22) !important;
