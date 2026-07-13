@@ -147,9 +147,13 @@
 
   /* Levy panel navigace musi zustat soucasti normalniho toku stranky */
   #academySidebar,
+  #academySidebar *,
   #academyNavBox {
     position: static !important;
     top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
     inset: auto !important;
     transform: none !important;
   }
@@ -218,7 +222,7 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
   <div class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
-    <aside id="academySidebar" class="hidden lg:block">
+    <aside id="academySidebar" class="hidden lg:block" style="position: static; top: auto; inset: auto; transform: none;">
       <div id="academyNavBox" class="rounded-2xl border border-white/10 bg-white/5 p-4">
         <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
         <nav class="grid gap-1 text-sm" aria-label="Navigace akademie">
