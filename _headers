@@ -11,3 +11,6 @@
 
 /navody.html
   Cache-Control: no-store, max-age=0
+
+/navody/*
+  Cache-Control: no-store, max-age=0
