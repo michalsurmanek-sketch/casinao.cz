@@ -130,8 +130,11 @@
   }
 
   .top-nav-link.is-active {
-    color: #facc15;
-    text-shadow: 0 0 14px rgba(250, 204, 21, 0.34);
+    background: linear-gradient(120deg, #fde68a, #facc15 45%, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 16px rgba(250, 204, 21, 0.38);
   }
 
   .mobile-menu-lock {
@@ -292,6 +295,14 @@
     color: #facc15;
     font-size: 0.75rem;
     font-weight: 700;
+  }
+
+  .sidebar-title span {
+    background: linear-gradient(120deg, #fde68a, #facc15 50%, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 14px rgba(250, 204, 21, 0.34);
   }
 
   .sidebar-divider {
