@@ -944,13 +944,21 @@
       headerEl.style.top = 'auto';
     }
 
+    const forceStaticLayout = (el) => {
+      if (!el) return;
+      el.style.setProperty('position', 'static', 'important');
+      el.style.setProperty('top', 'auto', 'important');
+      el.style.setProperty('bottom', 'auto', 'important');
+      el.style.setProperty('left', 'auto', 'important');
+      el.style.setProperty('right', 'auto', 'important');
+      el.style.setProperty('inset', 'auto', 'important');
+      el.style.setProperty('transform', 'none', 'important');
+    };
+
+    const academySidebar = document.getElementById('academySidebar');
     const academyNavBox = document.getElementById('academyNavBox');
-    if (academyNavBox) {
-      academyNavBox.style.position = 'static';
-      academyNavBox.style.top = 'auto';
-      academyNavBox.style.inset = 'auto';
-      academyNavBox.style.transform = 'none';
-    }
+    forceStaticLayout(academySidebar);
+    forceStaticLayout(academyNavBox);
   }
 
   init();
