@@ -240,6 +240,37 @@
     background: linear-gradient(90deg, rgba(245, 196, 0, 0.65), rgba(253, 224, 71, 0.9));
   }
 
+  #recommendedGrid {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.25rem;
+  }
+
+  #recommendedGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #recommendedGrid .recommended-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 768px) {
+    #recommendedGrid .recommended-card {
+      flex-basis: calc((100% - 1.25rem) / 2);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #recommendedGrid .recommended-card {
+      flex-basis: calc((100% - 2.5rem) / 3);
+    }
+  }
+
   #academyContentGrid {
     grid-template-columns: 300px minmax(0, 1fr);
   }
@@ -686,8 +717,14 @@
       </section>
 
       <section id="sekce-doporucene">
-        <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Doporučené návody</h2>
-        <div id="recommendedGrid" class="mt-5 grid md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Doporučené návody</h2>
+          <div class="flex items-center gap-2">
+            <button id="recommendedPrev" class="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Předchozí doporučené"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+            <button id="recommendedNext" class="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Další doporučené"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+        <div id="recommendedGrid" class="mt-5"></div>
       </section>
 
       <section id="sekce-nejctenejsi">
@@ -1087,7 +1124,7 @@
   function renderRecommended() {
     const data = ARTICLES.filter((a) => a.featured).slice(0, 6);
     $('recommendedGrid').innerHTML = data.map((a) =>
-      '<article class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-glow">' +
+      '<article class="recommended-card rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-glow">' +
       '<img loading="lazy" decoding="async" src="' + a.image + '" alt="' + a.title + '" class="w-full h-44 object-cover bg-black/20" />' +
       '<div class="p-5">' +
       '<h3 class="font-display text-xl font-bold">' + a.title + '</h3>' +
@@ -1272,6 +1309,20 @@
     $('mostReadNext').addEventListener('click', () => {
       $('mostReadSlider').scrollBy({ left: 340, behavior: 'smooth' });
     });
+
+    const recommendedGrid = $('recommendedGrid');
+    const recommendedPrev = $('recommendedPrev');
+    const recommendedNext = $('recommendedNext');
+    if (recommendedGrid && recommendedPrev && recommendedNext) {
+      const scrollRecommended = (direction) => {
+        const firstCard = recommendedGrid.querySelector('.recommended-card');
+        const step = firstCard ? (firstCard.getBoundingClientRect().width + 20) : 360;
+        recommendedGrid.scrollBy({ left: direction * step, behavior: 'smooth' });
+      };
+
+      recommendedPrev.addEventListener('click', () => scrollRecommended(-1));
+      recommendedNext.addEventListener('click', () => scrollRecommended(1));
+    }
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
