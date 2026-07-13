@@ -52,6 +52,88 @@
   html { scroll-behavior: smooth; }
   .glass { backdrop-filter: blur(12px); background: rgba(17,24,39,.68); }
 
+  :root {
+    --gold-1: #facc15;
+    --gold-2: #f59e0b;
+    --gold-glow: rgba(250, 204, 21, 0.35);
+    --panel-bg: rgba(15, 23, 42, 0.55);
+    --panel-border: rgba(250, 204, 21, 0.3);
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeUp 380ms ease forwards;
+  }
+
+  .fade-up-delay-1 { animation-delay: 80ms; }
+  .fade-up-delay-2 { animation-delay: 140ms; }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .site-header {
+    min-height: 86px;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.62));
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(250, 204, 21, 0.42);
+    box-shadow: 0 1px 0 rgba(250, 204, 21, 0.18), 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 20px rgba(250, 204, 21, 0.1);
+  }
+
+  .top-nav {
+    gap: 1.2rem;
+  }
+
+  .top-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    padding: 0.45rem 0.35rem;
+    color: #e5e7eb;
+    transition: color 250ms ease, transform 250ms ease, text-shadow 250ms ease;
+  }
+
+  .top-nav-link i {
+    width: 16px;
+    height: 16px;
+    color: rgba(250, 204, 21, 0.88);
+  }
+
+  .top-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    right: 0.35rem;
+    bottom: -0.35rem;
+    height: 2px;
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 250ms ease;
+    background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
+  }
+
+  .top-nav-link:hover {
+    color: #fde68a;
+    transform: translateY(-2px);
+    text-shadow: 0 0 12px rgba(250, 204, 21, 0.25);
+  }
+
+  .top-nav-link:hover::after,
+  .top-nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .top-nav-link.is-active {
+    color: #facc15;
+    text-shadow: 0 0 14px rgba(250, 204, 21, 0.34);
+  }
+
   .mobile-menu-lock {
     overflow: hidden;
   }
@@ -145,11 +227,264 @@
     background: linear-gradient(90deg, rgba(245, 196, 0, 0.65), rgba(253, 224, 71, 0.9));
   }
 
+  #academyContentGrid {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  #academySidebar {
+    width: 100%;
+    border-radius: 24px;
+    border: 1px solid var(--panel-border);
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.72), rgba(2, 6, 23, 0.62));
+    backdrop-filter: blur(13px);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .sidebar-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #facc15;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .sidebar-divider {
+    margin-top: 0.7rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(250, 204, 21, 0.68), rgba(250, 204, 21, 0.08));
+  }
+
+  .sidebar-toggle {
+    margin-top: 0.9rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0.9rem;
+    border-radius: 14px;
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    background: rgba(15, 23, 42, 0.52);
+    color: #fde68a;
+    font-size: 0.9rem;
+    transition: background 240ms ease;
+  }
+
+  .sidebar-nav {
+    margin-top: 0.8rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .sidebar-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+    min-height: 54px;
+    border-radius: 14px;
+    padding: 0.7rem 0.9rem;
+    color: #f8fafc;
+    font-weight: 500;
+    transition: transform 240ms ease, background 240ms ease, color 240ms ease, box-shadow 240ms ease;
+  }
+
+  .sidebar-link i {
+    width: 18px;
+    height: 18px;
+    color: #facc15;
+    transition: transform 220ms ease;
+  }
+
+  .sidebar-link:hover {
+    background: linear-gradient(120deg, #facc15, #f59e0b);
+    color: #111827;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(250, 204, 21, 0.32);
+  }
+
+  .sidebar-link:hover i {
+    color: #111827;
+    transform: scale(1.08);
+  }
+
+  .sidebar-link.sidebar-link-active {
+    background: linear-gradient(120deg, #facc15, #f59e0b);
+    color: #111827;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(250, 204, 21, 0.32), 0 0 0 1px rgba(250, 204, 21, 0.45) inset;
+  }
+
+  .sidebar-link.sidebar-link-active i {
+    color: #111827;
+  }
+
+  .sidebar-link.sidebar-link-active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    border-radius: 0 8px 8px 0;
+    background: #111827;
+    opacity: 0.88;
+  }
+
+  #hero {
+    position: relative;
+    padding: 2.1rem 2.25rem 2.4rem;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    right: -130px;
+    top: -100px;
+    width: 380px;
+    height: 380px;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.24) 0%, rgba(250, 204, 21, 0.05) 52%, rgba(0, 0, 0, 0) 72%);
+  }
+
+  #hero h1 {
+    font-size: clamp(2.9rem, 5vw, 4.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  #hero p {
+    line-height: 1.75;
+  }
+
+  .hero-search-form {
+    padding: 0.68rem;
+    border-radius: 20px;
+  }
+
+  .search-input-wrap {
+    position: relative;
+    flex: 1;
+  }
+
+  .search-input-wrap i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: rgba(250, 204, 21, 0.82);
+    pointer-events: none;
+  }
+
+  .search-input {
+    height: 64px;
+    padding-left: 2.8rem;
+    border-radius: 14px;
+    transition: border-color 240ms ease, box-shadow 240ms ease;
+  }
+
+  .search-input:focus {
+    border-color: rgba(250, 204, 21, 0.9) !important;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.28), 0 0 22px rgba(250, 204, 21, 0.2);
+  }
+
+  .search-btn {
+    border-radius: 14px;
+    background: linear-gradient(120deg, #fde047, #f59e0b);
+    min-width: 132px;
+    transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  }
+
+  .search-btn:hover {
+    transform: translateY(-1px) scale(1.02);
+    filter: brightness(1.03);
+    box-shadow: 0 12px 24px rgba(250, 204, 21, 0.32);
+  }
+
+  .quick-tag {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0 1rem;
+    border-radius: 999px;
+    transition: background 240ms ease, color 240ms ease, border-color 240ms ease, transform 240ms ease;
+  }
+
+  .quick-tag i {
+    width: 14px;
+    height: 14px;
+    color: #facc15;
+    transition: color 240ms ease;
+  }
+
+  .quick-tag:hover {
+    background: linear-gradient(120deg, #fde047, #f59e0b);
+    border-color: transparent;
+    color: #111827;
+    transform: translateY(-1px);
+  }
+
+  .quick-tag:hover i {
+    color: #111827;
+  }
+
   @media (min-width: 1024px) {
     #academySidebar {
       position: sticky !important;
       top: 6rem !important;
       align-self: start;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    #academyContentGrid {
+      grid-template-columns: 270px minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    #academyContentGrid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    #academySidebar {
+      display: block;
+      position: static !important;
+      top: auto !important;
+      padding: 0.95rem;
+    }
+
+    #academySidebar.accordion-open #academySidebarNav {
+      max-height: 760px;
+      opacity: 1;
+      margin-top: 0.8rem;
+    }
+
+    #academySidebarNav {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 280ms ease, opacity 220ms ease, margin-top 220ms ease;
+      margin-top: 0;
+    }
+
+    #hero {
+      padding: 1.6rem 1.2rem 1.9rem;
+    }
+
+    .hero-search-form {
+      padding: 0.55rem;
+    }
+
+    .search-btn {
+      width: 100%;
     }
   }
 
@@ -168,9 +503,9 @@
   <div class="absolute right-0 top-40 h-[260px] w-[260px] rounded-full bg-orange-500/10 blur-3xl"></div>
 </div>
 
-<header class="z-40 border-b border-white/10 bg-black/30 backdrop-blur-xl">
+<header class="site-header z-40 border-b border-white/10 bg-black/30 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between py-4">
+    <div class="flex items-center justify-between py-5">
       <a href="index.html" class="flex items-center gap-3">
         <img src="/assets/icons/casinao_logo_kruh_512.png" alt="Casinao.cz" class="w-11 h-11 rounded-2xl object-contain flex-none" />
         <div>
@@ -179,12 +514,12 @@
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a href="index.html#casina" class="hover:text-yellow-400 transition">Casina</a>
-        <a href="index.html#bonusy" class="hover:text-yellow-400 transition">Bonusy</a>
-        <a href="navody.html" class="text-yellow-400">Akademie</a>
-        <a href="/recenze.html" class="hover:text-yellow-400 transition">Recenze</a>
-        <a href="index.html#kontakt" class="hover:text-yellow-400 transition">Kontakt</a>
+      <nav class="top-nav hidden md:flex items-center text-sm font-medium">
+        <a href="index.html#casina" class="top-nav-link"><i data-lucide="landmark"></i><span>Casina</span></a>
+        <a href="index.html#bonusy" class="top-nav-link"><i data-lucide="gift"></i><span>Bonusy</span></a>
+        <a href="navody.html" class="top-nav-link is-active"><i data-lucide="graduation-cap"></i><span>Akademie</span></a>
+        <a href="/recenze.html" class="top-nav-link"><i data-lucide="star"></i><span>Recenze</span></a>
+        <a href="index.html#kontakt" class="top-nav-link"><i data-lucide="mail"></i><span>Kontakt</span></a>
       </nav>
 
       <button id="btnMenu" class="md:hidden p-2 rounded-lg bg-white/10 border border-white/10 hover:bg-white/15" aria-label="Otevřít menu" aria-expanded="false">
@@ -217,41 +552,49 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
   <div id="academyContentGrid" class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
-      <section id="academySidebar" class="hidden lg:block lg:sticky lg:top-24 rounded-2xl border border-white/10 bg-white/5 p-4">
+      <section id="academySidebar" class="fade-up fade-up-delay-1 block lg:sticky lg:top-24 rounded-2xl border border-white/10 bg-white/5 p-4">
         <div id="academyNavBox">
-          <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
-          <nav class="grid gap-1 text-sm" aria-label="Navigace akademie">
-            <a href="#sekce-bonusy" class="px-3 py-2 rounded-lg hover:bg-white/10">Bonusy</a>
-            <a href="#sekce-hry" class="px-3 py-2 rounded-lg hover:bg-white/10">Casino hry</a>
-            <a href="#sekce-zacatecnici" class="px-3 py-2 rounded-lg hover:bg-white/10">Začátečníci</a>
-            <a href="#sekce-platby" class="px-3 py-2 rounded-lg hover:bg-white/10">Platby</a>
-            <a href="#sekce-rtp" class="px-3 py-2 rounded-lg hover:bg-white/10">RTP</a>
-            <a href="#sekce-bezpecnost" class="px-3 py-2 rounded-lg hover:bg-white/10">Bezpečnost</a>
-            <a href="#sekce-strategie" class="px-3 py-2 rounded-lg hover:bg-white/10">Strategie</a>
-            <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
+          <div class="sidebar-title"><i data-lucide="compass"></i><span>Navigace akademie</span></div>
+          <div class="sidebar-divider"></div>
+          <button id="academySidebarToggle" type="button" class="sidebar-toggle lg:hidden" aria-expanded="false" aria-controls="academySidebarNav">
+            <span>Přehled sekcí</span>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <nav id="academySidebarNav" class="sidebar-nav grid gap-1 text-sm" aria-label="Navigace akademie">
+            <a href="#sekce-bonusy" class="sidebar-link sidebar-link-active px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="gift"></i><span>Bonusy</span></a>
+            <a href="#sekce-hry" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="dices"></i><span>Casino hry</span></a>
+            <a href="#sekce-zacatecnici" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="graduation-cap"></i><span>Začátečníci</span></a>
+            <a href="#sekce-platby" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="credit-card"></i><span>Platby</span></a>
+            <a href="#sekce-rtp" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="bar-chart-3"></i><span>RTP</span></a>
+            <a href="#sekce-bezpecnost" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="shield"></i><span>Bezpečnost</span></a>
+            <a href="#sekce-strategie" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="target"></i><span>Strategie</span></a>
+            <a href="#sekce-faq" class="sidebar-link px-3 py-2 rounded-lg hover:bg-white/10"><i data-lucide="circle-help"></i><span>FAQ</span></a>
           </nav>
         </div>
       </section>
 
-      <div class="min-w-0">
+      <div class="min-w-0 fade-up fade-up-delay-2">
       <section id="hero" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-glow">
         <div class="max-w-4xl">
         <p class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs text-yellow-300"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Znalostní centrum Casinao.cz</p>
         <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">Casino Akademie</h1>
         <p class="mt-4 text-gray-300 text-base sm:text-lg">Najdete zde návody, pravidla a praktické postupy pro legální hraní v ČR. Struktura stránky je navržena tak, aby bez problémů škálovala na tisíce záznamů.</p>
 
-        <form id="heroSearchForm" class="mt-8 rounded-2xl border border-white/10 bg-black/25 p-2 sm:p-3 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search">
-          <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-          <button type="submit" class="rounded-xl bg-yellow-500 px-6 py-3 text-gray-900 font-semibold hover:bg-yellow-400 transition">Hledat</button>
+        <form id="heroSearchForm" class="hero-search-form mt-8 rounded-2xl border border-white/10 bg-black/25 p-2 sm:p-3 flex flex-col sm:flex-row gap-2 sm:gap-3" role="search">
+          <div class="search-input-wrap">
+            <i data-lucide="search"></i>
+            <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="search-input w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          </div>
+          <button type="submit" class="search-btn rounded-xl bg-yellow-500 px-6 py-3 text-gray-900 font-semibold hover:bg-yellow-400 transition">Hledat</button>
         </form>
 
         <div class="mt-5 flex flex-wrap gap-2" aria-label="Nejvyhledávanější štítky">
-          <button type="button" data-quick-tag="Bonus bez vkladu" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Bonus bez vkladu</button>
-          <button type="button" data-quick-tag="Free Spiny" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Free Spiny</button>
-          <button type="button" data-quick-tag="RTP" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">RTP</button>
-          <button type="button" data-quick-tag="Blackjack" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Blackjack</button>
-          <button type="button" data-quick-tag="Ruleta" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Ruleta</button>
-          <button type="button" data-quick-tag="Registrace" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10">Registrace</button>
+          <button type="button" data-quick-tag="Bonus bez vkladu" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="gift"></i><span>Bonus bez vkladu</span></button>
+          <button type="button" data-quick-tag="Free Spiny" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="rotate-cw"></i><span>Free Spiny</span></button>
+          <button type="button" data-quick-tag="RTP" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="bar-chart-3"></i><span>RTP</span></button>
+          <button type="button" data-quick-tag="Blackjack" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="spade"></i><span>Blackjack</span></button>
+          <button type="button" data-quick-tag="Ruleta" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="circle-dot"></i><span>Ruleta</span></button>
+          <button type="button" data-quick-tag="Registrace" class="quick-tag px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm hover:bg-white/10"><i data-lucide="user-plus"></i><span>Registrace</span></button>
         </div>
       </div>
       </section>
@@ -938,6 +1281,67 @@
       headerEl.style.position = 'static';
       headerEl.style.top = 'auto';
     }
+
+    const academySidebar = document.getElementById('academySidebar');
+    const academySidebarToggle = document.getElementById('academySidebarToggle');
+    const academySidebarNav = document.getElementById('academySidebarNav');
+
+    if (academySidebar && academySidebarToggle && academySidebarNav) {
+      const closeMobileSidebar = () => {
+        academySidebar.classList.remove('accordion-open');
+        academySidebarToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      academySidebarToggle.addEventListener('click', () => {
+        const willOpen = !academySidebar.classList.contains('accordion-open');
+        academySidebar.classList.toggle('accordion-open', willOpen);
+        academySidebarToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      if (window.innerWidth >= 1024) {
+        academySidebar.classList.add('accordion-open');
+      } else {
+        closeMobileSidebar();
+      }
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+          academySidebar.classList.add('accordion-open');
+          academySidebarToggle.setAttribute('aria-expanded', 'true');
+          return;
+        }
+
+        closeMobileSidebar();
+      });
+    }
+
+    const sidebarLinks = document.querySelectorAll('#academySidebarNav .sidebar-link');
+    const syncActiveSidebarLink = () => {
+      const currentHash = window.location.hash || '#sekce-bonusy';
+      sidebarLinks.forEach((link) => {
+        const linkHash = link.getAttribute('href') || '';
+        link.classList.toggle('sidebar-link-active', linkHash === currentHash);
+      });
+    };
+
+    sidebarLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const selectedHash = link.getAttribute('href') || '#sekce-bonusy';
+        sidebarLinks.forEach((item) => item.classList.remove('sidebar-link-active'));
+        link.classList.add('sidebar-link-active');
+        if (window.innerWidth < 1024 && selectedHash) {
+          const sidebarEl = document.getElementById('academySidebar');
+          const sidebarToggleEl = document.getElementById('academySidebarToggle');
+          if (sidebarEl && sidebarToggleEl) {
+            sidebarEl.classList.remove('accordion-open');
+            sidebarToggleEl.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+
+    syncActiveSidebarLink();
+    window.addEventListener('hashchange', syncActiveSidebarLink);
 
   }
 
