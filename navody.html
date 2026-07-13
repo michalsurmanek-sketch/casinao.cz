@@ -957,8 +957,14 @@
 
     const academySidebar = document.getElementById('academySidebar');
     const academyNavBox = document.getElementById('academyNavBox');
-    forceStaticLayout(academySidebar);
-    forceStaticLayout(academyNavBox);
+    const keepAcademyNavInFlow = () => {
+      forceStaticLayout(academySidebar);
+      forceStaticLayout(academyNavBox);
+    };
+
+    keepAcademyNavInFlow();
+    window.addEventListener('scroll', keepAcademyNavInFlow, { passive: true });
+    window.addEventListener('resize', keepAcademyNavInFlow);
   }
 
   init();
