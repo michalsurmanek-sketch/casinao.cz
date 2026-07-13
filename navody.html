@@ -955,16 +955,53 @@
       el.style.setProperty('transform', 'none', 'important');
     };
 
-    const academySidebar = document.getElementById('academySidebar');
-    const academyNavBox = document.getElementById('academyNavBox');
+    const collectAcademyNavTargets = () => {
+      const targets = new Set();
+
+      const academySidebar = document.getElementById('academySidebar');
+      const academyNavBox = document.getElementById('academyNavBox');
+      if (academySidebar) targets.add(academySidebar);
+      if (academyNavBox) targets.add(academyNavBox);
+
+      const academyNav = document.querySelector('nav[aria-label="Navigace akademie"]');
+      if (academyNav) {
+        targets.add(academyNav);
+        if (academyNav.parentElement) targets.add(academyNav.parentElement);
+        const academyAside = academyNav.closest('aside');
+        if (academyAside) targets.add(academyAside);
+      }
+
+      return Array.from(targets);
+    };
+
     const keepAcademyNavInFlow = () => {
-      forceStaticLayout(academySidebar);
-      forceStaticLayout(academyNavBox);
+      collectAcademyNavTargets().forEach(forceStaticLayout);
     };
 
     keepAcademyNavInFlow();
     window.addEventListener('scroll', keepAcademyNavInFlow, { passive: true });
     window.addEventListener('resize', keepAcademyNavInFlow);
+    window.addEventListener('load', keepAcademyNavInFlow);
+
+    let flowFixQueued = false;
+    const queueFlowFix = () => {
+      if (flowFixQueued) return;
+      flowFixQueued = true;
+      window.requestAnimationFrame(() => {
+        flowFixQueued = false;
+        keepAcademyNavInFlow();
+      });
+    };
+
+    const flowObserver = new MutationObserver(queueFlowFix);
+    if (document.body) {
+      flowObserver.observe(document.body, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+    }
   }
 
   init();
