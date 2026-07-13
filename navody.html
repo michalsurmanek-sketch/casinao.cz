@@ -305,6 +305,42 @@
     .recommended-side-btn.next {
       right: -16px;
     }
+
+    #sekce-nejctenejsi {
+      position: relative;
+    }
+
+    .mostread-side-btn {
+      position: absolute;
+      top: 58%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      background: rgba(17, 24, 39, 0.9);
+      color: #fde68a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      transition: transform 220ms ease, background 220ms ease, color 220ms ease;
+    }
+
+    .mostread-side-btn:hover {
+      background: linear-gradient(120deg, #fde047, #f59e0b);
+      color: #111827;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .mostread-side-btn.prev {
+      left: -16px;
+    }
+
+    .mostread-side-btn.next {
+      right: -16px;
+    }
   }
 
   #academyContentGrid {
@@ -764,12 +800,10 @@
       <section id="sekce-nejctenejsi">
         <div class="flex items-center justify-between gap-4">
           <h2 class="font-display text-2xl sm:text-3xl font-extrabold">Nejčtenější</h2>
-          <div class="flex items-center gap-2">
-            <button id="mostReadPrev" class="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Předchozí"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-            <button id="mostReadNext" class="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Další"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-          </div>
         </div>
         <div id="mostReadSlider" class="mt-5 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"></div>
+        <button id="mostReadPrev" class="mostread-side-btn prev" aria-label="Předchozí"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+        <button id="mostReadNext" class="mostread-side-btn next" aria-label="Další"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
       </section>
 
       <section id="sekce-filtry" class="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
