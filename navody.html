@@ -222,7 +222,7 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
   <div class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
-    <aside id="academySidebar" class="hidden lg:block" style="position: static; top: auto; inset: auto; transform: none;">
+    <div id="academySidebar" class="hidden lg:block" style="position: static; top: auto; inset: auto; transform: none;">
       <div id="academyNavBox" class="rounded-2xl border border-white/10 bg-white/5 p-4">
         <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
         <nav class="grid gap-1 text-sm" aria-label="Navigace akademie">
@@ -236,7 +236,7 @@
           <a href="#sekce-faq" class="px-3 py-2 rounded-lg hover:bg-white/10">FAQ</a>
         </nav>
       </div>
-    </aside>
+    </div>
 
     <div class="min-w-0">
       <section id="hero" class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-glow">
@@ -967,8 +967,8 @@
       if (academyNav) {
         targets.add(academyNav);
         if (academyNav.parentElement) targets.add(academyNav.parentElement);
-        const academyAside = academyNav.closest('aside');
-        if (academyAside) targets.add(academyAside);
+        const academySidebarContainer = academyNav.closest('#academySidebar');
+        if (academySidebarContainer) targets.add(academySidebarContainer);
       }
 
       return Array.from(targets);
