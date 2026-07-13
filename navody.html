@@ -98,10 +98,11 @@
     transition: color 250ms ease, transform 250ms ease, text-shadow 250ms ease;
   }
 
-  .top-nav-link i {
+  .top-nav-link svg {
     width: 16px;
     height: 16px;
     color: rgba(250, 204, 21, 0.88);
+    flex: 0 0 auto;
   }
 
   .top-nav-link::after {
@@ -130,11 +131,20 @@
   }
 
   .top-nav-link.is-active {
+    color: #facc15;
+    text-shadow: 0 0 16px rgba(250, 204, 21, 0.38);
+  }
+
+  .top-nav-link.is-active span {
     background: linear-gradient(120deg, #fde68a, #facc15 45%, #f59e0b);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 16px rgba(250, 204, 21, 0.38);
+  }
+
+  .top-nav-link.is-active svg {
+    color: #facc15;
+    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.45));
   }
 
   .mobile-menu-lock {
