@@ -757,7 +757,7 @@
 
         <form id="heroSearchForm" class="mt-8" role="search">
           <div class="search-input-wrap">
-            <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="search-input w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." data-placeholder-full="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." data-placeholder-mobile="Hledej návod" class="search-input w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
             <button type="submit" class="search-inline-btn" aria-label="Hledat">
               <span>Hledat</span>
             </button>
@@ -1473,6 +1473,18 @@
       headerEl.style.position = 'static';
       headerEl.style.top = 'auto';
     }
+
+    const syncSearchPlaceholder = () => {
+      const searchInput = document.getElementById('globalSearch');
+      if (!searchInput) return;
+
+      const fullText = searchInput.getAttribute('data-placeholder-full') || 'Hledej návod';
+      const mobileText = searchInput.getAttribute('data-placeholder-mobile') || 'Hledej návod';
+      searchInput.setAttribute('placeholder', window.innerWidth < 768 ? mobileText : fullText);
+    };
+
+    syncSearchPlaceholder();
+    window.addEventListener('resize', syncSearchPlaceholder);
 
     const academySidebar = document.getElementById('academySidebar');
     const academySidebarToggle = document.getElementById('academySidebarToggle');
