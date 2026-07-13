@@ -430,8 +430,39 @@
   .search-input {
     height: 64px;
     padding-left: 2.8rem;
+    padding-right: 9.2rem;
     border-radius: 14px;
     transition: border-color 240ms ease, box-shadow 240ms ease;
+  }
+
+  .search-inline-btn {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    padding: 0 1.15rem;
+    border-radius: 12px;
+    border: 1px solid rgba(250, 204, 21, 0.42);
+    background: linear-gradient(120deg, #fde047, #f59e0b);
+    color: #111827;
+    font-weight: 700;
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  }
+
+  .search-inline-btn:hover {
+    transform: translateY(calc(-50% - 1px)) scale(1.02);
+    box-shadow: 0 10px 20px rgba(250, 204, 21, 0.35);
+    filter: brightness(1.04);
+  }
+
+  .search-inline-btn i {
+    width: 15px;
+    height: 15px;
   }
 
   .search-input:focus {
@@ -532,6 +563,17 @@
     .search-btn {
       width: 100%;
     }
+
+    .search-input {
+      padding-right: 8.25rem;
+    }
+
+    .search-inline-btn {
+      height: 46px;
+      right: 0.5rem;
+      padding: 0 0.95rem;
+      font-size: 0.86rem;
+    }
   }
 
   body > header {
@@ -627,7 +669,14 @@
         <p class="mt-4 text-gray-300 text-base sm:text-lg">Najdete zde návody, pravidla a praktické postupy pro legální hraní v ČR. Struktura stránky je navržena tak, aby bez problémů škálovala na tisíce záznamů.</p>
 
         <form id="heroSearchForm" class="mt-8" role="search">
-          <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="search-input w-full pl-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          <div class="search-input-wrap">
+            <i data-lucide="search"></i>
+            <input id="globalSearch" type="search" placeholder="Hledej návod: bonus bez vkladu, RTP, blackjack, registrace..." class="search-input w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <button type="submit" class="search-inline-btn" aria-label="Hledat">
+              <i data-lucide="search"></i>
+              <span>Hledat</span>
+            </button>
+          </div>
         </form>
 
         <div class="mt-5 flex flex-wrap gap-2" aria-label="Nejvyhledávanější štítky">
