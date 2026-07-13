@@ -145,6 +145,14 @@
     background: linear-gradient(90deg, rgba(245, 196, 0, 0.65), rgba(253, 224, 71, 0.9));
   }
 
+  @media (min-width: 1024px) {
+    #academySidebar {
+      position: sticky !important;
+      top: 6rem !important;
+      align-self: start;
+    }
+  }
+
   body > header {
     position: static !important;
     top: auto !important;
@@ -233,7 +241,7 @@
       </section>
     </div>
 
-    <div class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
+    <div id="academyContentGrid" class="grid lg:grid-cols-[250px_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
       <section id="academySidebar" class="hidden lg:block lg:sticky lg:top-24 rounded-2xl border border-white/10 bg-white/5 p-4">
         <div id="academyNavBox">
           <div class="text-xs uppercase tracking-wide text-yellow-400 font-semibold mb-3">Navigace akademie</div>
