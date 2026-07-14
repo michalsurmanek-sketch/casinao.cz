@@ -198,290 +198,6 @@
       padding: 10px 12px calc(env(safe-area-inset-bottom) + 12px);
     }
 
-    .review-grid {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .review-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 26px;
-      border: 2px solid rgba(59, 130, 246, 0.72);
-      background:
-        radial-gradient(130% 120% at 0% 0%, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.02) 32%, rgba(19, 23, 34, 0.95) 58%),
-        radial-gradient(100% 110% at 100% 100%, rgba(56, 189, 248, 0.12) 0%, rgba(11, 13, 18, 0.94) 62%),
-        linear-gradient(156deg, rgba(19, 23, 34, 0.88), rgba(11, 13, 18, 0.94));
-      box-shadow:
-        0 0 0 1px rgba(147, 197, 253, 0.2) inset,
-        0 0 25px rgba(59, 130, 246, 0.25),
-        0 18px 48px rgba(2, 6, 23, 0.66);
-      backdrop-filter: blur(16px) saturate(150%);
-      -webkit-backdrop-filter: blur(16px) saturate(150%);
-      transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
-    }
-
-    .review-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(118deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 32%, rgba(255, 255, 255, 0));
-      pointer-events: none;
-    }
-
-    .review-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(96, 165, 250, 0.95);
-      box-shadow:
-        0 0 0 1px rgba(191, 219, 254, 0.32) inset,
-        0 0 35px rgba(59, 130, 246, 0.42),
-        0 24px 56px rgba(2, 6, 23, 0.8);
-    }
-
-    .review-shell {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(220px, 35%) minmax(0, 65%);
-      min-height: 308px;
-    }
-
-    .review-left {
-      padding: 1.55rem;
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .review-logo-wrap {
-      min-height: 102px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background:
-        radial-gradient(120% 120% at 20% 0%, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0) 45%),
-        rgba(15, 23, 42, 0.58);
-      display: grid;
-      place-items: center;
-      padding: 1rem;
-    }
-
-    .review-logo {
-      max-height: 64px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(2, 6, 23, 0.6));
-    }
-
-    .review-stars {
-      color: #fbbf24;
-      font-size: 1.15rem;
-      letter-spacing: 0.22rem;
-      text-shadow: 0 0 12px rgba(245, 158, 11, 0.42);
-    }
-
-    .review-score {
-      font-family: Montserrat, ui-sans-serif, system-ui;
-      color: #ffffff;
-      font-weight: 800;
-      line-height: 0.92;
-      text-shadow: 0 0 18px rgba(96, 165, 250, 0.26);
-    }
-
-    .review-score-main {
-      display: block;
-      font-size: clamp(2.05rem, 4vw, 2.6rem);
-    }
-
-    .review-score-max {
-      display: block;
-      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-      color: #cbd5e1;
-      margin-top: 0.16rem;
-    }
-
-    .review-label {
-      margin-top: 0.15rem;
-      color: #9ca3af;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 600;
-    }
-
-    .review-votes {
-      margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.38);
-      background: rgba(30, 41, 59, 0.5);
-      color: #e2e8f0;
-      padding: 0.42rem 0.84rem;
-      font-size: 0.8rem;
-      width: fit-content;
-    }
-
-    .review-votes svg {
-      width: 17px;
-      height: 17px;
-      color: #60a5fa;
-      flex: none;
-    }
-
-    .review-right {
-      padding: 1.55rem;
-      position: relative;
-    }
-
-    .review-cta {
-      position: absolute;
-      top: 1.55rem;
-      right: 1.55rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      border-radius: 999px;
-      padding: 0.64rem 1.05rem;
-      background: linear-gradient(90deg, #2563eb, #3b82f6 55%, #60a5fa);
-      color: #eff6ff;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      border: 1px solid rgba(191, 219, 254, 0.45);
-      box-shadow: 0 0 22px rgba(37, 99, 235, 0.35);
-      transition: transform 220ms ease, filter 220ms ease, box-shadow 220ms ease;
-    }
-
-    .review-cta:hover {
-      transform: scale(1.04);
-      filter: brightness(1.08);
-      box-shadow: 0 0 28px rgba(59, 130, 246, 0.55);
-    }
-
-    .review-cta svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .review-name {
-      margin: 0;
-      padding-right: 10.8rem;
-      font-family: Montserrat, ui-sans-serif, system-ui;
-      font-size: clamp(1.15rem, 2.35vw, 1.5rem);
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.01em;
-    }
-
-    .review-meta {
-      margin-top: 0.4rem;
-      color: #9ca3af;
-      font-size: 0.72rem;
-      line-height: 1.5;
-    }
-
-    .review-rows {
-      margin-top: 1.05rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.24);
-    }
-
-    .review-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .review-key {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      color: #9ca3af;
-      font-size: 0.88rem;
-      min-width: 165px;
-    }
-
-    .review-key svg {
-      width: 28px;
-      height: 28px;
-      color: #3b82f6;
-      flex: none;
-      stroke-width: 1.8;
-    }
-
-    .review-value {
-      text-align: right;
-      color: #ffffff;
-      font-size: 0.95rem;
-      line-height: 1.45;
-      font-weight: 600;
-    }
-
-    .review-value.bonus {
-      color: #ffc83d;
-      font-size: 1.06rem;
-      text-shadow: 0 0 14px rgba(255, 200, 61, 0.22);
-    }
-
-    .review-summary {
-      margin-top: 0.9rem;
-      color: #cbd5e1;
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 1024px) {
-      .review-shell {
-        grid-template-columns: 1fr;
-      }
-
-      .review-left {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .review-right {
-        padding-top: 1.1rem;
-      }
-
-      .review-cta {
-        position: static;
-        margin-top: 0.9rem;
-      }
-
-      .review-name {
-        padding-right: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .review-card,
-      .review-card::before {
-        border-radius: 24px;
-      }
-
-      .review-left,
-      .review-right {
-        padding: 1.1rem;
-      }
-
-      .review-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.42rem;
-      }
-
-      .review-value {
-        text-align: left;
-      }
-    }
   </style>
   <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
   <script src="/assets/overflow-diagnostic.js" defer></script>
@@ -574,235 +290,77 @@
     </section>
 
     <section class="mt-8 sm:mt-10">
-      <div class="review-grid">
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap">
-                <img src="/img/betano-logo-mini.webp" alt="Betano logo" class="review-logo" loading="lazy" decoding="async" />
-              </div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">9.0</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
-                <span>47 hodnocení</span>
-              </div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/betano/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Betano</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 600 Kč + 200 Free Spinů</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-20992/2021/73-171</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">Betano</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">2500+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">MFČR licence, ověření účtu, zabezpečené platby</div></div>
-              </div>
-              <p class="review-summary">Moderní platforma, široká nabídka her a výrazné promo akce.</p>
-            </div>
-          </div>
+      <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/betano.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Betano</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Moderní platforma, široká nabídka her a výrazné promo akce.</p>
+          <a href="/recenze/betano/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/chance-logo-mini.webp" alt="Chance logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.8</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>21 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/chance/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Chance</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 400 Kč + Free Spiny</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-15015/2023/73-122</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">CHANCE a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">1800+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Česká licence, ochrana účtu a transparentní podmínky</div></div>
-              </div>
-              <p class="review-summary">Známá značka s domácím zázemím a stabilní nabídkou her.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/for.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Chance</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Známá značka s domácím zázemím a stabilní nabídkou her.</p>
+          <a href="/recenze/chance/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/fbet-logo-mini.webp" alt="fBet logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.5</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>14 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/fbet/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze FBet</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 350 Kč + 100 Free Spinů</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-19539/2023/73-40</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">fBet</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">1600+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Legální provoz v ČR, ověření identity a SSL šifrování</div></div>
-              </div>
-              <p class="review-summary">Jednoduché prostředí a oblíbené akce pro pravidelné hráče.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/bet.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze FBet</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Jednoduché prostředí a oblíbené akce pro pravidelné hráče.</p>
+          <a href="/recenze/fbet/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/uni-fortuna-logo-270x96.webp" alt="Fortuna Vegas logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">9.2</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>53 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/fortuna-vegas/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Fortuna Vegas</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 300 Kč + 50 Free Spinů</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-21348/2022/73-98</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">FORTUNA GAME a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">2000+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Regulace MFČR, ochrana vkladů a zodpovědné hraní</div></div>
-              </div>
-              <p class="review-summary">Silná značka se širokým portfoliem automatů a live stolů.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/fortuna.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 5 z 5">★★★★★</div>
+          <h3 class="mt-2 font-semibold">Recenze Fortuna Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Silná značka se širokým portfoliem automatů a live stolů.</p>
+          <a href="/recenze/fortuna-vegas/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/kingsbet-logo-mini.webp" alt="Kingsbet logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.6</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>18 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/kingsbet/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Kingsbet</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 450 Kč + Free Spiny</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-46776/2024/73-40</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">kingsbet CZ a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">1700+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Nová česká licence, kontrola účtu a moderní ochrana dat</div></div>
-              </div>
-              <p class="review-summary">Mix klasických i nových her se zaměřením na mobilní hráče.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/tipkarta.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Kingsbet</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Mix klasických i nových her se zaměřením na mobilní hráče.</p>
+          <a href="/recenze/kingsbet/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/maxa-logo-mini.webp" alt="Maxa logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.4</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>11 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/maxa/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Maxa</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 300 Kč + Free Spiny</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-20083/2023/73-56</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">Loterie Maxa s. r. o.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">1400+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Česká regulace, kontrola identity a nástroje odpovědného hraní</div></div>
-              </div>
-              <p class="review-summary">Přehledné prostředí, známé promo kampaně a česká lokalizace.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/casino-pozadi.webp');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Maxa</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Přehledné prostředí, známé promo kampaně a česká lokalizace.</p>
+          <a href="/recenze/maxa/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/sazka-logo-mini.webp" alt="Sazka logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.9</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>19 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/sazka/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Sazka</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Licence MF-28856/2020/73-357</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-28856/2020/73-357</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">SAZKA a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">Legální CZ casino</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Silná česká značka, licencovaný provoz a bezpečné platební procesy</div></div>
-              </div>
-              <p class="review-summary">Tradiční jméno s důrazem na důvěryhodnost a jednoduchost.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/sazky.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Sazka</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Tradiční jméno s důrazem na důvěryhodnost a jednoduchost.</p>
+          <a href="/recenze/sazka/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/synot-tip-mini.webp" alt="Synot Tip logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">8.7</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>26 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/synottip/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Synot Tip</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 400 Kč + 80 Free Spinů</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-28659/2022/73-108</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">SYNOT TIP, a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">2100+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">CZ licence, ochrana účtu a bezpečné transakce</div></div>
-              </div>
-              <p class="review-summary">Domácí značka s pestrou nabídkou a lokální podporou.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/tip.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Synot Tip</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Domácí značka s pestrou nabídkou a lokální podporou.</p>
+          <a href="/recenze/synottip/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
 
-        <article class="review-card">
-          <div class="review-shell">
-            <div class="review-left">
-              <div class="review-logo-wrap"><img src="/img/tipsport-mini.png" alt="Tipsport Vegas logo" class="review-logo" loading="lazy" decoding="async" /></div>
-              <div class="review-stars" aria-label="Pět hvězd">★★★★★</div>
-              <div class="review-score"><span class="review-score-main">9.4</span><span class="review-score-max">/10</span></div>
-              <div class="review-label">Hodnocení redakce</div>
-              <div class="review-votes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg><span>61 hodnocení</span></div>
-            </div>
-            <div class="review-right">
-              <a href="/recenze/tipsport-vegas/index.html" class="review-cta">Zobrazit recenzi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></a>
-              <h3 class="review-name">Recenze Tipsport Vegas</h3>
-              <p class="review-meta">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
-              <div class="review-rows">
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>Vstupní bonus</div><div class="review-value bonus">Bonus až 500 Kč + 100 Free Spinů</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Licence</div><div class="review-value">MF-15170/2023/73-114</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>Provozovatel</div><div class="review-value">Tipsport.net a. s.</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.4"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>Typ her</div><div class="review-value">3000+ her</div></div>
-                <div class="review-row"><div class="review-key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>Bezpečnost</div><div class="review-value">Plná licence MFČR, bezpečné platby a robustní ochrana účtu</div></div>
-              </div>
-              <p class="review-summary">Komplexní nabídka her a silné napojení na značku Tipsport.</p>
-            </div>
-          </div>
+        <article class="rounded-2xl bg-white/5 border border-white/10 p-5 shadow-glow" style="background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('/img/tipsport.png');background-size:cover;background-position:center;">
+          <div class="flex items-center gap-2 text-yellow-400" aria-label="Hodnocení 4 z 5">★★★★☆</div>
+          <h3 class="mt-2 font-semibold">Recenze Tipsport Vegas</h3>
+          <p class="mt-1 text-xs text-gray-400">Autor: Redakce Casinao.cz • Publikováno: 19. 6. 2026 • Aktualizováno: 19. 6. 2026</p>
+          <p class="mt-1 text-sm text-gray-300">Komplexní nabídka her a silné napojení na značku Tipsport.</p>
+          <a href="/recenze/tipsport-vegas/index.html" class="mt-3 inline-flex items-center gap-1 text-yellow-400 text-sm hover:underline">Číst recenzi <span aria-hidden="true">›</span></a>
         </article>
       </div>
     </section>
