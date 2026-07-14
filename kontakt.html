@@ -191,6 +191,223 @@
       overscroll-behavior: contain;
       padding: 10px 12px calc(env(safe-area-inset-bottom) + 12px);
     }
+
+    .contact-lux-card {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 24px;
+      padding: 30px;
+      border: 1px solid rgba(245, 196, 0, 0.25);
+      background: linear-gradient(145deg, rgba(16, 24, 39, 0.72), rgba(7, 19, 29, 0.8));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34), 0 0 28px rgba(245, 196, 0, 0.16);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-lux-card:hover {
+      border-color: rgba(245, 196, 0, 0.45);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), 0 0 34px rgba(245, 196, 0, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .contact-lux-title {
+      color: #f5c400;
+    }
+
+    .contact-lux-item {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-top: 1px solid rgba(245, 196, 0, 0.16);
+    }
+
+    .contact-lux-item:first-of-type {
+      border-top: 0;
+      padding-top: 8px;
+    }
+
+    .contact-lux-icon {
+      color: #f5c400;
+      flex-shrink: 0;
+    }
+
+    .contact-lux-item-title {
+      color: #ffffff;
+    }
+
+    .contact-lux-item-sub {
+      color: #cbd5e1;
+    }
+
+    .contact-gold-light {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      height: 150px;
+      pointer-events: none;
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 22px;
+    }
+
+    .contact-gold-light::before,
+    .contact-gold-light::after {
+      content: '';
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      border-radius: 999px;
+      filter: blur(24px);
+      opacity: 0.45;
+    }
+
+    .contact-gold-light::before {
+      top: 26px;
+      height: 52px;
+      background: radial-gradient(ellipse at center, rgba(245, 196, 0, 0.65) 0%, rgba(245, 196, 0, 0.18) 48%, rgba(245, 196, 0, 0) 100%);
+      transform: rotate(-1.8deg);
+    }
+
+    .contact-gold-light::after {
+      top: 76px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, rgba(254, 215, 79, 0.6) 0%, rgba(245, 196, 0, 0.14) 50%, rgba(245, 196, 0, 0) 100%);
+      transform: rotate(1.5deg);
+    }
+
+    .contact-gold-wave {
+      position: absolute;
+      left: -3%;
+      right: -3%;
+      height: 34px;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.6;
+      background: linear-gradient(90deg, rgba(245, 196, 0, 0) 0%, rgba(245, 196, 0, 0.35) 18%, rgba(254, 223, 126, 0.55) 50%, rgba(245, 196, 0, 0.35) 82%, rgba(245, 196, 0, 0) 100%);
+    }
+
+    .contact-gold-wave.w1 { top: 42px; }
+    .contact-gold-wave.w2 { top: 68px; opacity: 0.52; }
+    .contact-gold-wave.w3 { top: 96px; opacity: 0.4; }
+
+    .contact-gold-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #fde68a;
+      box-shadow: 0 0 10px rgba(245, 196, 0, 0.8), 0 0 22px rgba(245, 196, 0, 0.4);
+      opacity: 0.8;
+    }
+
+    .contact-gold-dot.d1 { top: 48px; left: 14%; }
+    .contact-gold-dot.d2 { top: 92px; left: 32%; width: 4px; height: 4px; }
+    .contact-gold-dot.d3 { top: 58px; left: 58%; width: 5px; height: 5px; }
+    .contact-gold-dot.d4 { top: 108px; left: 78%; width: 4px; height: 4px; }
+
+    .contact-section {
+      padding: 70px 20px;
+      background: radial-gradient(circle at top right, rgba(245, 190, 0, 0.16), transparent 35%),
+                  linear-gradient(180deg, #07080c, #11151f);
+    }
+
+    .contact-intro {
+      color: #b9beca;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      max-width: 40ch;
+    }
+
+    .contact-card {
+      background: rgba(18, 20, 27, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(245, 196, 0, 0.28);
+      border-radius: 26px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .contact-card label {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-radius: 18px;
+      padding: 17px 18px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .contact-card input::placeholder,
+    .contact-card textarea::placeholder {
+      color: #c1c8d4;
+      opacity: 0.92;
+    }
+
+    .contact-card input:focus,
+    .contact-card textarea:focus {
+      border-color: #f5c400;
+      box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.14);
+    }
+
+    .contact-card textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 17px;
+      background: linear-gradient(135deg, #ffd84d, #f0b400);
+      color: #111;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      justify-content: center;
+    }
+
+    .contact-submit:hover {
+      filter: brightness(1.04);
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      color: #d7d7d7;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    .contact-response-box {
+      border: 1px solid rgba(245, 196, 0, 0.24);
+      border-radius: 14px;
+      background: rgba(245, 196, 0, 0.1);
+      color: #f8e7aa;
+      font-size: 13px;
+      padding: 10px 12px;
+    }
+
+    .contact-social-btn {
+      background: rgba(0, 0, 0, 0.35);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-social-btn:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(245, 196, 0, 0.28);
+    }
   </style>
   <link rel="stylesheet" href="/assets/mobile-overflow-fix.css" />
   <script src="/assets/overflow-diagnostic.js" defer></script>
@@ -245,72 +462,153 @@
     </div>
   </header>
 
-  <main class="mx-auto max-w-5xl px-4 sm:px-6 pt-6 sm:pt-8 pb-16">
-    <div class="grid lg:grid-cols-2 gap-10 items-start">
-      <section>
-        <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Kontakt</h1>
-        <p class="mt-3 text-gray-300">Máš dotaz k recenzi, bonusům, spolupráci nebo chceš nahlásit chybu v obsahu? Napiš nám.</p>
-        <ul class="mt-6 space-y-3 text-sm text-gray-300">
-          <li>E-mail: <a href="mailto:info@casinao.cz" class="text-yellow-400 hover:underline">info@casinao.cz</a></li>
-          <li>IČO: bude doplněno</li>
-          <li>
-            <span>Sociální sítě:</span>
-            <span class="inline-flex items-center gap-2 ml-2 align-middle">
-              <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="currentColor">
-                  <path d="M18.901 1.5H22.58l-8.037 9.185L24 22.5h-7.406l-5.802-7.545L4.188 22.5H.507l8.596-9.824L0 1.5h7.594l5.245 6.915L18.901 1.5Zm-1.29 18.796h2.04L6.486 3.605H4.297L17.611 20.296Z"/>
-                </svg>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="currentColor">
-                  <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.6v8h2.9Z"/>
-                </svg>
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <circle cx="17.5" cy="6.5" r="1"></circle>
-                </svg>
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="inline-flex items-center justify-center rounded-lg border border-white/10 w-8 h-8 hover:bg-white/10">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 text-yellow-400" fill="none">
-                  <rect x="2" y="6" width="20" height="12" rx="3" fill="currentColor"></rect>
-                  <path d="M10 9.5v5l5-2.5-5-2.5Z" fill="#111827"></path>
-                </svg>
-              </a>
-            </span>
-          </li>
-        </ul>
-        <p class="mt-6 text-xs text-gray-400">Ministerstvo financí varuje: Účastí na hazardní hře může vzniknout závislost. 18+</p>
-      </section>
+  <div class="mx-auto h-px max-w-7xl" style="background: linear-gradient(90deg, rgba(245, 196, 0, 0) 0%, rgba(245, 196, 0, 0.45) 20%, rgba(245, 196, 0, 0.78) 50%, rgba(245, 196, 0, 0.45) 80%, rgba(245, 196, 0, 0) 100%);"></div>
 
-      <section class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h2 class="font-display text-2xl font-bold">Napiš zprávu</h2>
-        <form id="contactForm" class="mt-5 space-y-4" novalidate>
+  <main>
+    <section id="kontakt" class="contact-section border-y border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-start lg:items-stretch">
           <div>
-            <label for="name" class="block text-sm mb-1">Jméno</label>
-            <input id="name" name="name" type="text" required minlength="2" maxlength="80" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Tvé jméno" />
-          </div>
-          <div>
-            <label for="email" class="block text-sm mb-1">E-mail</label>
-            <input id="email" name="email" type="email" required maxlength="120" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="name@email.cz" />
-          </div>
-          <div>
-            <label for="message" class="block text-sm mb-1">Zpráva</label>
-            <textarea id="message" name="message" required minlength="15" maxlength="2000" rows="5" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Napiš, s čím potřebuješ pomoci..."></textarea>
+            <div class="relative flex items-start gap-4 sm:gap-5">
+              <span aria-hidden="true" class="mt-1 block h-[102px] w-px bg-gradient-to-b from-yellow-300/10 via-yellow-400/85 to-yellow-300/10 shadow-[0_0_14px_rgba(245,196,0,0.55)] sm:h-[112px]"></span>
+
+              <div class="min-w-0">
+                <div class="inline-flex w-auto items-center gap-2 rounded-full border border-yellow-500/55 bg-black/85 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-yellow-300 sm:text-[11px] lg:text-xs">
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 flex-none text-yellow-400" fill="none" aria-hidden="true">
+                    <path d="M4 6.5H20V17.5H4V6.5Z" stroke="currentColor" stroke-width="1.7"/>
+                    <path d="M4.8 7.2L12 12.3L19.2 7.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>DOTAZY • SPOLUPRÁCE • PODPORA</span>
+                </div>
+
+                <h1 class="mt-3 font-display text-[clamp(1.75rem,7vw,3.15rem)] font-extrabold uppercase leading-[0.92] tracking-[0.075em] lg:text-[clamp(1.9rem,3.8vw,2.75rem)]">
+                  <span class="block text-white">KONTAKT</span>
+                  <span class="mt-1 block text-yellow-400 drop-shadow-[0_0_10px_rgba(245,196,0,0.28)]">NAPIŠTE NÁM</span>
+                </h1>
+
+                <div aria-hidden="true" class="relative mt-3 h-px w-28 bg-gradient-to-r from-yellow-300 via-yellow-400 to-transparent shadow-[0_0_12px_rgba(245,196,0,0.55)] sm:w-36">
+                  <span class="absolute -left-1 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-yellow-200 blur-[1px]"></span>
+                </div>
+
+                <p class="contact-intro mt-4">Máte dotaz, návrh nebo chcete upozornit na chybu? Napište nám.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg> info@casinao.cz</div>
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 21s7-4.4 7-10a7 7 0 1 0-14 0c0 5.6 7 10 7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg> Česká republika</div>
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg> Nezávislý projekt</div>
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v18"/><path d="M7 7h7.5a2.5 2.5 0 0 1 0 5H9.5a2.5 2.5 0 0 0 0 5H17"/></svg> Dodržujeme CZ legislativu</div>
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg> IČO: bude doplněno</div>
+              <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M4 20a5 5 0 0 1 10 0"/><path d="M14.5 20a4 4 0 0 1 6.5-2.9"/></svg> O nás: <a class="hover:underline" href="o-nas.html">Kdo jsme</a></div>
+            </div>
+
+            <div class="mt-8 contact-lux-card lg:mt-6">
+              <h2 class="contact-lux-title font-display text-2xl font-extrabold">Proč nás kontaktovat?</h2>
+              <div class="mt-4">
+                <div class="contact-lux-item flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" class="contact-lux-icon w-5 h-5 mt-0.5" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M9 12h.01"/><path d="M9 15h.01"/><path d="M15 9h.01"/><path d="M15 12h.01"/><path d="M15 15h.01"/></svg>
+                  <div>
+                    <p class="contact-lux-item-title font-semibold">Doplnění nového casina</p>
+                    <p class="contact-lux-item-sub text-sm mt-1">Znáte casino, které nám chybí? Dejte nám vědět.</p>
+                  </div>
+                </div>
+
+                <div class="contact-lux-item flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" class="contact-lux-icon w-5 h-5 mt-0.5" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 9h18"/><path d="M8 5v8"/><path d="M16 5v8"/><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 14h6"/></svg>
+                  <div>
+                    <p class="contact-lux-item-title font-semibold">Aktualizace bonusů a promo kódů</p>
+                    <p class="contact-lux-item-sub text-sm mt-1">Pomozte nám udržovat informace aktuální.</p>
+                  </div>
+                </div>
+
+                <div class="contact-lux-item flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" class="contact-lux-icon w-5 h-5 mt-0.5" fill="none" stroke="currentColor" aria-hidden="true"><path d="m7 12 3 3 7-7"/><path d="M20 12c0 5-3.5 9-8 9S4 17 4 12 7.5 3 12 3s8 4 8 9Z"/></svg>
+                  <div>
+                    <p class="contact-lux-item-title font-semibold">Spolupráce a reklama</p>
+                    <p class="contact-lux-item-sub text-sm mt-1">Máte zájem o spolupráci? Ozvěte se nám.</p>
+                  </div>
+                </div>
+
+                <div class="contact-lux-item flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" class="contact-lux-icon w-5 h-5 mt-0.5" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.5 2.6 17a2 2 0 0 0 1.8 3h15.2a2 2 0 0 0 1.8-3L13.7 3.5a2 2 0 0 0-3.4 0Z"/></svg>
+                  <div>
+                    <p class="contact-lux-item-title font-semibold">Upozornění na chybu v recenzi</p>
+                    <p class="contact-lux-item-sub text-sm mt-1">Našli jste chybu nebo neaktuální informaci?</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 contact-gold-light lg:hidden" aria-hidden="true">
+              <span class="contact-gold-wave w1"></span>
+              <span class="contact-gold-wave w2"></span>
+              <span class="contact-gold-wave w3"></span>
+              <span class="contact-gold-dot d1"></span>
+              <span class="contact-gold-dot d2"></span>
+              <span class="contact-gold-dot d3"></span>
+              <span class="contact-gold-dot d4"></span>
+            </div>
           </div>
 
-          <div class="hidden" aria-hidden="true">
-            <label for="website">Website</label>
-            <input id="website" name="website" type="text" autocomplete="off" tabindex="-1" />
-          </div>
+          <div class="lg:col-start-2 lg:h-full">
+            <form id="contactForm" class="contact-card h-full flex flex-col" novalidate>
+              <div class="contact-response-box mb-4">Odpovídáme obvykle do <span class="text-yellow-300 font-semibold">24 hodin</span></div>
+              <div class="grid gap-4">
+                <div>
+                  <label class="text-sm mb-1" for="name"><span>Jméno</span></label>
+                  <input id="name" name="name" type="text" required minlength="2" maxlength="80" placeholder="Vaše jméno" />
+                </div>
+                <div>
+                  <label class="text-sm mb-1" for="email"><span>E-mail</span></label>
+                  <input id="email" name="email" type="email" required maxlength="120" placeholder="name@email.cz" />
+                </div>
+                <div>
+                  <label class="text-sm mb-1" for="message"><span>Zpráva</span></label>
+                  <textarea id="message" name="message" rows="4" required minlength="15" maxlength="2000" placeholder="Sem napište vaši zprávu..."></textarea>
+                </div>
 
-          <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-yellow-500 text-gray-900 font-semibold hover:bg-yellow-400">Odeslat</button>
-          <p id="formStatus" class="text-xs text-gray-400">Po odeslání se otevře tvůj e-mailový klient s předvyplněnou zprávou.</p>
-        </form>
-      </section>
-    </div>
+                <div class="hidden" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input id="website" name="website" type="text" autocomplete="off" tabindex="-1" />
+                </div>
+
+                <button type="submit" class="contact-submit inline-flex items-center gap-2">Odeslat zprávu</button>
+              </div>
+              <p id="formStatus" class="contact-note">Po odeslání se otevře váš e-mailový klient s předvyplněnou zprávou.</p>
+
+              <div class="mt-auto pt-5">
+                <div class="flex flex-wrap justify-center gap-3 text-sm">
+                  <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" title="X" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
+                      <path d="M18.901 1.5H22.58l-8.037 9.185L24 22.5h-7.406l-5.802-7.545L4.188 22.5H.507l8.596-9.824L0 1.5h7.594l5.245 6.915L18.901 1.5Zm-1.29 18.796h2.04L6.486 3.605H4.297L17.611 20.296Z"/>
+                    </svg>
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor">
+                      <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.6v8h2.9Z"/>
+                    </svg>
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <circle cx="17.5" cy="6.5" r="1"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube" class="contact-social-btn inline-flex items-center justify-center rounded-lg border border-white/10 w-10 h-10">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="none">
+                      <rect x="2" y="6" width="20" height="12" rx="3" fill="currentColor"></rect>
+                      <path d="M10 9.5v5l5-2.5-5-2.5Z" fill="#111827"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
