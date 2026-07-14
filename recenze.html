@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -51,6 +52,151 @@
   <style>
     html { scroll-behavior: smooth; }
     .glass { backdrop-filter: blur(10px); background: rgba(17,24,39,0.58); }
+
+    :root {
+      --gold-1: #facc15;
+      --gold-2: #f59e0b;
+      --gold-glow: rgba(250, 204, 21, 0.35);
+    }
+
+    .site-header {
+      min-height: 86px;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.62));
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.42);
+      box-shadow: 0 1px 0 rgba(250, 204, 21, 0.18), 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 20px rgba(250, 204, 21, 0.1);
+    }
+
+    .top-nav {
+      gap: 1.2rem;
+    }
+
+    .top-nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48rem;
+      padding: 0.45rem 0.35rem;
+      color: #e5e7eb;
+      transition: color 250ms ease, transform 250ms ease, text-shadow 250ms ease;
+    }
+
+    .top-nav-link svg {
+      width: 16px;
+      height: 16px;
+      color: rgba(250, 204, 21, 0.88);
+      flex: 0 0 auto;
+    }
+
+    .top-nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0.35rem;
+      right: 0.35rem;
+      bottom: -0.35rem;
+      height: 2px;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 250ms ease;
+      background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
+    }
+
+    .top-nav-link:hover {
+      color: #fde68a;
+      transform: translateY(-2px);
+      text-shadow: 0 0 12px rgba(250, 204, 21, 0.25);
+    }
+
+    .top-nav-link:hover::after,
+    .top-nav-link.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .top-nav-link.is-active {
+      color: #facc15;
+      text-shadow: 0 0 16px rgba(250, 204, 21, 0.38);
+    }
+
+    .top-nav-link.is-active span {
+      background: linear-gradient(120deg, #fde68a, #facc15 45%, #f59e0b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .top-nav-link.is-active svg {
+      color: #facc15;
+      filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.45));
+    }
+
+    .mobile-menu-lock {
+      overflow: hidden;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 62;
+      background: rgba(0, 0, 0, 0.62);
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+
+    .mobile-menu-overlay.mobile-menu-overlay-open {
+      opacity: 1;
+    }
+
+    .mobile-menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(88vw, 430px);
+      height: 100dvh;
+      z-index: 63;
+      transform: translateX(100%);
+      transition: transform 300ms ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      overflow: hidden;
+      background-image: linear-gradient(rgba(10, 16, 28, 0.98), rgba(8, 13, 24, 0.98)), url('/img/menu.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .mobile-menu-panel.mobile-menu-open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      padding: calc(env(safe-area-inset-top) + 12px) 16px 10px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(6, 12, 22, 0.78);
+    }
+
+    .mobile-menu-close {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(15, 23, 42, 0.72);
+      color: #f8fafc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu-scroll {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 10px 12px calc(env(safe-area-inset-bottom) + 12px);
+    }
 
     .review-grid {
       display: grid;
@@ -364,21 +510,50 @@
     <div class="absolute right-0 top-40 h-[260px] w-[260px] rounded-full bg-orange-500/10 blur-3xl"></div>
   </div>
 
-  <header class="z-40 border-b border-white/10 bg-black/30 backdrop-blur-xl">
+  <header class="site-header z-40 border-b border-white/10 bg-black/30 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4 gap-4">
-        <a href="/" class="flex items-center gap-3 min-w-0">
+      <div class="flex items-center justify-between py-5">
+        <a href="index.html" class="flex items-center gap-3">
           <img src="/assets/icons/casinao_logo_kruh_512.png" alt="Casinao.cz" class="w-11 h-11 rounded-2xl object-contain flex-none" />
-          <div class="min-w-0">
-            <div class="font-display text-xl font-extrabold tracking-tight truncate">Casinao.cz</div>
-            <div class="text-xs text-gray-400 truncate">Recenze • Bonusy • Návody</div>
+          <div>
+            <div class="font-display text-xl font-extrabold tracking-tight">Casinao.cz</div>
+            <div class="text-xs text-gray-400">Casino Akademie</div>
           </div>
         </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="/bonusy.html" class="hover:text-yellow-400 transition">Stálé bonusy</a>
-          <a href="/denni-bonusy.html" class="hover:text-yellow-400 transition">Denní bonusy</a>
-          <a href="/recenze.html" class="text-yellow-400">Recenze</a>
+
+        <nav class="top-nav hidden md:flex items-center text-sm font-medium">
+          <a href="index.html#casina" class="top-nav-link"><i data-lucide="landmark"></i><span>Casina</span></a>
+          <a href="index.html#bonusy" class="top-nav-link"><i data-lucide="gift"></i><span>Bonusy</span></a>
+          <a href="navody.html" class="top-nav-link"><i data-lucide="graduation-cap"></i><span>Akademie</span></a>
+          <a href="/recenze.html" class="top-nav-link is-active"><i data-lucide="star"></i><span>Recenze</span></a>
+          <a href="index.html#kontakt" class="top-nav-link"><i data-lucide="mail"></i><span>Kontakt</span></a>
         </nav>
+
+        <button id="btnMenu" class="md:hidden p-2 rounded-lg bg-white/10 border border-white/10 hover:bg-white/15" aria-label="Otevřít menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="mobileMenuOverlay" class="mobile-menu-overlay hidden md:hidden" aria-hidden="true"></div>
+
+      <div id="mobileMenu" class="mobile-menu-panel hidden md:hidden" aria-hidden="true" aria-label="Mobilní navigace">
+        <div class="mobile-menu-header">
+          <div class="flex items-center justify-between gap-3">
+            <strong class="font-display text-sm tracking-wide text-gray-200">Menu</strong>
+            <button id="btnMenuClose" type="button" class="mobile-menu-close" aria-label="Zavřít menu">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-menu-scroll">
+          <div class="glass rounded-2xl border border-white/10 p-3 grid gap-2 text-sm">
+            <a href="index.html#casina" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i><span>Casina</span></a>
+            <a href="index.html#bonusy" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="gift" class="w-4 h-4 text-yellow-400"></i><span>Bonusy</span></a>
+            <a href="navody.html" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10"><i data-lucide="book-open" class="w-4 h-4 text-yellow-400"></i><span>Casino Akademie</span></a>
+            <a href="/recenze.html" class="mob-link flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 text-yellow-400"><i data-lucide="star" class="w-4 h-4 text-yellow-400"></i><span>Recenze</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -654,7 +829,83 @@
   </footer>
 
   <script>
+    lucide.createIcons();
+
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btnMenu = document.getElementById('btnMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const btnMenuClose = document.getElementById('btnMenuClose');
+
+    if (btnMenu && mobileMenu && mobileMenuOverlay) {
+      let closeTimer = 0;
+
+      const closeMenu = () => {
+        if (!mobileMenu.classList.contains('mobile-menu-open')) {
+          return;
+        }
+
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenuOverlay.classList.remove('mobile-menu-overlay-open');
+        btnMenu.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+
+        window.clearTimeout(closeTimer);
+        closeTimer = window.setTimeout(() => {
+          if (!mobileMenu.classList.contains('mobile-menu-open')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.classList.remove('mobile-menu-lock');
+          }
+        }, 320);
+      };
+
+      const openMenu = () => {
+        window.clearTimeout(closeTimer);
+        mobileMenu.classList.remove('hidden');
+        mobileMenuOverlay.classList.remove('hidden');
+
+        window.requestAnimationFrame(() => {
+          mobileMenu.classList.add('mobile-menu-open');
+          mobileMenuOverlay.classList.add('mobile-menu-overlay-open');
+        });
+
+        btnMenu.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('mobile-menu-lock');
+      };
+
+      btnMenu.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('mobile-menu-open')) {
+          closeMenu();
+          return;
+        }
+
+        openMenu();
+      });
+
+      btnMenuClose && btnMenuClose.addEventListener('click', closeMenu);
+      mobileMenuOverlay.addEventListener('click', closeMenu);
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+
+      document.querySelectorAll('#mobileMenu .mob-link').forEach((a) => {
+        a.addEventListener('click', closeMenu);
+      });
+    }
   </script>
 </body>
 </html>
