@@ -53,13 +53,15 @@
     a{color:inherit;text-decoration:none}
     .wrap{width:min(1180px, calc(100% - 32px));margin:auto}
 
-    header{
+    .site-header{
       position:sticky;
       top:0;
-      z-index:10;
+      z-index:40;
+      min-height:86px;
+      background:linear-gradient(180deg, rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.62));
       backdrop-filter:blur(14px);
-      background:rgba(8,11,19,.78);
-      border-bottom:1px solid var(--line);
+      border-bottom:1px solid rgba(250, 204, 21, 0.42);
+      box-shadow:0 1px 0 rgba(250, 204, 21, 0.18), 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 20px rgba(250, 204, 21, 0.1);
     }
 
     .nav{
@@ -67,7 +69,7 @@
       align-items:center;
       justify-content:space-between;
       gap:20px;
-      padding:16px 0;
+      padding:18px 0;
     }
 
     .logo{
@@ -87,39 +89,76 @@
       box-shadow:0 0 34px rgba(246,196,83,.35);
     }
 
-    .menu{
+    .top-nav{
       display:flex;
-      gap:18px;
-      color:var(--muted);
+      align-items:center;
+      gap:1.2rem;
       font-size:14px;
+      font-weight:600;
     }
 
-    .menu a{
+    .top-nav-link{
       position:relative;
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      padding:6px 10px;
-      border-radius:12px;
-      animation:menuPulse 3.8s ease-in-out infinite;
-      transition:color .25s ease, background .25s ease;
+      gap:.48rem;
+      padding:.45rem .35rem;
+      color:#e5e7eb;
+      transition:color 250ms ease, transform 250ms ease, text-shadow 250ms ease;
     }
 
-    .menu a:nth-child(1){animation-delay:0s}
-    .menu a:nth-child(2){animation-delay:1.1s}
-    .menu a:nth-child(3){animation-delay:2.2s}
+    .top-nav-link svg{
+      width:16px;
+      height:16px;
+      color:rgba(250, 204, 21, 0.88);
+      flex:0 0 auto;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
 
-    @keyframes menuPulse {
-      0%, 100% {
-        transform:scale(1);
-        background:rgba(246,196,83,.00);
-        box-shadow:0 0 0 rgba(246,196,83,.00);
-      }
-      50% {
-        transform:scale(1.04);
-        background:rgba(246,196,83,.12);
-        box-shadow:0 0 16px rgba(246,196,83,.20);
-      }
+    .top-nav-link::after{
+      content:"";
+      position:absolute;
+      left:.35rem;
+      right:.35rem;
+      bottom:-.35rem;
+      height:2px;
+      border-radius:999px;
+      transform:scaleX(0);
+      transform-origin:center;
+      transition:transform 250ms ease;
+      background:linear-gradient(90deg, #facc15, #f59e0b);
+    }
+
+    .top-nav-link:hover{
+      color:#fde68a;
+      transform:translateY(-2px);
+      text-shadow:0 0 12px rgba(250, 204, 21, 0.25);
+    }
+
+    .top-nav-link:hover::after,
+    .top-nav-link.is-active::after{
+      transform:scaleX(1);
+    }
+
+    .top-nav-link.is-active{
+      color:#facc15;
+      text-shadow:0 0 16px rgba(250, 204, 21, 0.38);
+    }
+
+    .top-nav-link.is-active span{
+      background:linear-gradient(120deg, #fde68a, #facc15 45%, #f59e0b);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .top-nav-link.is-active svg{
+      color:#facc15;
+      filter:drop-shadow(0 0 8px rgba(250, 204, 21, 0.45));
     }
 
     @keyframes giftIconPulse {
@@ -168,13 +207,11 @@
     .today-row--pulse-6 .today-icon{animation-delay:2.75s}
 
     @media (prefers-reduced-motion:reduce){
-      .menu a,
+      .top-nav-link,
       .btn-primary .btn-icon.gift-pulse-icon,
       .btn-secondary .btn-icon.bell-pulse-icon,
       .today-row--pulse .today-icon{animation:none}
     }
-
-    .menu a:hover{color:var(--gold)}
 
     .hero{
       padding:70px 0 36px;
@@ -1268,7 +1305,7 @@
       }
       .bonus-grid{grid-template-columns:1fr 1fr}
       .how-grid{grid-template-columns:1fr 1fr}
-      .menu{display:none}
+      .top-nav{display:none}
 
       .bonusy-icon:nth-child(9),
       .bonusy-icon:nth-child(18),
@@ -1578,16 +1615,16 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="wrap nav">
       <a href="/" class="logo" aria-label="Casinao.cz">
         <img src="/assets/icons/casinao_logo_kruh_512.png" alt="Casinao.cz" />
         <span>Casinao.cz</span>
       </a>
-      <nav class="menu" aria-label="Hlavní menu">
-        <a href="/bonusy.html">Stálé bonusy</a>
-        <a href="/denni-bonusy.html">Denní bonusy</a>
-        <a href="/recenze.html">Recenze</a>
+      <nav class="top-nav" aria-label="Hlavní menu">
+        <a href="/bonusy.html" class="top-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13"></path><path d="M3 12h18"></path><path d="M12 8c-1.9 0-4-1-4-3 0-1.2.9-2 2.1-2 2 0 2.8 2.5 1.9 5Z"></path><path d="M12 8c1.9 0 4-1 4-3 0-1.2-.9-2-2.1-2-2 0-2.8 2.5-1.9 5Z"></path></svg><span>Stálé bonusy</span></a>
+        <a href="/denni-bonusy.html" class="top-nav-link is-active"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M3 10h18"></path></svg><span>Denní bonusy</span></a>
+        <a href="/recenze.html" class="top-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.6 6.2.9-4.5 4.4 1 6.2L12 17.2 6.5 20.1l1-6.2L3 9.5l6.2-.9L12 3Z"></path></svg><span>Recenze</span></a>
       </nav>
     </div>
   </header>
