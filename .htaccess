@@ -7,3 +7,16 @@
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 </IfModule>
+
+# Canonical casino review URLs — permanent redirects from legacy duplicate pages
+<IfModule mod_alias.c>
+  Redirect 301 /betano.html /recenze/betano/
+  Redirect 301 /chance.html /recenze/chance/
+  Redirect 301 /fbet.html /recenze/fbet/
+  Redirect 301 /fortuna-vegas.html /recenze/fortuna-vegas/
+  Redirect 301 /kingsbet.html /recenze/kingsbet/
+  Redirect 301 /maxa.html /recenze/maxa/
+  Redirect 301 /sazka.html /recenze/sazka/
+  Redirect 301 /synottip.html /recenze/synottip/
+  Redirect 301 /tipsport-vegas.html /recenze/tipsport-vegas/
+</IfModule>
